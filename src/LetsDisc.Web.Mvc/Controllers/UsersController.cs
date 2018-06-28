@@ -9,7 +9,7 @@ using LetsDisc.Web.Models.Users;
 
 namespace LetsDisc.Web.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Users)]
+    //[AbpMvcAuthorize(PermissionNames.Pages_Users)]
     public class UsersController : LetsDiscControllerBase
     {
         private readonly IUserAppService _userAppService;

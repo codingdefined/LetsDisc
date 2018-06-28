@@ -4,6 +4,9 @@
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
     <text name="WellcomeMessage" value="Welcome to LetsDisc!" />
+    <text name="Questions" value="Questions" />
+    <text name="AllQuestions" value="All Questions" />
+    <text name="YourAnswer" value="Your Answer" />
     <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
     <text name="TenantNameCanNotBeEmpty" value="Tenant name can not be empty" />
     <text name="InvalidUserNameOrPassword" value="Invalid user name or password" />

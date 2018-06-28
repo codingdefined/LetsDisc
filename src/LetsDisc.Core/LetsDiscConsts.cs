@@ -6,6 +6,9 @@
 
         public const string ConnectionStringName = "Default";
 
-        public const bool MultiTenancyEnabled = true;
+        // Disabling MultiTenancy
+        //https://aspnetboilerplate.com/Pages/Documents/Zero/Tenant-Management
+
+        public const bool MultiTenancyEnabled = false;
     }
 }

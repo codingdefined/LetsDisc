@@ -10,6 +10,9 @@ namespace LetsDisc.Authorization
         {
             context.CreatePermission(PermissionNames.Pages_Users, L("Users"));
             context.CreatePermission(PermissionNames.Pages_Roles, L("Roles"));
+
+            // Giving a Role that the User Can Create Questions
+            context.CreatePermission(PermissionNames.Pages_Questions_Create, L("Can_create_questions"));
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
         }
 
