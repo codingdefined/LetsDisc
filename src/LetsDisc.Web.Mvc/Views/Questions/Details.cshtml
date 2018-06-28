@@ -37,14 +37,16 @@
             </div>
             <div class="body table-responsive">
                 <div class="vote-layout">
-                    <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right questions-id" asp-action="Create">
+                    <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right">
                         <i class="material-icons">arrow_drop_up</i>
                     </a>
-                    <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right questions-id" asp-action="Create">
+                    <div class="upvote-count">@Model.UpvoteCount</div>
+                    <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right">
                         <i class="material-icons">arrow_drop_down</i>
                     </a>
                 </div>
-                @Model.Body
+                <div class="question-body">@Model.Body</div>
+
             </div>
             <div class="body">
                 <h4>

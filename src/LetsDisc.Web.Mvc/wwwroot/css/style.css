@@ -10835,3 +10835,19 @@ html.ie11 .bs-searchbox .form-control {
     width: 100%;
     height: 200px;
 }
+
+.vote-layout {
+    float: left;
+    display: grid;
+    height: 100px;
+}
+
+.upvote-count {
+    margin-left: 16px;
+}
+
+.question-body {
+    position: relative;
+    margin: 0% 6%;
+    max-width: 75%;
+}
