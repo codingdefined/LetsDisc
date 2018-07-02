@@ -11,10 +11,10 @@
 @section scripts
     {
     <environment names="Development">
-        <script src="~/view-resources/Views/Users/Index.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Questions/Details.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="~/view-resources/Views/Users/Index.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Questions/Details.min.js" asp-append-version="true"></script>
     </environment>
 }
 
@@ -37,11 +37,11 @@
             </div>
             <div class="body table-responsive">
                 <div class="vote-layout">
-                    <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right">
+                    <a data-question-id="@Model.Id" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right vote-up">
                         <i class="material-icons">arrow_drop_up</i>
                     </a>
                     <div class="upvote-count">@Model.UpvoteCount</div>
-                    <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right">
+                    <a data-question-id="@Model.Id" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right vote-down">
                         <i class="material-icons">arrow_drop_down</i>
                     </a>
                 </div>

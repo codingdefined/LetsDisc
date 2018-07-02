@@ -142,5 +142,17 @@
     "inputFiles": [
       "wwwroot/view-resources/Views/Shared/Components/TenantChange/Default.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Questions/Details.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Questions/Details.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Questions/Index.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Questions/Index.js"
+    ]
   }
 ]
