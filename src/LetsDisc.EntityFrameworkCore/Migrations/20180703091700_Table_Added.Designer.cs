@@ -16,9 +16,10 @@ using System;
 namespace LetsDisc.Migrations
 {
     [DbContext(typeof(LetsDiscDbContext))]
-    partial class LetsDiscDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180703091700_Table_Added")]
+    partial class Table_Added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

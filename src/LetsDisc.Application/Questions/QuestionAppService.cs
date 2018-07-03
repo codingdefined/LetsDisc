@@ -22,11 +22,12 @@ namespace LetsDisc.Questions
         private readonly IRepository<Question> _questionRepository;
         private readonly IRepository<Answer> _answerRepository;
         private readonly IRepository<Tag> _tagRepository;
+        private readonly IRepository<UserVoteForQuestion> _userVoteForQuestionRepository;
         private readonly IRepository<User, long> _userRepository;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly QuestionDomainService _questionDomainService;
 
-        public QuestionAppService(IRepository<Question> questionRepository, IRepository<Answer> answerRepository, IRepository<Tag> tagRepository, IRepository<User, long> userRepository, QuestionDomainService questionDomainService, IUnitOfWorkManager unitOfWorkManager)
+        public QuestionAppService(IRepository<Question> questionRepository, IRepository<Answer> answerRepository, IRepository<Tag> tagRepository, IRepository<User, long> userRepository, QuestionDomainService questionDomainService, IUnitOfWorkManager unitOfWorkManager, IRepository<UserVoteForQuestion> userVoteForQuestionRepository)
         {
             _questionRepository = questionRepository;
             _answerRepository = answerRepository;
@@ -34,6 +35,7 @@ namespace LetsDisc.Questions
             _userRepository = userRepository;
             _unitOfWorkManager = unitOfWorkManager;
             _questionDomainService = questionDomainService;
+            _userVoteForQuestionRepository = userVoteForQuestionRepository;
         }
 
         public PagedResultDto<QuestionDto> GetQuestions(GetQuestionsInput input)
@@ -84,20 +86,25 @@ namespace LetsDisc.Questions
             };
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public VoteChangeOutput QuestionVoteUp(EntityDto input)
         {
             var question = _questionRepository.Get(input.Id);
             question.UpvoteCount++;
+            _userVoteForQuestionRepository.Insert(new UserVoteForQuestion(input.Id, AbpSession.UserId.GetValueOrDefault(), true));
             return new VoteChangeOutput(question.UpvoteCount);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public VoteChangeOutput QuestionVoteDown(EntityDto input)
         {
             var question = _questionRepository.Get(input.Id);
             question.UpvoteCount--;
+            _userVoteForQuestionRepository.Insert(new UserVoteForQuestion(input.Id, AbpSession.UserId.GetValueOrDefault(), true));
             return new VoteChangeOutput(question.UpvoteCount);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public VoteChangeOutput AnswerVoteUp(EntityDto input)
         {
             var answer = _answerRepository.Get(input.Id);
@@ -105,6 +112,7 @@ namespace LetsDisc.Questions
             return new VoteChangeOutput(answer.UpvoteCount);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public VoteChangeOutput AnswerVoteDown(EntityDto input)
         {
             var answer = _answerRepository.Get(input.Id);

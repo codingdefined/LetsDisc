@@ -2,15 +2,34 @@
     $(function() {
 
         var _questionService = abp.services.app.question;
+        var _session = { user: null };
+
+        abp.services.app.session.getCurrentLoginInformations({
+            async: false
+        }).done(function (result) {
+            if (result) {
+                _session.user = result.user;
+            }
+        });
 
         $('.vote-up').click(function () {
             var questionId = $(this).attr("data-question-id");
-            upVote(questionId);
+            if (_session.user) {
+                upVote(questionId);
+            } else {
+                abp.notify.info("You need to login for Upvoting");
+            }
+            
         });
 
         $('.vote-down').click(function () {
             var questionId = $(this).attr("data-question-id");
-            downVote(questionId);
+            if (_session.user) {
+                downVote(questionId);
+            } else {
+                abp.notify.info("You need to login for Downvoting");
+            }
+
         });
 
 

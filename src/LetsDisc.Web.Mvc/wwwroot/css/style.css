@@ -10854,8 +10854,9 @@ html.ie11 .bs-searchbox .form-control {
 }
 
 .vote-up i, .vote-down i {
-    font-size:50px;
-    cursor:pointer;
+    font-size: 50px;
+    cursor: pointer;
+    color: #1f91f3;
 }
 
 .user-info {
