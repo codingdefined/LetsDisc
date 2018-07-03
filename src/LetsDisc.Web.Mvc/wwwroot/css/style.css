@@ -3850,7 +3850,7 @@ section.content {
     .card .body {
         font-size: 14px;
         color: #555;
-        padding: 20px;
+        padding: 0px 20px 20px 20px;
     }
 
         .card .body .col-xs-1,
@@ -10839,15 +10839,30 @@ html.ie11 .bs-searchbox .form-control {
 .vote-layout {
     float: left;
     display: grid;
-    height: 100px;
 }
 
 .upvote-count {
-    margin-left: 16px;
+    margin-left: 19px;
+    font-size: large;
 }
 
 .question-body {
     position: relative;
     margin: 0% 6%;
     max-width: 75%;
+    padding-top:12px;
+}
+
+.vote-up i, .vote-down i {
+    font-size:50px;
+    cursor:pointer;
+}
+
+.user-info {
+    float: right;
+    position: relative;
+    margin: 0% 20%;
+    max-width: 75%;
+    padding: 12px;
+    background-color:ghostwhite;
 }

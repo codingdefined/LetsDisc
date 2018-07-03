@@ -11,6 +11,7 @@ using LetsDisc.Controllers;
 using Abp.Application.Services.Dto;
 using LetsDisc.Questions.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace LetsDisc.Web.Mvc.Controllers
 {
@@ -40,17 +41,28 @@ namespace LetsDisc.Web.Mvc.Controllers
         // GET: Questions/Details/5
         public IActionResult Details(int? id)
         {
+            var cookie = this.HttpContext.Request.Cookies["RefreshFilter"];
+            this.RouteData.Values["IsRefreshed"] = cookie != null && cookie.ToString() == this.HttpContext.Request.Path.ToString();
+            
             if (id == null)
             {
                 return NotFound();
             }
-            var question = _questionAppService.GetQuestion(new GetQuestionInput { Id = id.Value }).Question;
-
+            QuestionWithAnswersDto question;
+            if ((bool)this.RouteData.Values["IsRefreshed"] == false)
+            {
+                question = _questionAppService.GetQuestion(new GetQuestionInput { Id = id.Value, IncrementViewCount = true }).Question;
+            }
+            else
+            {
+                question = _questionAppService.GetQuestion(new GetQuestionInput { Id = id.Value, IncrementViewCount = false }).Question;
+            }
+            
             if (question == null)
             {
                 return NotFound();
             }
-
+            this.HttpContext.Response.Cookies.Append("RefreshFilter", this.HttpContext.Request.Path.ToString(), new CookieOptions { Expires=DateTime.Now.AddDays(5) });
             return View(question);
         }
 

@@ -37,16 +37,30 @@
             </div>
             <div class="body table-responsive">
                 <div class="vote-layout">
-                    <a data-question-id="@Model.Id" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right vote-up">
+                    <a data-question-id="@Model.Id" class="pull-right vote-up">
                         <i class="material-icons">arrow_drop_up</i>
                     </a>
                     <div class="upvote-count">@Model.UpvoteCount</div>
-                    <a data-question-id="@Model.Id" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right vote-down">
+                    <a data-question-id="@Model.Id" class="pull-right vote-down">
                         <i class="material-icons">arrow_drop_down</i>
                     </a>
                 </div>
                 <div class="question-body">@Model.Body</div>
+                <div class="user-info">
+                    <div class="total-views">Viewed @Model.ViewCount times</div>
+                    <div class="asked-time">asked @TimeAgo.GetTimeAgo(Model.CreationTime)</div>
+                    <div class="asked-by">
+                        @{
+                            var username = "admin";
+                            if (!(Model.CreatorUserName == "" || Model.CreatorUserName == null))
+                            {
+                                username = Model.CreatorUserName;
 
+                            }
+                        }
+                        by @username
+                    </div>
+                </div>
             </div>
             <div class="body">
                 <h4>
