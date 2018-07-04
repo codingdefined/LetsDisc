@@ -10859,6 +10859,10 @@ html.ie11 .bs-searchbox .form-control {
     color: #1f91f3;
 }
 
+.vote-up-on i, .vote-down-on i {
+    color: #FAA633;
+}
+
 .user-info {
     float: right;
     position: relative;

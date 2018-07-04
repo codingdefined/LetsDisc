@@ -27,6 +27,7 @@ namespace LetsDisc.Questions
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly QuestionDomainService _questionDomainService;
 
+        // Getting all the Repositories
         public QuestionAppService(IRepository<Question> questionRepository, IRepository<Answer> answerRepository, IRepository<Tag> tagRepository, IRepository<User, long> userRepository, QuestionDomainService questionDomainService, IUnitOfWorkManager unitOfWorkManager, IRepository<UserVoteForQuestion> userVoteForQuestionRepository)
         {
             _questionRepository = questionRepository;
@@ -38,6 +39,7 @@ namespace LetsDisc.Questions
             _userVoteForQuestionRepository = userVoteForQuestionRepository;
         }
 
+        // Getting all questions on the Home Page
         public PagedResultDto<QuestionDto> GetQuestions(GetQuestionsInput input)
         {
             var questionCount = _questionRepository.Count();
@@ -54,19 +56,23 @@ namespace LetsDisc.Questions
             };
         }
 
+        // Creating the question
         [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public void CreateQuestion(CreateQuestionInput input)
         {
            _questionRepository.Insert(new Question(input.Title, input.Body));
         }
 
+        //Getting a single question based on the id Provided
         public GetQuestionOutput GetQuestion(GetQuestionInput input)
         {
+            // We will be including the answers and the users who have voted for this question
             var question =
                 _questionRepository
                     .GetAll()
                     .Include(q => q.CreatorUser)
                     .Include(q => q.Answers)
+                    .Include(q => q.UsersVoted)
                     .Include("Answers.CreatorUser")
                     .FirstOrDefault(q => q.Id == input.Id);
 
@@ -75,51 +81,108 @@ namespace LetsDisc.Questions
                 throw new UserFriendlyException("There is no such a question. Maybe it's deleted.");
             }
 
+            // Incrementing the View if the question function is called
             if (input.IncrementViewCount)
             {
                 question.ViewCount++;
             }
 
+            // Mapping the question to another class so that we will have more defined classes which includes Answers and UsersVoted
             return new GetQuestionOutput
             {
                 Question = question.MapTo<QuestionWithAnswersDto>()
             };
         }
 
+        //For Both Upvoting and Downvoting if the question is upvoted and you click on Downvote we are decreasing by 2 i.e. removing the upvote and adding downvote
+
+        //Voting Up the Question, where there will be two things either Upvoting or Downvoting
         [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public VoteChangeOutput QuestionVoteUp(EntityDto input)
         {
             var question = _questionRepository.Get(input.Id);
-            question.UpvoteCount++;
-            _userVoteForQuestionRepository.Insert(new UserVoteForQuestion(input.Id, AbpSession.UserId.GetValueOrDefault(), true));
-            return new VoteChangeOutput(question.UpvoteCount);
+            var isUserVoted = _userVoteForQuestionRepository.FirstOrDefault(userVote => userVote.UserId == AbpSession.UserId && userVote.QuestionId == input.Id);
+            if(isUserVoted != null)
+            {
+                if(isUserVoted.IsUpvoted)
+                {
+                    isUserVoted.IsUpvoted = false;
+                    question.UpvoteCount--;
+                }
+                else if(isUserVoted.IsDownvoted)
+                {
+                    isUserVoted.IsUpvoted = true;
+                    isUserVoted.IsDownvoted = false;
+                    question.UpvoteCount += 2;
+                }
+                else
+                {
+                    isUserVoted.IsUpvoted = true;
+                    question.UpvoteCount++;
+                }
+            }
+            else
+            {
+                question.UpvoteCount++;
+                _userVoteForQuestionRepository.Insert(new UserVoteForQuestion(input.Id, AbpSession.UserId.GetValueOrDefault(), true, false));
+                return new VoteChangeOutput(question.UpvoteCount, true, false);
+            }  
+            return new VoteChangeOutput(question.UpvoteCount, isUserVoted.IsUpvoted, isUserVoted.IsDownvoted);
         }
 
+        //Voting Down the Question, where there will be two things either Upvoting or Downvoting
         [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public VoteChangeOutput QuestionVoteDown(EntityDto input)
         {
             var question = _questionRepository.Get(input.Id);
-            question.UpvoteCount--;
-            _userVoteForQuestionRepository.Insert(new UserVoteForQuestion(input.Id, AbpSession.UserId.GetValueOrDefault(), true));
-            return new VoteChangeOutput(question.UpvoteCount);
+            var isUserVoted = _userVoteForQuestionRepository.FirstOrDefault(userVote => userVote.UserId == AbpSession.UserId && userVote.QuestionId == input.Id);
+            if (isUserVoted != null)
+            {
+                if (isUserVoted.IsDownvoted)
+                {
+                    isUserVoted.IsDownvoted = false;
+                    question.UpvoteCount++;
+                }
+                else if(isUserVoted.IsUpvoted)
+                {
+                    isUserVoted.IsDownvoted = true;
+                    isUserVoted.IsUpvoted = false;
+                    question.UpvoteCount -= 2;
+                }
+                else
+                {
+                    isUserVoted.IsDownvoted = true;
+                    question.UpvoteCount--;
+                }
+            }
+            else
+            {
+                question.UpvoteCount--;
+                _userVoteForQuestionRepository.Insert(new UserVoteForQuestion(input.Id, AbpSession.UserId.GetValueOrDefault(), true, false));
+                return new VoteChangeOutput(question.UpvoteCount, false, true);
+            }
+            return new VoteChangeOutput(question.UpvoteCount, isUserVoted.IsUpvoted, isUserVoted.IsDownvoted);
         }
 
+        // ToDo
         [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public VoteChangeOutput AnswerVoteUp(EntityDto input)
         {
             var answer = _answerRepository.Get(input.Id);
             answer.UpvoteCount++;
-            return new VoteChangeOutput(answer.UpvoteCount);
+            return new VoteChangeOutput(answer.UpvoteCount, true, false);
         }
 
+        // ToDo
         [AbpAuthorize(PermissionNames.Pages_Questions_Create)]
         public VoteChangeOutput AnswerVoteDown(EntityDto input)
         {
             var answer = _answerRepository.Get(input.Id);
             answer.UpvoteCount--;
-            return new VoteChangeOutput(answer.UpvoteCount);
+            return new VoteChangeOutput(answer.UpvoteCount, false, true);
         }
 
+        // ToDo
         [AbpAuthorize(PermissionNames.Pages_Answers_Create)]
         public SubmitAnswerOutput SubmitAnswer(SubmitAnswerInput input)
         {
@@ -141,6 +204,7 @@ namespace LetsDisc.Questions
             };
         }
 
+        // ToDo
         public void AcceptAnswer(EntityDto input)
         {
             var answer = _answerRepository.Get(input.Id);

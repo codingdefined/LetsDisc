@@ -1114,19 +1114,19 @@ namespace LetsDisc.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("IsVoted");
+                    b.Property<bool>("IsDownvoted");
+
+                    b.Property<bool>("IsUpvoted");
 
                     b.Property<int>("QuestionId");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<long>("UserId1");
+                    b.Property<long>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("QuestionId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserVoteForQuestion");
                 });
@@ -1358,13 +1358,13 @@ namespace LetsDisc.Migrations
             modelBuilder.Entity("LetsDisc.Questions.UserVoteForQuestion", b =>
                 {
                     b.HasOne("LetsDisc.Questions.Question", "Question")
-                        .WithMany()
+                        .WithMany("UsersVoted")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LetsDisc.Authorization.Users.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -38,6 +38,7 @@
                 id: questionId
             }).done(function (data) {
                 $('.upvote-count').text(data.voteCount);
+                changeClass(data.upVote, data.downVote);
                 abp.notify.info("Saved your vote. Thanks.");
             });
         }
@@ -47,8 +48,22 @@
                 id: questionId
             }).done(function (data) {
                 $('.upvote-count').text(data.voteCount);
+                changeClass(data.upVote, data.downVote);
                 abp.notify.info("Saved your vote. Thanks.");
             });
+        }
+
+        function changeClass(upvote, downvote) {
+            if (upvote) {
+                $('.vote-up').addClass('vote-up-on');
+                $('.vote-down').removeClass('vote-down-on');
+            } else if (downvote) {
+                $('.vote-up').removeClass('vote-up-on');
+                $('.vote-down').addClass('vote-down-on');
+            } else {
+                $('.vote-up').removeClass('vote-up-on');
+                $('.vote-down').removeClass('vote-down-on');
+            }
         }
     });
 })();

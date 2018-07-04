@@ -37,11 +37,22 @@
             </div>
             <div class="body table-responsive">
                 <div class="vote-layout">
-                    <a data-question-id="@Model.Id" class="pull-right vote-up">
+                    @{ 
+                        var userVoted = Model.UsersVoted.FirstOrDefault(a => a.UserId == AbpSession.UserId.GetValueOrDefault());
+                        var isUpvoted = false;
+                        var isDownvoted = false;
+                        if (userVoted != null)
+                        {
+                            isUpvoted = userVoted.IsUpvoted;
+                            isDownvoted = userVoted.IsDownvoted;
+
+                        }
+                    }
+                    <a data-question-id="@Model.Id" class="pull-right vote-up @(isUpvoted ? "vote-up-on" : "")">
                         <i class="material-icons">arrow_drop_up</i>
                     </a>
                     <div class="upvote-count">@Model.UpvoteCount</div>
-                    <a data-question-id="@Model.Id" class="pull-right vote-down">
+                    <a data-question-id="@Model.Id" class="pull-right vote-down @(isDownvoted ? "vote-down-on" : "")">
                         <i class="material-icons">arrow_drop_down</i>
                     </a>
                 </div>

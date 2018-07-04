@@ -25,6 +25,7 @@ namespace LetsDisc.Questions
 
         public int ViewCount { get; set; }
         public ICollection<Answer> Answers { get; set; }
+        public ICollection<UserVoteForQuestion> UsersVoted { get; set; }
         public ICollection<Tag> Tags { get; set; }
 
         public Question()

@@ -9,5 +9,6 @@ namespace LetsDisc.Questions.Dto
     public class QuestionWithAnswersDto : QuestionDto
     {
         public List<AnswerDto> Answers { get; set; }
+        public List<UserVoteForQuestion> UsersVoted { get; set; }
     }
 }

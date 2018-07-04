@@ -18,13 +18,20 @@ namespace LetsDisc.Questions
 
         public int QuestionId { get; set; }
         public long UserId { get; set; }
-        public bool IsVoted { get; set; }
+        public bool IsUpvoted { get; set; }
+        public bool IsDownvoted { get; set; }
 
-        public UserVoteForQuestion(int questionid, long userid, bool isVoted)
+        public UserVoteForQuestion()
+        {
+
+        }
+
+        public UserVoteForQuestion(int questionid, long userid, bool isUpvoted, bool isDownvoted)
         {
             QuestionId = questionid;
             UserId = userid;
-            IsVoted = isVoted;
+            IsUpvoted = isUpvoted;
+            IsDownvoted = isDownvoted;
         }
     }
 }
