@@ -1,82 +1,38 @@
-﻿@model LetsDisc.Questions.Question
+﻿@model LetsDisc.Questions.Dto.CreateQuestionInput
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Views/Questions/Index.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Questions/Index.min.js" asp-append-version="true"></script>
+    </environment>
+}
 
-<h4>Question</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Body" class="control-label"></label>
-                <input asp-for="Body" class="form-control" />
-                <span asp-validation-for="Body" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpvoteCount" class="control-label"></label>
-                <input asp-for="UpvoteCount" class="form-control" />
-                <span asp-validation-for="UpvoteCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ViewCount" class="control-label"></label>
-                <input asp-for="ViewCount" class="form-control" />
-                <span asp-validation-for="ViewCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeleterUserId" class="control-label"></label>
-                <select asp-for="DeleterUserId" class ="form-control" asp-items="ViewBag.DeleterUserId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeletionTime" class="control-label"></label>
-                <input asp-for="DeletionTime" class="form-control" />
-                <span asp-validation-for="DeletionTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastModificationTime" class="control-label"></label>
-                <input asp-for="LastModificationTime" class="form-control" />
-                <span asp-validation-for="LastModificationTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastModifierUserId" class="control-label"></label>
-                <select asp-for="LastModifierUserId" class ="form-control" asp-items="ViewBag.LastModifierUserId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreationTime" class="control-label"></label>
-                <input asp-for="CreationTime" class="form-control" />
-                <span asp-validation-for="CreationTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatorUserId" class="control-label"></label>
-                <select asp-for="CreatorUserId" class ="form-control" asp-items="ViewBag.CreatorUserId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+<h2>
+    @L("CreateQuestion")
+</h2>
+
+<form id="QuestionCreationForm">
+
+    <div class="form-group">
+        <label for="Title">@L("Title")</label>
+        <input type="text" name="Title" class="form-control" placeholder="@L("Title")" required maxlength="64">
     </div>
-</div>
+
+    <div class="form-group">
+        <label for="Description">@L("Body")</label>
+        <input type="text" name="Body" class="form-control" placeholder="@L("Body")" maxlength="1024">
+    </div>
+
+    <button type="submit" class="btn btn-default">@L("Save")</button>
+</form>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

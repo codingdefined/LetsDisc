@@ -12,6 +12,7 @@ using Abp.Application.Services.Dto;
 using LetsDisc.Questions.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Http;
+using Abp.Runtime.Validation;
 
 namespace LetsDisc.Web.Mvc.Controllers
 {
@@ -67,31 +68,13 @@ namespace LetsDisc.Web.Mvc.Controllers
         }
 
         // GET: Questions/Create
-        [AbpMvcAuthorize]
+        //[AbpMvcAuthorize]
         public IActionResult Create()
         {
             return View();
         }
-        /*
-        // POST: Questions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Body,UpvoteCount,ViewCount,IsDeleted,DeleterUserId,DeletionTime,LastModificationTime,LastModifierUserId,CreationTime,CreatorUserId,Id")] CreateQuestionInput question)
-        {
-            if (ModelState.IsValid)
-            {
-                _questionAppService.CreateQuestion(question);
-                await _questionAppService.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CreatorUserId"] = new SelectList(_context.Users, "Id", "EmailAddress", question.CreatorUserId);
-            ViewData["DeleterUserId"] = new SelectList(_context.Users, "Id", "EmailAddress", question.DeleterUserId);
-            ViewData["LastModifierUserId"] = new SelectList(_context.Users, "Id", "EmailAddress", question.LastModifierUserId);
-            return View(question);
-        }
 
+        /*
         // GET: Questions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

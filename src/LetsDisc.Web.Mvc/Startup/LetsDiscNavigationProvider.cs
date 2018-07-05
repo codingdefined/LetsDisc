@@ -17,7 +17,7 @@ namespace LetsDisc.Web.Startup
                         PageNames.Questions,
                         L("Questions"),
                         url: "",
-                        icon: "people"
+                        icon: "question_answer"
                     )
                 )
                 .AddItem(
