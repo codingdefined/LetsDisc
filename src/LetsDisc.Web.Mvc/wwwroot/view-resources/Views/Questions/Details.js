@@ -4,6 +4,7 @@
         var _questionService = abp.services.app.question;
         var _session = { user: null };
 
+        // Checking if the User is Logged on or not
         abp.services.app.session.getCurrentLoginInformations({
             async: false
         }).done(function (result) {
@@ -53,6 +54,7 @@
             });
         }
 
+        //Changing the Color of the Upvote and DownVote arrow based on is teh User have Voted
         function changeClass(upvote, downvote) {
             if (upvote) {
                 $('.vote-up').addClass('vote-up-on');

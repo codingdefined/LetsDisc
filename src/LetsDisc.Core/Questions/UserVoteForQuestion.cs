@@ -8,6 +8,7 @@ using System.Text;
 
 namespace LetsDisc.Questions
 {
+    // This Class Holds the User Information who has voted for any question
     public class UserVoteForQuestion : Entity<int>
     {
         [Required]
