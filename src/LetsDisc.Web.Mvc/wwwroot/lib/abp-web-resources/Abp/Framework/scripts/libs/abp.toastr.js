@@ -8,6 +8,8 @@
     /* DEFAULTS *************************************************/
 
     toastr.options.positionClass = 'toast-bottom-right';
+    toastr.options.timeOut = 1000;
+    toastr.options.preventDuplicates = true;
 
     /* NOTIFICATION *********************************************/
 

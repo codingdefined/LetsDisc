@@ -16,6 +16,7 @@ namespace LetsDisc.EntityFrameworkCore
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<UserVoteForQuestion> UserVoteForQuestion { get; set; }
 
         public LetsDiscDbContext(DbContextOptions<LetsDiscDbContext> options)
             : base(options)

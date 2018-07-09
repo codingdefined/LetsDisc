@@ -4,7 +4,6 @@ using LetsDisc.Controllers;
 
 namespace LetsDisc.Web.Controllers
 {
-    //[AbpMvcAuthorize]
     public class AboutController : LetsDiscControllerBase
     {
         public ActionResult Index()
