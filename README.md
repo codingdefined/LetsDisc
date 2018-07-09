@@ -23,3 +23,8 @@ Open LetsDisc Folder and run LetsDisc.sln.
 5. SQL
 6. Entity Framework Core
 
+### Project Background
+
+The Project is based on https://aspnetboilerplate.com/, where the initial code us taken from it. 
+More at https://steemit.com/utopian-io/@codingdefined/getting-started-with-aspnetboilerplate.
+
