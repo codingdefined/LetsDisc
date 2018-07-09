@@ -1147,7 +1147,7 @@ namespace LetsDisc.Migrations
                         .IsRequired()
                         .HasMaxLength(15);
 
-                    b.Property<int>("QuestionId");
+                    b.Property<int?>("QuestionId");
 
                     b.HasKey("Id");
 
@@ -1376,8 +1376,7 @@ namespace LetsDisc.Migrations
 
                     b.HasOne("LetsDisc.Questions.Question")
                         .WithMany("Tags")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("QuestionId");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

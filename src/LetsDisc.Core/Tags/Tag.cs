@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
-using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities.Auditing;
 using LetsDisc.Authorization.Users;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace LetsDisc.Tags
 {
@@ -18,8 +16,6 @@ namespace LetsDisc.Tags
 
         [MaxLength(MaxInfoLength)]
         public string Info { get; set; }
-
-        public int QuestionId { get; set; }
 
         public Tag()
         {

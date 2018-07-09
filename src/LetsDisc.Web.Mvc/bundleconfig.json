@@ -154,5 +154,11 @@
     "inputFiles": [
       "wwwroot/view-resources/Views/Questions/Index.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Questions/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Questions/Edit.js"
+    ]
   }
 ]

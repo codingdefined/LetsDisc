@@ -13,6 +13,7 @@ using LetsDisc.Questions.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Http;
 using Abp.Runtime.Validation;
+using LetsDisc.Web.Models.Questions;
 
 namespace LetsDisc.Web.Mvc.Controllers
 {
@@ -65,6 +66,16 @@ namespace LetsDisc.Web.Mvc.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            var question = _questionAppService.GetQuestion(new GetQuestionInput { Id = id.Value, IncrementViewCount = false }).Question;
+            var model = new EditQuestionViewModel
+            {
+                Question = question
+            };
+            return View(model);
         }
     }
 }

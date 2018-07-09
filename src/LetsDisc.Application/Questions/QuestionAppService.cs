@@ -94,6 +94,25 @@ namespace LetsDisc.Questions
             };
         }
 
+        //Getting a single question based on the id Provided and editing it
+        public GetQuestionOutput EditQuestion(QuestionDto input)
+        {
+            var question = _questionRepository.Get(input.Id);
+
+            if (question == null)
+            {
+                throw new UserFriendlyException("There is no such a question. Maybe it's deleted.");
+            }
+
+            question.Title = input.Title;
+            question.Body = input.Body;
+
+            return new GetQuestionOutput
+            {
+                Question = question.MapTo<QuestionWithAnswersDto>()
+            };
+        }
+
         //For Both Upvoting and Downvoting if the question is upvoted and you click on Downvote we are decreasing by 2 i.e. removing the upvote and adding downvote
 
         //Voting Up the Question, where there will be two things either Upvoting or Downvoting

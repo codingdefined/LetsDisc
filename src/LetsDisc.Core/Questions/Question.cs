@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities.Auditing;
 using LetsDisc.Authorization.Users;
 using LetsDisc.Tags;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LetsDisc.Questions
 {
@@ -15,6 +14,7 @@ namespace LetsDisc.Questions
     {
         // Maximum Length of Title and Body, subject to change based on the feedback
         public const int MaxTitleLength = 255;
+
         public const int MaxBodyLength = 64 * 1024;
 
         // The required and MaxLength Properties will eventually add Not Null and Column DataType in the Database

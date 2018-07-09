@@ -11,6 +11,7 @@ namespace LetsDisc.Questions
     {
         PagedResultDto<QuestionDto> GetQuestions(GetQuestionsInput input);
         void CreateQuestion(CreateQuestionInput input);
+        GetQuestionOutput EditQuestion(QuestionDto input);
         GetQuestionOutput GetQuestion(GetQuestionInput input);
         VoteChangeOutput QuestionVoteUp(EntityDto input);
         VoteChangeOutput QuestionVoteDown(EntityDto input);

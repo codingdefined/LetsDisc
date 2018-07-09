@@ -16,7 +16,7 @@ using System;
 namespace LetsDisc.Migrations
 {
     [DbContext(typeof(LetsDiscDbContext))]
-    [Migration("20180704093330_LetsDisc-v1")]
+    [Migration("20180706112509_LetsDisc-v1")]
     partial class LetsDiscv1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1148,7 +1148,7 @@ namespace LetsDisc.Migrations
                         .IsRequired()
                         .HasMaxLength(15);
 
-                    b.Property<int>("QuestionId");
+                    b.Property<int?>("QuestionId");
 
                     b.HasKey("Id");
 
@@ -1377,8 +1377,7 @@ namespace LetsDisc.Migrations
 
                     b.HasOne("LetsDisc.Questions.Question")
                         .WithMany("Tags")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("QuestionId");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

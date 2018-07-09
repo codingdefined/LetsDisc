@@ -90,7 +90,7 @@ namespace LetsDisc.Migrations
                     CreatorUserId = table.Column<long>(nullable: true),
                     Info = table.Column<string>(maxLength: 65536, nullable: true),
                     Name = table.Column<string>(maxLength: 15, nullable: false),
-                    QuestionId = table.Column<int>(nullable: false)
+                    QuestionId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -106,7 +106,7 @@ namespace LetsDisc.Migrations
                         column: x => x.QuestionId,
                         principalTable: "Questions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
