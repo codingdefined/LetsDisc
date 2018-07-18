@@ -94,6 +94,7 @@
     <text name="On">On</text>
     <text name="Off">Off</text>
     <text name="AreYouSureWantToDelete">Are you sure want to delete {0}?</text>
+    <text name="AreYouSureWantToDeleteQuestion">Are you sure want to delete question {0}?</text>
     <text name="StartTyping">Start Typing</text>
     <text name="Skins">Skins</text>
     <text name="Settings">Settings</text>

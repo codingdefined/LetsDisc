@@ -67,5 +67,27 @@
                 $('.vote-down').removeClass('vote-down-on');
             }
         }
+
+        $('.delete-question').click(function () {
+            var questionId = $(this).attr("data-question-id");
+            var questionTitle = $(this).attr('data-question-title');
+
+            deleteQuestion(questionId, questionTitle);
+        });
+
+        function deleteQuestion(questionId, questionTitle) {
+            abp.message.confirm(
+                abp.utils.formatString(abp.localization.localize('AreYouSureWantToDeleteQuestion', 'LetsDisc'), questionTitle),
+                function (isConfirmed) {
+                    if (isConfirmed) {
+                        _questionService.deleteQuestion({
+                            id: questionId
+                        }).done(function () {
+                            location.href = '/Questions';
+                        });
+                    }
+                }
+            );
+        }
     });
 })();
