@@ -28,3 +28,6 @@ Open LetsDisc Folder and run LetsDisc.sln.
 The Project is based on https://aspnetboilerplate.com/, where the initial code us taken from it. 
 More at https://steemit.com/utopian-io/@codingdefined/getting-started-with-aspnetboilerplate.
 
+## Open Source Code Used
+
+1. https://github.com/benahm/EnhPageDown
