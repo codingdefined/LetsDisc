@@ -1,24 +1,22 @@
 ﻿@using Abp.Authorization.Users
 @using Abp.Extensions
 @using Abp.MultiTenancy
+@using Microsoft.AspNetCore.Authentication
 @model LetsDisc.Web.Models.Account.LoginFormViewModel
 @section Styles
-{
+    {
     <environment names="Development">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
     </environment>
-
     <environment names="Staging,Production">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
     </environment>
-
 }
 @section Scripts
-{
+    {
     <environment names="Development">
         <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
     </environment>
-
     <environment names="Staging,Production">
         <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
     </environment>
@@ -55,13 +53,20 @@
                 </div>
             </div>
             @if (Model.IsSelfRegistrationAllowed)
-            {
-                <div class="row m-t-15 m-b--20">
-                    <div class="col-xs-12">
-                        <a asp-action="Register">@L("Register")</a>
-                    </div>
+        {
+            <div class="row m-t-15 m-b--20">
+                <div class="col-xs-12">
+                    <a asp-action="Register">@L("Register")</a>
                 </div>
-            }
+            </div>
+    }
+        </form>
+
+        <form id="ExternalLoginForm" asp-action="ExternalLogin" method="post">
+            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+            <input type="hidden" name="provider" />
+            <a class="btn btn-default github-login" title="GitHub" data-provider="GitHub">Log In with GitHub</a>
+            <a class="btn btn-default google-login" title="Google" data-provider="Google">Log In with Google</a>
         </form>
     </div>
 </div>

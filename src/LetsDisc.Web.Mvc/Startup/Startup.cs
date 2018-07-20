@@ -12,6 +12,8 @@ using LetsDisc.Authentication.JwtBearer;
 using LetsDisc.Configuration;
 using LetsDisc.Identity;
 using LetsDisc.Web.Resources;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using AspNet.Security.OAuth.GitHub;
 
 #if FEATURE_SIGNALR
 using Owin;

@@ -16,13 +16,19 @@
             }
         </ul>
     </li>*@
-    @if (Model.LoginInformations.User != null)
-    {
-<li class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Html.Raw(Model.GetShownLoginName())</li>
-    <li class="btn-group user-helper-dropdown">
-        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-        <ul class="dropdown-menu pull-right">
-            <li><a href="@Url.Action("Logout", "Account")"><i class="material-icons">input</i>@L("Logout")</a></li>
-        </ul>
-    </li>
+
+@if (Model.LoginInformations.User != null)
+{
+    <li class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Html.Raw(Model.GetShownLoginName())</li>
+    <li><a href="@Url.Action("Logout", "Account")"><i class="material-icons">input</i></a></li>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <li class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a id="HeaderCurrentUserName">@Html.Raw(User.Identity.Name)</a></li>
+    <li><a href="@Url.Action("LogoutFromExternal", "Account")"><i class="material-icons">input</i></a></li>
+}
+else
+{
+    <li><a href="@Url.Action("Login", "Account")" title="Login"><i class="material-icons">person</i></a></li>
+    <li><a href="@Url.Action("Register", "Account")" title="Register"><i class="material-icons">person_add</i></a></li>
 }
