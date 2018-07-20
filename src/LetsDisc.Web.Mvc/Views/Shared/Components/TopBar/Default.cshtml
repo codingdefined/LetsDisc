@@ -22,7 +22,7 @@
     <li class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Html.Raw(Model.GetShownLoginName())</li>
     <li><a href="@Url.Action("Logout", "Account")"><i class="material-icons">input</i></a></li>
 }
-@if (User.Identity.IsAuthenticated)
+else if (User.Identity.IsAuthenticated)
 {
     <li class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a id="HeaderCurrentUserName">@Html.Raw(User.Identity.Name)</a></li>
     <li><a href="@Url.Action("LogoutFromExternal", "Account")"><i class="material-icons">input</i></a></li>

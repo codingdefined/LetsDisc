@@ -14,6 +14,12 @@ using LetsDisc.Identity;
 using LetsDisc.Web.Resources;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using AspNet.Security.OAuth.GitHub;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using LetsDisc.Authorization.Users;
+using LetsDisc.Authorization.Roles;
 
 #if FEATURE_SIGNALR
 using Owin;
@@ -37,14 +43,17 @@ namespace LetsDisc.Web.Startup
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // MVC
+
             services.AddMvc(
                 options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
             );
 
-            IdentityRegistrar.Register(services);
+            // Always use Third Party Configuration before than the IdentityRegister, this is to ensure that both Cookie and Identity works together.
             AuthConfigurer.Configure(services, _appConfiguration);
+            IdentityRegistrar.Register(services);
 
             services.AddScoped<IWebResourceManager, WebResourceManager>();
+
 
 #if FEATURE_SIGNALR_ASPNETCORE
             services.AddSignalR();

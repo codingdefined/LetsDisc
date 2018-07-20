@@ -2,6 +2,7 @@
 using Abp.Application.Navigation;
 using Abp.Localization;
 using LetsDisc.Sessions.Dto;
+using Microsoft.AspNetCore.Authentication;
 
 namespace LetsDisc.Web.Views.Shared.Components.TopBarLanguageSwitch
 {
