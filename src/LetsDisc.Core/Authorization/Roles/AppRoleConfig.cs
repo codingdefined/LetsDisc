@@ -16,11 +16,25 @@ namespace LetsDisc.Authorization.Roles
                 )
             );
 
+            roleManagementConfig.StaticRoles.Add(
+                new StaticRoleDefinition(
+                    StaticRoleNames.Host.User,
+                    MultiTenancySides.Host
+                )
+            );
+
             // Static tenant roles
 
             roleManagementConfig.StaticRoles.Add(
                 new StaticRoleDefinition(
                     StaticRoleNames.Tenants.Admin,
+                    MultiTenancySides.Tenant
+                )
+            );
+
+            roleManagementConfig.StaticRoles.Add(
+                new StaticRoleDefinition(
+                    StaticRoleNames.Tenants.User,
                     MultiTenancySides.Tenant
                 )
             );

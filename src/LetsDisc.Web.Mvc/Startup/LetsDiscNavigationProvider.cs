@@ -26,7 +26,7 @@ namespace LetsDisc.Web.Startup
                         L("Users"),
                         url: "Users",
                         icon: "people",
-                        requiredPermissionName: PermissionNames.Pages_Users
+                        requiresAuthentication: true
                     )
                 )
                 .AddItem(

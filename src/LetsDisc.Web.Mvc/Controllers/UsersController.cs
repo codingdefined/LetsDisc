@@ -6,6 +6,8 @@ using LetsDisc.Authorization;
 using LetsDisc.Controllers;
 using LetsDisc.Users;
 using LetsDisc.Web.Models.Users;
+using Abp.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LetsDisc.Web.Controllers
 {

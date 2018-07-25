@@ -5,16 +5,21 @@ using Xunit;
 using Abp.Application.Services.Dto;
 using LetsDisc.Users;
 using LetsDisc.Users.Dto;
+using LetsDisc.Roles;
+using LetsDisc.Roles.Dto;
+using System.Collections.Generic;
 
 namespace LetsDisc.Tests.Users
 {
     public class UserAppService_Tests : LetsDiscTestBase
     {
         private readonly IUserAppService _userAppService;
+        private readonly IRoleAppService _roleAppService;
 
         public UserAppService_Tests()
         {
             _userAppService = Resolve<IUserAppService>();
+            _roleAppService = Resolve<IRoleAppService>();
         }
 
         [Fact]
@@ -47,6 +52,27 @@ namespace LetsDisc.Tests.Users
                 var johnNashUser = await context.Users.FirstOrDefaultAsync(u => u.UserName == "john.nash");
                 johnNashUser.ShouldNotBeNull();
             });
+        }
+
+        [Fact]
+        public async Task CreateRole_Test()
+        {
+            List<string> permissions = new List<string>();
+            permissions.Add("Pages.Users");
+            await _roleAppService.Create(new CreateRoleDto
+            {
+                Name = "User",
+                IsStatic = false,
+                DisplayName = "User",
+                Permissions = permissions
+            });
+
+            await UsingDbContextAsync(async context =>
+            {
+                var userRole = await context.Roles.FirstOrDefaultAsync(u => u.Name == "User");
+                userRole.ShouldNotBeNull();
+            });
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Abp.Modules;
+using Abp.MultiTenancy;
 using Abp.Reflection.Extensions;
 using Abp.Timing;
 using Abp.Zero;
