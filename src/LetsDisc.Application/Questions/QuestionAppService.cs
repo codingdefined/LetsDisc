@@ -113,6 +113,11 @@ namespace LetsDisc.Questions
             };
         }
 
+        public void DeleteQuestion(EntityDto<int> input)
+        {
+            _questionRepository.Delete(input.Id);
+        }
+
         //For Both Upvoting and Downvoting if the question is upvoted and you click on Downvote we are decreasing by 2 i.e. removing the upvote and adding downvote
 
         //Voting Up the Question, where there will be two things either Upvoting or Downvoting

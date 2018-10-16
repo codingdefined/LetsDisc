@@ -28,6 +28,8 @@ using LetsDisc.MultiTenancy;
 using LetsDisc.Sessions;
 using LetsDisc.Web.Models.Account;
 using LetsDisc.Web.Views.Shared.Components.TenantChange;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace LetsDisc.Web.Controllers
 {
@@ -113,6 +115,16 @@ namespace LetsDisc.Web.Controllers
             return RedirectToAction("Login");
         }
 
+        //_signInManager.SignOutAsync() is not working for External Logins, so have to use HttpContext.SignOutAsync
+        public async Task<ActionResult> LogoutFromExternal()
+        {
+            await HttpContext.SignOutAsync(new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("Index", "Home")
+            });
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAppHome();
+        }
 
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
@@ -274,15 +286,12 @@ namespace LetsDisc.Web.Controllers
                     ReturnUrl = returnUrl
                 });
 
-            return Challenge(
-                // TODO: ...?
-                // new Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties
-                // {
-                //     Items = { { "LoginProvider", provider } },
-                //     RedirectUri = redirectUrl
-                // },
-                provider
-            );
+            var authProperties = new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("ExternalLoginCallback", "Account"),
+                Items = { new KeyValuePair<string, string>("LoginProvider", provider) }
+            };
+            return Challenge(authProperties, provider);
         }
 
         [UnitOfWork]
@@ -297,6 +306,17 @@ namespace LetsDisc.Web.Controllers
             }
 
             var externalLoginInfo = await _signInManager.GetExternalLoginInfoAsync();
+
+            // External Login Info is null when either auth?.Principal is null or items is null or items does not contain LoginProviderKey
+            // Code at https://github.com/aspnet/Identity/blob/rel/2.0.0/src/Microsoft.AspNetCore.Identity/SignInManager.cs#L559
+            // If External Login Info is null we can check if the user is authenticated or not and then sign him in using SignInManager
+
+            if (externalLoginInfo == null && User.Identity.IsAuthenticated)
+            {
+                await _signInManager.SignInAsync((ClaimsIdentity)User.Identity, false);
+                return Redirect(returnUrl);
+            }
+
             if (externalLoginInfo == null)
             {
                 Logger.Warn("Could not get information from external login.");

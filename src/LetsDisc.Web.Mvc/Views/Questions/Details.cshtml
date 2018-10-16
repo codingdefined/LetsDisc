@@ -28,6 +28,9 @@
                 <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right questions-id" asp-action="Index">
                     <i class="material-icons">list</i>
                 </a>
+                <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right questions-id delete-question" data-question-id="@Model.Id" data-question-title="@Model.Title">
+                    <i class="material-icons">delete</i>
+                </a>
                 <a class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right questions-id" asp-route-id="@Model.Id" asp-action="Edit">
                     <i class="material-icons">edit</i>
                 </a>

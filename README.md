@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/hgyfsn195bhae5ch/branch/master?svg=true)](https://ci.appveyor.com/project/codingdefined/letsdisc/branch/master)
+[![codecov](https://codecov.io/gh/codingdefined/LetsDisc/branch/master/graph/badge.svg)](https://codecov.io/gh/codingdefined/LetsDisc)
+
 # LetsDisc
 
 A StackOverflow on Steem Blockchain, where you can add your programming questions. It will have Code runner and it is on your hand would you like to post on Steem or not. You do not have to have a Steem Account to use it.
@@ -28,3 +31,6 @@ Open LetsDisc Folder and run LetsDisc.sln.
 The Project is based on https://aspnetboilerplate.com/, where the initial code us taken from it. 
 More at https://steemit.com/utopian-io/@codingdefined/getting-started-with-aspnetboilerplate.
 
+## Open Source Code Used
+
+1. https://github.com/benahm/EnhPageDown
