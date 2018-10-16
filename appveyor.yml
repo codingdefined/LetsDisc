@@ -8,7 +8,7 @@ before_build:
 build_script:
  - msbuild /verbosity:quiet LetsDisc.sln
 test_script:
- - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"C:\projects\letsdisc\test\LetsDisc.Tests\LetsDisc.Tests.csproj -noshadow" -output:"coverage.xml" -filter:"+[LetsDisc*]* -[Tests*]*"
+ - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full C:\projects\letsdisc\test\LetsDisc.Tests\LetsDisc.Tests.csproj" -output:"coverage.xml" -filter:"+[LetsDisc*]* -[Tests*]*"
 after_test:
   - ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
