@@ -4,6 +4,7 @@ configuration: Release
 skip_tags: true
 before_build:
  - nuget restore
+ - nuget install OpenCover -OutputDirectory packages -Version 4.6.519
 build_script:
  - msbuild /verbosity:quiet LetsDisc.sln
 test_script:
