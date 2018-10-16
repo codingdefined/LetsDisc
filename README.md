@@ -1,4 +1,5 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/hgyfsn195bhae5ch/branch/master?svg=true)](https://ci.appveyor.com/project/codingdefined/letsdisc/branch/master)
+[![codecov](https://codecov.io/gh/codingdefined/LetsDisc/branch/master/graph/badge.svg)](https://codecov.io/gh/codingdefined/LetsDisc)
 
 # LetsDisc
 
