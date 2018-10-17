@@ -1,0 +1,16 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+configuration: Release
+skip_tags: true
+before_build:
+ - nuget restore
+ - nuget install OpenCover -OutputDirectory packages -Version 4.6.519
+build_script:
+ - msbuild /verbosity:quiet LetsDisc.sln
+test_script:
+ - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full C:\projects\letsdisc\test\LetsDisc.Tests\LetsDisc.Tests.csproj" -output:"coverage.xml" -filter:"+[LetsDisc*]* -[Tests*]*"
+after_test:
+  - ps: |
+      $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
+      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
+      bash codecov.sh -f "coverage.xml"
