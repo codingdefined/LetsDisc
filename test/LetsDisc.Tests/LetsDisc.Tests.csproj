@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>LetsDisc.Tests</AssemblyName>
     <PackageId>LetsDisc.Tests</PackageId>
@@ -9,21 +9,32 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <DebugType>Full</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\LetsDisc.Application\LetsDisc.Application.csproj" />
     <ProjectReference Include="..\..\src\LetsDisc.EntityFrameworkCore\LetsDisc.EntityFrameworkCore.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="Microsoft.CodeCoverage" Version="15.9.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
     <PackageReference Include="NSubstitute" Version="3.1.0" />
+    <PackageReference Include="OpenCover" Version="4.6.519" />
+    <PackageReference Include="ReportGenerator" Version="3.1.2" />
     <PackageReference Include="Shouldly" Version="3.0.0" />
-    <PackageReference Include="xunit" Version="2.3.1" />
-    <PackageReference Include="xunit.extensibility.execution" Version="2.3.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
-    <PackageReference Include="Abp.TestBase" Version="3.6.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.0.3" />
-    <PackageReference Include="Castle.Core" Version="4.2.1" />
+    <PackageReference Include="xunit" Version="2.4.1-pre.build.4071" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.4.1-pre.build.4071" />
+    <PackageReference Include="xunit.runner.console" Version="2.4.1-pre.build.4071">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1-pre.build.4071">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Abp.TestBase" Version="3.8.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.1.3" />
+    <PackageReference Include="Castle.Core" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
     <None Update="appsettings.json">

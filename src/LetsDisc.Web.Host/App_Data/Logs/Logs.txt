@@ -1,0 +1,1020 @@
+DEBUG 2018-09-12 10:24:36,500 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-09-12 10:24:36,802 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-09-12 10:24:36,836 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,847 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,847 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,848 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,849 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,849 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,850 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,850 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,850 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,851 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,851 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:36,858 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-09-12 10:24:36,985 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:24:36,985 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:24:36,985 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:24:36,985 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:24:37,507 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:24:38,637 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-09-12 10:24:38,675 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-09-12 10:24:38,692 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-09-12 10:24:38,700 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-09-12 10:24:38,708 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-09-12 10:24:38,921 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-09-12 10:24:38,990 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-09-12 10:24:38,991 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-09-12 10:24:39,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-09-12 10:24:39,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-09-12 10:24:39,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-09-12 10:24:39,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-09-12 10:24:39,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-09-12 10:24:39,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-09-12 10:24:39,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-09-12 10:24:39,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-09-12 10:24:39,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-09-12 10:24:39,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-09-12 10:24:39,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-09-12 10:24:39,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-09-12 10:24:44,895 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2018-09-12 10:24:44,895 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-09-12 10:24:45,052 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 166.6964ms 200 
+INFO  2018-09-12 10:24:45,691 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 809.7614ms 404 
+INFO  2018-09-12 10:25:13,366 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-09-12 10:25:13,407 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 62.5785ms 404 
+DEBUG 2018-09-12 10:31:16,618 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-09-12 10:31:16,791 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-09-12 10:31:16,814 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,818 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,818 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,819 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,819 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,819 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,820 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,820 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,822 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,823 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,823 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,824 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,824 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,824 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,825 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:16,830 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-09-12 10:31:16,988 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:31:16,988 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:31:16,988 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:31:16,988 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:31:17,678 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:31:19,543 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-09-12 10:31:19,598 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-09-12 10:31:19,621 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-09-12 10:31:19,635 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-09-12 10:31:19,646 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-09-12 10:31:20,093 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-09-12 10:31:20,162 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-09-12 10:31:20,162 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-09-12 10:31:20,177 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-09-12 10:31:20,178 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-09-12 10:31:20,178 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-09-12 10:31:20,178 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-09-12 10:31:20,179 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-09-12 10:31:20,179 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-09-12 10:31:20,179 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-09-12 10:31:20,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-09-12 10:31:20,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-09-12 10:31:20,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-09-12 10:31:20,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-09-12 10:31:20,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-09-12 10:31:27,002 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-09-12 10:31:27,002 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2018-09-12 10:31:27,147 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 151.4021ms 200 
+INFO  2018-09-12 10:31:27,780 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 789.5206ms 404 
+INFO  2018-09-12 10:33:00,037 [24   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2018-09-12 10:33:00,419 [24   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 384.453ms 200 application/json;charset=utf-8
+INFO  2018-09-12 10:33:01,066 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+INFO  2018-09-12 10:33:01,070 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.5776ms 404 
+INFO  2018-09-12 10:38:09,305 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/  
+INFO  2018-09-12 10:38:09,320 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.2099ms 404 
+INFO  2018-09-12 10:38:20,646 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/index  
+INFO  2018-09-12 10:38:20,650 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.1573ms 404 
+INFO  2018-09-12 10:40:35,967 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/index.html  
+INFO  2018-09-12 10:40:36,035 [41   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/index.html'. Physical path: 'D:\LetsDisc\src\LetsDisc.Web.Host\wwwroot\swagger\ui\index.html'
+INFO  2018-09-12 10:40:36,049 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/swagger-ui.css  
+INFO  2018-09-12 10:40:36,061 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 95.502ms 200 text/html
+INFO  2018-09-12 10:40:36,090 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/swagger-ui-standalone-preset.js  
+INFO  2018-09-12 10:40:36,098 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/swagger-ui-bundle.js  
+INFO  2018-09-12 10:40:36,101 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/ui/abp.js  
+INFO  2018-09-12 10:40:36,105 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/ui/abp.swagger.js  
+INFO  2018-09-12 10:40:36,110 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 41.7212ms 404 
+INFO  2018-09-12 10:40:36,115 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 61.1094ms 404 
+INFO  2018-09-12 10:40:36,130 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 50.0805ms 404 
+INFO  2018-09-12 10:40:36,146 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 9.7402ms 404 
+INFO  2018-09-12 10:40:36,158 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16.8116ms 404 
+INFO  2018-09-12 10:40:36,819 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/swagger-ui-standalone-preset.js  
+INFO  2018-09-12 10:40:36,823 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.9168ms 404 
+INFO  2018-09-12 10:40:36,838 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/ui/abp.js  
+INFO  2018-09-12 10:40:36,842 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.8931ms 404 
+INFO  2018-09-12 10:40:36,850 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/ui/abp.swagger.js  
+INFO  2018-09-12 10:40:36,859 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.3173ms 404 
+INFO  2018-09-12 10:40:36,871 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/favicon-32x32.png  
+INFO  2018-09-12 10:40:36,876 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.613ms 404 
+INFO  2018-09-12 10:40:36,882 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/favicon-16x16.png  
+INFO  2018-09-12 10:40:36,887 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.8209ms 404 
+INFO  2018-09-12 10:41:33,818 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/index.html  
+INFO  2018-09-12 10:41:33,822 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.9393ms 404 
+INFO  2018-09-12 10:41:38,846 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-09-12 10:41:38,877 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12.2736ms 404 
+DEBUG 2018-09-12 10:41:57,795 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-09-12 10:41:57,828 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-09-12 10:41:57,849 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,852 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,852 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,853 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,853 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,854 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,854 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,855 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,856 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,856 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,856 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,857 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,857 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,857 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,857 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:57,861 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-09-12 10:41:57,943 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:41:57,943 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:41:57,943 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:41:57,943 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:41:58,265 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:41:58,741 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-09-12 10:41:58,778 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-09-12 10:41:58,798 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-09-12 10:41:58,806 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-09-12 10:41:58,815 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-09-12 10:41:58,856 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-09-12 10:41:58,917 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-09-12 10:41:58,917 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-09-12 10:41:58,926 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-09-12 10:41:58,927 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-09-12 10:41:58,927 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-09-12 10:41:58,928 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-09-12 10:41:58,928 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-09-12 10:41:58,928 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-09-12 10:41:58,928 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-09-12 10:41:58,929 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-09-12 10:41:58,929 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-09-12 10:41:58,929 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-09-12 10:41:58,929 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-09-12 10:41:58,930 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-09-12 10:42:03,577 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/index.html  
+INFO  2018-09-12 10:42:03,758 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/index.html'. Physical path: 'D:\LetsDisc\src\LetsDisc.Web.Host\wwwroot\swagger\ui\index.html'
+INFO  2018-09-12 10:42:03,771 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 200.5642ms 200 text/html
+INFO  2018-09-12 10:42:03,796 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/swagger-ui-bundle.js  
+INFO  2018-09-12 10:42:03,796 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/swagger-ui.css  
+INFO  2018-09-12 10:42:03,801 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/swagger-ui-standalone-preset.js  
+INFO  2018-09-12 10:42:03,801 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/ui/abp.swagger.js  
+INFO  2018-09-12 10:42:03,801 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/ui/abp.js  
+INFO  2018-09-12 10:42:04,334 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 538.1344ms 404 
+INFO  2018-09-12 10:42:04,336 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 539.6085ms 404 
+INFO  2018-09-12 10:42:04,334 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 533.5872ms 404 
+INFO  2018-09-12 10:42:04,334 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 533.3282ms 404 
+INFO  2018-09-12 10:42:04,334 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 533.5076ms 404 
+INFO  2018-09-12 10:42:04,596 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/swagger-ui-standalone-preset.js  
+INFO  2018-09-12 10:42:04,601 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.3027ms 404 
+INFO  2018-09-12 10:42:04,635 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/ui/abp.js  
+INFO  2018-09-12 10:42:04,635 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7248ms 404 
+INFO  2018-09-12 10:42:04,643 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/ui/abp.swagger.js  
+INFO  2018-09-12 10:42:04,643 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.78ms 404 
+INFO  2018-09-12 10:42:04,736 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/favicon-32x32.png  
+INFO  2018-09-12 10:42:04,737 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8143ms 404 
+INFO  2018-09-12 10:42:04,743 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/favicon-16x16.png  
+INFO  2018-09-12 10:42:04,744 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6908ms 404 
+DEBUG 2018-09-12 10:42:47,347 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-09-12 10:42:47,464 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-09-12 10:42:47,486 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,490 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,490 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,491 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,491 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,491 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,492 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,492 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,493 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,493 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,493 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,494 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,494 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,495 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,495 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:47,499 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-09-12 10:42:47,598 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:42:47,598 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:42:47,598 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:42:47,598 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-12 10:42:47,989 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-12 10:42:49,081 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-09-12 10:42:49,116 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-09-12 10:42:49,135 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-09-12 10:42:49,144 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-09-12 10:42:49,153 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-09-12 10:42:49,374 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-09-12 10:42:49,446 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-09-12 10:42:49,446 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-09-12 10:42:49,454 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-09-12 10:42:49,455 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-09-12 10:42:49,455 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-09-12 10:42:49,456 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-09-12 10:42:49,456 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-09-12 10:42:49,456 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-09-12 10:42:49,456 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-09-12 10:42:49,457 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-09-12 10:42:49,457 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-09-12 10:42:49,457 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-09-12 10:42:49,457 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-09-12 10:42:49,457 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-09-12 10:42:55,298 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-09-12 10:42:55,298 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2018-09-12 10:42:55,433 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 141.0198ms 200 
+INFO  2018-09-12 10:42:55,983 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 693.4654ms 404 
+INFO  2018-09-12 10:43:01,529 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger  
+INFO  2018-09-12 10:43:01,546 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15.1177ms 301 
+INFO  2018-09-12 10:43:01,556 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2018-09-12 10:43:01,599 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 50.2918ms 200 text/html
+INFO  2018-09-12 10:43:01,638 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
+INFO  2018-09-12 10:43:01,641 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
+INFO  2018-09-12 10:43:01,650 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2018-09-12 10:43:01,662 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.js  
+INFO  2018-09-12 10:43:01,665 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.swagger.js  
+INFO  2018-09-12 10:43:01,840 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+INFO  2018-09-12 10:43:01,864 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.swagger.js'. Physical path: 'D:\LetsDisc\src\LetsDisc.Web.Host\wwwroot\swagger\ui\abp.swagger.js'
+INFO  2018-09-12 10:43:01,879 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+INFO  2018-09-12 10:43:01,891 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.js'. Physical path: 'D:\LetsDisc\src\LetsDisc.Web.Host\wwwroot\swagger\ui\abp.js'
+INFO  2018-09-12 10:43:01,899 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 220.9068ms 200 application/javascript
+INFO  2018-09-12 10:43:01,904 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 240.8411ms 200 application/javascript
+INFO  2018-09-12 10:43:01,909 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 252.9126ms 200 text/css
+INFO  2018-09-12 10:43:01,920 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 239.716ms 200 application/javascript
+INFO  2018-09-12 10:43:01,923 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+INFO  2018-09-12 10:43:01,934 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 294.1696ms 200 application/javascript
+INFO  2018-09-12 10:43:02,570 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2018-09-12 10:43:02,632 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/favicon-32x32.png  
+INFO  2018-09-12 10:43:02,639 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+INFO  2018-09-12 10:43:02,643 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12.2049ms 200 image/png
+INFO  2018-09-12 10:43:02,650 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/favicon-16x16.png  
+INFO  2018-09-12 10:43:02,654 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+INFO  2018-09-12 10:43:02,660 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.3355ms 200 image/png
+INFO  2018-09-12 10:43:02,931 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 356.8384ms 200 application/json;charset=utf-8
+INFO  2018-09-12 11:03:55,087 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/services/app/Question/QuestionVoteUp application/json-patch+json 13
+INFO  2018-09-12 11:03:55,096 [57   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution failed.
+INFO  2018-09-12 11:03:55,098 [57   ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+INFO  2018-09-12 11:03:58,971 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "QuestionVoteUp", controller = "Question"}. Executing action LetsDisc.Questions.QuestionAppService.QuestionVoteUp (LetsDisc.Application)
+INFO  2018-09-12 11:03:58,992 [57   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution failed.
+INFO  2018-09-12 11:03:58,994 [57   ] pNetCore.Cors.Infrastructure.CorsService - Request origin http://localhost:21021 does not have permission to access the resource.
+WARN  2018-09-12 11:03:59,419 [57   ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2018-09-12 11:03:59,433 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-09-12 11:03:59,469 [57   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:03:59,502 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Questions.QuestionAppService.QuestionVoteUp (LetsDisc.Application) in 523.3207ms
+INFO  2018-09-12 11:03:59,510 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4424.2161ms 401 application/json; charset=utf-8
+INFO  2018-09-12 11:03:59,549 [57   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLGODPIQGPEI", Request id "0HLGODPIQGPEI:00000001": the application completed without reading the entire request body.
+INFO  2018-09-12 11:10:31,916 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/AbpUserConfiguration/GetAll  
+INFO  2018-09-12 11:10:31,926 [80   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:31,933 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 20.6764ms 204 
+INFO  2018-09-12 11:10:31,948 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/AbpUserConfiguration/GetAll application/json 
+INFO  2018-09-12 11:10:31,951 [80   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:31,961 [80   ] uthentication.JwtBearer.JwtBearerHandler - JwtBearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+WARN  2018-09-12 11:10:31,971 [80   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:31,975 [80   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:10:32,005 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2018-09-12 11:10:32,009 [80   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:32,092 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2018-09-12 11:10:32,538 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 440.0583ms.
+INFO  2018-09-12 11:10:32,845 [80   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:10:32,901 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 890.2296ms
+INFO  2018-09-12 11:10:32,906 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 956.795ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:10:32,926 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2018-09-12 11:10:32,928 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:32,936 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.6158ms 204 
+INFO  2018-09-12 11:10:32,941 [83   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations application/json 
+INFO  2018-09-12 11:10:32,944 [83   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:32,955 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application)
+INFO  2018-09-12 11:10:32,958 [83   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:33,422 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) - Validation state: Valid
+INFO  2018-09-12 11:10:33,509 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 84.1503ms.
+INFO  2018-09-12 11:10:33,519 [83   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:10:33,534 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) in 572.7415ms
+INFO  2018-09-12 11:10:33,542 [83   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 595.963ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:10:48,610 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/TokenAuth/Authenticate  
+INFO  2018-09-12 11:10:48,613 [80   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:48,617 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.2497ms 204 
+INFO  2018-09-12 11:10:48,622 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 77
+INFO  2018-09-12 11:10:48,626 [80   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:48,639 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action LetsDisc.Controllers.TokenAuthController.Authenticate (LetsDisc.Web.Core)
+INFO  2018-09-12 11:10:48,642 [80   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:49,229 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Controllers.TokenAuthController.Authenticate (LetsDisc.Web.Core) with arguments (LetsDisc.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
+INFO  2018-09-12 11:10:50,246 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Controllers.TokenAuthController.Authenticate (LetsDisc.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1013.6475ms.
+INFO  2018-09-12 11:10:50,635 [66   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:10:50,642 [66   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Controllers.TokenAuthController.Authenticate (LetsDisc.Web.Core) in 1999.8315ms
+INFO  2018-09-12 11:10:50,649 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2023.4377ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:10:51,276 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/AbpUserConfiguration/GetAll  
+INFO  2018-09-12 11:10:51,280 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:51,283 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.9998ms 204 
+INFO  2018-09-12 11:10:51,300 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/AbpUserConfiguration/GetAll application/json 
+INFO  2018-09-12 11:10:51,304 [66   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:51,373 [66   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-09-12 11:10:51,498 [76   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:51,501 [76   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:10:51,504 [76   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:51,507 [76   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:10:51,520 [83   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:51,523 [83   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:10:51,548 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2018-09-12 11:10:51,551 [83   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:51,557 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2018-09-12 11:10:51,833 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 272.0771ms.
+INFO  2018-09-12 11:10:51,853 [80   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:10:51,859 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 306.3041ms
+INFO  2018-09-12 11:10:51,862 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 561.9204ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:10:51,874 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2018-09-12 11:10:51,877 [70   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:51,881 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.6308ms 204 
+INFO  2018-09-12 11:10:51,886 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations application/json 
+INFO  2018-09-12 11:10:51,889 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:51,892 [74   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-09-12 11:10:51,894 [74   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:51,899 [74   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:10:51,902 [74   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:51,905 [74   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:10:51,916 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application)
+INFO  2018-09-12 11:10:51,920 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:51,927 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) - Validation state: Valid
+INFO  2018-09-12 11:10:51,955 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 24.6658ms.
+INFO  2018-09-12 11:10:51,959 [83   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:10:51,963 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) in 44.5643ms
+INFO  2018-09-12 11:10:51,967 [83   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 80.0282ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:10:52,910 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz4BccQbWAgVQU2mZD1m37n9raGjmJBBkuvhyN1S2HAzCZ%2Fc59LHC6MRY7aHz6XiJ6kJTWEwXmVydUR%2Bmy2ha5qshXML1Q4pOKocRzG2%2BsBCrwjYQ02KG%2BCM%2FqvNxezhgjrhzlSp2pinCXHKlaiVcDXkvkqilVi%2BfGneYWmaeTW43EAI0Fwkdix2SDGjKXpvawms5uyy1IRgH2LkKzAck%2FM2r6aZepcu9%2FMGLv0mW9CZgLtm0XtyLIX5VAeH632GKc%2FBtNhrz5cbAXQB7Il0vZqf4UOz47QWahvF7Gj6UzRiOY%3D  
+INFO  2018-09-12 11:10:52,921 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:52,925 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15.4723ms 204 
+INFO  2018-09-12 11:10:53,051 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz4BccQbWAgVQU2mZD1m37n9raGjmJBBkuvhyN1S2HAzCZ%2Fc59LHC6MRY7aHz6XiJ6kJTWEwXmVydUR%2Bmy2ha5qshXML1Q4pOKocRzG2%2BsBCrwjYQ02KG%2BCM%2FqvNxezhgjrhzlSp2pinCXHKlaiVcDXkvkqilVi%2BfGneYWmaeTW43EAI0Fwkdix2SDGjKXpvawms5uyy1IRgH2LkKzAck%2FM2r6aZepcu9%2FMGLv0mW9CZgLtm0XtyLIX5VAeH632GKc%2FBtNhrz5cbAXQB7Il0vZqf4UOz47QWahvF7Gj6UzRiOY%3D text/plain;charset=UTF-8 0
+INFO  2018-09-12 11:10:53,054 [80   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:53,068 [80   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-09-12 11:10:53,072 [80   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:53,074 [80   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:10:53,079 [80   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:53,082 [80   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:10:53,156 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 116.1597ms 200 application/json
+INFO  2018-09-12 11:10:53,222 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/signalr?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz4BccQbWAgVQU2mZD1m37n9raGjmJBBkuvhyN1S2HAzCZ%2Fc59LHC6MRY7aHz6XiJ6kJTWEwXmVydUR%2Bmy2ha5qshXML1Q4pOKocRzG2%2BsBCrwjYQ02KG%2BCM%2FqvNxezhgjrhzlSp2pinCXHKlaiVcDXkvkqilVi%2BfGneYWmaeTW43EAI0Fwkdix2SDGjKXpvawms5uyy1IRgH2LkKzAck%2FM2r6aZepcu9%2FMGLv0mW9CZgLtm0XtyLIX5VAeH632GKc%2FBtNhrz5cbAXQB7Il0vZqf4UOz47QWahvF7Gj6UzRiOY%3D&id=MpzioW2RA07ea8HAwQJPbA  
+INFO  2018-09-12 11:10:53,228 [66   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:10:53,235 [66   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-09-12 11:10:53,239 [66   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:53,246 [66   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:10:53,268 [66   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:10:53,279 [66   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:10:53,574 [76   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2018-09-12 11:10:53,610 [76   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"MpzioW2RA07ea8HAwQJPbA","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2018-09-12T11:10:53.6055065+05:30","Properties":{}}
+DEBUG 2018-09-12 11:10:53,688 [76   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: MpzioW2RA07ea8HAwQJPbA
+INFO  2018-09-12 11:11:00,363 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/Role/GetAll?SkipCount=0&MaxResultCount=10  
+INFO  2018-09-12 11:11:00,366 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:00,374 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.952ms 204 
+INFO  2018-09-12 11:11:00,384 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/Role/GetAllPermissions  
+INFO  2018-09-12 11:11:00,390 [70   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:00,403 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16.716ms 204 
+INFO  2018-09-12 11:11:00,405 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Role/GetAll?SkipCount=0&MaxResultCount=10 application/json 
+INFO  2018-09-12 11:11:00,408 [76   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:00,411 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Role/GetAllPermissions application/json 
+INFO  2018-09-12 11:11:00,414 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:00,419 [76   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2018-09-12 11:11:00,423 [74   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-09-12 11:11:00,426 [76   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:00,430 [74   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:00,437 [76   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:00,442 [74   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:00,445 [76   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:00,448 [74   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:00,452 [76   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:00,456 [74   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:11:00,468 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAllPermissions", controller = "Role"}. Executing action LetsDisc.Roles.RoleAppService.GetAllPermissions (LetsDisc.Application)
+INFO  2018-09-12 11:11:00,471 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:00,509 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Role"}. Executing action LetsDisc.Roles.RoleAppService.GetAll (LetsDisc.Application)
+INFO  2018-09-12 11:11:00,514 [76   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:00,747 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Roles.RoleAppService.GetAllPermissions (LetsDisc.Application) - Validation state: Valid
+WARN  2018-09-12 11:11:00,769 [74   ] naries.DictionaryBasedLocalizationSource - Can not find 'Can_create_questions' in localization source 'LetsDisc'!
+INFO  2018-09-12 11:11:00,773 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Roles.RoleAppService.GetAllPermissions (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 23.8641ms.
+INFO  2018-09-12 11:11:00,786 [70   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:11:00,789 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Roles.RoleAppService.GetAll (LetsDisc.Application) with arguments (Abp.Application.Services.Dto.PagedResultRequestDto) - Validation state: Valid
+INFO  2018-09-12 11:11:00,802 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Roles.RoleAppService.GetAllPermissions (LetsDisc.Application) in 325.7131ms
+INFO  2018-09-12 11:11:00,813 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 397.214ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:11:01,143 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Roles.RoleAppService.GetAll (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 350.3574ms.
+INFO  2018-09-12 11:11:01,154 [74   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:11:01,163 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Roles.RoleAppService.GetAll (LetsDisc.Application) in 649.891ms
+INFO  2018-09-12 11:11:01,170 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 774.0139ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:11:01,407 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/User/GetAll?SkipCount=0&MaxResultCount=10  
+INFO  2018-09-12 11:11:01,412 [80   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:01,419 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/User/GetRoles  
+INFO  2018-09-12 11:11:01,423 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 10.3284ms 204 
+INFO  2018-09-12 11:11:01,426 [76   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:01,434 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16.8462ms 204 
+INFO  2018-09-12 11:11:01,451 [83   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetAll?SkipCount=0&MaxResultCount=10 application/json 
+INFO  2018-09-12 11:11:01,457 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetRoles application/json 
+INFO  2018-09-12 11:11:01,463 [83   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:01,467 [76   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:01,470 [83   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2018-09-12 11:11:01,473 [76   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-09-12 11:11:01,478 [83   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:01,481 [76   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:01,486 [83   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:01,490 [76   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:01,494 [83   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:01,497 [76   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:01,501 [83   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:01,504 [76   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:11:01,515 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetRoles", controller = "User"}. Executing action LetsDisc.Users.UserAppService.GetRoles (LetsDisc.Application)
+INFO  2018-09-12 11:11:01,518 [76   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:01,521 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "User"}. Executing action LetsDisc.Users.UserAppService.GetAll (LetsDisc.Application)
+INFO  2018-09-12 11:11:01,524 [83   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:01,769 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Users.UserAppService.GetRoles (LetsDisc.Application) - Validation state: Valid
+INFO  2018-09-12 11:11:01,773 [83   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Users.UserAppService.GetAll (LetsDisc.Application) with arguments (Abp.Application.Services.Dto.PagedResultRequestDto) - Validation state: Valid
+INFO  2018-09-12 11:11:01,803 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Users.UserAppService.GetRoles (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 31.1354ms.
+INFO  2018-09-12 11:11:01,814 [70   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:11:01,819 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Users.UserAppService.GetRoles (LetsDisc.Application) in 300.4825ms
+INFO  2018-09-12 11:11:01,823 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 371.2713ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:11:01,953 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Users.UserAppService.GetAll (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 177.7016ms.
+INFO  2018-09-12 11:11:01,970 [76   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:11:01,979 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Users.UserAppService.GetAll (LetsDisc.Application) in 454.8809ms
+INFO  2018-09-12 11:11:01,983 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 533.6283ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:11:02,408 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Role/GetAll?SkipCount=0&MaxResultCount=10 application/json 
+INFO  2018-09-12 11:11:02,411 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Role/GetAllPermissions application/json 
+INFO  2018-09-12 11:11:02,414 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:02,417 [70   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:02,420 [74   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2018-09-12 11:11:02,423 [70   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-09-12 11:11:02,426 [74   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:02,428 [70   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:02,431 [74   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:02,434 [70   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:02,438 [74   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:02,440 [70   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:02,443 [74   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:02,445 [70   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:11:02,450 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Role"}. Executing action LetsDisc.Roles.RoleAppService.GetAll (LetsDisc.Application)
+INFO  2018-09-12 11:11:02,453 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAllPermissions", controller = "Role"}. Executing action LetsDisc.Roles.RoleAppService.GetAllPermissions (LetsDisc.Application)
+INFO  2018-09-12 11:11:02,457 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:02,460 [70   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:02,464 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Roles.RoleAppService.GetAllPermissions (LetsDisc.Application) - Validation state: Valid
+INFO  2018-09-12 11:11:02,467 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Roles.RoleAppService.GetAll (LetsDisc.Application) with arguments (Abp.Application.Services.Dto.PagedResultRequestDto) - Validation state: Valid
+WARN  2018-09-12 11:11:02,470 [70   ] naries.DictionaryBasedLocalizationSource - Can not find 'Can_create_questions' in localization source 'LetsDisc'!
+INFO  2018-09-12 11:11:02,472 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Roles.RoleAppService.GetAllPermissions (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.3355ms.
+INFO  2018-09-12 11:11:02,505 [76   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:11:02,509 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Roles.RoleAppService.GetAllPermissions (LetsDisc.Application) in 50.9019ms
+INFO  2018-09-12 11:11:02,514 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 102.0789ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:11:02,524 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Roles.RoleAppService.GetAll (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 53.269ms.
+INFO  2018-09-12 11:11:02,533 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:11:02,537 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Roles.RoleAppService.GetAll (LetsDisc.Application) in 81.7837ms
+INFO  2018-09-12 11:11:02,545 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 131.907ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:11:03,725 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetRoles application/json 
+INFO  2018-09-12 11:11:03,728 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetAll?SkipCount=0&MaxResultCount=10 application/json 
+INFO  2018-09-12 11:11:03,731 [65   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:03,736 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:03,739 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2018-09-12 11:11:03,742 [74   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-09-12 11:11:03,745 [65   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:03,747 [74   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:03,750 [65   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:03,754 [74   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:03,758 [65   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:03,762 [74   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-09-12 11:11:03,764 [65   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-09-12 11:11:03,767 [74   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-09-12 11:11:03,773 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetRoles", controller = "User"}. Executing action LetsDisc.Users.UserAppService.GetRoles (LetsDisc.Application)
+INFO  2018-09-12 11:11:03,777 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "User"}. Executing action LetsDisc.Users.UserAppService.GetAll (LetsDisc.Application)
+INFO  2018-09-12 11:11:03,782 [65   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:03,785 [74   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-09-12 11:11:03,790 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Users.UserAppService.GetRoles (LetsDisc.Application) - Validation state: Valid
+INFO  2018-09-12 11:11:03,793 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Users.UserAppService.GetAll (LetsDisc.Application) with arguments (Abp.Application.Services.Dto.PagedResultRequestDto) - Validation state: Valid
+INFO  2018-09-12 11:11:03,804 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Users.UserAppService.GetRoles (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 11.7505ms.
+INFO  2018-09-12 11:11:03,823 [80   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:11:03,827 [80   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Users.UserAppService.GetRoles (LetsDisc.Application) in 49.6289ms
+INFO  2018-09-12 11:11:03,830 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 105.9324ms 200 application/json; charset=utf-8
+INFO  2018-09-12 11:11:03,845 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Users.UserAppService.GetAll (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 45.4763ms.
+INFO  2018-09-12 11:11:03,858 [76   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-12 11:11:03,862 [76   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Users.UserAppService.GetAll (LetsDisc.Application) in 78.1977ms
+INFO  2018-09-12 11:11:03,866 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 140.5678ms 200 application/json; charset=utf-8
+DEBUG 2018-09-12 11:11:14,489 [83   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: MpzioW2RA07ea8HAwQJPbA
+INFO  2018-09-12 11:11:14,526 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21291.5261ms 101 
+DEBUG 2018-09-14 09:53:25,719 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-09-14 09:53:26,271 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-09-14 09:53:26,613 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,652 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,655 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,658 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,660 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,662 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,664 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,669 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,686 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,688 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,690 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,692 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,694 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,696 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:26,730 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-09-14 09:53:28,084 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-14 09:53:28,085 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-14 09:53:28,085 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-14 09:53:28,086 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-14 09:53:30,694 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-14 09:53:31,935 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-09-14 09:53:31,984 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-09-14 09:53:32,006 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-09-14 09:53:32,018 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-09-14 09:53:32,032 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-09-14 09:53:32,317 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-09-14 09:53:32,407 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-09-14 09:53:32,407 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-09-14 09:53:32,417 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-09-14 09:53:32,418 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-09-14 09:53:32,419 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-09-14 09:53:32,419 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-09-14 09:53:32,419 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-09-14 09:53:32,419 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-09-14 09:53:32,419 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-09-14 09:53:32,420 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-09-14 09:53:32,421 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-09-14 09:53:32,421 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-09-14 09:53:32,421 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-09-14 09:53:32,422 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-09-14 09:53:42,740 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2018-09-14 09:53:42,740 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2018-09-14 09:53:42,740 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-09-14 09:53:42,873 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 146.3024ms 200 
+INFO  2018-09-14 09:53:43,575 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 851.9505ms 404 
+INFO  2018-09-14 09:53:43,666 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 876.6256ms 200 text/html
+INFO  2018-09-14 09:53:44,139 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.swagger.js  
+INFO  2018-09-14 09:53:44,174 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
+INFO  2018-09-14 09:53:44,231 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
+INFO  2018-09-14 09:53:44,241 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2018-09-14 09:53:44,259 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.js  
+INFO  2018-09-14 09:53:44,272 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger/ui/abp.swagger.js was not modified
+INFO  2018-09-14 09:53:44,273 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-bundle.js was not modified
+INFO  2018-09-14 09:53:44,277 [15   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-standalone-preset.js was not modified
+INFO  2018-09-14 09:53:44,279 [18   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger/ui/abp.js was not modified
+INFO  2018-09-14 09:53:44,291 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 150.6517ms 304 application/javascript
+INFO  2018-09-14 09:53:44,299 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 482.5897ms 304 application/javascript
+INFO  2018-09-14 09:53:44,306 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 424.3049ms 304 application/javascript
+INFO  2018-09-14 09:53:44,314 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 38.2758ms 304 application/javascript
+INFO  2018-09-14 09:53:44,345 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+INFO  2018-09-14 09:53:44,367 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 225.9127ms 200 text/css
+INFO  2018-09-14 09:53:45,014 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2018-09-14 09:53:45,418 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 403.9028ms 200 application/json;charset=utf-8
+DEBUG 2018-10-15 16:36:06,199 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-10-15 16:36:06,387 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-10-15 16:36:06,411 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,416 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,417 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,417 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,418 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,418 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,418 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,419 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,422 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,423 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,423 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,423 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,424 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,424 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,424 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:06,428 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-10-15 16:36:06,518 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:36:06,519 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:36:06,519 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:36:06,519 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:36:06,934 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:36:08,057 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-10-15 16:36:08,101 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-10-15 16:36:08,120 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-10-15 16:36:08,129 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-10-15 16:36:08,137 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-10-15 16:36:08,354 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-10-15 16:36:08,411 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-10-15 16:36:08,411 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-10-15 16:36:08,420 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-10-15 16:36:08,421 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-10-15 16:36:08,421 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-10-15 16:36:08,421 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-10-15 16:36:08,422 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-10-15 16:36:08,422 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-10-15 16:36:08,422 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-10-15 16:36:08,423 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-10-15 16:36:08,423 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-10-15 16:36:08,423 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-10-15 16:36:08,423 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-10-15 16:36:08,423 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-10-15 16:36:14,267 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2018-10-15 16:36:14,267 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-10-15 16:36:14,389 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 130.2065ms 200 
+INFO  2018-10-15 16:36:14,903 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 648.9252ms 404 
+INFO  2018-10-15 16:36:29,868 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-10-15 16:36:29,872 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.8055ms 404 
+DEBUG 2018-10-15 16:38:03,424 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-10-15 16:38:03,543 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-10-15 16:38:03,565 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,569 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,569 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,570 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,573 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,573 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,573 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,574 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,575 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,575 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,575 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,576 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,576 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,576 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,576 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:03,581 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-10-15 16:38:03,670 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:38:03,670 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:38:03,670 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:38:03,670 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:38:04,063 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:38:05,147 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-10-15 16:38:05,182 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-10-15 16:38:05,195 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-10-15 16:38:05,206 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-10-15 16:38:05,213 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-10-15 16:38:05,421 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-10-15 16:38:05,474 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-10-15 16:38:05,474 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-10-15 16:38:05,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-10-15 16:38:05,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-10-15 16:38:05,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-10-15 16:38:05,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-10-15 16:38:05,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-10-15 16:38:05,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-10-15 16:38:05,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-10-15 16:38:05,485 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-10-15 16:38:05,485 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-10-15 16:38:05,486 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-10-15 16:38:05,486 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-10-15 16:38:05,486 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-10-15 16:38:10,891 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2018-10-15 16:38:10,891 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-10-15 16:38:11,004 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 122.0121ms 200 
+INFO  2018-10-15 16:38:11,520 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 640.8802ms 404 
+INFO  2018-10-15 16:38:11,963 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-10-15 16:38:11,973 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.3706ms 404 
+INFO  2018-10-15 16:38:14,657 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-10-15 16:38:14,663 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.9908ms 404 
+DEBUG 2018-10-15 16:45:33,500 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-10-15 16:45:33,534 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-10-15 16:45:33,555 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,559 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,559 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,560 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,560 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,560 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,561 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,561 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,562 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,562 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,562 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,562 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,563 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,563 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,563 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:33,567 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-10-15 16:45:33,633 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:45:33,633 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:45:33,633 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:45:33,633 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 16:45:33,918 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 16:45:34,400 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-10-15 16:45:34,438 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-10-15 16:45:34,456 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-10-15 16:45:34,466 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-10-15 16:45:34,473 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-10-15 16:45:34,516 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-10-15 16:45:34,575 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-10-15 16:45:34,575 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-10-15 16:45:34,583 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-10-15 16:45:34,584 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-10-15 16:45:34,585 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-10-15 16:45:34,585 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-10-15 16:45:34,585 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-10-15 16:45:34,585 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-10-15 16:45:34,585 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-10-15 16:45:34,586 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-10-15 16:45:34,586 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-10-15 16:45:34,586 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-10-15 16:45:34,586 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-10-15 16:45:34,587 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-10-15 16:45:39,337 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/AbpUserConfiguration/GetAll  
+INFO  2018-10-15 16:45:39,417 [11   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:45:39,483 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 151.5409ms 204 
+INFO  2018-10-15 16:45:39,493 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/AbpUserConfiguration/GetAll application/json 
+INFO  2018-10-15 16:45:39,495 [11   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:45:39,590 [11   ] uthentication.JwtBearer.JwtBearerHandler - JwtBearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+WARN  2018-10-15 16:45:39,613 [11   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:45:39,613 [11   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 16:45:40,813 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2018-10-15 16:45:40,830 [11   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:45:40,915 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2018-10-15 16:45:41,394 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 476.2849ms.
+INFO  2018-10-15 16:45:41,719 [6    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-10-15 16:45:41,812 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 993.5455ms
+INFO  2018-10-15 16:45:41,830 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2336.8743ms 200 application/json; charset=utf-8
+INFO  2018-10-15 16:45:41,842 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2018-10-15 16:45:41,842 [6    ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:45:41,842 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4399ms 204 
+INFO  2018-10-15 16:45:41,849 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations application/json 
+INFO  2018-10-15 16:45:41,849 [6    ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:45:41,869 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application)
+INFO  2018-10-15 16:45:41,869 [6    ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:45:42,010 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) - Validation state: Valid
+INFO  2018-10-15 16:45:42,095 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 84.6963ms.
+INFO  2018-10-15 16:45:42,128 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-10-15 16:45:42,163 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) in 293.8614ms
+INFO  2018-10-15 16:45:42,163 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 314.1256ms 200 application/json; charset=utf-8
+INFO  2018-10-15 16:46:03,916 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/TokenAuth/Authenticate  
+INFO  2018-10-15 16:46:03,916 [13   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:03,916 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.361ms 204 
+INFO  2018-10-15 16:46:03,928 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 77
+INFO  2018-10-15 16:46:03,929 [18   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:03,958 [18   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action LetsDisc.Controllers.TokenAuthController.Authenticate (LetsDisc.Web.Core)
+INFO  2018-10-15 16:46:03,958 [18   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:04,387 [18   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Controllers.TokenAuthController.Authenticate (LetsDisc.Web.Core) with arguments (LetsDisc.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
+INFO  2018-10-15 16:46:05,220 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Controllers.TokenAuthController.Authenticate (LetsDisc.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 832.8815ms.
+INFO  2018-10-15 16:46:05,405 [20   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-10-15 16:46:05,411 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Controllers.TokenAuthController.Authenticate (LetsDisc.Web.Core) in 1452.4132ms
+INFO  2018-10-15 16:46:05,411 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1482.9772ms 200 application/json; charset=utf-8
+INFO  2018-10-15 16:46:07,030 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/AbpUserConfiguration/GetAll  
+INFO  2018-10-15 16:46:07,030 [21   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:07,031 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3939ms 204 
+INFO  2018-10-15 16:46:07,052 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/AbpUserConfiguration/GetAll application/json 
+INFO  2018-10-15 16:46:07,052 [13   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:07,136 [13   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 16:46:07,189 [21   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:07,190 [21   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 16:46:07,190 [21   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:07,190 [21   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 16:46:07,190 [21   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:07,191 [21   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 16:46:07,218 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2018-10-15 16:46:07,218 [21   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:07,219 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2018-10-15 16:46:07,474 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 254.2965ms.
+INFO  2018-10-15 16:46:07,490 [20   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-10-15 16:46:07,491 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 272.9227ms
+INFO  2018-10-15 16:46:07,491 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 439.4027ms 200 application/json; charset=utf-8
+INFO  2018-10-15 16:46:07,509 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2018-10-15 16:46:07,509 [19   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:07,509 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4172ms 204 
+INFO  2018-10-15 16:46:07,516 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations application/json 
+INFO  2018-10-15 16:46:07,516 [19   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:07,517 [19   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 16:46:07,517 [19   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:07,517 [19   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 16:46:07,517 [19   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:07,517 [19   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 16:46:07,526 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application)
+INFO  2018-10-15 16:46:07,526 [19   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:07,530 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) - Validation state: Valid
+INFO  2018-10-15 16:46:07,549 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 19.2282ms.
+INFO  2018-10-15 16:46:07,550 [20   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-10-15 16:46:07,552 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) in 26.347ms
+INFO  2018-10-15 16:46:07,552 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 36.5435ms 200 application/json; charset=utf-8
+INFO  2018-10-15 16:46:08,480 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D  
+INFO  2018-10-15 16:46:08,480 [19   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:08,480 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4976ms 204 
+INFO  2018-10-15 16:46:08,618 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D text/plain;charset=UTF-8 0
+INFO  2018-10-15 16:46:08,618 [20   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:08,631 [20   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 16:46:08,632 [20   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:08,632 [20   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 16:46:08,640 [20   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:08,640 [20   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 16:46:08,701 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 82.8372ms 200 application/json
+INFO  2018-10-15 16:46:08,764 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/signalr?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D&id=I-hxm568KUNsSn0sexFavA  
+INFO  2018-10-15 16:46:08,764 [13   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 16:46:08,767 [13   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 16:46:08,767 [13   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:08,767 [13   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 16:46:08,768 [13   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 16:46:08,768 [13   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 16:46:08,968 [21   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2018-10-15 16:46:08,998 [21   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"I-hxm568KUNsSn0sexFavA","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2018-10-15T16:46:08.9949669+05:30","Properties":{}}
+DEBUG 2018-10-15 16:46:09,065 [21   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: I-hxm568KUNsSn0sexFavA
+DEBUG 2018-10-15 17:30:48,562 [69   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: I-hxm568KUNsSn0sexFavA
+INFO  2018-10-15 17:30:48,579 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2679880.9377ms 101 
+INFO  2018-10-15 17:30:49,953 [63   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/AbpUserConfiguration/GetAll  
+INFO  2018-10-15 17:30:49,953 [63   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:49,954 [63   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5383ms 204 
+INFO  2018-10-15 17:30:49,963 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/AbpUserConfiguration/GetAll application/json 
+INFO  2018-10-15 17:30:49,963 [69   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:49,965 [69   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 17:30:49,976 [69   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:49,976 [69   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:30:49,976 [69   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:49,976 [69   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:30:49,976 [69   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:49,976 [69   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 17:30:49,984 [69   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2018-10-15 17:30:49,984 [69   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:49,985 [69   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2018-10-15 17:30:49,993 [69   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 7.6291ms.
+INFO  2018-10-15 17:30:50,004 [69   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-10-15 17:30:50,005 [69   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 21.3315ms
+INFO  2018-10-15 17:30:50,005 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 42.1121ms 200 application/json; charset=utf-8
+INFO  2018-10-15 17:30:50,025 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2018-10-15 17:30:50,025 [69   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:50,025 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2817ms 204 
+INFO  2018-10-15 17:30:50,035 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/Session/GetCurrentLoginInformations application/json 
+INFO  2018-10-15 17:30:50,035 [64   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:50,035 [64   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 17:30:50,036 [64   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:50,036 [64   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:30:50,036 [64   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:50,036 [64   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 17:30:50,040 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application)
+INFO  2018-10-15 17:30:50,040 [64   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:50,043 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) - Validation state: Valid
+INFO  2018-10-15 17:30:50,052 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.7677ms.
+INFO  2018-10-15 17:30:50,053 [64   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-10-15 17:30:50,053 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Sessions.SessionAppService.GetCurrentLoginInformations (LetsDisc.Application) in 13.4713ms
+INFO  2018-10-15 17:30:50,054 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 19.0572ms 200 application/json; charset=utf-8
+INFO  2018-10-15 17:30:51,279 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D  
+INFO  2018-10-15 17:30:51,279 [64   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:51,280 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2742ms 204 
+INFO  2018-10-15 17:30:51,413 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D text/plain;charset=UTF-8 0
+INFO  2018-10-15 17:30:51,413 [64   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:51,416 [64   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 17:30:51,416 [64   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:51,416 [64   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:30:51,416 [64   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:51,416 [64   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 17:30:51,417 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.5813ms 200 application/json
+INFO  2018-10-15 17:30:51,431 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/signalr?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D&id=AqBfY1P12WI2Fx1bkFtNRQ  
+INFO  2018-10-15 17:30:51,431 [64   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:30:51,434 [64   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 17:30:51,434 [64   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:51,434 [64   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:30:51,434 [64   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:30:51,434 [64   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 17:30:51,461 [69   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2018-10-15 17:30:51,467 [69   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"AqBfY1P12WI2Fx1bkFtNRQ","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2018-10-15T17:30:51.4618512+05:30","Properties":{}}
+DEBUG 2018-10-15 17:30:51,468 [69   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: AqBfY1P12WI2Fx1bkFtNRQ
+DEBUG 2018-10-15 17:41:01,279 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-10-15 17:41:01,398 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-10-15 17:41:01,422 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,427 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,427 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,428 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,428 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,428 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,429 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,429 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,430 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,430 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,430 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,430 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,431 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,431 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,431 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:01,436 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-10-15 17:41:01,535 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 17:41:01,535 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 17:41:01,535 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 17:41:01,535 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 17:41:01,948 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:41:03,307 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-10-15 17:41:03,361 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-10-15 17:41:03,391 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-10-15 17:41:03,405 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-10-15 17:41:03,421 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-10-15 17:41:03,982 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-10-15 17:41:04,073 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-10-15 17:41:04,074 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-10-15 17:41:04,085 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-10-15 17:41:04,086 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-10-15 17:41:04,087 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-10-15 17:41:04,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-10-15 17:41:04,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-10-15 17:41:04,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-10-15 17:41:04,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-10-15 17:41:04,089 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-10-15 17:41:04,090 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-10-15 17:41:04,090 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-10-15 17:41:04,090 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-10-15 17:41:04,091 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-10-15 17:41:11,039 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D  
+INFO  2018-10-15 17:41:11,039 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2018-10-15 17:41:11,039 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2018-10-15 17:41:11,039 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2018-10-15 17:41:11,039 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2018-10-15 17:41:11,173 [12   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:41:11,245 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 218.4682ms 204 
+INFO  2018-10-15 17:41:11,276 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 218.4647ms 200 
+INFO  2018-10-15 17:41:11,411 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D text/plain;charset=UTF-8 0
+INFO  2018-10-15 17:41:11,420 [6    ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:41:11,670 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 17:41:11,734 [15   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:41:11,738 [15   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:41:11,743 [15   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:41:11,747 [15   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 17:41:11,862 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/signalr?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D&id=6dnP1aA59yOyNsBcRQvQXQ  
+INFO  2018-10-15 17:41:11,865 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 453.8979ms 200 application/json
+INFO  2018-10-15 17:41:11,868 [12   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:41:11,876 [12   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 17:41:11,881 [12   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:41:11,884 [12   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:41:11,888 [12   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:41:11,892 [12   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 17:41:12,095 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1081.4275ms 404 
+INFO  2018-10-15 17:41:12,230 [11   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2018-10-15 17:41:12,289 [11   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"6dnP1aA59yOyNsBcRQvQXQ","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2018-10-15T17:41:12.2704848+05:30","Properties":{}}
+INFO  2018-10-15 17:41:12,546 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1531.6563ms 200 application/json;charset=utf-8
+INFO  2018-10-15 17:41:12,549 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1531.6319ms 200 application/json;charset=utf-8
+INFO  2018-10-15 17:41:13,247 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+INFO  2018-10-15 17:41:13,252 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.9347ms 404 
+INFO  2018-10-15 17:41:36,539 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2018-10-15 17:41:36,560 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.9942ms 200 application/json;charset=utf-8
+DEBUG 2018-10-15 17:49:37,304 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-10-15 17:49:37,338 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-10-15 17:49:37,357 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,361 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,361 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,361 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,362 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,362 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,362 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,363 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,363 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,363 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,364 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,364 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,364 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,364 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:37,368 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-10-15 17:49:37,431 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 17:49:37,431 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 17:49:37,431 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 17:49:37,431 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-10-15 17:49:37,696 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-10-15 17:49:38,145 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-10-15 17:49:38,178 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-10-15 17:49:38,193 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-10-15 17:49:38,201 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2018-10-15 17:49:38,208 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-10-15 17:49:38,249 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-10-15 17:49:38,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-10-15 17:49:38,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-10-15 17:49:38,311 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2018-10-15 17:49:38,312 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2018-10-15 17:49:38,312 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-10-15 17:49:38,312 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-10-15 17:49:38,312 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2018-10-15 17:49:38,313 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2018-10-15 17:49:38,313 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2018-10-15 17:49:38,313 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2018-10-15 17:49:38,314 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2018-10-15 17:49:38,314 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2018-10-15 17:49:38,314 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-10-15 17:49:38,314 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2018-10-15 17:49:42,714 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D  
+INFO  2018-10-15 17:49:42,795 [7    ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:49:42,868 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 161.6404ms 204 
+INFO  2018-10-15 17:49:42,894 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D text/plain;charset=UTF-8 0
+INFO  2018-10-15 17:49:42,895 [7    ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:49:43,130 [7    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 17:49:43,201 [10   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:49:43,201 [10   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:49:43,216 [10   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:49:43,216 [10   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 17:49:43,316 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 422.0612ms 200 application/json
+INFO  2018-10-15 17:49:43,317 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/signalr?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FRkp3UZ8A1gKoReYXpvXHc0KFXzGY3aUxaXUOjpNPSTn4LyfFvWqGRq42yefBXGrkBTbBN3h9UXPP%2B25Rfae1rBCQrd8mQ0G3JHpGlVZBMKMD5RSIjWMCe3sPKe05J4ZS4x7ipM9FJHtoJ0Ev%2FfvM08rDbeioKKXNqOF9YqzdChxSnpsH4gsiia6e%2BSRx0RP0viN5awyQ3JYm2vsImLPI6zQOa7D4F1iOEei8ba1j3DDH1s29BUVb1X07sC5aL54EtpTLroad2tX%2FewGe5JmHyWtg289PbSGrGws7qN962WP6KMzzAXDpB7DK9WvqHatv6a7F6n0b01DPYvfMgRWa68gWbOJuyvEo5Dy7Kbv9n9%2B%2BApYWWaP04UZG1Ze2zZzR0hPgYw3heegq12cBIUzFpo33SJ3BurcMz93qax4MVbQ9xatjBZlE3%2FA1mEpGcomuNVL%2BtfQ%2B4ph30%2B15%2FvZlX8nyiXlO1sc2Qj0gPrDKg3oI5JGRIEuR7sAvyCB63iNrnC0OP%2F%2Bl5oLtwmHQgqgGz49Mr1hLTN8JYyQjPzrdl2kGJGv%2BV%2Fo8JP08Qfu1PMl6Juy3UkQ26EdBzBEoWEomRvTTo0S7xTRi4rOFaOupockyvUKMj3PV7ZjJG7vKytP2sNrjrybzsRfWNK7F7yKFDXRzPKNx1pbAdg1bGuXyHnz6VMdsD1MZpWgTyK4FXdm0pmWmJf8yw%2B0LohxqpPlLmMBQsNV%2FP9pPB4iF26TGfbPIfthOyWEY9Yle%2F8EM9xXt5qq%2FzPsuRzqHu9MHQoIAXu2mPLO6oNoKhyHuBYq32a2qrgYE2m7NqA6hmy2WVSN9k%3D&id=5ET4R6RcaqcDtzfrXivClA  
+INFO  2018-10-15 17:49:43,317 [10   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2018-10-15 17:49:43,321 [10   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2018-10-15 17:49:43,322 [10   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:49:43,322 [10   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2018-10-15 17:49:43,322 [10   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2018-10-15 17:49:43,322 [10   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2018-10-15 17:49:43,583 [11   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2018-10-15 17:49:43,623 [11   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"5ET4R6RcaqcDtzfrXivClA","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2018-10-15T17:49:43.6108833+05:30","Properties":{}}
+DEBUG 2018-10-15 17:56:37,903 [23   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: 5ET4R6RcaqcDtzfrXivClA
+INFO  2018-10-15 17:56:37,921 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 414614.4083ms 101 

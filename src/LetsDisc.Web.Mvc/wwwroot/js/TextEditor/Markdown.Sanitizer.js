@@ -46,7 +46,7 @@
     /// </summary>
     function balanceTags(html) {
 
-        if (html == "")
+        if (html === "")
             return "";
 
         var re = /<\/?\w+[^>]*(\s|$|>)/g;
@@ -56,7 +56,7 @@
 
         // no HTML tags present? nothing to do; exit now
         var tagcount = (tags || []).length;
-        if (tagcount == 0)
+        if (tagcount === 0)
             return html;
 
         var tagname, tag;
@@ -81,14 +81,14 @@
                 // this is an opening tag
                 // search forwards (next tags), look for closing tags
                 for (var ntag = ctag + 1; ntag < tagcount; ntag++) {
-                    if (!tagpaired[ntag] && tags[ntag] == "</" + tagname + ">") {
+                    if (!tagpaired[ntag] && tags[ntag] === "</" + tagname + ">") {
                         match = ntag;
                         break;
                     }
                 }
             }
 
-            if (match == -1)
+            if (match === -1)
                 needsRemoval = tagremove[ctag] = true; // mark for removal
             else
                 tagpaired[match] = true; // mark paired
@@ -99,7 +99,7 @@
 
         // delete all orphaned tags from the string
 
-        var ctag = 0;
+        ctag = 0;
         html = html.replace(re, function (match) {
             var res = tagremove[ctag] ? "" : match;
             ctag++;

@@ -1,3 +1,4 @@
+using System.IO;
 ﻿using System;
 using System.Linq;
 using System.Reflection;
@@ -16,15 +17,7 @@ using LetsDisc.Authentication.JwtBearer;
 using LetsDisc.Configuration;
 using LetsDisc.Identity;
 
-#if FEATURE_SIGNALR
-using Microsoft.AspNet.SignalR;
-using Microsoft.Owin.Cors;
-using Owin;
-using Abp.Owin;
-using LetsDisc.Owin;
-#elif FEATURE_SIGNALR_ASPNETCORE
 using Abp.AspNetCore.SignalR.Hubs;
-#endif
 
 namespace LetsDisc.Web.Host.Startup
 {
@@ -49,9 +42,7 @@ namespace LetsDisc.Web.Host.Startup
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 
-#if FEATURE_SIGNALR_ASPNETCORE
             services.AddSignalR();
-#endif
 
             // Configure CORS for angular2 UI
             services.AddCors(
@@ -67,6 +58,7 @@ namespace LetsDisc.Web.Host.Startup
                         )
                         .AllowAnyHeader()
                         .AllowAnyMethod()
+                        .AllowCredentials()
                 )
             );
 
@@ -103,21 +95,18 @@ namespace LetsDisc.Web.Host.Startup
 
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
+            app.Use(async (context, next) => { await next(); if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value)) { context.Request.Path = "/index.html"; await next(); } });
             app.UseStaticFiles();
 
             app.UseAuthentication();
 
             app.UseAbpRequestLocalization();
 
-#if FEATURE_SIGNALR
-            // Integrate with OWIN
-            app.UseAppBuilder(ConfigureOwinServices);
-#elif FEATURE_SIGNALR_ASPNETCORE
+
             app.UseSignalR(routes =>
             {
                 routes.MapHub<AbpCommonHub>("/signalr");
             });
-#endif
 
             app.UseMvc(routes =>
             {
@@ -135,29 +124,10 @@ namespace LetsDisc.Web.Host.Startup
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "LetsDisc API V1");
+                options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"] + "/swagger/v1/swagger.json", "LetsDisc API V1");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("LetsDisc.Web.Host.wwwroot.swagger.ui.index.html");
             }); // URL: /swagger
         }
-
-#if FEATURE_SIGNALR
-        private static void ConfigureOwinServices(IAppBuilder app)
-        {
-            app.Properties["host.AppName"] = "LetsDisc";
-
-            app.UseAbp();
-            
-            app.Map("/signalr", map =>
-            {
-                map.UseCors(CorsOptions.AllowAll);
-                var hubConfiguration = new HubConfiguration
-                {
-                    EnableJSONP = true
-                };
-                map.RunSignalR(hubConfiguration);
-            });
-        }
-#endif
     }
 }

@@ -395,7 +395,7 @@
     position.getTop = function (elem, isInner) {
         var result = elem.offsetTop;
         if (!isInner) {
-            while (elem = elem.offsetParent) {
+            while (elem === elem.offsetParent) {
                 result += elem.offsetTop;
             }
         }
@@ -464,14 +464,14 @@
 
         // Set the mode for later logic steps.
         var setMode = function (newMode, noSave) {
-            if (mode != newMode) {
+            if (mode !== newMode) {
                 mode = newMode;
                 if (!noSave) {
                     saveState();
                 }
             }
 
-            if (!uaSniffed.isIE || mode != "moving") {
+            if (!uaSniffed.isIE || mode !== "moving") {
                 timer = setTimeout(refreshState, 1);
             }
             else {
@@ -549,14 +549,14 @@
             if (!currState) {
                 return false;
             }
-            if (mode == "moving") {
+            if (mode === "moving") {
                 if (!lastState) {
                     lastState = currState;
                 }
                 return;
             }
             if (lastState) {
-                if (undoStack[stackPtr - 1].text != lastState.text) {
+                if (undoStack[stackPtr - 1].text !== lastState.text) {
                     undoStack[stackPtr++] = lastState;
                 }
                 lastState = null;
@@ -620,22 +620,22 @@
                     // 63232 - 63235: page up/dn and arrow keys on safari
                     setMode("moving");
                 }
-                else if (keyCode == 8 || keyCode == 46 || keyCode == 127) {
+                else if (keyCode === 8 || keyCode === 46 || keyCode === 127) {
                     // 8: backspace
                     // 46: delete
                     // 127: delete
                     setMode("deleting");
                 }
-                else if (keyCode == 13) {
+                else if (keyCode === 13) {
                     // 13: Enter
                     setMode("newlines");
                 }
                
-                else if (keyCode == 27) {
+                else if (keyCode === 27) {
                     // 27: escape
                     setMode("escape");
                 }
-                else if ((keyCode < 16 || keyCode > 20) && keyCode != 91) {
+                else if ((keyCode < 16 || keyCode > 20) && keyCode !== 91) {
                     // 16-20 are shift, etc.
                     // 91: left window key
                     // I think this might be a little messed up since there are
@@ -649,14 +649,14 @@
             util.addEvent(panels.input, "keypress", function (event) {
                 // keyCode 89: y
                 // keyCode 90: z
-                if ((event.ctrlKey || event.metaKey) && !event.altKey && (event.keyCode == 89 || event.keyCode == 90)) {
+                if ((event.ctrlKey || event.metaKey) && !event.altKey && (event.keyCode === 89 || event.keyCode === 90)) {
                     event.preventDefault();
                 }
             });
 
             var handlePaste = function () {
-                if (uaSniffed.isIE || (inputStateObj && inputStateObj.text != panels.input.value)) {
-                    if (timer == undefined) {
+                if (uaSniffed.isIE || (inputStateObj && inputStateObj.text !== panels.input.value)) {
+                    if (timer === undefined) {
                         mode = "paste";
                         saveState();
                         refreshState();
@@ -790,7 +790,7 @@
         // Restore this state into the input area.
         this.restore = function () {
 
-            if (stateObj.text != undefined && stateObj.text != inputArea.value) {
+            if (stateObj.text !== undefined && stateObj.text !== inputArea.value) {
                 inputArea.value = stateObj.text;
             }
             this.setInputAreaSelection();
@@ -873,7 +873,7 @@
 
 
             var text = panels.input.value;
-            if (text && text == oldInputText) {
+            if (text && text === oldInputText) {
                 return; // Input text hasn't changed.
             }
             else {
@@ -1601,7 +1601,7 @@
         var prevStars = Math.min(starsBefore.length, starsAfter.length);
 
         // Remove stars if we have to since the button acts as a toggle.
-        if ((prevStars >= nStars) && (prevStars != 2 || nStars != 1)) {
+        if ((prevStars >= nStars) && (prevStars !== 2 || nStars !== 1)) {
             chunk.before = chunk.before.replace(re("[*]{" + nStars + "}$", ""), "");
             chunk.after = chunk.after.replace(re("^[*]{" + nStars + "}", ""), "");
         }
@@ -2125,7 +2125,7 @@
                 // Have to renumber the bullet points if this is a numbered list.
                 chunk.after = chunk.after.replace(nextItemsRegex, getPrefixedItem);
             }
-            if (isNumberedList == hasDigits) {
+            if (isNumberedList === hasDigits) {
                 return;
             }
         }
@@ -2205,7 +2205,7 @@
         // We make a level 2 header if there is no current header.
         // If there is a header level, we substract one from the header level.
         // If it's already a level 1 header, it's removed.
-        var headerLevelToCreate = headerLevel == 0 ? 2 : headerLevel - 1;
+        var headerLevelToCreate = headerLevel === 0 ? 2 : headerLevel - 1;
 
         if (headerLevelToCreate > 0) {
 

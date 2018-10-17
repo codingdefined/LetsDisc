@@ -493,7 +493,7 @@ else
 
             text = text.replace(regex, function (wholeMatch) {
                 var tag = wholeMatch.replace(/(.)<\/?code>(?=.)/g, "$1`");
-                tag = escapeCharacters(tag, wholeMatch.charAt(1) == "!" ? "\\`*_/" : "\\`*_"); // also escape slashes in comments to prevent autolinking there -- http://meta.stackoverflow.com/questions/95987
+                tag = escapeCharacters(tag, wholeMatch.charAt(1) === "!" ? "\\`*_/" : "\\`*_"); // also escape slashes in comments to prevent autolinking there -- http://meta.stackoverflow.com/questions/95987
                 return tag;
             });
 
@@ -595,23 +595,23 @@ else
         }
 
         function writeAnchorTag(wholeMatch, m1, m2, m3, m4, m5, m6, m7) {
-            if (m7 == undefined) m7 = "";
+            if (m7 === undefined) m7 = "";
             var whole_match = m1;
             var link_text = m2.replace(/:\/\//g, "~P"); // to prevent auto-linking withing the link. will be converted back after the auto-linker runs
             var link_id = m3.toLowerCase();
             var url = m4;
             var title = m7;
 
-            if (url == "") {
-                if (link_id == "") {
+            if (url === "") {
+                if (link_id === "") {
                     // lower-case and turn embedded newlines into spaces
                     link_id = link_text.toLowerCase().replace(/ ?\n/g, " ");
                 }
                 url = "#" + link_id;
 
-                if (g_urls.get(link_id) != undefined) {
+                if (g_urls.get(link_id) !== undefined) {
                     url = g_urls.get(link_id);
-                    if (g_titles.get(link_id) != undefined) {
+                    if (g_titles.get(link_id) !== undefined) {
                         title = g_titles.get(link_id);
                     }
                 }
@@ -628,7 +628,7 @@ else
             url = escapeCharacters(url, "*_");
             var result = "<a href=\"" + url + "\"";
 
-            if (title != "") {
+            if (title !== "") {
                 title = attributeEncode(title);
                 title = escapeCharacters(title, "*_");
                 result += " title=\"" + title + "\"";
@@ -713,16 +713,16 @@ else
 
             if (!title) title = "";
 
-            if (url == "") {
-                if (link_id == "") {
+            if (url === "") {
+                if (link_id === "") {
                     // lower-case and turn embedded newlines into spaces
                     link_id = alt_text.toLowerCase().replace(/ ?\n/g, " ");
                 }
                 url = "#" + link_id;
 
-                if (g_urls.get(link_id) != undefined) {
+                if (g_urls.get(link_id) !== undefined) {
                     url = g_urls.get(link_id);
-                    if (g_titles.get(link_id) != undefined) {
+                    if (g_titles.get(link_id) !== undefined) {
                         title = g_titles.get(link_id);
                     }
                 }
@@ -1138,7 +1138,7 @@ else
                         function (wholeMatch, m1) {
                             var pre = m1;
                             // attacklab: hack around Konqueror 3.5.4 bug:
-                            pre = pre.replace(/^  /mg, "~0");
+                            pre = pre.replace(/^ {2}/mg, "~0");
                             pre = pre.replace(/~0/g, "");
                             return pre;
                         });
@@ -1188,7 +1188,7 @@ else
             //
             if (!doNotUnhash) {
                 end = grafsOut.length;
-                for (var i = 0; i < end; i++) {
+                for (i = 0; i < end; i++) {
                     var foundAny = true;
                     while (foundAny) { // we may need several runs, since the data may be nested
                         foundAny = false;
@@ -1368,10 +1368,10 @@ else
             var len = url.length;
 
             return url.replace(_problemUrlChars, function (match, offset) {
-                if (match == "~D") // escape for dollar
+                if (match === "~D") // escape for dollar
                     return "%24";
-                if (match == ":") {
-                    if (offset == len - 1 || /[0-9\/]/.test(url.charAt(offset + 1)))
+                if (match === ":") {
+                    if (offset === len - 1 || /[0-9\/]/.test(url.charAt(offset + 1)))
                         return ":"
                 }
                 return "%" + match.charCodeAt(0).toString(16);
