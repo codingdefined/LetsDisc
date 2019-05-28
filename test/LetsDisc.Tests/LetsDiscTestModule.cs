@@ -24,7 +24,7 @@ namespace LetsDisc.Tests
         public LetsDiscTestModule(LetsDiscEntityFrameworkModule abpProjectNameEntityFrameworkModule)
         {
             abpProjectNameEntityFrameworkModule.SkipDbContextRegistration = true;
-            abpProjectNameEntityFrameworkModule.SkipDbSeed = true;
+            abpProjectNameEntityFrameworkModule.SkipDbSeed = false;
         }
 
         public override void PreInitialize()

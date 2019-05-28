@@ -7464,3 +7464,111 @@ INFO  2019-05-28 12:00:10,185 [14   ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-05-28 12:00:10,201 [50   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-05-28 12:00:10,206 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action LetsDisc.Questions.QuestionAppService.GetQuestions (LetsDisc.Application) in 37.3811ms
 INFO  2019-05-28 12:00:10,211 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 93.649ms 200 application/json; charset=utf-8
+DEBUG 2019-05-28 14:28:48,568 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-28 14:28:48,687 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-05-28 14:28:48,708 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:48,718 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-05-28 14:28:48,790 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 14:28:48,790 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 14:28:48,790 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 14:28:48,790 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 14:28:49,103 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 14:28:49,601 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-28 14:28:49,655 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-28 14:28:49,673 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-28 14:28:49,682 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2019-05-28 14:28:49,692 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-28 14:28:49,737 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-28 14:28:49,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2019-05-28 14:28:49,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-28 14:28:49,821 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2019-05-28 14:28:49,822 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2019-05-28 14:28:49,822 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-28 14:28:49,823 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-28 14:28:49,823 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-28 14:28:49,823 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2019-05-28 14:28:49,823 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2019-05-28 14:28:49,824 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2019-05-28 14:28:49,824 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2019-05-28 14:28:49,824 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2019-05-28 14:28:49,824 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-28 14:28:49,825 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2019-05-28 14:28:54,817 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-28 14:28:55,410 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 599.5549ms 200 text/html
+INFO  2019-05-28 14:28:55,470 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
+INFO  2019-05-28 14:28:55,509 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui.css was not modified
+INFO  2019-05-28 14:28:55,518 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 47.1617ms 304 text/css
+INFO  2019-05-28 14:28:55,784 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
+INFO  2019-05-28 14:28:55,786 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-bundle.js was not modified
+INFO  2019-05-28 14:28:55,786 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.7565ms 304 application/javascript
+INFO  2019-05-28 14:28:55,790 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-05-28 14:28:55,791 [14   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-standalone-preset.js was not modified
+INFO  2019-05-28 14:28:55,791 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.0157ms 304 application/javascript
+INFO  2019-05-28 14:28:56,339 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-05-28 14:28:56,522 [14   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-05-28 14:28:56,585 [10   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2019-05-28 14:28:56,585 [10   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+WARN  2019-05-28 14:28:56,585 [10   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported cultures 'null'.
+WARN  2019-05-28 14:28:56,586 [10   ] calization.RequestLocalizationMiddleware - AbpDefaultRequestCultureProvider returned the following unsupported UI Cultures 'null'.
+INFO  2019-05-28 14:28:56,839 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 500.6572ms 200 application/json;charset=utf-8
+DEBUG 2019-05-28 16:08:34,320 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-28 16:08:34,604 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-05-28 16:08:34,628 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.Web.Host.Startup.LetsDiscWebHostModule, LetsDisc.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,633 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscWebCoreModule, LetsDisc.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,634 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscApplicationModule, LetsDisc.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,634 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.LetsDiscCoreModule, LetsDisc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,634 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,634 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,635 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,635 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,635 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: LetsDisc.EntityFrameworkCore.LetsDiscEntityFrameworkModule, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,636 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,636 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,636 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,636 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,637 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,637 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:34,641 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-05-28 16:08:37,390 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 16:08:37,390 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 16:08:37,390 [1    ] o.Configuration.LanguageManagementConfig - Converted LetsDisc (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 16:08:37,390 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 16:08:37,903 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: LetsDisc.EntityFrameworkCore.LetsDiscDbContext, LetsDisc.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 16:08:39,504 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-28 16:08:39,560 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-28 16:08:39,579 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-28 16:08:39,589 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LetsDisc
+DEBUG 2019-05-28 16:08:39,598 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-28 16:08:39,925 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-28 16:08:40,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2019-05-28 16:08:40,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-28 16:08:40,021 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.CreateUserDto
+DEBUG 2019-05-28 16:08:40,022 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Users.Dto.UserDto
+DEBUG 2019-05-28 16:08:40,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-28 16:08:40,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-28 16:08:40,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-28 16:08:40,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.PermissionDto
+DEBUG 2019-05-28 16:08:40,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Roles.Dto.RoleDto
+DEBUG 2019-05-28 16:08:40,024 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.AnswerDto
+DEBUG 2019-05-28 16:08:40,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionDto
+DEBUG 2019-05-28 16:08:40,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.Questions.Dto.QuestionWithAnswersDto
+DEBUG 2019-05-28 16:08:40,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-28 16:08:40,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - LetsDisc.MultiTenancy.Dto.TenantDto
+INFO  2019-05-28 16:09:02,048 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-05-28 16:09:02,048 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-05-28 16:09:02,202 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 163.8592ms 200 
+INFO  2019-05-28 16:09:02,887 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 853.7264ms 404 

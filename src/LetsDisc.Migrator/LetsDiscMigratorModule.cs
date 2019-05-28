@@ -16,7 +16,7 @@ namespace LetsDisc.Migrator
 
         public LetsDiscMigratorModule(LetsDiscEntityFrameworkModule abpProjectNameEntityFrameworkModule)
         {
-            abpProjectNameEntityFrameworkModule.SkipDbSeed = true;
+            abpProjectNameEntityFrameworkModule.SkipDbSeed = false;
 
             _appConfiguration = AppConfigurations.Get(
                 typeof(LetsDiscMigratorModule).GetAssembly().GetDirectoryPathOrNull()

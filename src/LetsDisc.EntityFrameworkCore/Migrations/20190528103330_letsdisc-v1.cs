@@ -1,29 +1,78 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace LetsDisc.Migrations
 {
-    public partial class LetsDiscv1 : Migration
+    public partial class letsdiscv1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<string>(
+                name: "LoginProvider",
+                table: "AbpUserTokens",
+                maxLength: 128,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldMaxLength: 64,
+                oldNullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "ExpireDate",
+                table: "AbpUserTokens",
+                nullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "UserName",
+                table: "AbpUsers",
+                maxLength: 256,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldMaxLength: 32);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "NormalizedUserName",
+                table: "AbpUsers",
+                maxLength: 256,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldMaxLength: 32);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "UserName",
+                table: "AbpUserAccounts",
+                maxLength: 256,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldMaxLength: 32,
+                oldNullable: true);
+
+            migrationBuilder.CreateTable(
+                name: "PostTypes",
+                columns: table => new
+                {
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PostTypes", x => x.Name);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Questions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Body = table.Column<string>(maxLength: 65536, nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     CreatorUserId = table.Column<long>(nullable: true),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
                     LastModificationTime = table.Column<DateTime>(nullable: true),
                     LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
                     Title = table.Column<string>(maxLength: 255, nullable: false),
+                    Body = table.Column<string>(maxLength: 65536, nullable: false),
                     UpvoteCount = table.Column<int>(nullable: false),
                     ViewCount = table.Column<int>(nullable: false)
                 },
@@ -56,12 +105,12 @@ namespace LetsDisc.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Body = table.Column<string>(maxLength: 65536, nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     CreatorUserId = table.Column<long>(nullable: true),
-                    IsAccepted = table.Column<bool>(nullable: false),
+                    Body = table.Column<string>(maxLength: 65536, nullable: false),
+                    UpvoteCount = table.Column<int>(nullable: false),
                     QuestionId = table.Column<int>(nullable: false),
-                    UpvoteCount = table.Column<int>(nullable: false)
+                    IsAccepted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,8 +137,8 @@ namespace LetsDisc.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     CreatorUserId = table.Column<long>(nullable: true),
-                    Info = table.Column<string>(maxLength: 65536, nullable: true),
                     Name = table.Column<string>(maxLength: 15, nullable: false),
+                    Info = table.Column<string>(maxLength: 65536, nullable: true),
                     QuestionId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -115,10 +164,10 @@ namespace LetsDisc.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IsDownvoted = table.Column<bool>(nullable: false),
-                    IsUpvoted = table.Column<bool>(nullable: false),
                     QuestionId = table.Column<int>(nullable: false),
-                    UserId = table.Column<long>(nullable: false)
+                    UserId = table.Column<long>(nullable: false),
+                    IsUpvoted = table.Column<bool>(nullable: false),
+                    IsDownvoted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -189,6 +238,9 @@ namespace LetsDisc.Migrations
                 name: "Answers");
 
             migrationBuilder.DropTable(
+                name: "PostTypes");
+
+            migrationBuilder.DropTable(
                 name: "Tags");
 
             migrationBuilder.DropTable(
@@ -196,6 +248,44 @@ namespace LetsDisc.Migrations
 
             migrationBuilder.DropTable(
                 name: "Questions");
+
+            migrationBuilder.DropColumn(
+                name: "ExpireDate",
+                table: "AbpUserTokens");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "LoginProvider",
+                table: "AbpUserTokens",
+                maxLength: 64,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldMaxLength: 128,
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "UserName",
+                table: "AbpUsers",
+                maxLength: 32,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldMaxLength: 256);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "NormalizedUserName",
+                table: "AbpUsers",
+                maxLength: 32,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldMaxLength: 256);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "UserName",
+                table: "AbpUserAccounts",
+                maxLength: 32,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldMaxLength: 256,
+                oldNullable: true);
         }
     }
 }
