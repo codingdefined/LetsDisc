@@ -5,6 +5,7 @@ using LetsDisc.Authorization.Users;
 using LetsDisc.MultiTenancy;
 using LetsDisc.Questions;
 using LetsDisc.Tags;
+using LetsDisc.Posts;
 
 namespace LetsDisc.EntityFrameworkCore
 {
@@ -17,6 +18,7 @@ namespace LetsDisc.EntityFrameworkCore
         public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<UserVoteForQuestion> UserVoteForQuestion { get; set; }
+        public virtual DbSet<PostTypes> PostTypes { get; set; }
 
         public LetsDiscDbContext(DbContextOptions<LetsDiscDbContext> options)
             : base(options)
