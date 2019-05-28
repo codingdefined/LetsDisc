@@ -22,7 +22,6 @@ import { CreateUserComponent } from '@app/users/create-user/create-user.componen
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { RolesComponent } from '@app/roles/roles.component';
 import { CreateRoleComponent } from '@app/roles/create-role/create-role.component';
-import { EditRoleComponent } from './roles/edit-role/edit-role.component';
 import { TenantsComponent } from '@app/tenants/tenants.component';
 import { CreateTenantComponent } from './tenants/create-tenant/create-tenant.component';
 import { EditTenantComponent } from './tenants/edit-tenant/edit-tenant.component';
@@ -32,7 +31,9 @@ import { SideBarUserAreaComponent } from '@app/layout/sidebar-user-area.componen
 import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
 import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
-import { QuestionsComponent } from './questions/questions.component';
+import { QuestionsComponent } from '@app/questions/questions.component';
+import { CreateQuestionComponent } from '@app/questions/create-question/create-question.component';
+import { EditQuestionComponent } from '@app/questions/edit-question/edit-question.component';
 
 @NgModule({
     declarations: [
@@ -43,19 +44,19 @@ import { QuestionsComponent } from './questions/questions.component';
 		CreateTenantComponent,
 		EditTenantComponent,
         UsersComponent,
+        QuestionsComponent,
+        CreateQuestionComponent,
+        EditQuestionComponent,
 		CreateUserComponent,
 		EditUserComponent,
       	RolesComponent,        
 		CreateRoleComponent,
-		EditRoleComponent,
         TopBarComponent,
         TopBarLanguageSwitchComponent,
         SideBarUserAreaComponent,
         SideBarNavComponent,
         SideBarFooterComponent,
-        RightSideBarComponent,
-        QuestionsComponent
-    
+        RightSideBarComponent
     ],
     imports: [
         CommonModule,

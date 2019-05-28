@@ -46,9 +46,9 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
         }
         
         if (this._permissionChecker.isGranted('Pages.Users')) {
-            return '/app/admin/users';
+            return '/app/users';
         }
 
-        return '/app/home';
+        return '/app/questions';
     }
 }

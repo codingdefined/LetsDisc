@@ -55,12 +55,16 @@
     <Compile Remove="dist\**" />
     <Compile Remove="external_libs\**" />
     <Compile Remove="node_modules\**" />
+    <Compile Remove="src\app\tenants\**" />
+    <Content Remove="src\app\tenants\**" />
     <EmbeddedResource Remove="dist\**" />
     <EmbeddedResource Remove="external_libs\**" />
     <EmbeddedResource Remove="node_modules\**" />
+    <EmbeddedResource Remove="src\app\tenants\**" />
     <None Remove="dist\**" />
     <None Remove="external_libs\**" />
     <None Remove="node_modules\**" />
+    <None Remove="src\app\tenants\**" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\app\questions\" />

@@ -3,7 +3,6 @@ import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing
 import { RoleServiceProxy, RoleDto, PagedResultDtoOfRoleDto } from 'shared/service-proxies/service-proxies';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { CreateRoleComponent } from 'app/roles/create-role/create-role.component';
-import { EditRoleComponent } from 'app/roles/edit-role/edit-role.component';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -13,7 +12,6 @@ import { finalize } from 'rxjs/operators';
 export class RolesComponent extends PagedListingComponentBase<RoleDto> {
 
 	@ViewChild('createRoleModal') createRoleModal: CreateRoleComponent;
-	@ViewChild('editRoleModal') editRoleModal: EditRoleComponent;
 	
 	roles: RoleDto[] = [];
 
@@ -54,9 +52,5 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
 	// Show Modals
 	createRole(): void {
 		this.createRoleModal.show();
-	}
-
-	editRole(role:RoleDto): void {
-		this.editRoleModal.show(role.id);
 	}
 }
