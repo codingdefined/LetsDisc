@@ -1,22 +1,22 @@
 ﻿using System.Collections.Generic;
-using LetsDisc.Posts;
+using LetsDisc.PostDetails;
 using System.Linq;
 
 namespace LetsDisc.EntityFrameworkCore.Seed.Host
 {
     class DefaultPostTypesCreator
     {
-        public static List<PostTypes> InitialPostTypes => GetInitialPostType();
+        public static List<PostType> InitialPostTypes => GetInitialPostType();
 
         private readonly LetsDiscDbContext _context;
 
-        private static List<PostTypes> GetInitialPostType()
+        private static List<PostType> GetInitialPostType()
         {
-            return new List<PostTypes>
+            return new List<PostType>
             {
-                new PostTypes("Question"),
-                new PostTypes("Answer"),
-                new PostTypes("Tag Wiki")
+                new PostType(1, "Question"),
+                new PostType(2, "Answer"),
+                new PostType(3, "Tag Wiki")
             };
         }
 
@@ -38,7 +38,7 @@ namespace LetsDisc.EntityFrameworkCore.Seed.Host
             }
         }
 
-        private void AddPostTypeIfNotExists(PostTypes postType)
+        private void AddPostTypeIfNotExists(PostType postType)
         {
             if(_context.PostTypes.Any(p => p.Name == postType.Name))
             {

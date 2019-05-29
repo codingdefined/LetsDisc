@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LetsDisc.Migrations
 {
     [DbContext(typeof(LetsDiscDbContext))]
-    [Migration("20190528103330_letsdisc-v1")]
+    [Migration("20190529075719_letsdisc-v1")]
     partial class letsdiscv1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1060,14 +1060,129 @@ namespace LetsDisc.Migrations
                     b.ToTable("AbpTenants");
                 });
 
-            modelBuilder.Entity("LetsDisc.Posts.PostTypes", b =>
+            modelBuilder.Entity("LetsDisc.PostDetails.Comment", b =>
                 {
-                    b.Property<string>("Name")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasKey("Name");
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<int>("PostId");
+
+                    b.Property<int>("Score");
+
+                    b.Property<string>("Text");
+
+                    b.Property<string>("UserDisplayName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("LetsDisc.PostDetails.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AcceptedAnswerId");
+
+                    b.Property<int>("AnswerCount");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasMaxLength(65536);
+
+                    b.Property<int>("CommentCount");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<int>("FavoriteCount");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime>("LastActivityDate");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("ParentId");
+
+                    b.Property<int>("PostTypeId");
+
+                    b.Property<int>("Score");
+
+                    b.Property<string>("Tags")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.Property<int>("ViewCount");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
+
+                    b.HasIndex("DeleterUserId");
+
+                    b.HasIndex("LastModifierUserId");
+
+                    b.HasIndex("PostTypeId");
+
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("LetsDisc.PostDetails.PostType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
 
                     b.ToTable("PostTypes");
+                });
+
+            modelBuilder.Entity("LetsDisc.PostDetails.RelatedPost", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<int>("LinkTypeId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("PostId");
+
+                    b.Property<int?>("SimilarPostId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("SimilarPostId");
+
+                    b.ToTable("RelatedPosts");
                 });
 
             modelBuilder.Entity("LetsDisc.Questions.Answer", b =>
@@ -1165,7 +1280,78 @@ namespace LetsDisc.Migrations
                     b.ToTable("UserVoteForQuestion");
                 });
 
+            modelBuilder.Entity("LetsDisc.Tags.PostTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PostId");
+
+                    b.Property<int>("TagId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("PostTags");
+                });
+
             modelBuilder.Entity("LetsDisc.Tags.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Count");
+
+                    b.Property<string>("Info")
+                        .HasMaxLength(65536);
+
+                    b.Property<int?>("QuestionId");
+
+                    b.Property<string>("TagName")
+                        .IsRequired()
+                        .HasMaxLength(15);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("LetsDisc.Tags.TagSynonym", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ApprovalDate");
+
+                    b.Property<long>("ApprovedByUserId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<string>("SourceTagName")
+                        .IsRequired()
+                        .HasMaxLength(15);
+
+                    b.Property<string>("TargetTagName")
+                        .HasMaxLength(15);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApprovedByUserId");
+
+                    b.ToTable("TagSynonyms");
+                });
+
+            modelBuilder.Entity("LetsDisc.Votes.Vote", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1175,22 +1361,30 @@ namespace LetsDisc.Migrations
 
                     b.Property<long?>("CreatorUserId");
 
-                    b.Property<string>("Info")
-                        .HasMaxLength(65536);
+                    b.Property<int>("PostId");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(15);
-
-                    b.Property<int?>("QuestionId");
+                    b.Property<int>("VoteTypeId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatorUserId");
+                    b.HasIndex("PostId");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("VoteTypeId");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Votes");
+                });
+
+            modelBuilder.Entity("LetsDisc.Votes.VoteType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VoteTypes");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1363,6 +1557,46 @@ namespace LetsDisc.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
+            modelBuilder.Entity("LetsDisc.PostDetails.Comment", b =>
+                {
+                    b.HasOne("LetsDisc.PostDetails.Post", "Posts")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LetsDisc.PostDetails.Post", b =>
+                {
+                    b.HasOne("LetsDisc.Authorization.Users.User", "CreatorUser")
+                        .WithMany()
+                        .HasForeignKey("CreatorUserId");
+
+                    b.HasOne("LetsDisc.Authorization.Users.User", "DeleterUser")
+                        .WithMany()
+                        .HasForeignKey("DeleterUserId");
+
+                    b.HasOne("LetsDisc.Authorization.Users.User", "LastModifierUser")
+                        .WithMany()
+                        .HasForeignKey("LastModifierUserId");
+
+                    b.HasOne("LetsDisc.PostDetails.PostType", "PostTypes")
+                        .WithMany()
+                        .HasForeignKey("PostTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LetsDisc.PostDetails.RelatedPost", b =>
+                {
+                    b.HasOne("LetsDisc.PostDetails.Post", "Posts")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("LetsDisc.PostDetails.Post", "SimilarPosts")
+                        .WithMany()
+                        .HasForeignKey("SimilarPostId");
+                });
+
             modelBuilder.Entity("LetsDisc.Questions.Answer", b =>
                 {
                     b.HasOne("LetsDisc.Authorization.Users.User", "CreatorUser")
@@ -1403,15 +1637,45 @@ namespace LetsDisc.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("LetsDisc.Tags.PostTag", b =>
+                {
+                    b.HasOne("LetsDisc.PostDetails.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("LetsDisc.Tags.Tag", "Tag")
+                        .WithMany()
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("LetsDisc.Tags.Tag", b =>
                 {
-                    b.HasOne("LetsDisc.Authorization.Users.User", "CreatorUser")
-                        .WithMany()
-                        .HasForeignKey("CreatorUserId");
-
                     b.HasOne("LetsDisc.Questions.Question")
                         .WithMany("Tags")
                         .HasForeignKey("QuestionId");
+                });
+
+            modelBuilder.Entity("LetsDisc.Tags.TagSynonym", b =>
+                {
+                    b.HasOne("LetsDisc.Authorization.Users.User", "ApprovedByUser")
+                        .WithMany()
+                        .HasForeignKey("ApprovedByUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LetsDisc.Votes.Vote", b =>
+                {
+                    b.HasOne("LetsDisc.PostDetails.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("LetsDisc.Votes.VoteType", "VoteType")
+                        .WithMany()
+                        .HasForeignKey("VoteTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

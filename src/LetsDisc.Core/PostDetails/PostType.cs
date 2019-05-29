@@ -1,14 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LetsDisc.Posts
+namespace LetsDisc.PostDetails
 {
-    public class PostTypes
+    public class PostType
     {
         [Key]
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
-        public PostTypes(string name)
+        public PostType(int id, string name)
         {
+            Id = id;
             Name = name;
         }
     }
