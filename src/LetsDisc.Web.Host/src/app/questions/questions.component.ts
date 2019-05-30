@@ -3,7 +3,6 @@ import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing
 import { QuestionServiceProxy, QuestionDto, PagedResultDtoOfQuestionDto } from '@shared/service-proxies/service-proxies';
 import { finalize } from 'rxjs/operators';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { CreateQuestionComponent } from 'app/questions/create-question/create-question.component';
 import { EditQuestionComponent } from 'app/questions/edit-question/edit-question.component';
 
 @Component({
@@ -14,7 +13,6 @@ import { EditQuestionComponent } from 'app/questions/edit-question/edit-question
 })
 export class QuestionsComponent extends PagedListingComponentBase<QuestionDto> {
 
-    @ViewChild('createQuestionModal') createQuestionModal: CreateQuestionComponent;
     @ViewChild('editQuestionModal') editQuestionModal: EditQuestionComponent;
 
     questions: QuestionDto[] = [];
@@ -47,11 +45,6 @@ export class QuestionsComponent extends PagedListingComponentBase<QuestionDto> {
                 }
             }
         );
-    }
-
-    // Show Modals
-    createQuestion(): void {
-        this.createQuestionModal.show();
     }
 
     editQuestion(question: QuestionDto): void {

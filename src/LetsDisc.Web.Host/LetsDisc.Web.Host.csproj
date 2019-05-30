@@ -67,6 +67,7 @@
     <None Remove="src\app\tenants\**" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\app\posts\NewFolder\" />
     <Folder Include="src\app\questions\" />
   </ItemGroup>
   <Target Name="PrepublishScript" BeforeTargets="ComputeFilesToPublish">

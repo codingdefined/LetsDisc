@@ -9,9 +9,8 @@ namespace LetsDisc.Votes
 
         public string Name { get; set; }
 
-        public VoteType(int id, string name)
+        public VoteType(string name)
         {
-            Id = id;
             Name = name;
         }
     }

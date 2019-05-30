@@ -14,9 +14,9 @@ namespace LetsDisc.EntityFrameworkCore.Seed.Host
         {
             return new List<PostType>
             {
-                new PostType(1, "Question"),
-                new PostType(2, "Answer"),
-                new PostType(3, "Tag Wiki")
+                new PostType("Question"),
+                new PostType("Answer"),
+                new PostType("Tag Wiki")
             };
         }
 

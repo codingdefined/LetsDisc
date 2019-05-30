@@ -4,8 +4,9 @@ import { AppComponent } from './app.component';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
-import { QuestionsComponent } from './questions/questions.component';
 import { HomeComponent } from '@app/home/home.component';
+import { PostsComponent } from '@app/posts/posts.component';
+import { CreateQuestionComponent } from '@app/posts/create-question/create-question.component';
 
 @NgModule({
     imports: [
@@ -14,10 +15,12 @@ import { HomeComponent } from '@app/home/home.component';
                 path: '',
                 component: AppComponent,
                 children: [
-                    { path: 'questions', component: QuestionsComponent},
-                    { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
+                    { path: 'questions', component: PostsComponent },
+                    { path: 'questions/ask', component: CreateQuestionComponent },
+                    { path: 'users', component: UsersComponent },
                     { path: 'about', component: AboutComponent },
-                    { path: 'home', component: HomeComponent }
+                    { path: 'home', component: HomeComponent },
+                    { path: '', redirectTo: '/questions', pathMatch: 'full' },
                 ]
             }
         ])

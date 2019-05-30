@@ -32,8 +32,9 @@ import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
 import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { QuestionsComponent } from '@app/questions/questions.component';
-import { CreateQuestionComponent } from '@app/questions/create-question/create-question.component';
+import { CreateQuestionComponent } from '@app/posts/create-question/create-question.component';
 import { EditQuestionComponent } from '@app/questions/edit-question/edit-question.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
     declarations: [
@@ -56,7 +57,8 @@ import { EditQuestionComponent } from '@app/questions/edit-question/edit-questio
         SideBarUserAreaComponent,
         SideBarNavComponent,
         SideBarFooterComponent,
-        RightSideBarComponent
+        RightSideBarComponent,
+        PostsComponent
     ],
     imports: [
         CommonModule,

@@ -14,12 +14,12 @@ namespace LetsDisc.EntityFrameworkCore.Seed.Host
         {
             return new List<VoteType>
             {
-                new VoteType(1, "AcceptedByOriginator"),
-                new VoteType(2, "Upvote"),
-                new VoteType(3, "Downvote"),
-                new VoteType(4, "Favorite"),
-                new VoteType(5, "Spam"),
-                new VoteType(6, "ModeratorReview")
+                new VoteType("AcceptedByOriginator"),
+                new VoteType("Upvote"),
+                new VoteType("Downvote"),
+                new VoteType("Favorite"),
+                new VoteType("Spam"),
+                new VoteType("ModeratorReview")
             };
         }
 

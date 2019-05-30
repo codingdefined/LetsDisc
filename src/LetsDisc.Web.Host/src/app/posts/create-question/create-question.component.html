@@ -1,0 +1,33 @@
+<div class="container create-question-container">
+    <div class="header">
+        <h2>
+            {{l('AskQuestion')}}
+        </h2>
+    </div>
+    <div class="create-question">
+        <form #myform="ngForm" class="form question-form" method="post" (ngSubmit)="save()">
+
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <label for="question-title">{{l('Title')}}</label>
+                    <input id="question-title" materialInput class="form-control" type="text" [(ngModel)]="question.Title" name="Title" required minlength="15" maxlength="200" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-line">
+                    <label for="question-body">{{l('Body')}}</label>
+                    <textarea id="question-body" materialInput class="form-control" type="text" [(ngModel)]="question.Body" name="Body" ></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-line">
+                    <label for="question-tags">{{l('Tags')}}</label>
+                    <input id="question-tags" materialInput class="form-control" type="text" [(ngModel)]="question.Tags" name="Tags" />
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Post Your Question</button>
+        </form>
+    </div>
+</div>

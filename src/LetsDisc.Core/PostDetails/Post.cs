@@ -9,7 +9,7 @@ namespace LetsDisc.PostDetails
     // Posts Class which will be created as a Table using EntityFramework
     // We are using FullAuditedEntity because it will store all the changes happened on the entity like CreaterUser, DeletedUser, EditedUser with name and timestamp
     // IHasCreationTime is used have creation time on entity
-    public class Post : FullAuditedEntity<int, User>, IHasCreationTime
+    public class Post : FullAuditedEntity<int, User>
     {
         // Maximum Length of Title and Body, subject to change based on the feedback
         public const int MaxTitleLength = 255;
@@ -42,5 +42,12 @@ namespace LetsDisc.PostDetails
         public int AnswerCount { get; set; }
         public int CommentCount { get; set; }
         public int FavoriteCount { get; set; }
+
+        public Post()
+        {
+            CreationTime = DateTime.Now;
+            LastActivityDate = DateTime.Now;
+            Score = 0;
+        }
     }
 }

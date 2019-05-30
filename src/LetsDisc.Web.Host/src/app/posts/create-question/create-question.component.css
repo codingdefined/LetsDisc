@@ -1,0 +1,10 @@
+.create-question-container {
+    float:left;
+    width:70%;
+}
+
+.create-question .form-control {
+    border-radius: 3px;
+    border: 1px solid #bbc0c4;
+    padding:10px;
+}

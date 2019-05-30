@@ -9,9 +9,8 @@ namespace LetsDisc.PostDetails
 
         public string Name { get; set; }
 
-        public PostType(int id, string name)
+        public PostType(string name)
         {
-            Id = id;
             Name = name;
         }
     }
