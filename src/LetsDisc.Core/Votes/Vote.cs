@@ -18,5 +18,14 @@ namespace LetsDisc.Votes
 
         public virtual long? CreatorUserId { get; set; }
         public virtual DateTime CreationTime { get; set; }
+
+        public Vote() { }
+
+        public Vote(int postId, int voteTypeId)
+        {
+            PostId = postId;
+            //CreatorUserId = createdUserId;
+            VoteTypeId = voteTypeId;
+        }
     }
 }

@@ -1,8 +1,8 @@
-<div class="container create-question-container">
+<div class="container col-lg-9 col-md-9 col-sm-9 col-xs-9r">
     <div class="header">
-        <h2>
+        <h3>
             {{l('AskQuestion')}}
-        </h2>
+        </h3>
     </div>
     <div class="create-question">
         <form #myform="ngForm" class="form question-form" method="post" (ngSubmit)="save()">
@@ -10,24 +10,30 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <label for="question-title">{{l('Title')}}</label>
-                    <input id="question-title" materialInput class="form-control" type="text" [(ngModel)]="question.Title" name="Title" required minlength="15" maxlength="200" />
+                    <input id="question-title" class="form-control" type="text" [(ngModel)]="question.title" name="Title" required minlength="15" maxlength="200" placeholder="What's you question?, be specific" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-line">
                     <label for="question-body">{{l('Body')}}</label>
-                    <textarea id="question-body" materialInput class="form-control" type="text" [(ngModel)]="question.Body" name="Body" ></textarea>
+                    <ckeditor id="question-body" [(ngModel)]="question.body" [editor]="Editor" [config]="config" name="Body" data="<p></p>" class="body"></ckeditor>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="form-line">
-                    <label for="question-tags">{{l('Tags')}}</label>
-                    <input id="question-tags" materialInput class="form-control" type="text" [(ngModel)]="question.Tags" name="Tags" />
-                </div>
+                <label for="question-tags">{{l('Tags')}}</label>
+                <tag-input [(ngModel)]="items" 
+                           id="question-tags" 
+                           [placeholder]="'e.g. (react, angular, java)'" 
+                           [secondaryPlaceholder]="'e.g. (react, angular, java)'" 
+                           name="Tags" 
+                           [maxItems]="5"
+                           [animationDuration]="{enter: '0ms', leave: '0ms'}"
+                           class="tag-input"
+                           [theme]="'foundation-theme'"></tag-input>
             </div>
 
-            <button type="submit" class="btn btn-primary">Post Your Question</button>
+                <button type="submit" class="btn btn-primary">Post Your Question</button>
         </form>
     </div>
 </div>

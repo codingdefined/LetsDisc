@@ -1,0 +1,37 @@
+<div class="container col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <div class="card">
+        <div class="header">
+            <h3>
+                {{question.title}}
+            </h3>
+        </div>
+        <div class="body table-responsive">
+            <div class="question">
+                <div class="vote-layout">
+                    <a class="vote-up" (click)="voteUp()">
+                        <i [class.voted]="upvote" class="material-icons md-48">arrow_drop_up</i>
+                    </a>
+                    <div class="upvote-count"><strong>{{question.score}}</strong></div>
+                    <a class="vote-down" (click)="voteDown()">
+                        <i [class.voted]="downvote" class="material-icons md-48">arrow_drop_down</i>
+                    </a>
+                </div>
+                <div class="question-body" [innerHTML]="question.body"></div>
+                <div class="post-tags">
+                    <a href="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.tags|commaSeparted">
+                        {{tag}}
+                    </a>
+                </div>
+                <div class="user-info">
+                    <div class="total-views">viewed {{question.viewCount}} times</div>
+                    <div class="posted-time">asked {{question.creationTime | timeAgo}} by {{question.creatorUserName}}</div>
+                </div>
+            </div>
+            <div class="answers">
+                <h4>Your Answer</h4>
+
+            </div>
+        </div>
+    </div>
+    </div>
+

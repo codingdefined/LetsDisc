@@ -48,6 +48,8 @@ namespace LetsDisc.PostDetails
             CreationTime = DateTime.Now;
             LastActivityDate = DateTime.Now;
             Score = 0;
+            AnswerCount = 0;
+            FavoriteCount = 0;
         }
     }
 }

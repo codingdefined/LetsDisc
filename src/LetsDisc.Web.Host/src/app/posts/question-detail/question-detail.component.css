@@ -1,0 +1,59 @@
+.create-question-container {
+    float: left;
+    width: 70%;
+}
+
+.create-question .form-control {
+    border-radius: 3px;
+    border: 1px solid #bbc0c4;
+    padding: 10px;
+}
+
+.create-question .tag-input {
+    border-radius: 3px;
+    border: 1px solid #bbc0c4;
+}
+
+:host ::ng-deep .ck-editor__editable {
+    min-height: 250px;
+}
+
+.tag-input {
+    background: white;
+}
+
+.question-body {
+    margin-top: 10px;
+    margin-left: 8%;
+    min-height: 120px;
+}
+
+.vote-layout {
+    float: left;
+}
+
+.card .body{
+    padding:10px;
+}
+
+.upvote-count {
+    text-align: center;
+}
+
+.posted-time {
+    float: right;
+    display: inline;
+}
+
+.total-views {
+    display: inline;
+}
+
+.voted {
+    color: #db3700
+}
+
+.question {
+    padding-bottom: 5%;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+}

@@ -23,5 +23,6 @@ namespace LetsDisc.Posts.Dto
         public int AnswerCount { get; set; }
         public int CommentCount { get; set; }
         public int FavoriteCount { get; set; }
+        public string CreatorUserName { get; set; }
     }
 }

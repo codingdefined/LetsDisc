@@ -67,8 +67,18 @@
     <None Remove="src\app\tenants\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="src\app\comma-separted.pipe.spec.ts" />
+    <None Remove="src\app\comma-separted.pipe.ts" />
+    <None Remove="src\app\comma-seperated.pipe.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\NewFolder\" />
+    <Folder Include="src\app\pipes\" />
     <Folder Include="src\app\posts\NewFolder\" />
     <Folder Include="src\app\questions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\comma-seperated.pipe.ts" />
   </ItemGroup>
   <Target Name="PrepublishScript" BeforeTargets="ComputeFilesToPublish">
     <Exec Command="ng build --prod" />

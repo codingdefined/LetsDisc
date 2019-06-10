@@ -378,6 +378,61 @@ export class PostServiceProxy {
     }
 
     /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getPost(id: number | null | undefined): Observable<PostWithVoteInfo> {
+        let url_ = this.baseUrl + "/api/services/app/Post/GetPost?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPost(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPost(<any>response_);
+                } catch (e) {
+                    return <Observable<PostWithVoteInfo>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PostWithVoteInfo>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPost(response: HttpResponseBase): Observable<PostWithVoteInfo> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PostWithVoteInfo.fromJS(resultData200) : new PostWithVoteInfo();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PostWithVoteInfo>(<any>null);
+    }
+
+    /**
      * @param skipCount (optional) 
      * @param maxResultCount (optional) 
      * @return Success
@@ -433,6 +488,116 @@ export class PostServiceProxy {
             }));
         }
         return _observableOf<PagedResultDtoOfPostDto>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    postVoteUp(id: number | null | undefined): Observable<VoteChangeOutput> {
+        let url_ = this.baseUrl + "/api/services/app/Post/PostVoteUp?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processPostVoteUp(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processPostVoteUp(<any>response_);
+                } catch (e) {
+                    return <Observable<VoteChangeOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VoteChangeOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processPostVoteUp(response: HttpResponseBase): Observable<VoteChangeOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VoteChangeOutput.fromJS(resultData200) : new VoteChangeOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VoteChangeOutput>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    postVoteDown(id: number | null | undefined): Observable<VoteChangeOutput> {
+        let url_ = this.baseUrl + "/api/services/app/Post/PostVoteDown?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processPostVoteDown(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processPostVoteDown(<any>response_);
+                } catch (e) {
+                    return <Observable<VoteChangeOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VoteChangeOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processPostVoteDown(response: HttpResponseBase): Observable<VoteChangeOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VoteChangeOutput.fromJS(resultData200) : new VoteChangeOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VoteChangeOutput>(<any>null);
     }
 
     /**
@@ -844,262 +1009,6 @@ export class QuestionServiceProxy {
             }));
         }
         return _observableOf<void>(<any>null);
-    }
-
-    /**
-     * @param input (optional) 
-     * @return Success
-     */
-    questionVoteUp(input: EntityDto | null | undefined): Observable<VoteChangeOutput> {
-        let url_ = this.baseUrl + "/api/services/app/Question/QuestionVoteUp";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processQuestionVoteUp(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processQuestionVoteUp(<any>response_);
-                } catch (e) {
-                    return <Observable<VoteChangeOutput>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<VoteChangeOutput>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processQuestionVoteUp(response: HttpResponseBase): Observable<VoteChangeOutput> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? VoteChangeOutput.fromJS(resultData200) : new VoteChangeOutput();
-            return _observableOf(result200);
-            }));
-        } else if (status === 401) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("A server error occurred.", status, _responseText, _headers);
-            }));
-        } else if (status === 403) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("A server error occurred.", status, _responseText, _headers);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<VoteChangeOutput>(<any>null);
-    }
-
-    /**
-     * @param input (optional) 
-     * @return Success
-     */
-    questionVoteDown(input: EntityDto | null | undefined): Observable<VoteChangeOutput> {
-        let url_ = this.baseUrl + "/api/services/app/Question/QuestionVoteDown";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processQuestionVoteDown(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processQuestionVoteDown(<any>response_);
-                } catch (e) {
-                    return <Observable<VoteChangeOutput>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<VoteChangeOutput>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processQuestionVoteDown(response: HttpResponseBase): Observable<VoteChangeOutput> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? VoteChangeOutput.fromJS(resultData200) : new VoteChangeOutput();
-            return _observableOf(result200);
-            }));
-        } else if (status === 401) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("A server error occurred.", status, _responseText, _headers);
-            }));
-        } else if (status === 403) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("A server error occurred.", status, _responseText, _headers);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<VoteChangeOutput>(<any>null);
-    }
-
-    /**
-     * @param input (optional) 
-     * @return Success
-     */
-    answerVoteUp(input: EntityDto | null | undefined): Observable<VoteChangeOutput> {
-        let url_ = this.baseUrl + "/api/services/app/Question/AnswerVoteUp";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processAnswerVoteUp(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processAnswerVoteUp(<any>response_);
-                } catch (e) {
-                    return <Observable<VoteChangeOutput>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<VoteChangeOutput>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processAnswerVoteUp(response: HttpResponseBase): Observable<VoteChangeOutput> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? VoteChangeOutput.fromJS(resultData200) : new VoteChangeOutput();
-            return _observableOf(result200);
-            }));
-        } else if (status === 401) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("A server error occurred.", status, _responseText, _headers);
-            }));
-        } else if (status === 403) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("A server error occurred.", status, _responseText, _headers);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<VoteChangeOutput>(<any>null);
-    }
-
-    /**
-     * @param input (optional) 
-     * @return Success
-     */
-    answerVoteDown(input: EntityDto | null | undefined): Observable<VoteChangeOutput> {
-        let url_ = this.baseUrl + "/api/services/app/Question/AnswerVoteDown";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processAnswerVoteDown(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processAnswerVoteDown(<any>response_);
-                } catch (e) {
-                    return <Observable<VoteChangeOutput>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<VoteChangeOutput>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processAnswerVoteDown(response: HttpResponseBase): Observable<VoteChangeOutput> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? VoteChangeOutput.fromJS(resultData200) : new VoteChangeOutput();
-            return _observableOf(result200);
-            }));
-        } else if (status === 401) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("A server error occurred.", status, _responseText, _headers);
-            }));
-        } else if (status === 403) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("A server error occurred.", status, _responseText, _headers);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<VoteChangeOutput>(<any>null);
     }
 
     /**
@@ -2794,6 +2703,7 @@ export class PostDto implements IPostDto {
     answerCount: number | undefined;
     commentCount: number | undefined;
     favoriteCount: number | undefined;
+    creatorUserName: string | undefined;
     isDeleted: boolean | undefined;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
@@ -2826,6 +2736,7 @@ export class PostDto implements IPostDto {
             this.answerCount = data["answerCount"];
             this.commentCount = data["commentCount"];
             this.favoriteCount = data["favoriteCount"];
+            this.creatorUserName = data["creatorUserName"];
             this.isDeleted = data["isDeleted"];
             this.deleterUserId = data["deleterUserId"];
             this.deletionTime = data["deletionTime"] ? moment(data["deletionTime"].toString()) : <any>undefined;
@@ -2858,6 +2769,7 @@ export class PostDto implements IPostDto {
         data["answerCount"] = this.answerCount;
         data["commentCount"] = this.commentCount;
         data["favoriteCount"] = this.favoriteCount;
+        data["creatorUserName"] = this.creatorUserName;
         data["isDeleted"] = this.isDeleted;
         data["deleterUserId"] = this.deleterUserId;
         data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
@@ -2890,6 +2802,7 @@ export interface IPostDto {
     answerCount: number | undefined;
     commentCount: number | undefined;
     favoriteCount: number | undefined;
+    creatorUserName: string | undefined;
     isDeleted: boolean | undefined;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
@@ -2898,6 +2811,57 @@ export interface IPostDto {
     creationTime: moment.Moment | undefined;
     creatorUserId: number | undefined;
     id: number | undefined;
+}
+
+export class PostWithVoteInfo implements IPostWithVoteInfo {
+    post: PostDto | undefined;
+    upvote: boolean | undefined;
+    downvote: boolean | undefined;
+
+    constructor(data?: IPostWithVoteInfo) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.post = data["post"] ? PostDto.fromJS(data["post"]) : <any>undefined;
+            this.upvote = data["upvote"];
+            this.downvote = data["downvote"];
+        }
+    }
+
+    static fromJS(data: any): PostWithVoteInfo {
+        data = typeof data === 'object' ? data : {};
+        let result = new PostWithVoteInfo();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["post"] = this.post ? this.post.toJSON() : <any>undefined;
+        data["upvote"] = this.upvote;
+        data["downvote"] = this.downvote;
+        return data; 
+    }
+
+    clone(): PostWithVoteInfo {
+        const json = this.toJSON();
+        let result = new PostWithVoteInfo();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IPostWithVoteInfo {
+    post: PostDto | undefined;
+    upvote: boolean | undefined;
+    downvote: boolean | undefined;
 }
 
 export class PagedResultDtoOfPostDto implements IPagedResultDtoOfPostDto {
@@ -2953,6 +2917,57 @@ export class PagedResultDtoOfPostDto implements IPagedResultDtoOfPostDto {
 export interface IPagedResultDtoOfPostDto {
     totalCount: number | undefined;
     items: PostDto[] | undefined;
+}
+
+export class VoteChangeOutput implements IVoteChangeOutput {
+    voteCount: number | undefined;
+    upVote: boolean | undefined;
+    downVote: boolean | undefined;
+
+    constructor(data?: IVoteChangeOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.voteCount = data["voteCount"];
+            this.upVote = data["upVote"];
+            this.downVote = data["downVote"];
+        }
+    }
+
+    static fromJS(data: any): VoteChangeOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new VoteChangeOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["voteCount"] = this.voteCount;
+        data["upVote"] = this.upVote;
+        data["downVote"] = this.downVote;
+        return data; 
+    }
+
+    clone(): VoteChangeOutput {
+        const json = this.toJSON();
+        let result = new VoteChangeOutput();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IVoteChangeOutput {
+    voteCount: number | undefined;
+    upVote: boolean | undefined;
+    downVote: boolean | undefined;
 }
 
 export class PagedResultDtoOfQuestionDto implements IPagedResultDtoOfQuestionDto {
@@ -4342,100 +4357,6 @@ export interface ISetting {
     id: number | undefined;
 }
 
-export class EntityDto implements IEntityDto {
-    id: number | undefined;
-
-    constructor(data?: IEntityDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): EntityDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new EntityDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        return data; 
-    }
-
-    clone(): EntityDto {
-        const json = this.toJSON();
-        let result = new EntityDto();
-        result.init(json);
-        return result;
-    }
-}
-
-export interface IEntityDto {
-    id: number | undefined;
-}
-
-export class VoteChangeOutput implements IVoteChangeOutput {
-    voteCount: number | undefined;
-    upVote: boolean | undefined;
-    downVote: boolean | undefined;
-
-    constructor(data?: IVoteChangeOutput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.voteCount = data["voteCount"];
-            this.upVote = data["upVote"];
-            this.downVote = data["downVote"];
-        }
-    }
-
-    static fromJS(data: any): VoteChangeOutput {
-        data = typeof data === 'object' ? data : {};
-        let result = new VoteChangeOutput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["voteCount"] = this.voteCount;
-        data["upVote"] = this.upVote;
-        data["downVote"] = this.downVote;
-        return data; 
-    }
-
-    clone(): VoteChangeOutput {
-        const json = this.toJSON();
-        let result = new VoteChangeOutput();
-        result.init(json);
-        return result;
-    }
-}
-
-export interface IVoteChangeOutput {
-    voteCount: number | undefined;
-    upVote: boolean | undefined;
-    downVote: boolean | undefined;
-}
-
 export class SubmitAnswerInput implements ISubmitAnswerInput {
     questionId: number | undefined;
     info: string;
@@ -4524,6 +4445,49 @@ export class SubmitAnswerOutput implements ISubmitAnswerOutput {
 
 export interface ISubmitAnswerOutput {
     answer: AnswerDto | undefined;
+}
+
+export class EntityDto implements IEntityDto {
+    id: number | undefined;
+
+    constructor(data?: IEntityDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): EntityDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new EntityDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        return data; 
+    }
+
+    clone(): EntityDto {
+        const json = this.toJSON();
+        let result = new EntityDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IEntityDto {
+    id: number | undefined;
 }
 
 export class CreateRoleDto implements ICreateRoleDto {

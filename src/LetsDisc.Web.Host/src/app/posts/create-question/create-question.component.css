@@ -3,8 +3,21 @@
     width:70%;
 }
 
-.create-question .form-control {
+.create-question .form-control{
     border-radius: 3px;
     border: 1px solid #bbc0c4;
-    padding:10px;
+    padding: 10px;
+}
+
+.create-question .tag-input {
+    border-radius: 3px;
+    border: 1px solid #bbc0c4;
+}
+
+:host ::ng-deep .ck-editor__editable {
+    min-height: 250px;
+}
+
+.tag-input {
+    background:white;
 }

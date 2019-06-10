@@ -1,5 +1,5 @@
 <div class="row clearfix" [@routerTransition]>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <div class="card main-content">
             <div class="header">
                 <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right negative-margin-top-10" routerLink="/questions/ask">
@@ -9,22 +9,34 @@
                     {{l('AllQuestions')}}
                 </h2>
             </div>
-            <div class="body table-responsive">
-                <div id="questions" class="" *ngFor="let question of posts">
-                    <div class="question-summary" id="{{question.Id}}">
-                        <div class="status-container">
-                            <div class="stats">
-                                <div class="votes">{{question.Score}} votes</div>
-                                <div class="answers">{{question.AnswerCount}} answers</div>
+            <div class="table-responsive">
+                <div class="questions">
+                    <div class="question" *ngFor="let question of questions">
+                        <div class="question-summary" id="{{question.id}}">
+                            <div class="status-container">
+                                <div class="stats">
+                                    <div class="votes">
+                                        <strong>{{question.score}}</strong><div class="vote-display">votes</div>
+                                    </div>
+
+                                    <div class="answers">
+                                        <strong>{{question.answerCount}}</strong><div class="vote-display">answers</div>
+                                    </div>
+                                </div>
+                                <div class="views">{{question.viewCount}} views</div>
                             </div>
-                            <div class="views">{{question.ViewCount}} views</div>
-                        </div>
-                        <div class="summary">
-                            {{question.Title}}
-                            <div class="question-body">{{question.Body}}</div>
-                            <div class="tags">{{question.Tags}}</div>
-                            <div class="user">
-                                {{question.CreatedUserId}}
+                            <div class="summary">
+                                <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.replace(' ', '-')}}">{{question.title}}</a>
+                                <div class="question-body" [innerHTML]="question.body"></div>
+                                <div class="post-tags">
+                                    <a href="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.tags|commaSeparted">
+                                        {{tag}}
+                                    </a>
+                                    <div class="user-info">
+                                        <div class="posted-time">asked {{question.creationTime | timeAgo}} by {{question.creatorUserName}}</div>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

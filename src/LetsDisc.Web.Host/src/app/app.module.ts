@@ -35,6 +35,11 @@ import { QuestionsComponent } from '@app/questions/questions.component';
 import { CreateQuestionComponent } from '@app/posts/create-question/create-question.component';
 import { EditQuestionComponent } from '@app/questions/edit-question/edit-question.component';
 import { PostsComponent } from './posts/posts.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { TagInputModule } from 'ngx-chips';
+import { QuestionDetailComponent } from './posts/question-detail/question-detail.component';
+import { CommaSepartedPipe } from './pipes/comma-separted.pipe';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
 
 @NgModule({
     declarations: [
@@ -58,7 +63,10 @@ import { PostsComponent } from './posts/posts.component';
         SideBarNavComponent,
         SideBarFooterComponent,
         RightSideBarComponent,
-        PostsComponent
+        PostsComponent,
+        QuestionDetailComponent,
+        CommaSepartedPipe,
+        TimeAgoPipe
     ],
     imports: [
         CommonModule,
@@ -70,7 +78,9 @@ import { PostsComponent } from './posts/posts.component';
         AppRoutingModule,
         ServiceProxyModule,
         SharedModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        CKEditorModule,
+        TagInputModule
     ],
     providers: [
 
