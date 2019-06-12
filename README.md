@@ -20,7 +20,7 @@ Open LetsDisc Folder and run LetsDisc.sln.
 Run the Solution to get the API information : http://localhost:21021/swagger/index.html
 In Node Terminal (LetsDisc/src/LetsDisc.Web.Host), run npm install and then npm start to run the Angular App
 
-When adding a new class 
+When adding a new class (Make Sure the Default Project is src/LetsDisc.EntityFrameworkCore)
 
 1. First delete the database
 2. Run `Remove-Migration` from Package Manager Console

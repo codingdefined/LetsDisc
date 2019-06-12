@@ -119,28 +119,6 @@ namespace LetsDisc.Questions
         }
 
         // ToDo
-        [AbpAuthorize(PermissionNames.Pages_Answers_Create)]
-        public SubmitAnswerOutput SubmitAnswer(SubmitAnswerInput input)
-        {
-            var question = _questionRepository.Get(input.QuestionId);
-            var currentUser = _userRepository.Get(AbpSession.UserId.Value);
-
-            var answer = _answerRepository.Insert(
-                new Answer(input.Info)
-                {
-                    Question = question,
-                    CreatorUser = currentUser
-                });
-
-            _unitOfWorkManager.Current.SaveChanges();
-
-            return new SubmitAnswerOutput
-            {
-                Answer = answer.MapTo<AnswerDto>()
-            };
-        }
-
-        // ToDo
         public void AcceptAnswer(EntityDto input)
         {
             var answer = _answerRepository.Get(input.Id);

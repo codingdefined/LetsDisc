@@ -80,21 +80,40 @@ namespace LetsDisc.Posts
             return base.CreateFilteredQuery(input);
         }
 
-        public async Task<PostWithVoteInfo> GetPost(int id)
+        public async Task<PostWithAnswers> GetPost(int id)
         {
             var post = await _postRepository.GetAllIncluding(p => p.CreatorUser).FirstOrDefaultAsync(x => x.Id == id);
             var userVoted = await _voteRepository.FirstOrDefaultAsync(x => x.PostId == post.Id && x.CreatorUserId == AbpSession.UserId);
+            var answers = await _postRepository.GetAllIncluding(p => p.CreatorUser).Where(x => x.ParentId == id).ToArrayAsync();
+            List<PostWithVoteInfo> answersWithVoteInfo = new List<PostWithVoteInfo>();
+            foreach(var answer in answers)
+            {
+                var userVotedAnswer = await _voteRepository.FirstOrDefaultAsync(x => x.PostId == answer.Id && x.CreatorUserId == AbpSession.UserId);
+                var answerWithVoteInfo = new PostWithVoteInfo
+                {
+                    Post = answer.MapTo<PostDto>(),
+                    Upvote = userVotedAnswer != null && userVotedAnswer.VoteTypeId == (int)VoteTypes.Upvote ? true : false,
+                    Downvote = userVotedAnswer != null && userVotedAnswer.VoteTypeId == (int)VoteTypes.Downvote ? true : false
+                };
+                answersWithVoteInfo.Add(answerWithVoteInfo);
+            }
+
+            var postWithVoteInfo = new PostWithVoteInfo
+            {
+                Post = post.MapTo<PostDto>(),
+                Upvote = userVoted != null && userVoted.VoteTypeId == (int)VoteTypes.Upvote ? true : false,
+                Downvote = userVoted != null && userVoted.VoteTypeId == (int)VoteTypes.Downvote ? true : false
+            };
 
             if (post == null)
             {
                 throw new EntityNotFoundException(typeof(Post), id);
             }
 
-            return new PostWithVoteInfo
+            return new PostWithAnswers
             {
-                Post = post.MapTo<PostDto>(),
-                Upvote = userVoted != null && userVoted.VoteTypeId == (int)VoteTypes.Upvote ? true : false,
-                Downvote = userVoted != null && userVoted.VoteTypeId == (int)VoteTypes.Downvote ? true : false
+                Post = postWithVoteInfo,
+                Answers = answersWithVoteInfo
             };
         }
 
@@ -119,59 +138,84 @@ namespace LetsDisc.Posts
         //Voting Up the Post both Question and Answer, where there will be two things either Upvoting or Downvoting
         public async Task<VoteChangeOutput> PostVoteUp(int id)
         {
-            var question = await _postRepository.GetAsync(id);
+            var post = await _postRepository.GetAsync(id);
             var isUserVoted = _voteRepository.FirstOrDefault(userVote => userVote.CreatorUserId == AbpSession.UserId && userVote.PostId == id);
             if (isUserVoted != null)
             {
                 if(isUserVoted.VoteTypeId == (int)VoteTypes.Upvote)
                 {
-                    question.Score--;
+                    post.Score--;
                     await _voteRepository.DeleteAsync(isUserVoted.Id);
-                    return new VoteChangeOutput(question.Score, false, false);
                 }
                 else if( isUserVoted.VoteTypeId == (int)VoteTypes.Downvote)
                 {
-                    question.Score += 2;
+                    post.Score += 2;
                     isUserVoted.VoteTypeId = (int)VoteTypes.Upvote;
-                    return new VoteChangeOutput(question.Score, true, false);
+                    return ReturnVoteChangeOutput(post, true, false);
                 }
             }
             else
             {
-                question.Score++;
+                post.Score++;
                 await _voteRepository.InsertAsync(new Vote(id, (int)VoteTypes.Upvote));
-                return new VoteChangeOutput(question.Score, true, false);
+                return ReturnVoteChangeOutput(post, true, false);
             }
-            return new VoteChangeOutput(question.Score, false, false);
+            return ReturnVoteChangeOutput(post, false, false);
+        }
+
+        private static VoteChangeOutput ReturnVoteChangeOutput(Post post, bool upvote, bool downvote)
+        {
+            return new VoteChangeOutput()
+            {
+                VoteCount = post.Score,
+                UpVote = upvote,
+                DownVote = downvote,
+                PostTypeId = post.PostTypeId,
+                PostId = post.Id
+            };
         }
 
         //Voting Down the Post both Question and Answer, where there will be two things either Upvoting or Downvoting
         public async Task<VoteChangeOutput> PostVoteDown(int id)
         {
-            var question = await _postRepository.GetAsync(id);
+            var post = await _postRepository.GetAsync(id);
             var isUserVoted = _voteRepository.FirstOrDefault(userVote => userVote.CreatorUserId == AbpSession.UserId && userVote.PostId == id);
             if (isUserVoted != null)
             {
                 if (isUserVoted.VoteTypeId == (int)VoteTypes.Downvote)
                 {
-                    question.Score++;
+                    post.Score++;
                     await _voteRepository.DeleteAsync(isUserVoted.Id);
-                    return new VoteChangeOutput(question.Score, false, false);
                 }
                 else if (isUserVoted.VoteTypeId == (int)VoteTypes.Upvote)
                 {
-                    question.Score -= 2;
+                    post.Score -= 2;
                     isUserVoted.VoteTypeId = (int)VoteTypes.Downvote;
-                    return new VoteChangeOutput(question.Score, false, true);
+                    return ReturnVoteChangeOutput(post, false, true);
                 }
             }
             else
             {
-                question.Score--;
+                post.Score--;
                 await _voteRepository.InsertAsync(new Vote(id, (int)VoteTypes.Downvote));
-                return new VoteChangeOutput(question.Score, false, true);
+                return ReturnVoteChangeOutput(post, false, true);
             }
-            return new VoteChangeOutput(question.Score, false, false);
+            return ReturnVoteChangeOutput(post, false, false);
+        }
+
+
+        public async Task<PostDto> SubmitAnswer(SubmitAnswerInput input)
+        {
+            var answer = await _postRepository.InsertAsync(
+                new Post()
+                {
+                    Body = input.Body,
+                    ParentId = input.QuestionId,
+                    CreatorUserId = AbpSession.UserId,
+                    PostTypeId = 2
+                });
+
+            return answer.MapTo<PostDto>();
         }
     }
 }

@@ -2,35 +2,58 @@
     <div class="card">
         <div class="header">
             <h3>
-                {{question.title}}
+                {{question?.post.title}}
             </h3>
         </div>
         <div class="body table-responsive">
             <div class="question">
                 <div class="vote-layout">
-                    <a class="vote-up" (click)="voteUp()">
-                        <i [class.voted]="upvote" class="material-icons md-48">arrow_drop_up</i>
+                    <a class="vote-up" (click)="voteUp(question?.post.id)">
+                        <i [class.voted]="question?.upvote" class="material-icons md-48">arrow_drop_up</i>
                     </a>
-                    <div class="upvote-count"><strong>{{question.score}}</strong></div>
-                    <a class="vote-down" (click)="voteDown()">
-                        <i [class.voted]="downvote" class="material-icons md-48">arrow_drop_down</i>
+                    <div class="upvote-count"><strong>{{question?.post.score}}</strong></div>
+                    <a class="vote-down" (click)="voteDown(question?.post.id)">
+                        <i [class.voted]="question?.downvote" class="material-icons md-48">arrow_drop_down</i>
                     </a>
                 </div>
-                <div class="question-body" [innerHTML]="question.body"></div>
+                <div class="question-body" [innerHTML]="question?.post.body"></div>
                 <div class="post-tags">
-                    <a href="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.tags|commaSeparted">
-                        {{tag}}
-                    </a>
+                    <div *ngIf="question && question.tags && question.tags.length > 0">
+                        <a href="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.tags | commaSeparted">
+                            {{tag}}
+                        </a>
+                    </div>
                 </div>
                 <div class="user-info">
-                    <div class="total-views">viewed {{question.viewCount}} times</div>
-                    <div class="posted-time">asked {{question.creationTime | timeAgo}} by {{question.creatorUserName}}</div>
+                    <div class="total-views">viewed {{question?.post.viewCount}} times</div>
+                    <div class="posted-time">asked {{question?.post.creationTime | timeAgo}} by {{question?.post.creatorUserName}}</div>
                 </div>
             </div>
             <div class="answers">
-                <h4>Your Answer</h4>
-
+                <div class="answer-length"><h4 *ngIf="answers && answers.length > 0">{{answers.length}} answers</h4></div>
+                <div class="answer" *ngFor="let answer of answers">
+                    <div class="answer-summary" id="{{answer?.post.id}}">
+                        <div class="vote-layout">
+                            <a class="vote-up" (click)="voteUp(answer?.post.id)">
+                                <i [class.voted]="answer?.upvote" class="material-icons md-48">arrow_drop_up</i>
+                            </a>
+                            <div class="upvote-count"><strong>{{answer?.post.score}}</strong></div>
+                            <a class="vote-down" (click)="voteDown(answer?.post.id)">
+                                <i [class.voted]="answer?.downvote" class="material-icons md-48">arrow_drop_down</i>
+                            </a>
+                        </div>
+                        <div class="answer-body" [innerHTML]="answer?.post.body"></div>
+                        <div class="posted-time">answered {{answer?.post.creationTime | timeAgo}} by {{answer?.post.creatorUserName}}</div>
+                    </div>
+                </div>
             </div>
+            <form #myform="ngForm" class="form answer-form" method="post" (ngSubmit)="saveAnswer()">
+                <div class="your-answer">
+                    <h4>Your Answer</h4>
+                    <ckeditor id="answer-body" [(ngModel)]="answer.body" [editor]="Editor" [config]="config" name="Body" data="<p></p>" class="answer-body"></ckeditor>
+                    <button type="submit" class="btn btn-primary btn-answer">Post Your Answer</button>
+                </div>
+            </form>
         </div>
     </div>
     </div>

@@ -55,15 +55,23 @@
     <Compile Remove="dist\**" />
     <Compile Remove="external_libs\**" />
     <Compile Remove="node_modules\**" />
+    <Compile Remove="src\app\NewFolder\**" />
+    <Compile Remove="src\app\posts\NewFolder\**" />
     <Compile Remove="src\app\tenants\**" />
+    <Content Remove="src\app\NewFolder\**" />
+    <Content Remove="src\app\posts\NewFolder\**" />
     <Content Remove="src\app\tenants\**" />
     <EmbeddedResource Remove="dist\**" />
     <EmbeddedResource Remove="external_libs\**" />
     <EmbeddedResource Remove="node_modules\**" />
+    <EmbeddedResource Remove="src\app\NewFolder\**" />
+    <EmbeddedResource Remove="src\app\posts\NewFolder\**" />
     <EmbeddedResource Remove="src\app\tenants\**" />
     <None Remove="dist\**" />
     <None Remove="external_libs\**" />
     <None Remove="node_modules\**" />
+    <None Remove="src\app\NewFolder\**" />
+    <None Remove="src\app\posts\NewFolder\**" />
     <None Remove="src\app\tenants\**" />
   </ItemGroup>
   <ItemGroup>
@@ -72,13 +80,8 @@
     <None Remove="src\app\comma-seperated.pipe.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\NewFolder\" />
     <Folder Include="src\app\pipes\" />
-    <Folder Include="src\app\posts\NewFolder\" />
     <Folder Include="src\app\questions\" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="src\app\comma-seperated.pipe.ts" />
   </ItemGroup>
   <Target Name="PrepublishScript" BeforeTargets="ComputeFilesToPublish">
     <Exec Command="ng build --prod" />

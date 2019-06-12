@@ -9,12 +9,11 @@ namespace LetsDisc.Posts.Dto
         public int VoteCount { get; set; }
         public bool UpVote { get; set; }
         public bool DownVote { get; set; }
+        public int PostTypeId { get; set; }
+        public int PostId { get; set; }
 
-        public VoteChangeOutput(int voteCount, bool upVote, bool downVote)
+        public VoteChangeOutput()
         {
-            VoteCount = voteCount;
-            UpVote = upVote;
-            DownVote = downVote;
         }
     }
 }

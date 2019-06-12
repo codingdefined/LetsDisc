@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LetsDisc.Migrations
 {
     [DbContext(typeof(LetsDiscDbContext))]
-    [Migration("20190529075719_letsdisc-v1")]
+    [Migration("20190611100324_letsdisc-v1")]
     partial class letsdiscv1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1129,7 +1129,6 @@ namespace LetsDisc.Migrations
                         .HasMaxLength(255);
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasMaxLength(255);
 
                     b.Property<int>("ViewCount");

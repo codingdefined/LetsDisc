@@ -1,5 +1,5 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { PostDto, PostServiceProxy, VoteChangeOutput, PostWithVoteInfo } from '@shared/service-proxies/service-proxies';
+import { PostDto, PostServiceProxy, VoteChangeOutput, PostWithVoteInfo, SubmitAnswerInput, PostWithAnswers } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TagInputModule } from 'ngx-chips';
@@ -13,13 +13,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QuestionDetailComponent extends AppComponentBase implements OnInit {
 
-    question: PostDto;
-    items = [];
+    question: PostWithVoteInfo;
+    answer: SubmitAnswerInput = new SubmitAnswerInput();
+    answers: PostWithVoteInfo[] = [];
     id: number;
     upvote: boolean = false;
     downvote: boolean = false;
     saving: boolean = false;
     public Editor = ClassicEditor;
+    public config = {
+        placeholder: 'Type the content here!'
+    };
 
     constructor(
         injector: Injector,
@@ -33,33 +37,49 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
         this.id = +this.route.snapshot.paramMap.get("id");
         this._postService.getPost(this.id)
             .subscribe(
-            (result: PostWithVoteInfo) => {
-                this.question = result.post;
-                this.upvote = result.upvote;
-                this.downvote = result.downvote;
+                (result: PostWithAnswers) => {
+                    this.question = result.post;
+                    this.answers = result.answers;
             });
+        this.answer.questionId = this.id;
     }
 
-    voteUp() {
-        this._postService.postVoteUp(this.id)
+    voteUp(postId: number) {
+        this._postService.postVoteUp(postId)
             .subscribe((result: VoteChangeOutput) => {
-                this.assignData(result);
+                this.assignScoreData(result);
                 this.notify.info(this.l('Voted'));
             });
     }
 
-    voteDown() {
-        this._postService.postVoteDown(this.id)
+    voteDown(postId: number) {
+        this._postService.postVoteDown(postId)
             .subscribe((result: VoteChangeOutput) => {
-                this.assignData(result);
+                this.assignScoreData(result);
                 this.notify.info(this.l('Voted'));
             });
     }
 
-    assignData(result: VoteChangeOutput) {
-        this.question.score = result.voteCount;
-        this.upvote = result.upVote;
-        this.downvote = result.downVote;
+    assignScoreData(result: VoteChangeOutput) {
+        if (result.postTypeId == 1 && result.postId == this.question.post.id) {
+            this.question.post.score = result.voteCount;
+            this.question.upvote = result.upVote;
+            this.question.downvote = result.downVote;
+        } else {
+            let curAnswer = this.answers.filter(a => a.post.id === result.postId)[0];
+            curAnswer.post.score = result.voteCount;
+            curAnswer.upvote = result.upVote;
+            curAnswer.downvote = result.downVote;
+        }
+        
+    }
+
+    saveAnswer(): void {
+        this._postService.submitAnswer(this.answer)
+            .subscribe((result: PostDto) => {
+                console.log(result);
+                this.notify.info(this.l('Answered'));
+            });
     }
 }
 

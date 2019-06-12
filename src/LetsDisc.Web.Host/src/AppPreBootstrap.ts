@@ -49,7 +49,7 @@ export class AppPreBootstrap {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + abp.auth.getToken(),
-                '.AspNetCore.Culture': abp.utils.getCookieValue("Abp.Localization.CultureName"),
+                'AspNetCore.Culture': abp.utils.getCookieValue("Abp.Localization.CultureName"),
                 'Abp.TenantId': abp.multiTenancy.getTenantIdCookie()
             }
         }).done(result => {

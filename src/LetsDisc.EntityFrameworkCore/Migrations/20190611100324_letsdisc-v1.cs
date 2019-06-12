@@ -156,7 +156,7 @@ namespace LetsDisc.Migrations
                     ParentId = table.Column<int>(nullable: false),
                     Score = table.Column<int>(nullable: false),
                     ViewCount = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(maxLength: 255, nullable: false),
+                    Title = table.Column<string>(maxLength: 255, nullable: true),
                     Body = table.Column<string>(maxLength: 65536, nullable: false),
                     LastActivityDate = table.Column<DateTime>(nullable: false),
                     Tags = table.Column<string>(maxLength: 255, nullable: true),

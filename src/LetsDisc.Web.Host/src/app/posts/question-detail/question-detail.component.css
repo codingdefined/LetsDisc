@@ -55,5 +55,31 @@
 
 .question {
     padding-bottom: 5%;
+}
+
+.your-answer {
+    margin-top: 20px;
+}
+
+.btn-answer {
+    margin-top: 15px;
+}
+
+.answer-summary {
+    min-height: 120px;
+}
+
+.answer {
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+}
+
+.answer-body {
+    margin-left: 8%;
+    min-height: 80px;
+}
+
+.answer-length {
+    padding: 10px;
     border-bottom: 1px solid rgba(204, 204, 204, 0.35);
 }

@@ -1127,7 +1127,6 @@ namespace LetsDisc.Migrations
                         .HasMaxLength(255);
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasMaxLength(255);
 
                     b.Property<int>("ViewCount");

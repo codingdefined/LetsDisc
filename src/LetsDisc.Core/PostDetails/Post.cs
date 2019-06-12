@@ -23,11 +23,9 @@ namespace LetsDisc.PostDetails
         public int AcceptedAnswerId { get; set; }
         public int ParentId { get; set; }
 
-        [Required]
         public int Score { get; set; }
         public int ViewCount { get; set; }
 
-        [Required]
         [MaxLength(MaxTitleLength)]
         public string Title { get; set; }
 
