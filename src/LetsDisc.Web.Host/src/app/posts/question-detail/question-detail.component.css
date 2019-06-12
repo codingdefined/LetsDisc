@@ -54,7 +54,7 @@
 }
 
 .question {
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 }
 
 .your-answer {
@@ -82,4 +82,22 @@
 .answer-length {
     padding: 10px;
     border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+}
+
+.post-menu {
+    margin-top:20px;
+}
+
+.share-post, .edit-post {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.edit-question {
+    margin-left: 8%;
+}
+
+.btn-save-edits {
+    margin-right: 10px;
 }

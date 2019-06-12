@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LetsDisc.Posts.Dto
 {
-    [AutoMapFrom(typeof(Post))]
+    [AutoMap(typeof(Post))]
     public class PostDto : FullAuditedEntityDto
     {
         public string Title { get; set; }

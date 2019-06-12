@@ -46,15 +46,17 @@ namespace LetsDisc.Posts
             return MapToEntityDto(post);
         }
 
-        public override async Task<PostDto> Update(PostDto input)
+        public async Task<PostWithAnswers> UpdateQuestion(PostDto input)
         {
             CheckUpdatePermission();
 
             var post = await _postRepository.GetAsync(input.Id);
+            input.CreationTime = post.CreationTime;
+            input.CreatorUserId = post.CreatorUserId;
             MapToEntity(input, post);
             await _postRepository.UpdateAsync(post);
 
-            return await Get(input);
+            return await GetPost(input.Id);
         }
 
         public override async Task Delete(EntityDto<int> input)
@@ -98,6 +100,8 @@ namespace LetsDisc.Posts
                 answersWithVoteInfo.Add(answerWithVoteInfo);
             }
 
+            answersWithVoteInfo = answersWithVoteInfo.OrderByDescending(a => a.Post.Score).ThenBy(a => a.Post.CreationTime).ToList();
+
             var postWithVoteInfo = new PostWithVoteInfo
             {
                 Post = post.MapTo<PostDto>(),
@@ -109,6 +113,8 @@ namespace LetsDisc.Posts
             {
                 throw new EntityNotFoundException(typeof(Post), id);
             }
+
+            post.ViewCount++;
 
             return new PostWithAnswers
             {
@@ -204,8 +210,9 @@ namespace LetsDisc.Posts
         }
 
 
-        public async Task<PostDto> SubmitAnswer(SubmitAnswerInput input)
+        public async Task<PostWithVoteInfo> SubmitAnswer(SubmitAnswerInput input)
         {
+
             var answer = await _postRepository.InsertAsync(
                 new Post()
                 {
@@ -214,8 +221,14 @@ namespace LetsDisc.Posts
                     CreatorUserId = AbpSession.UserId,
                     PostTypeId = 2
                 });
-
-            return answer.MapTo<PostDto>();
+            var question = await _postRepository.FirstOrDefaultAsync(x => x.Id == input.QuestionId);
+            question.AnswerCount++;
+            return new PostWithVoteInfo
+            {
+                Post = answer.MapTo<PostDto>(),
+                Upvote = false,
+                Downvote = false
+            };
         }
     }
 }

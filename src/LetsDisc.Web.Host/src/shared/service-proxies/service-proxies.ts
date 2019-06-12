@@ -274,8 +274,8 @@ export class PostServiceProxy {
      * @param input (optional) 
      * @return Success
      */
-    update(input: PostDto | null | undefined): Observable<PostDto> {
-        let url_ = this.baseUrl + "/api/services/app/Post/Update";
+    updateQuestion(input: PostDto | null | undefined): Observable<PostWithAnswers> {
+        let url_ = this.baseUrl + "/api/services/app/Post/UpdateQuestion";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -291,20 +291,20 @@ export class PostServiceProxy {
         };
 
         return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processUpdate(response_);
+            return this.processUpdateQuestion(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processUpdate(<any>response_);
+                    return this.processUpdateQuestion(<any>response_);
                 } catch (e) {
-                    return <Observable<PostDto>><any>_observableThrow(e);
+                    return <Observable<PostWithAnswers>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<PostDto>><any>_observableThrow(response_);
+                return <Observable<PostWithAnswers>><any>_observableThrow(response_);
         }));
     }
 
-    protected processUpdate(response: HttpResponseBase): Observable<PostDto> {
+    protected processUpdateQuestion(response: HttpResponseBase): Observable<PostWithAnswers> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -315,7 +315,7 @@ export class PostServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PostDto.fromJS(resultData200) : new PostDto();
+            result200 = resultData200 ? PostWithAnswers.fromJS(resultData200) : new PostWithAnswers();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -323,7 +323,7 @@ export class PostServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PostDto>(<any>null);
+        return _observableOf<PostWithAnswers>(<any>null);
     }
 
     /**
@@ -604,7 +604,7 @@ export class PostServiceProxy {
      * @param input (optional) 
      * @return Success
      */
-    submitAnswer(input: SubmitAnswerInput | null | undefined): Observable<PostDto> {
+    submitAnswer(input: SubmitAnswerInput | null | undefined): Observable<PostWithVoteInfo> {
         let url_ = this.baseUrl + "/api/services/app/Post/SubmitAnswer";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -627,14 +627,14 @@ export class PostServiceProxy {
                 try {
                     return this.processSubmitAnswer(<any>response_);
                 } catch (e) {
-                    return <Observable<PostDto>><any>_observableThrow(e);
+                    return <Observable<PostWithVoteInfo>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<PostDto>><any>_observableThrow(response_);
+                return <Observable<PostWithVoteInfo>><any>_observableThrow(response_);
         }));
     }
 
-    protected processSubmitAnswer(response: HttpResponseBase): Observable<PostDto> {
+    protected processSubmitAnswer(response: HttpResponseBase): Observable<PostWithVoteInfo> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -645,7 +645,7 @@ export class PostServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PostDto.fromJS(resultData200) : new PostDto();
+            result200 = resultData200 ? PostWithVoteInfo.fromJS(resultData200) : new PostWithVoteInfo();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -653,7 +653,7 @@ export class PostServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PostDto>(<any>null);
+        return _observableOf<PostWithVoteInfo>(<any>null);
     }
 
     /**
@@ -767,6 +767,62 @@ export class PostServiceProxy {
             }));
         }
         return _observableOf<PagedResultDtoOfPostDto>(<any>null);
+    }
+
+    /**
+     * @param input (optional) 
+     * @return Success
+     */
+    update(input: PostDto | null | undefined): Observable<PostDto> {
+        let url_ = this.baseUrl + "/api/services/app/Post/Update";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdate(<any>response_);
+                } catch (e) {
+                    return <Observable<PostDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PostDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdate(response: HttpResponseBase): Observable<PostDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PostDto.fromJS(resultData200) : new PostDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PostDto>(<any>null);
     }
 }
 

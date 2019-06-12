@@ -15,22 +15,59 @@
                     <a class="vote-down" (click)="voteDown(question?.post.id)">
                         <i [class.voted]="question?.downvote" class="material-icons md-48">arrow_drop_down</i>
                     </a>
-                </div>
-                <div class="question-body" [innerHTML]="question?.post.body"></div>
-                <div class="post-tags">
-                    <div *ngIf="question && question.tags && question.tags.length > 0">
-                        <a href="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.tags | commaSeparted">
+                </div> 
+                <div class="question-body" [innerHTML]="question?.post.body" [style.display]="editing ? 'none' : 'inherit' "></div>
+                <div class="post-tags" [style.display]="editing ? 'none' : 'inherit' ">
+                    <div *ngIf="question && question.post.tags && question.post.tags.length > 0">
+                        <a href="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.post.tags | commaSeparted">
                             {{tag}}
                         </a>
                     </div>
                 </div>
-                <div class="user-info">
-                    <div class="total-views">viewed {{question?.post.viewCount}} times</div>
+                <div class="user-info" [style.display]="editing ? 'none' : 'inherit' ">
+                    <div class="total-views">viewed {{question?.post.viewCount | i18nPlural: itemPluralMapping['time'] }}</div>
                     <div class="posted-time">asked {{question?.post.creationTime | timeAgo}} by {{question?.post.creatorUserName}}</div>
+                </div>
+                <div class="edit-question" [style.display]="!editing ? 'none' : 'inherit' ">
+                    <form #myform="ngForm" class="form question-form" method="post" (ngSubmit)="saveQuestion()">
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label for="question-title">{{l('Title')}}</label>
+                                <input id="question-title" class="form-control" type="text" [(ngModel)]="question?.post.title" name="Title" required minlength="15" maxlength="200" placeholder="What's you question?, be specific" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <label for="question-body">{{l('Body')}}</label>
+                                <ckeditor id="question-body" [(ngModel)]="question?.post.body" [editor]="Editor" [config]="config" name="Body" data="<p></p>" class="body"></ckeditor>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="question-tags">{{l('Tags')}}</label>
+                            <tag-input [(ngModel)]="items"
+                                       id="question-tags"
+                                       [placeholder]="'e.g. (react, angular, java)'"
+                                       [secondaryPlaceholder]="'e.g. (react, angular, java)'"
+                                       name="Tags"
+                                       [maxItems]="5"
+                                       [animationDuration]="{enter: '0ms', leave: '0ms'}"
+                                       class="tag-input"
+                                       [theme]="'foundation-theme'"></tag-input>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-save-edits">Save Edits</button>
+                        <button type="button" class="btn btn-default" (click)="cancelClick()">Cancel</button>
+                    </form>
+                </div>
+                <div class="post-menu">
+                    <a class="share-post" title="share post">share</a>
+                    <a class="edit-post" title="edit post" (click)="editClicked()">edit</a>
                 </div>
             </div>
             <div class="answers">
-                <div class="answer-length"><h4 *ngIf="answers && answers.length > 0">{{answers.length}} answers</h4></div>
+                <div class="answer-length"><h4 *ngIf="answers && answers.length > 0">{{answers.length | i18nPlural: itemPluralMapping['answer'] }}</h4></div>
                 <div class="answer" *ngFor="let answer of answers">
                     <div class="answer-summary" id="{{answer?.post.id}}">
                         <div class="vote-layout">

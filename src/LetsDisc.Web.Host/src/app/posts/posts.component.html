@@ -16,14 +16,14 @@
                             <div class="status-container">
                                 <div class="stats">
                                     <div class="votes">
-                                        <strong>{{question.score}}</strong><div class="vote-display">votes</div>
+                                        <strong>{{question.score}}</strong><div class="vote-display">{{question.score | i18nPlural: itemPluralMapping['vote']}}</div>
                                     </div>
 
                                     <div class="answers">
-                                        <strong>{{question.answerCount}}</strong><div class="vote-display">answers</div>
+                                        <strong>{{question.answerCount}}</strong><div class="vote-display">{{question.answerCount | i18nPlural: itemPluralMapping['answer']}}</div>
                                     </div>
                                 </div>
-                                <div class="views">{{question.viewCount}} views</div>
+                                <div class="views">{{question.viewCount | i18nPlural: itemPluralMapping['time']}}</div>
                             </div>
                             <div class="summary">
                                 <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.replace(' ', '-')}}">{{question.title}}</a>

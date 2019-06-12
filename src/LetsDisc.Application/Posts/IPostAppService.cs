@@ -15,6 +15,7 @@ namespace LetsDisc.Posts
         Task<PostWithAnswers> GetPost(int id);
         Task<VoteChangeOutput> PostVoteUp(int id);
         Task<VoteChangeOutput> PostVoteDown(int id);
-        Task<PostDto> SubmitAnswer(SubmitAnswerInput input);
+        Task<PostWithVoteInfo> SubmitAnswer(SubmitAnswerInput input);
+        Task<PostWithAnswers> UpdateQuestion(PostDto input);
     }
 }

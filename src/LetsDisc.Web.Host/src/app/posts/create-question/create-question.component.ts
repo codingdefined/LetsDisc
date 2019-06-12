@@ -1,9 +1,9 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { CreatePostDto, PostServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CreatePostDto, PostServiceProxy, PostDto } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { TagInputModule } from 'ngx-chips';
 import { finalize } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-question',
@@ -24,6 +24,7 @@ export class CreateQuestionComponent extends AppComponentBase implements OnInit 
     constructor(
         injector: Injector,
         private _postService: PostServiceProxy,
+        private router: Router
     ) { 
         super(injector);
         this.question.postTypeId = 1;
@@ -41,8 +42,9 @@ export class CreateQuestionComponent extends AppComponentBase implements OnInit 
         this.saving = true;
         this._postService.create(this.question)
             .pipe(finalize(() => { this.saving = false; }))
-            .subscribe(() => {
+            .subscribe((result: PostDto) => {
                 this.notify.info(this.l('SavedSuccessfully'));
+                this.router.navigate(['questions', result.id, result.title.replace(' ', '-')]);
             });
     }
 

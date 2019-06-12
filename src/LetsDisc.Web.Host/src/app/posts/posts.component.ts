@@ -13,6 +13,23 @@ import { finalize } from 'rxjs/operators';
 export class PostsComponent extends PagedListingComponentBase<PostDto> {
 
     questions: PostDto[] = [];
+    itemPluralMapping = {
+        'answer': {
+            '=0': 'answers',
+            '=1': 'answer',
+            'other': 'answers'
+        },
+        'time': {
+            '=0': '0 times',
+            '=1': '1 time',
+            'other': '# times'
+        },
+        'vote': {
+            '=0': 'votes',
+            '=1': 'vote',
+            'other': 'votes'
+        }
+    };
 
     constructor(injector: Injector, private _postService: PostServiceProxy) {
         super(injector);

@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-question-detail',
   templateUrl: './question-detail.component.html',
-  styleUrls: ['./question-detail.component.css']
+  styleUrls: ['./question-detail.component.css', './../tag-theme.scss']
 })
 export class QuestionDetailComponent extends AppComponentBase implements OnInit {
 
@@ -17,12 +17,26 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     answer: SubmitAnswerInput = new SubmitAnswerInput();
     answers: PostWithVoteInfo[] = [];
     id: number;
-    upvote: boolean = false;
-    downvote: boolean = false;
+    items = [];
+    editing: boolean = false;
     saving: boolean = false;
+    browerRefresh: boolean = false;
     public Editor = ClassicEditor;
     public config = {
         placeholder: 'Type the content here!'
+    };
+
+    itemPluralMapping = {
+        'answer': {
+            '=0': '0 answers',
+            '=1': '1 answer',
+            'other': '# answers'
+        },
+        'time': {
+            '=0': '0 times',
+            '=1': '1 time',
+            'other': '# times'
+        },
     };
 
     constructor(
@@ -40,6 +54,7 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
                 (result: PostWithAnswers) => {
                     this.question = result.post;
                     this.answers = result.answers;
+                    this.items = result.post.post.tags.split(',');
             });
         this.answer.questionId = this.id;
     }
@@ -62,23 +77,50 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
 
     assignScoreData(result: VoteChangeOutput) {
         if (result.postTypeId == 1 && result.postId == this.question.post.id) {
-            this.question.post.score = result.voteCount;
-            this.question.upvote = result.upVote;
-            this.question.downvote = result.downVote;
+            this.scoreAndVote(this.question, result);
         } else {
             let curAnswer = this.answers.filter(a => a.post.id === result.postId)[0];
-            curAnswer.post.score = result.voteCount;
-            curAnswer.upvote = result.upVote;
-            curAnswer.downvote = result.downVote;
+            this.scoreAndVote(curAnswer, result);
         }
         
     }
 
+    private scoreAndVote(post: PostWithVoteInfo, result: VoteChangeOutput, ) {
+        post.post.score = result.voteCount;
+        post.upvote = result.upVote;
+        post.downvote = result.downVote;
+    }
+
     saveAnswer(): void {
         this._postService.submitAnswer(this.answer)
-            .subscribe((result: PostDto) => {
-                console.log(result);
+            .subscribe((result: PostWithVoteInfo) => {
+                this.answers.unshift(result);
                 this.notify.info(this.l('Answered'));
+            });
+    }
+
+    editClicked(): void {
+        this.editing = true;
+    }
+
+    cancelClick(): void {
+        this.editing = false;
+    }
+
+    saveQuestion(): void {
+        let localItems = [];
+        this.items.forEach(function (item) {
+            if (item && item.value) {
+                localItems.push(item.value);
+            } else if (item) {
+                localItems.push(item);
+            }
+        });
+        this.question.post.tags = localItems.join();
+        this._postService.updateQuestion(this.question.post)
+            .subscribe((result: PostWithAnswers) => {
+                this.question.post = result.post.post;
+                this.editing = false;
             });
     }
 }
