@@ -48,15 +48,20 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     }
 
     ngOnInit() {
-        this.id = +this.route.snapshot.paramMap.get("id");
-        this._postService.getPost(this.id)
-            .subscribe(
-                (result: PostWithAnswers) => {
-                    this.question = result.post;
-                    this.answers = result.answers;
-                    this.items = result.post.post.tags.split(',');
+        this.route.paramMap.subscribe((params) => {
+            this.id = +params.get('id');
+            this.getNewPost(this.id);
+        });
+    }
+
+    private getNewPost(id: number) {
+        this._postService.getPost(id)
+            .subscribe((result: PostWithAnswers) => {
+                this.question = result.post;
+                this.answers = result.answers;
+                this.items = result.post.post.tags.split(',');
             });
-        this.answer.questionId = this.id;
+        this.answer.questionId = id;
     }
 
     voteUp(postId: number) {

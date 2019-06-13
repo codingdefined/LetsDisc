@@ -19,7 +19,7 @@
                 <div class="question-body" [innerHTML]="question?.post.body" [style.display]="editing ? 'none' : 'inherit' "></div>
                 <div class="post-tags" [style.display]="editing ? 'none' : 'inherit' ">
                     <div *ngIf="question && question.post.tags && question.post.tags.length > 0">
-                        <a href="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.post.tags | commaSeparted">
+                        <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.post.tags | commaSeparted">
                             {{tag}}
                         </a>
                     </div>

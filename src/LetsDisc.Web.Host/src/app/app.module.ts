@@ -40,6 +40,7 @@ import { TagInputModule } from 'ngx-chips';
 import { QuestionDetailComponent } from './posts/question-detail/question-detail.component';
 import { CommaSepartedPipe } from './pipes/comma-separted.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
+import { PostsTagComponent } from './posts/posts-tag/posts-tag.component';
 
 @NgModule({
     declarations: [
@@ -66,7 +67,8 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
         PostsComponent,
         QuestionDetailComponent,
         CommaSepartedPipe,
-        TimeAgoPipe
+        TimeAgoPipe,
+        PostsTagComponent
     ],
     imports: [
         CommonModule,

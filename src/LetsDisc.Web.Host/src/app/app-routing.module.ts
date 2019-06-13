@@ -8,6 +8,7 @@ import { HomeComponent } from '@app/home/home.component';
 import { PostsComponent } from '@app/posts/posts.component';
 import { CreateQuestionComponent } from '@app/posts/create-question/create-question.component';
 import { QuestionDetailComponent } from '@app/posts/question-detail/question-detail.component';
+import { PostsTagComponent } from '@app/posts/posts-tag/posts-tag.component';
 
 @NgModule({
     imports: [
@@ -16,9 +17,15 @@ import { QuestionDetailComponent } from '@app/posts/question-detail/question-det
                 path: '',
                 component: AppComponent,
                 children: [
-                    { path: 'questions', component: PostsComponent },
-                    { path: 'questions/ask', component: CreateQuestionComponent },
-                    {path: 'questions/:id/:title', component: QuestionDetailComponent},
+                    {
+                        path: 'questions',
+                        children: [
+                            { path: '', component: PostsComponent },
+                            { path: 'ask', component: CreateQuestionComponent },
+                            { path: 'tagged/:tag', component: PostsTagComponent },
+                            { path: ':id/:title', component: QuestionDetailComponent }
+                        ]
+                    },
                     { path: 'users', component: UsersComponent },
                     { path: 'about', component: AboutComponent },
                     { path: 'home', component: HomeComponent },

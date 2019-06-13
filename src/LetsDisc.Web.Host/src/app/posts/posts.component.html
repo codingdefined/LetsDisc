@@ -6,7 +6,7 @@
                     <i class="material-icons">add</i>
                 </button>
                 <h2>
-                    {{l('AllQuestions')}}
+                    {{tagValue === '' ? l('AllQuestions') : 'Questions tagged [' + tagValue + ']'}}
                 </h2>
             </div>
             <div class="table-responsive">
@@ -29,7 +29,7 @@
                                 <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.replace(' ', '-')}}">{{question.title}}</a>
                                 <div class="question-body" [innerHTML]="question.body"></div>
                                 <div class="post-tags">
-                                    <a href="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.tags|commaSeparted">
+                                    <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" *ngFor="let tag of question.tags|commaSeparted">
                                         {{tag}}
                                     </a>
                                     <div class="user-info">
