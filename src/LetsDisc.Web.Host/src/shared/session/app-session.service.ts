@@ -35,7 +35,7 @@ export class AppSessionService {
     }
 
     getShownLoginName(): string {
-        let userName = this._user.userName;
+        let userName = this._user ? this._user.userName : 'Guest';
         if (!this._abpMultiTenancyService.isEnabled) {
             return userName;
         }

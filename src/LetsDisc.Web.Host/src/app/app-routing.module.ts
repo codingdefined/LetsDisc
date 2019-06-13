@@ -9,6 +9,7 @@ import { PostsComponent } from '@app/posts/posts.component';
 import { CreateQuestionComponent } from '@app/posts/create-question/create-question.component';
 import { QuestionDetailComponent } from '@app/posts/question-detail/question-detail.component';
 import { PostsTagComponent } from '@app/posts/posts-tag/posts-tag.component';
+import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 
 @NgModule({
     imports: [
@@ -21,15 +22,15 @@ import { PostsTagComponent } from '@app/posts/posts-tag/posts-tag.component';
                         path: 'questions',
                         children: [
                             { path: '', component: PostsComponent },
+                            { path: ':id/:title', component: QuestionDetailComponent },
                             { path: 'ask', component: CreateQuestionComponent },
-                            { path: 'tagged/:tag', component: PostsTagComponent },
-                            { path: ':id/:title', component: QuestionDetailComponent }
+                            { path: 'tagged/:tag', component: PostsTagComponent }
                         ]
                     },
                     { path: 'users', component: UsersComponent },
                     { path: 'about', component: AboutComponent },
-                    { path: 'home', component: HomeComponent },
                     { path: '', redirectTo: '/questions', pathMatch: 'full' },
+                    { path: '**', component: PageNotFoundComponent }
                 ]
             }
         ])

@@ -16,7 +16,6 @@ using LetsDisc.Roles.Dto;
 
 namespace LetsDisc.Roles
 {
-    [AbpAuthorize(PermissionNames.Pages_Roles)]
     public class RoleAppService : AsyncCrudAppService<Role, RoleDto, int, PagedResultRequestDto, CreateRoleDto, RoleDto>, IRoleAppService
     {
         private readonly RoleManager _roleManager;

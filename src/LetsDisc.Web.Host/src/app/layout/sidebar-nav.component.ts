@@ -11,7 +11,7 @@ export class SideBarNavComponent extends AppComponentBase {
 
     menuItems: MenuItem[] = [
         new MenuItem(this.l("Questions"), "", "question_answer", "/questions"),
-        new MenuItem(this.l("Users"), "Pages.Users", "people", "/users"),
+        new MenuItem(this.l("Users"), "", "people", "/users"),
         new MenuItem(this.l("About"), "", "info", "/about"),
     ];
 

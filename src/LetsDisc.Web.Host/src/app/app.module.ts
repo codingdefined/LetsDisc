@@ -41,6 +41,7 @@ import { QuestionDetailComponent } from './posts/question-detail/question-detail
 import { CommaSepartedPipe } from './pipes/comma-separted.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { PostsTagComponent } from './posts/posts-tag/posts-tag.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
     declarations: [
@@ -68,7 +69,8 @@ import { PostsTagComponent } from './posts/posts-tag/posts-tag.component';
         QuestionDetailComponent,
         CommaSepartedPipe,
         TimeAgoPipe,
-        PostsTagComponent
+        PostsTagComponent,
+        PageNotFoundComponent
     ],
     imports: [
         CommonModule,
