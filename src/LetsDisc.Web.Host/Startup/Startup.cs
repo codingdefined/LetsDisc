@@ -41,7 +41,7 @@ namespace LetsDisc.Web.Host.Startup
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
-
+            services.AddHttpContextAccessor();
             services.AddSignalR();
 
             // Configure CORS for angular2 UI
