@@ -23,7 +23,7 @@
                                         <strong>{{question.answerCount}}</strong><div class="vote-display">{{question.answerCount | i18nPlural: itemPluralMapping['answer']}}</div>
                                     </div>
                                 </div>
-                                <div class="views">{{question.viewCount | i18nPlural: itemPluralMapping['time']}}</div>
+                                <div class="views">{{question.viewCount | i18nPlural: itemPluralMapping['view']}}</div>
                             </div>
                             <div class="summary">
                                 <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.replace(' ', '-')}}">{{question.title}}</a>

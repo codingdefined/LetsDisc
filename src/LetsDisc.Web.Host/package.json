@@ -35,6 +35,7 @@
     "@types/toastr": "^2.1.33",
     "abp-ng2-module": "^3.2.1",
     "abp-web-resources": "^3.8.2",
+    "angularx-social-login": "^1.2.7",
     "animate.css": "^3.5.2",
     "block-ui": "^2.70.1",
     "bootstrap": "^3.3.7",

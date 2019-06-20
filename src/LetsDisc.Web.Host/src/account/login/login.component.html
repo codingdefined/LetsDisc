@@ -1,7 +1,8 @@
 ﻿<div class="card" id="LoginArea" [@routerTransition]>
     <div #cardBody class="body">
-        <form #loginForm="ngForm" id="LoginForm" method="post" novalidate (ngSubmit)="login()">
+        <form #loginForm="ngForm" id="LoginForm" method="post" novalidate>
             <h4 class="text-center">{{l("LogIn")}}</h4>
+
 
             <div class="input-group">
                 <span class="input-group-addon">
@@ -11,7 +12,6 @@
                     <input materialInput [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress" autoFocus class="form-control" type="text" autocomplete="off" placeholder="{{l('UserNameOrEmail')}}" name="userNameOrEmailAddress" required maxlength="255" />
                 </div>
             </div>
-
             <div class="input-group">
                 <span class="input-group-addon">
                     <i class="material-icons">lock</i>
@@ -22,18 +22,26 @@
             </div>
             <div class="row">
                 <div class="col-xs-8 p-t-5">
-                    <input type="checkbox"  [(ngModel)]="loginService.rememberMe" name="rememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
+                    <input type="checkbox" [(ngModel)]="loginService.rememberMe" name="rememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
                     <label for="rememberme">{{l("RememberMe")}}</label>
                 </div>
                 <div class="col-xs-4">
                     <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">{{l("LogIn")}}</button>
                 </div>
             </div>
-
             <div class="row m-t-15 m-b--20" *ngIf="isSelfRegistrationAllowed">
                 <div class="col-xs-12">
                     <a [routerLink]="['../register']">{{l("Register")}}</a>
                 </div>
+            </div>
+            <div class="social-login">
+                <button class="btn btn-default github-login" (click)="socialLogin('Github')" title="GitHub">
+                    <i class="fa fa-github-square margin-right-5"></i>
+                    Login with GitHub</button>
+                <button class="btn btn-default google-login" (click)="socialLogin('Google')" title="GitHub">
+                    <i class="fa fa-google margin-right-5"></i>
+                    Login with Google
+                </button>
             </div>
         </form>
     </div>

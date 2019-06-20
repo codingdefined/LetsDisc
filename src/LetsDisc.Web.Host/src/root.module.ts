@@ -13,12 +13,13 @@ import { RootRoutingModule } from './root-routing.module';
 
 import { AppConsts } from '@shared/AppConsts';
 import { AppSessionService } from '@shared/session/app-session.service';
-import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
+import { API_BASE_URL, TokenAuthServiceProxy } from '@shared/service-proxies/service-proxies';
 
 import { RootComponent } from './root.component';
 import { AppPreBootstrap } from './AppPreBootstrap';
 import { ModalModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { AppAuthService } from '@shared/auth/app-auth.service';
 
 export function appInitializerFactory(injector: Injector,
     platformLocation: PlatformLocation) {
@@ -46,6 +47,12 @@ export function appInitializerFactory(injector: Injector,
         });
     }
 }
+
+/*export function checkIfUserAuthenticated(_appAuthService: AppAuthService) {
+    return () => {
+        _appAuthService.checkIfUserAuthenticated().toPromise();
+    }
+}*/
 
 export function getRemoteServiceBaseUrl(): string {
     return AppConsts.remoteServiceBaseUrl;
@@ -78,6 +85,12 @@ export function getCurrentLanguage(): string {
             deps: [Injector, PlatformLocation],
             multi: true
         },
+        /*{
+            provide: APP_INITIALIZER,
+            useFactory: checkIfUserAuthenticated,
+            deps: [AppAuthService],
+            multi: true
+        },*/
         {
             provide: LOCALE_ID,
             useFactory: getCurrentLanguage

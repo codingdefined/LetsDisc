@@ -1,0 +1,19 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                   Tags
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <div class="tags">
+                    <div class="tag" *ngFor="let tag of tags">
+                        <a routerLink="/questions/tagged/{{tag.tagName}}" class="post-tag" title="">
+                            {{tag.tagName}}
+                        </a>- <span>{{tag.count}}</span>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

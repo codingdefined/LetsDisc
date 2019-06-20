@@ -9,6 +9,7 @@ import { LogService } from '@abp/log/log.service';
 import { TokenService } from '@abp/auth/token.service';
 import { UtilsService } from '@abp/utils/utils.service';
 import { finalize } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class LoginService {
@@ -17,6 +18,9 @@ export class LoginService {
 
     authenticateModel: AuthenticateModel;
     authenticateResult: AuthenticateResultModel;
+
+    private _isUserAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+    isUserAuthenticated: Observable<boolean> = this._isUserAuthenticatedSubject.asObservable();
 
     rememberMe: boolean;
 

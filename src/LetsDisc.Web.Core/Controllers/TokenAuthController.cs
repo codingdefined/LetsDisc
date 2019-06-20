@@ -17,6 +17,12 @@ using LetsDisc.Authorization;
 using LetsDisc.Authorization.Users;
 using LetsDisc.Models.TokenAuth;
 using LetsDisc.MultiTenancy;
+using LetsDisc.Identity;
+using Microsoft.AspNetCore.Cors;
+using Abp.Domain.Uow;
+using Microsoft.AspNetCore.Authentication;
+using Abp.Runtime.Session;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace LetsDisc.Controllers
 {
@@ -30,6 +36,9 @@ namespace LetsDisc.Controllers
         private readonly IExternalAuthConfiguration _externalAuthConfiguration;
         private readonly IExternalAuthManager _externalAuthManager;
         private readonly UserRegistrationManager _userRegistrationManager;
+        private readonly SignInManager _signInManager;
+        private readonly UserManager _userManager;
+        private readonly IAbpSession _session;
 
         public TokenAuthController(
             LogInManager logInManager,
@@ -38,7 +47,10 @@ namespace LetsDisc.Controllers
             TokenAuthConfiguration configuration,
             IExternalAuthConfiguration externalAuthConfiguration,
             IExternalAuthManager externalAuthManager,
-            UserRegistrationManager userRegistrationManager)
+            UserRegistrationManager userRegistrationManager,
+            SignInManager signInManager,
+            UserManager userManager,
+            IAbpSession session)
         {
             _logInManager = logInManager;
             _tenantCache = tenantCache;
@@ -47,6 +59,9 @@ namespace LetsDisc.Controllers
             _externalAuthConfiguration = externalAuthConfiguration;
             _externalAuthManager = externalAuthManager;
             _userRegistrationManager = userRegistrationManager;
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _session = session;
         }
 
         [HttpPost]
@@ -229,5 +244,153 @@ namespace LetsDisc.Controllers
         {
             return SimpleStringCipher.Instance.Encrypt(accessToken, AppConsts.DefaultPassPhrase);
         }
+
+        [EnableCors("localhost")]
+        [HttpGet]
+        public IActionResult SignInWithExternalProvider(string provider)
+        {
+            var authenticationProperties = _signInManager.ConfigureExternalAuthenticationProperties(provider, Url.Action(nameof(ExternalLoginCallback), new { p = provider }));
+            return Challenge(authenticationProperties, provider);
+        }
+
+        [HttpGet]
+        public bool IsUserAuthenticated()
+        {
+            return User.Identity.IsAuthenticated;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ExternalLoginCallback(string p, string returnUrl = null, string remoteError = null)
+        {
+
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            if (result?.Succeeded != true)
+            {
+                throw new Exception("External authentication error");
+            }
+            var externalUser = result.Principal;
+            if (externalUser == null)
+            {
+                throw new Exception("External authentication error");
+            }
+
+            var claims = externalUser.Claims.ToList();
+            var userIdClaim = claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                throw new Exception("Unknown userid");
+            }
+
+            var userIdEmail = claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+
+            if(userIdEmail == null)
+            {
+                throw new Exception("Invalid Email");
+            }
+            var userInDB = await _userManager.FindByEmailAsync(userIdEmail.Value);
+
+            if(userInDB == null)
+            {
+                await RegisterForExternalLogin(claims);
+            }
+
+
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return returnToHomeURL();
+
+            /*var externalLoginInfo = await _signInManager.GetExternalLoginInfoAsync();
+
+            var result = await _signInManager.ExternalLoginSignInAsync(externalLoginInfo.LoginProvider, externalLoginInfo.ProviderKey, isPersistent: false);
+
+            if (!result.Succeeded) //user does not exist yet
+            {
+                
+            }*/
+
+            /*if(externalLoginInfo != null)
+            {
+                var tenancyName = GetTenancyNameOrNull();
+                var loginResult = await _logInManager.LoginAsync(externalLoginInfo, tenancyName);
+                switch (loginResult.Result)
+                {
+                    case AbpLoginResultType.Success:
+                        await _signInManager.SignInAsync(loginResult.Identity, false);
+                        //await addUserIdToSession();
+                        return returnToHomeURL();
+                    case AbpLoginResultType.UnknownExternalLogin:
+                        return await RegisterForExternalLogin(externalLoginInfo);
+                    default:
+                        throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(
+                            loginResult.Result,
+                            externalLoginInfo.Principal.FindFirstValue(ClaimTypes.Email) ?? externalLoginInfo.ProviderKey,
+                            tenancyName
+                        );
+                }
+            }
+            else if (externalLoginInfo == null && User.Identity.IsAuthenticated)
+            {
+                await _signInManager.SignInAsync((ClaimsIdentity)User.Identity, false);
+                return returnToHomeURL();
+            }*/
+
+            /*var result = await HttpContext.AuthenticateAsync("Temp");
+            if (!result.Succeeded) throw new Exception("no external authentication going on right now...");
+
+            var extUser = result.Principal;
+            var extUserId = extUser.FindFirst(ClaimTypes.NameIdentifier);
+            var issuer = extUserId.Issuer;
+
+            // provisioning logic happens here...
+
+            var claims = new List<Claim>
+            {
+                new Claim("sub", "123456789"),
+                new Claim("name", "Dominick"),
+                new Claim("email", extUser.FindFirst(ClaimTypes.Email).Value),
+                new Claim("role", "Geek")
+            };
+
+            var ci = new ClaimsIdentity(claims, "password", "name", "role");
+            var pa = new ClaimsPrincipal(ci);
+
+            await HttpContext.SignInAsync(pa);
+            await HttpContext.SignOutAsync("Temp");*/
+
+
+
+            return returnToHomeURL();
+        }
+
+        private ActionResult returnToHomeURL()
+        {
+            return Redirect("http://localhost:4200");
+        }
+
+        private async Task<ActionResult> RegisterForExternalLogin(List<Claim> claims)
+        {
+            var name = claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
+            var email = claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+
+            var user = await _userRegistrationManager.RegisterAsync(name.Value, String.Empty, email.Value, email.Value, Authorization.Users.User.CreateRandomPassword(), true);
+
+            user.Logins = new List<UserLogin>{
+                        new UserLogin
+                        {
+                            LoginProvider = name.Issuer,
+                            ProviderKey = name.Issuer,
+                            TenantId = user.TenantId
+                        }
+                    };
+
+            await CurrentUnitOfWork.SaveChangesAsync();
+            var newUserClaims = externalLoginInfo.Principal.Claims.Append(new Claim("userid", user.Id.ToString()));
+            
+            await _userManager.AddClaimsAsync(user, newUserClaims);
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            return returnToHomeURL();
+        }
+
+
     }
 }

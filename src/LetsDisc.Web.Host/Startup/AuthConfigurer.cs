@@ -7,6 +7,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Abp.Runtime.Security;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using LetsDisc.Authorization.Users;
+using LetsDisc.Authorization.Roles;
+using LetsDisc.MultiTenancy;
 
 namespace LetsDisc.Web.Host.Startup
 {
@@ -14,6 +20,8 @@ namespace LetsDisc.Web.Host.Startup
     {
         public static void Configure(IServiceCollection services, IConfiguration configuration)
         {
+            //services.AddIdentity<User, Role>();
+
             if (bool.Parse(configuration["Authentication:JwtBearer:IsEnabled"]))
             {
                 services.AddAuthentication(options => {
@@ -48,8 +56,40 @@ namespace LetsDisc.Web.Host.Startup
                     {
                         OnMessageReceived = QueryStringTokenResolver
                     };
+                }).AddCookie()
+                .AddGitHub("Github", options =>
+                {
+                    options.ClientId = configuration["Authentication:GitHub:ClientId"];
+                    options.ClientSecret = configuration["Authentication:GitHub:ClientSecret"];
+                    options.Scope.Add("user:email");
+                    options.SaveTokens = true;
+                    options.CallbackPath = new PathString("/signin-github");
+                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 });
             }
+
+            /*services.AddAuthentication(options =>
+            {
+                options.DefaultSignOutScheme = IdentityConstants.ApplicationScheme;
+            })
+
+            /*.AddGoogle(googleOptions => {
+                googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+                googleOptions.CallbackPath = new PathString("/signin-google");
+                googleOptions.SaveTokens = true;
+            })
+
+            .AddGitHub("Github", options =>
+            {
+                options.ClientId = configuration["Authentication:GitHub:ClientId"];
+                options.ClientSecret = configuration["Authentication:GitHub:ClientSecret"];
+                options.Scope.Add("user:email");
+                options.SaveTokens = true;
+                options.CallbackPath = new PathString("/signin-github");
+                //options.SignInScheme = "Temp";
+                //options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });*/
         }
 
         /* This method is needed to authorize SignalR javascript client.

@@ -20,10 +20,10 @@ export class PostsComponent extends PagedListingComponentBase<PostDto> {
             '=1': 'answer',
             'other': 'answers'
         },
-        'time': {
-            '=0': '0 times',
-            '=1': '1 time',
-            'other': '# times'
+        'view': {
+            '=0': '0 views',
+            '=1': '1 view',
+            'other': '# views'
         },
         'vote': {
             '=0': 'votes',

@@ -5,6 +5,7 @@ using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using LetsDisc.PostDetails;
 using LetsDisc.Posts.Dto;
+using LetsDisc.Tags;
 using LetsDisc.Votes;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,11 +29,18 @@ namespace LetsDisc.Posts
     {
         private readonly IRepository<Post> _postRepository;
         private readonly IRepository<Vote> _voteRepository;
+        private readonly IRepository<Tag> _tagRepository;
+        private readonly IRepository<PostTag> _postTagRepository;
 
-        public PostAppService(IRepository<Post> postRepository, IRepository<Vote> voteRepository): base(postRepository)
+        public PostAppService(IRepository<Post> postRepository, 
+                              IRepository<Vote> voteRepository, 
+                              IRepository<Tag> tagRepository, 
+                              IRepository<PostTag> postTagRepository) : base(postRepository)
         {
             _postRepository = postRepository;
             _voteRepository = voteRepository;
+            _tagRepository = tagRepository;
+            _postTagRepository = postTagRepository;
         }
 
         public override async Task<PostDto> Create(CreatePostDto input)
@@ -40,10 +48,66 @@ namespace LetsDisc.Posts
             CheckCreatePermission();
 
             var post = ObjectMapper.Map<Post>(input);
-            await _postRepository.InsertAsync(post);
+
+            var newPostId = await _postRepository.InsertAndGetIdAsync(post);
+
+            await insertTagData(input.Tags, newPostId);
             CurrentUnitOfWork.SaveChanges();
 
             return MapToEntityDto(post);
+        }
+
+        private async Task insertTagData(string tags, int postId)
+        {
+            var tagsArray = tags.Split(',');
+            foreach (var tag in tagsArray)
+            {
+                var tagInDb = await _tagRepository.FirstOrDefaultAsync(t => t.TagName == tag);
+                var tagId = tagInDb == null ? await _tagRepository.InsertAndGetIdAsync(new Tag
+                                              {
+                                                TagName = tag,
+                                                Count = 1
+                                              }) 
+                                            : tagInDb.Id;
+                var postTagInDb = await _postTagRepository.FirstOrDefaultAsync(pt => pt.PostId == postId && pt.TagId == tagId);
+                if (postTagInDb == null)
+                {
+                    await _postTagRepository.InsertAsync(new PostTag
+                    {
+                        PostId = postId,
+                        TagId = tagId
+                    });
+                    if(tagInDb != null)
+                    {
+                        tagInDb.Count++;
+                    }
+                }
+            }
+        }
+
+        private async Task updateTagData(string tags, string oldTags, int postId)
+        {
+            var tagsArray = tags.Split(',');
+            var oldTagsArray = oldTags.Split(',');
+            var addedTags = String.Join(",", tagsArray.Except(oldTagsArray).ToArray());
+            var deletedTags = oldTagsArray.Except(tagsArray);
+            if(addedTags.Length > 0)
+            {
+                await insertTagData(addedTags, postId);
+            }
+            foreach(var tag in deletedTags)
+            {
+                var tagInDb = await _tagRepository.FirstOrDefaultAsync(t => t.TagName == tag);
+                if(tagInDb != null)
+                {
+                    var postTagInDb = await _postTagRepository.FirstOrDefaultAsync(pt => pt.PostId == postId && pt.TagId == tagInDb.Id);
+                    if(postTagInDb != null)
+                    {
+                        await _postTagRepository.DeleteAsync(a => a.Id == postTagInDb.Id);
+                        tagInDb.Count--;
+                    }
+                }
+            }
         }
 
         public async Task<PostWithAnswers> UpdateQuestion(PostDto input)
@@ -53,6 +117,8 @@ namespace LetsDisc.Posts
             var post = await _postRepository.GetAsync(input.Id);
             input.CreationTime = post.CreationTime;
             input.CreatorUserId = post.CreatorUserId;
+            await updateTagData(input.Tags, post.Tags, input.Id);
+
             MapToEntity(input, post);
             await _postRepository.UpdateAsync(post);
 

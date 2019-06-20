@@ -29,6 +29,7 @@
     <ProjectReference Include="..\LetsDisc.Web.Core\LetsDisc.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.GitHub" Version="2.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.4">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>

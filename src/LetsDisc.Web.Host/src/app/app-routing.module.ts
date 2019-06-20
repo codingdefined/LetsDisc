@@ -10,6 +10,7 @@ import { CreateQuestionComponent } from '@app/posts/create-question/create-quest
 import { QuestionDetailComponent } from '@app/posts/question-detail/question-detail.component';
 import { PostsTagComponent } from '@app/posts/posts-tag/posts-tag.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
+import { TagsComponent } from '@app/tags/tags.component';
 
 @NgModule({
     imports: [
@@ -22,13 +23,14 @@ import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.compon
                         path: 'questions',
                         children: [
                             { path: '', component: PostsComponent },
+                            { path: 'tagged/:tag', component: PostsTagComponent },
                             { path: ':id/:title', component: QuestionDetailComponent },
                             { path: 'ask', component: CreateQuestionComponent },
-                            { path: 'tagged/:tag', component: PostsTagComponent }
                         ]
                     },
                     { path: 'users', component: UsersComponent },
                     { path: 'about', component: AboutComponent },
+                    { path: 'tags', component: TagsComponent },
                     { path: '', redirectTo: '/questions', pathMatch: 'full' },
                     { path: '**', component: PageNotFoundComponent }
                 ]
