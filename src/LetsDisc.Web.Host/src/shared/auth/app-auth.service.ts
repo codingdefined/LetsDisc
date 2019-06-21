@@ -8,8 +8,6 @@ import { tap } from 'rxjs/operators';
 export class AppAuthService {
 
     constructor(private _tokenAuthService: TokenAuthServiceProxy) { }
-    private _isUserAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-    isUserAuthenticated: Observable<boolean> = this._isUserAuthenticatedSubject.asObservable();
 
 
     logout(reload?: boolean): void {
@@ -19,10 +17,4 @@ export class AppAuthService {
             location.href = AppConsts.appBaseUrl;
         };
     }
-
-    /*checkIfUserAuthenticated() {
-        return this._tokenAuthService.isUserAuthenticated().pipe(tap(result => {
-            this._isUserAuthenticatedSubject.next(result);
-        }))
-    };*/
 }

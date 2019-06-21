@@ -12,7 +12,7 @@ namespace LetsDisc.Authentication.JwtBearer
             {
                 if (ctx.User.Identity?.IsAuthenticated != true)
                 {
-                    var result = await ctx.AuthenticateAsync(schema);
+                    var result = await ctx.AuthenticateAsync("JwtBearer");
                     if (result.Succeeded && result.Principal != null)
                     {
                         ctx.User = result.Principal;

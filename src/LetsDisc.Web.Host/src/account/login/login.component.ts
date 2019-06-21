@@ -60,10 +60,4 @@ export class LoginComponent extends AppComponentBase {
             console.log(result);
         })*/
     }
-
-    checkIfUserAuthenticated() {
-        this._tokenAuthService.isUserAuthenticated().subscribe((result: boolean) => {
-            return result;
-        })
-    }
 }

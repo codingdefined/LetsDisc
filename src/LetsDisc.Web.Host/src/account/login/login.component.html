@@ -26,7 +26,7 @@
                     <label for="rememberme">{{l("RememberMe")}}</label>
                 </div>
                 <div class="col-xs-4">
-                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">{{l("LogIn")}}</button>
+                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit" (click)="login()">{{l("LogIn")}}</button>
                 </div>
             </div>
             <div class="row m-t-15 m-b--20" *ngIf="isSelfRegistrationAllowed">

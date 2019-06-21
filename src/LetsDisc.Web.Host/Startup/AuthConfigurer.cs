@@ -1,18 +1,25 @@
-﻿using System;
+﻿
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Abp.Runtime.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OAuth;
+using System.Text.Json;
+using Newtonsoft.Json.Linq;
 using LetsDisc.Authorization.Users;
 using LetsDisc.Authorization.Roles;
-using LetsDisc.MultiTenancy;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace LetsDisc.Web.Host.Startup
 {
@@ -20,53 +27,19 @@ namespace LetsDisc.Web.Host.Startup
     {
         public static void Configure(IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddIdentity<User, Role>();
-
-            if (bool.Parse(configuration["Authentication:JwtBearer:IsEnabled"]))
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(o =>
             {
-                services.AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = "JwtBearer";
-                    options.DefaultChallengeScheme = "JwtBearer";
-                }).AddJwtBearer("JwtBearer", options =>
-                {
-                    options.Audience = configuration["Authentication:JwtBearer:Audience"];
-
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        // The signing key must match!
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Authentication:JwtBearer:SecurityKey"])),
-
-                        // Validate the JWT Issuer (iss) claim
-                        ValidateIssuer = true,
-                        ValidIssuer = configuration["Authentication:JwtBearer:Issuer"],
-
-                        // Validate the JWT Audience (aud) claim
-                        ValidateAudience = true,
-                        ValidAudience = configuration["Authentication:JwtBearer:Audience"],
-
-                        // Validate the token expiry
-                        ValidateLifetime = true,
-
-                        // If you want to allow a certain amount of clock drift, set that here
-                        ClockSkew = TimeSpan.Zero
-                    };
-
-                    options.Events = new JwtBearerEvents
-                    {
-                        OnMessageReceived = QueryStringTokenResolver
-                    };
-                });
-            }
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                o.LoginPath = "/account/login";
+                o.ExpireTimeSpan = TimeSpan.FromDays(7);
+                o.Cookie.Name = "Abp.AuthToken";
             })
-            .AddCookie()
+            .AddGoogle(googleOptions => {
+                googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+                googleOptions.CallbackPath = new PathString("/signin-google");
+                googleOptions.SaveTokens = true;
+            })
             .AddGitHub("Github", options =>
             {
                 options.ClientId = configuration["Authentication:GitHub:ClientId"];
@@ -75,13 +48,6 @@ namespace LetsDisc.Web.Host.Startup
                 options.SaveTokens = true;
                 options.CallbackPath = new PathString("/signin-github");
             });
-
-            /*.AddGoogle(googleOptions => {
-                googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-                googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-                googleOptions.CallbackPath = new PathString("/signin-google");
-                googleOptions.SaveTokens = true;
-            })*/
         }
 
         /* This method is needed to authorize SignalR javascript client.

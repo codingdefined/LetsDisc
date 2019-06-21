@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { SessionServiceProxy, UserLoginInfoDto, TenantLoginInfoDto, ApplicationInfoDto, GetCurrentLoginInformationsOutput } from '@shared/service-proxies/service-proxies'
+import { SessionServiceProxy, UserLoginInfoDto, TenantLoginInfoDto, ApplicationInfoDto, GetCurrentLoginInformationsOutput, TokenAuthServiceProxy, User } from '@shared/service-proxies/service-proxies'
 import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.service'
 
 @Injectable()
@@ -11,7 +11,8 @@ export class AppSessionService {
 
     constructor(
         private _sessionService: SessionServiceProxy,
-        private _abpMultiTenancyService: AbpMultiTenancyService) {
+        private _abpMultiTenancyService: AbpMultiTenancyService,
+        private _tokenAuthService: TokenAuthServiceProxy) {
     }
 
     get application(): ApplicationInfoDto {
@@ -55,6 +56,7 @@ export class AppSessionService {
                 reject(err);
             });
         });
+
     }
 
     changeTenantIfNeeded(tenantId?: number): boolean {

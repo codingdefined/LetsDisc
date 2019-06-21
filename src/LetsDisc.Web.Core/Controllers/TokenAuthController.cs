@@ -25,6 +25,8 @@ using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using System.Security.Principal;
+using LetsDisc.Sessions.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LetsDisc.Controllers
 {
@@ -41,6 +43,7 @@ namespace LetsDisc.Controllers
         private readonly SignInManager _signInManager;
         private readonly UserManager _userManager;
         private readonly IAbpSession _session;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public TokenAuthController(
             LogInManager logInManager,
@@ -52,7 +55,8 @@ namespace LetsDisc.Controllers
             UserRegistrationManager userRegistrationManager,
             SignInManager signInManager,
             UserManager userManager,
-            IAbpSession session)
+            IAbpSession session,
+            IHttpContextAccessor httpContextAccessor)
         {
             _logInManager = logInManager;
             _tenantCache = tenantCache;
@@ -64,6 +68,7 @@ namespace LetsDisc.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
             _session = session;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpPost]
@@ -247,95 +252,75 @@ namespace LetsDisc.Controllers
             return SimpleStringCipher.Instance.Encrypt(accessToken, AppConsts.DefaultPassPhrase);
         }
 
-        [EnableCors("localhost")]
         [HttpGet]
         public IActionResult SignInWithExternalProvider(string provider)
         {
+            
             var authenticationProperties = _signInManager.ConfigureExternalAuthenticationProperties(provider, Url.Action(nameof(ExternalLoginCallback), new { p = provider }));
+            //await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             return Challenge(authenticationProperties, provider);
         }
 
         [HttpGet]
-        public bool IsUserAuthenticated()
+        public async Task<UserLoginInfoDto> GetCurrentLoggedInUser()
         {
-            return User.Identity.IsAuthenticated;
+            if(User.Identity.IsAuthenticated)
+            {
+                var userIdEmail = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+                var userIdName = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
+                var user = userIdEmail != null ? await _userManager.FindByEmailAsync(userIdEmail?.Value)
+                                               : await _userManager.FindByNameAsync(userIdName?.Value);
+                return ObjectMapper.Map<UserLoginInfoDto>(user);
+            }
+            return null;
         }
 
         [HttpGet]
         public async Task<ActionResult> ExternalLoginCallback(string p, string returnUrl = null, string remoteError = null)
         {
+            var info = await _signInManager.GetExternalLoginInfoAsync();
 
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            var result = await _signInManager.ExternalLoginSignInAsync(info?.LoginProvider, info?.ProviderKey, isPersistent: false);
 
-
-            var providerKey = result.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
-            var provider = p;
-
-            if (providerKey == null || provider == null)
+            if (!result.Succeeded)
             {
-                return null;
+                var externalUser = info.Principal;
+                if (externalUser == null)
+                {
+                    throw new Exception("External authentication error");
+                }
+
+                var claims = externalUser.Claims.ToList();
+                var userIdClaim = claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    throw new Exception("Unknown userid");
+                }
+
+                var userIdEmail = claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+
+                if (userIdEmail == null)
+                {
+                    throw new Exception("Invalid Email");
+                }
+                var userInDB = await _userManager.FindByEmailAsync(userIdEmail.Value);
+                if (userInDB == null)
+                {
+                    userInDB = await RegisterForExternalLogin(claims);
+
+                }
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var authProperties = new AuthenticationProperties
+                {
+                    AllowRefresh = true,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7),
+                    IsPersistent = true
+                };
+                await _signInManager.SignInAsync(userInDB, isPersistent: false);
+                await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             }
-            
-            var info = new ExternalLoginInfo(result.Principal, provider, providerKey, provider)
-            {
-                AuthenticationTokens = result.Properties.GetTokens()
-            };
-
-            await _signInManager.ExternalLoginSignInAsync(provider, providerKey, false);
-            var resultOfSignin = await _signInManager.ExternalLoginSignInAsync(
-                        provider,
-                        providerKey,
-                        isPersistent: false,
-                        bypassTwoFactor: true
-                    );
-
-            if (result?.Succeeded != true)
-            {
-                throw new Exception("External authentication error");
-            }
-            var externalUser = result.Principal;
-            if (externalUser == null)
-            {
-                throw new Exception("External authentication error");
-            }
-
-            var claims = externalUser.Claims.ToList();
-            var userIdClaim = claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                throw new Exception("Unknown userid");
-            }
-
-            var userIdEmail = claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
-
-            if(userIdEmail == null)
-            {
-                throw new Exception("Invalid Email");
-            }
-            var userInDB = await _userManager.FindByEmailAsync(userIdEmail.Value);
-            if(userInDB == null)
-            {
-                userInDB = await RegisterForExternalLogin(claims);
-                
-            }
-
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            var authProperties = new AuthenticationProperties
-            {
-                AllowRefresh = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7),
-                IsPersistent = true
-            };
-            
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                authProperties);
-
-            var schemes = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
             return returnToHomeURL();
         }
 

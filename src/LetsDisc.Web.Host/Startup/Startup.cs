@@ -13,11 +13,12 @@ using Swashbuckle.AspNetCore.Swagger;
 using Abp.AspNetCore;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
-using LetsDisc.Authentication.JwtBearer;
 using LetsDisc.Configuration;
 using LetsDisc.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
+using Microsoft.AspNetCore.Http;
+using System.Security.Principal;
 
 namespace LetsDisc.Web.Host.Startup
 {
@@ -41,7 +42,7 @@ namespace LetsDisc.Web.Host.Startup
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
-            services.AddHttpContextAccessor();
+
             services.AddSignalR();
 
             // Configure CORS for angular2 UI
@@ -80,6 +81,20 @@ namespace LetsDisc.Web.Host.Startup
                 options.OperationFilter<SecurityRequirementsOperationFilter>();
             });
 
+            services.ConfigureExternalCookie(o =>
+            {
+                o.ExpireTimeSpan = TimeSpan.FromDays(7);
+                o.Cookie.Name = "auth_token";
+                o.Cookie.Expiration = TimeSpan.FromDays(7);
+            });
+
+            services.ConfigureApplicationCookie(o =>
+            {
+                o.ExpireTimeSpan = TimeSpan.FromDays(7);
+                o.Cookie.Name = "auth_token";
+                o.Cookie.Expiration = TimeSpan.FromDays(7);
+            });
+
             // Configure Abp and Dependency Injection
             return services.AddAbp<LetsDiscWebHostModule>(
                 // Configure Log4Net logging
@@ -99,7 +114,6 @@ namespace LetsDisc.Web.Host.Startup
             app.UseStaticFiles();
 
             app.UseAuthentication();
-
             app.UseAbpRequestLocalization();
 
 

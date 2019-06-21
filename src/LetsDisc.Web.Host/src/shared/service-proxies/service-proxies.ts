@@ -2171,8 +2171,8 @@ export class TokenAuthServiceProxy {
     /**
      * @return Success
      */
-    isUserAuthenticated(): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/TokenAuth/IsUserAuthenticated";
+    getCurrentLoggedInUser(): Observable<User> {
+        let url_ = this.baseUrl + "/api/TokenAuth/GetCurrentLoggedInUser";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -2185,20 +2185,20 @@ export class TokenAuthServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processIsUserAuthenticated(response_);
+            return this.processGetCurrentLoggedInUser(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processIsUserAuthenticated(<any>response_);
+                    return this.processGetCurrentLoggedInUser(<any>response_);
                 } catch (e) {
-                    return <Observable<boolean>><any>_observableThrow(e);
+                    return <Observable<User>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<boolean>><any>_observableThrow(response_);
+                return <Observable<User>><any>_observableThrow(response_);
         }));
     }
 
-    protected processIsUserAuthenticated(response: HttpResponseBase): Observable<boolean> {
+    protected processGetCurrentLoggedInUser(response: HttpResponseBase): Observable<User> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -2209,7 +2209,7 @@ export class TokenAuthServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            result200 = resultData200 ? User.fromJS(resultData200) : new User();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -2217,7 +2217,7 @@ export class TokenAuthServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<boolean>(<any>null);
+        return _observableOf<User>(<any>null);
     }
 
     /**

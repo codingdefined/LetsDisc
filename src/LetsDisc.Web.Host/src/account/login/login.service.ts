@@ -19,9 +19,6 @@ export class LoginService {
     authenticateModel: AuthenticateModel;
     authenticateResult: AuthenticateResultModel;
 
-    private _isUserAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-    isUserAuthenticated: Observable<boolean> = this._isUserAuthenticatedSubject.asObservable();
-
     rememberMe: boolean;
 
     constructor(
