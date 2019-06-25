@@ -43,6 +43,7 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { PostsTagComponent } from './posts/posts-tag/posts-tag.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TagsComponent } from './tags/tags.component';
+import { SocialLoginModule } from "angularx-social-login";
 
 @NgModule({
     declarations: [
@@ -72,7 +73,7 @@ import { TagsComponent } from './tags/tags.component';
         TimeAgoPipe,
         PostsTagComponent,
         PageNotFoundComponent,
-        TagsComponent
+        TagsComponent,
     ],
     imports: [
         CommonModule,
@@ -86,10 +87,10 @@ import { TagsComponent } from './tags/tags.component';
         SharedModule,
         NgxPaginationModule,
         CKEditorModule,
-        TagInputModule
+        TagInputModule,
+        SocialLoginModule
     ],
     providers: [
-
     ]
 })
 export class AppModule { }

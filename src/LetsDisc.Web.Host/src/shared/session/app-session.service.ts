@@ -1,18 +1,23 @@
 ﻿import { Injectable } from '@angular/core';
-import { SessionServiceProxy, UserLoginInfoDto, TenantLoginInfoDto, ApplicationInfoDto, GetCurrentLoginInformationsOutput, TokenAuthServiceProxy, User } from '@shared/service-proxies/service-proxies'
-import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.service'
+import { SessionServiceProxy, UserLoginInfoDto, TenantLoginInfoDto, ApplicationInfoDto, GetCurrentLoginInformationsOutput, TokenAuthServiceProxy, User } from '@shared/service-proxies/service-proxies';
+import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.service';
+import { AuthService, SocialUser } from "angularx-social-login";
 
 @Injectable()
 export class AppSessionService {
 
     private _user: UserLoginInfoDto;
+    private _socialUser: SocialUser; 
     private _tenant: TenantLoginInfoDto;
     private _application: ApplicationInfoDto;
+    private loggedIn: boolean;
+    private userEmail: string = "";
 
     constructor(
         private _sessionService: SessionServiceProxy,
         private _abpMultiTenancyService: AbpMultiTenancyService,
-        private _tokenAuthService: TokenAuthServiceProxy) {
+        private _tokenAuthService: TokenAuthServiceProxy,
+        private authService: AuthService) {
     }
 
     get application(): ApplicationInfoDto {
@@ -44,17 +49,28 @@ export class AppSessionService {
         return (this._tenant ? this._tenant.tenancyName : ".") + "\\" + userName;
     }
 
+    getUserName(): string {
+        return (this._user ? this._user.name + " " + this._user.surname : 'Guest');
+    }
+
     init(): Promise<boolean> {
+        
         return new Promise<boolean>((resolve, reject) => {
-            this._sessionService.getCurrentLoginInformations().toPromise().then((result: GetCurrentLoginInformationsOutput) => {
-                this._application = result.application;
-                this._user = result.user;
-                this._tenant = result.tenant;
+            this.authService.authState.subscribe((user) => {
+                this._socialUser = user;
+                this.loggedIn = (user != null);
+                this.userEmail = user != null ? user.email : "";
+                this._sessionService.getCurrentLoginInformations(this.userEmail).toPromise().then((result: GetCurrentLoginInformationsOutput) => {
+                    this._application = result.application;
+                    this._user = result.user;
+                    this._tenant = result.tenant;
                 
-                resolve(true);
-            }, (err) => {
-                reject(err);
+                    resolve(true);
+                }, (err) => {
+                    reject(err);
+                });
             });
+            
         });
 
     }

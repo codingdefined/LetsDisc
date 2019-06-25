@@ -36,6 +36,17 @@ namespace LetsDisc
             return user;
         }
 
+        protected async virtual Task<User> GetUserByEmailAsync(string email)
+        {
+            var user = await UserManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                throw new Exception("There is no current user!");
+            }
+
+            return user;
+        }
+
         protected virtual Task<Tenant> GetCurrentTenantAsync()
         {
             return TenantManager.GetByIdAsync(AbpSession.GetTenantId());

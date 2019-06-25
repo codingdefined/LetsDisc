@@ -15,5 +15,11 @@ namespace LetsDisc.Models.TokenAuth
 
         [Required]
         public string ProviderAccessCode { get; set; }
+
+        //Extended Model
+
+        public string EmailAddress { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
     }
 }

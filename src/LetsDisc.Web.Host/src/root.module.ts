@@ -20,6 +20,18 @@ import { AppPreBootstrap } from './AppPreBootstrap';
 import { ModalModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppAuthService } from '@shared/auth/app-auth.service';
+import { AuthServiceConfig, GoogleLoginProvider, AuthService } from 'angularx-social-login';
+
+let config = new AuthServiceConfig([
+    {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider("497581547584-1qngt99c97aioubotmuempdvfcf9bh6j.apps.googleusercontent.com")
+    }
+]);
+
+export function provideConfig() {
+    return config;
+}
 
 export function appInitializerFactory(injector: Injector,
     platformLocation: PlatformLocation) {
@@ -85,12 +97,11 @@ export function getCurrentLanguage(): string {
             deps: [Injector, PlatformLocation],
             multi: true
         },
-        /*{
-            provide: APP_INITIALIZER,
-            useFactory: checkIfUserAuthenticated,
-            deps: [AppAuthService],
-            multi: true
-        },*/
+        AuthService,
+        {
+            provide: AuthServiceConfig,
+            useFactory: provideConfig
+        },
         {
             provide: LOCALE_ID,
             useFactory: getCurrentLanguage

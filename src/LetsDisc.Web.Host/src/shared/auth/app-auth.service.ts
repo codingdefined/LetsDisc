@@ -3,16 +3,17 @@ import { AppConsts } from '@shared/AppConsts';
 import { TokenAuthServiceProxy } from '@shared/service-proxies/service-proxies';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { AuthService } from "angularx-social-login";
 
 @Injectable()
 export class AppAuthService {
 
-    constructor(private _tokenAuthService: TokenAuthServiceProxy) { }
+    constructor(private _tokenAuthService: TokenAuthServiceProxy, private authService: AuthService) { }
 
 
     logout(reload?: boolean): void {
         abp.auth.clearToken();
-
+        this.authService.signOut();
         if (reload !== false) {
             location.href = AppConsts.appBaseUrl;
         };

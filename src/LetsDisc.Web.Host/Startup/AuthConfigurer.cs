@@ -5,21 +5,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Abp.Runtime.Security;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OAuth;
-using System.Text.Json;
-using Newtonsoft.Json.Linq;
-using LetsDisc.Authorization.Users;
-using LetsDisc.Authorization.Roles;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using System;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace LetsDisc.Web.Host.Startup
 {
@@ -27,27 +16,44 @@ namespace LetsDisc.Web.Host.Startup
     {
         public static void Configure(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie(o =>
+            if (bool.Parse(configuration["Authentication:JwtBearer:IsEnabled"]))
             {
-                o.LoginPath = "/account/login";
-                o.ExpireTimeSpan = TimeSpan.FromDays(7);
-                o.Cookie.Name = "Abp.AuthToken";
-            })
-            .AddGoogle(googleOptions => {
-                googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-                googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-                googleOptions.CallbackPath = new PathString("/signin-google");
-                googleOptions.SaveTokens = true;
-            })
-            .AddGitHub("Github", options =>
-            {
-                options.ClientId = configuration["Authentication:GitHub:ClientId"];
-                options.ClientSecret = configuration["Authentication:GitHub:ClientSecret"];
-                options.Scope.Add("user:email");
-                options.SaveTokens = true;
-                options.CallbackPath = new PathString("/signin-github");
-            });
+                services.AddAuthentication()
+                    .AddJwtBearer(options =>
+                    {
+                        options.Audience = configuration["Authentication:JwtBearer:Audience"];
+
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            // The signing key must match!
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Authentication:JwtBearer:SecurityKey"])),
+
+                            // Validate the JWT Issuer (iss) claim
+                            ValidateIssuer = true,
+                            ValidIssuer = configuration["Authentication:JwtBearer:Issuer"],
+
+                            // Validate the JWT Audience (aud) claim
+                            ValidateAudience = true,
+                            ValidAudience = configuration["Authentication:JwtBearer:Audience"],
+
+                            // Validate the token expiry
+                            ValidateLifetime = true,
+
+                            // If you want to allow a certain amount of clock drift, set that here
+                            ClockSkew = TimeSpan.Zero
+                        };
+                    });
+
+            }
+            services.AddAuthentication()
+                .AddGoogle("GOOGLE", googleOptions =>
+                {
+                    googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+                    googleOptions.CallbackPath = new PathString("/signin-google");
+                    googleOptions.SaveTokens = true;
+                });
         }
 
         /* This method is needed to authorize SignalR javascript client.

@@ -10,6 +10,7 @@ import { TokenService } from '@abp/auth/token.service';
 import { UtilsService } from '@abp/utils/utils.service';
 import { finalize } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 
 @Injectable()
 export class LoginService {
@@ -27,7 +28,8 @@ export class LoginService {
         private _utilsService: UtilsService,
         private _messageService: MessageService,
         private _tokenService: TokenService,
-        private _logService: LogService
+        private _logService: LogService,
+        private authService: AuthService
     ) {
         this.clear();
     }
@@ -43,16 +45,35 @@ export class LoginService {
             });
     }
 
+    externalAuthenticate(): void {
+        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(user => {
+            const model = new ExternalAuthenticateModel({
+                authProvider: GoogleLoginProvider.PROVIDER_ID,
+                providerKey: user.id,
+                providerAccessCode: user.id,
+                emailAddress: user.email,
+                name: user.firstName,
+                surname: user.lastName
+            });
+            this._tokenAuthService.externalAuthenticate(model)
+                .subscribe((result: ExternalAuthenticateResultModel) => {
+                    if (result.accessToken) {
+                        this.login(result.accessToken, result.encryptedAccessToken, result.expireInSeconds, false);
+                    } else {
+                        this._logService.warn('Unexpected authenticateResult!');
+                        this._router.navigate(['account/login']);
+                    }
+                })
+        });  
+    }
+
     private processAuthenticateResult(authenticateResult: AuthenticateResultModel) {
         this.authenticateResult = authenticateResult;
 
         if (authenticateResult.accessToken) {
-            //Successfully logged in
             this.login(authenticateResult.accessToken, authenticateResult.encryptedAccessToken, authenticateResult.expireInSeconds, this.rememberMe);
 
         } else {
-            //Unexpected result!
-
             this._logService.warn('Unexpected authenticateResult!');
             this._router.navigate(['account/login']);
         }

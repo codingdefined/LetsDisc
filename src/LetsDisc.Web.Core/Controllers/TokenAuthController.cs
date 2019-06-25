@@ -27,6 +27,7 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Principal;
 using LetsDisc.Sessions.Dto;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading;
 
 namespace LetsDisc.Controllers
 {
@@ -100,10 +101,9 @@ namespace LetsDisc.Controllers
         [HttpPost]
         public async Task<ExternalAuthenticateResultModel> ExternalAuthenticate([FromBody] ExternalAuthenticateModel model)
         {
-            var externalUser = await GetExternalUserInfo(model);
-
             var loginResult = await _logInManager.LoginAsync(new UserLoginInfo(model.AuthProvider, model.ProviderKey, model.AuthProvider), GetTenancyNameOrNull());
-
+            await _signInManager.SignInAsync(loginResult.Identity, true);
+            await UnitOfWorkManager.Current.SaveChangesAsync();
             switch (loginResult.Result)
             {
                 case AbpLoginResultType.Success:
@@ -118,6 +118,14 @@ namespace LetsDisc.Controllers
                     }
                 case AbpLoginResultType.UnknownExternalLogin:
                     {
+                        var externalUser = new ExternalAuthUserInfo()
+                        {
+                            EmailAddress = model.EmailAddress,
+                            Name = model.Name,
+                            Provider = model.AuthProvider,
+                            ProviderKey = model.ProviderKey,
+                            Surname = model.Surname
+                        };
                         var newUser = await RegisterExternalUserAsync(externalUser);
                         if (!newUser.IsActive)
                         {
@@ -259,20 +267,6 @@ namespace LetsDisc.Controllers
             var authenticationProperties = _signInManager.ConfigureExternalAuthenticationProperties(provider, Url.Action(nameof(ExternalLoginCallback), new { p = provider }));
             //await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             return Challenge(authenticationProperties, provider);
-        }
-
-        [HttpGet]
-        public async Task<UserLoginInfoDto> GetCurrentLoggedInUser()
-        {
-            if(User.Identity.IsAuthenticated)
-            {
-                var userIdEmail = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
-                var userIdName = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
-                var user = userIdEmail != null ? await _userManager.FindByEmailAsync(userIdEmail?.Value)
-                                               : await _userManager.FindByNameAsync(userIdName?.Value);
-                return ObjectMapper.Map<UserLoginInfoDto>(user);
-            }
-            return null;
         }
 
         [HttpGet]
