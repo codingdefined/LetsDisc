@@ -6,7 +6,7 @@ export class SignalRAspNetCoreHelper {
 
         var encryptedAuthToken = new UtilsService().getCookieValue(AppConsts.authorization.encrptedAuthTokenName);
 
-        /*abp.signalr = {
+        abp.signalr = {
             autoConnect: true,
             connect: undefined,
             hubs: undefined,
@@ -14,14 +14,6 @@ export class SignalRAspNetCoreHelper {
             remoteServiceBaseUrl: AppConsts.remoteServiceBaseUrl,
             startConnection: undefined,
             url: '/signalr'
-        };*/
-
-        abp.signalr = {
-            autoConnect: true,
-            connect: undefined,
-            hubs: undefined,
-            qs: AppConsts.authorization.encrptedAuthTokenName + "=" + encodeURIComponent(encryptedAuthToken),
-            url: AppConsts.remoteServiceBaseUrl + '/signalr'
         };
 
         jQuery.getScript(AppConsts.appBaseUrl + '/assets/abp/abp.signalr-client.js');

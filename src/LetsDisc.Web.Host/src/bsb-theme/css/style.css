@@ -8127,3 +8127,8 @@ html.ie11 .bs-searchbox .form-control {
     margin-bottom: 10px;
 }
 
+#question-body.ng-touched.ng-invalid .ck-content {
+    border: 1px solid red !important;
+}
+
+

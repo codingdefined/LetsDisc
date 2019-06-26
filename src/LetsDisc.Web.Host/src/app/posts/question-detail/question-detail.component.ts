@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class QuestionDetailComponent extends AppComponentBase implements OnInit {
 
     question: PostWithVoteInfo;
+    notEditedQuestion: PostWithVoteInfo;
     answer: SubmitAnswerInput = new SubmitAnswerInput();
     answers: PostWithVoteInfo[] = [];
     id: number;
@@ -60,6 +61,7 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
                 this.question = result.post;
                 this.answers = result.answers;
                 this.items = result.post.post.tags.split(',');
+
             });
         this.answer.questionId = id;
     }
@@ -105,11 +107,13 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     }
 
     editClicked(): void {
+        this.notEditedQuestion = JSON.parse(JSON.stringify(this.question));
         this.editing = true;
     }
 
     cancelClick(): void {
         this.editing = false;
+        this.question = this.notEditedQuestion;
     }
 
     saveQuestion(): void {

@@ -21,3 +21,17 @@
 .tag-input {
     background:white;
 }
+
+.invalid-feedback {
+    color: red;
+    padding: 5px;
+    font-size: 12px;
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red !important;
+}
+
+.tag-input.ng-touched.ng-invalid {
+    border: 1px solid red !important;
+}
