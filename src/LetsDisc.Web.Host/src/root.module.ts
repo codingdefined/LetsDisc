@@ -25,7 +25,7 @@ import { AuthServiceConfig, GoogleLoginProvider, AuthService } from 'angularx-so
 let config = new AuthServiceConfig([
     {
         id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("497581547584-1qngt99c97aioubotmuempdvfcf9bh6j.apps.googleusercontent.com")
+        provider: new GoogleLoginProvider("1043073093790-mu9ekprmrbft39d2n4p6d5r2njhj7dqi.apps.googleusercontent.com")
     }
 ]);
 

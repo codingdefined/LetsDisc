@@ -3,8 +3,7 @@ import { AppComponentBase } from '@shared/app-component-base';
 
 @Component({
     templateUrl: './sidebar-footer.component.html',
-    selector: 'sidebar-footer',
-    encapsulation: ViewEncapsulation.None
+    selector: 'sidebar-footer'
 })
 export class SideBarFooterComponent extends AppComponentBase {
 

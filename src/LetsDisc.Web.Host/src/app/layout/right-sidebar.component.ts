@@ -4,8 +4,7 @@ import { ConfigurationServiceProxy, ChangeUiThemeInput } from '@shared/service-p
 
 @Component({
     templateUrl: './right-sidebar.component.html',
-    selector: 'right-sidebar',
-    encapsulation: ViewEncapsulation.None
+    selector: 'right-sidebar'
 })
 export class RightSideBarComponent extends AppComponentBase implements OnInit {
 

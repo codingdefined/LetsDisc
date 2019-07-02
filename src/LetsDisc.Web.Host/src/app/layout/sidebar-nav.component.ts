@@ -4,8 +4,7 @@ import { MenuItem } from '@shared/layout/menu-item';
 
 @Component({
     templateUrl: './sidebar-nav.component.html',
-    selector: 'sidebar-nav',
-    encapsulation: ViewEncapsulation.None
+    selector: 'sidebar-nav'
 })
 export class SideBarNavComponent extends AppComponentBase {
 

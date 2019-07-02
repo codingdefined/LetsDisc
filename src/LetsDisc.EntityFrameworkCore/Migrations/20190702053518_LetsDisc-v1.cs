@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LetsDisc.Migrations
 {
-    public partial class letsdiscv1 : Migration
+    public partial class LetsDiscv1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -120,6 +120,35 @@ namespace LetsDisc.Migrations
                     table.ForeignKey(
                         name: "FK_TagSynonyms_AbpUsers_ApprovedByUserId",
                         column: x => x.ApprovedByUserId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserDetails",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Reputation = table.Column<int>(nullable: false),
+                    DisplayName = table.Column<string>(nullable: true),
+                    UserId = table.Column<long>(nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    WebsiteUrl = table.Column<string>(nullable: true),
+                    Location = table.Column<string>(nullable: true),
+                    AboutMe = table.Column<string>(nullable: true),
+                    Views = table.Column<string>(nullable: true),
+                    Upvotes = table.Column<string>(nullable: true),
+                    Downvotes = table.Column<string>(nullable: true),
+                    ProfileImageUrl = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserDetails_AbpUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AbpUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -461,6 +490,11 @@ namespace LetsDisc.Migrations
                 column: "ApprovedByUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserDetails_UserId",
+                table: "UserDetails",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserVoteForQuestion_QuestionId",
                 table: "UserVoteForQuestion",
                 column: "QuestionId");
@@ -497,6 +531,9 @@ namespace LetsDisc.Migrations
 
             migrationBuilder.DropTable(
                 name: "TagSynonyms");
+
+            migrationBuilder.DropTable(
+                name: "UserDetails");
 
             migrationBuilder.DropTable(
                 name: "UserVoteForQuestion");

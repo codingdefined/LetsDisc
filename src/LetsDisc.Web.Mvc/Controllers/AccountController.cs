@@ -404,7 +404,7 @@ namespace LetsDisc.Web.Controllers
 
         public async Task<ActionResult> TenantChangeModal()
         {
-            var loginInfo = await _sessionAppService.GetCurrentLoginInformations();
+            var loginInfo = await _sessionAppService.GetCurrentLoginInformations("admin@aspnetboilerplate.com");
             return View("/Views/Shared/Components/TenantChange/_ChangeModal.cshtml", new ChangeModalViewModel
             {
                 TenancyName = loginInfo.Tenant?.TenancyName

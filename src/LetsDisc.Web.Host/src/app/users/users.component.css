@@ -1,0 +1,26 @@
+﻿.user-gravatar {
+    float:left;
+    height:48px;
+    width:48px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.user-info {
+    padding: 5px 6px 7px 7px;
+    color: #6a737c;
+}
+
+.user-details {
+    float: left;
+    margin-left: 10px;
+}
+
+.user-details > a {
+    font-size:15px;
+    display:inline-block;
+}

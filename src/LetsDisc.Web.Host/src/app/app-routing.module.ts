@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
-import { HomeComponent } from '@app/home/home.component';
 import { PostsComponent } from '@app/posts/posts.component';
 import { CreateQuestionComponent } from '@app/posts/create-question/create-question.component';
 import { QuestionDetailComponent } from '@app/posts/question-detail/question-detail.component';
@@ -25,7 +24,7 @@ import { TagsComponent } from '@app/tags/tags.component';
                             { path: '', component: PostsComponent },
                             { path: 'tagged/:tag', component: PostsTagComponent },
                             { path: ':id/:title', component: QuestionDetailComponent },
-                            { path: 'ask', component: CreateQuestionComponent },
+                            { path: 'ask', component: CreateQuestionComponent, canActivate: [AppRouteGuard] },
                         ]
                     },
                     { path: 'users', component: UsersComponent },

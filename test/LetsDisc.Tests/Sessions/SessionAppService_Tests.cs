@@ -21,7 +21,7 @@ namespace LetsDisc.Tests.Sessions
             LoginAsHostAdmin();
 
             // Act
-            var output = await _sessionAppService.GetCurrentLoginInformations();
+            var output = await _sessionAppService.GetCurrentLoginInformations("admin@aspnetboilerplate.com");
 
             // Assert
             var currentUser = await GetCurrentUserAsync();
@@ -36,7 +36,7 @@ namespace LetsDisc.Tests.Sessions
         public async Task Should_Get_Current_User_And_Tenant_When_Logged_In_As_Tenant()
         {
             // Act
-            var output = await _sessionAppService.GetCurrentLoginInformations();
+            var output = await _sessionAppService.GetCurrentLoginInformations("admin@aspnetboilerplate.com");
 
             // Assert
             var currentUser = await GetCurrentUserAsync();

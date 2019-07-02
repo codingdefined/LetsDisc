@@ -15,7 +15,6 @@ import { AbpModule } from '@abp/abp.module';
 import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
 import { SharedModule } from '@shared/shared.module';
 
-import { HomeComponent } from '@app/home/home.component';
 import { AboutComponent } from '@app/about/about.component';
 import { UsersComponent } from '@app/users/users.component';
 import { CreateUserComponent } from '@app/users/create-user/create-user.component';
@@ -48,7 +47,6 @@ import { SocialLoginModule } from "angularx-social-login";
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent,
         AboutComponent,
         TenantsComponent,
 		CreateTenantComponent,

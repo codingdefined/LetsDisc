@@ -1,4 +1,4 @@
-﻿import { Component, ViewContainerRef, OnInit, ViewEncapsulation, Injector } from '@angular/core';
+﻿import { Component, ViewContainerRef, OnInit, ViewEncapsulation, Injector, OnDestroy } from '@angular/core';
 import { LoginService } from './login/login.service';
 import { AppComponentBase } from '@shared/app-component-base';
 
@@ -6,10 +6,9 @@ import { AppComponentBase } from '@shared/app-component-base';
     templateUrl: './account.component.html',
     styleUrls: [
         './account.component.less'
-    ],
-    encapsulation: ViewEncapsulation.None
+    ]
 })
-export class AccountComponent extends AppComponentBase implements OnInit {
+export class AccountComponent extends AppComponentBase implements OnInit, OnDestroy {
 
     private viewContainerRef: ViewContainerRef;
 
@@ -32,5 +31,9 @@ export class AccountComponent extends AppComponentBase implements OnInit {
 
     ngOnInit(): void {
         $('body').attr('class', 'login-page');
+    }
+
+    ngOnDestroy(): void {
+        $('body').removeClass('login-page');
     }
 }

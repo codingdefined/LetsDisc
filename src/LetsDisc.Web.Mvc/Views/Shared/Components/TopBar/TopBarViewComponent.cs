@@ -33,7 +33,7 @@ namespace LetsDisc.Web.Views.Shared.Components.TopBarLanguageSwitch
             {
                 MainMenu = await _userNavigationManager.GetMenuAsync("MainMenu", _abpSession.ToUserIdentifier()),
                 ActiveMenuItemName = activeMenu,
-                LoginInformations = await _sessionAppService.GetCurrentLoginInformations(),
+                LoginInformations = await _sessionAppService.GetCurrentLoginInformations("admin@aspnetboilerplate.com"),
                 IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled,
             };
 

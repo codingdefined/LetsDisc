@@ -21,7 +21,7 @@ namespace LetsDisc.Web.Views.Shared.Components.SideBarUserArea
         {
             var model = new SideBarUserAreaViewModel
             {
-                LoginInformations = await _sessionAppService.GetCurrentLoginInformations(),
+                LoginInformations = await _sessionAppService.GetCurrentLoginInformations("admin@aspnetboilerplate.com"),
                 IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled,
             };
 

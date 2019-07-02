@@ -16,7 +16,7 @@ namespace LetsDisc.Web.Views.Shared.Components.TenantChange
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var loginInfo = await _sessionAppService.GetCurrentLoginInformations();
+            var loginInfo = await _sessionAppService.GetCurrentLoginInformations("admin@aspnetboilerplate.com");
             var model = loginInfo.MapTo<TenantChangeViewModel>();
             return View(model);
         }

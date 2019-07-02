@@ -33,6 +33,9 @@ namespace LetsDisc.EntityFrameworkCore
         public virtual DbSet<VoteType> VoteTypes { get; set; }
         public virtual DbSet<Vote> Votes { get; set; }
 
+        //Users
+        public virtual DbSet<UserDetails> UserDetails { get; set; }
+
         public LetsDiscDbContext(DbContextOptions<LetsDiscDbContext> options)
             : base(options)
         {

@@ -1008,6 +1008,41 @@ namespace LetsDisc.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("LetsDisc.Authorization.Users.UserDetails", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AboutMe");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<string>("DisplayName");
+
+                    b.Property<string>("Downvotes");
+
+                    b.Property<string>("Location");
+
+                    b.Property<string>("ProfileImageUrl");
+
+                    b.Property<int>("Reputation");
+
+                    b.Property<string>("Upvotes");
+
+                    b.Property<long>("UserId");
+
+                    b.Property<string>("Views");
+
+                    b.Property<string>("WebsiteUrl");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDetails");
+                });
+
             modelBuilder.Entity("LetsDisc.MultiTenancy.Tenant", b =>
                 {
                     b.Property<int>("Id")
@@ -1533,6 +1568,14 @@ namespace LetsDisc.Migrations
                     b.HasOne("LetsDisc.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+                });
+
+            modelBuilder.Entity("LetsDisc.Authorization.Users.UserDetails", b =>
+                {
+                    b.HasOne("LetsDisc.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("LetsDisc.MultiTenancy.Tenant", b =>
