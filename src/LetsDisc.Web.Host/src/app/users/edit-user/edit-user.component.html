@@ -1,102 +1,78 @@
-﻿<div bsModal #editUserModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="editUserModal" aria-hidden="true" [config]="{backdrop: 'static'}">
-    <div class="modal-dialog">
-
-        <div #modalContent class="modal-content">
-            <form *ngIf="active" #editUserForm="ngForm" id="frm_edit_user" novalidate (ngSubmit)="save()">
-                <div class="modal-header">
-                    <button type="button" class="close" (click)="close()" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">
-                        <span>{{l("EditUser")}}</span>
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                        <li role="presentation" class="active"><a href="#edit-user-details" data-toggle="tab">User Details</a></li>
-                        <li role="presentation"><a href="#edit-user-roles" data-toggle="tab">User Roles</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="edit-user-details">
-
-                            <div class="row clearfix" style="margin-top:10px;">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input id="username" type="text" name="UserName" [(ngModel)]="user.userName" required maxlength="32" minlength="2" class="validate form-control">
-                                            <label for="username" class="form-label">{{l("UserName")}}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input id="name" type="text" name="Name" [(ngModel)]="user.name" required maxlength="32" class="validate form-control">
-                                            <label for="name" class="form-label">{{l("Name")}}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input id="surname" type="text" name="Surname" [(ngModel)]="user.surname" required maxlength="32" class="validate form-control">
-                                            <label for="surname" class="form-label">{{l("Surname")}}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input id="email" type="email" name="EmailAddress" [(ngModel)]="user.emailAddress" maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$" class="validate form-control">
-                                            <label for="email" class="form-label">{{l("EmailAddress")}}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="">
-                                            <input id="isactive" type="checkbox" name="IsActive" [(ngModel)]="user.isActive" checked class="form-control" />
-                                            <label for="isactive" class="form-label">{{l("IsActive")}}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+﻿<div class="container col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <div class="card">
+        <form #editUserForm="ngForm" id="frm_edit_user" method="post" (ngSubmit)="saveUser()">
+            <div class="header">
+                <h4 class="title">
+                    <span>Edit User Details</span>
+                </h4>
+            </div>
+            <div class="body table-responsive">
+                <div class="form-group">
+                    <div class="form-line">
+                        <label for="username">{{l("UserName")}}</label>
+                        <input id="username" class="form-control" type="text" name="username" [ngModel]="user?.userName" (ngModelChange)="user.userName=$event" required minlength="2" maxlength="50" #username="ngModel" />
+                    </div>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
+                        <div *ngIf="username.errors.required">
+                            Username is required.
                         </div>
-
-                        <div role="tabpanel" class="tab-pane animated fadeIn" id="edit-user-roles">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    <ng-template ngFor let-role [ngForOf]="roles" let-roleIndex="index">
-                                        <div class="col-sm-6">
-                                            <input type="checkbox" name="role" value="{{role.normalizedName}}" title="{{role.description}}" class="filled-in" id="role-{{roleIndex}}" checked="{{userInRole(role,user)}}" />
-                                            <label for="role-{{roleIndex}}" title="{{role.displayName}}">{{role.name}}</label>
-                                        </div>
-                                    </ng-template>
-                                </div>
-                            </div>
+                        <div *ngIf="username.errors.minlength">
+                            Username must be at least 2 characters long.
                         </div>
-
+                        <div *ngIf="username.errors.maxlength">
+                            Username must be at atmost 32 characters long.
+                        </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
-                        {{l("Cancel")}}
-                    </button>
-                    <button [disabled]="!editUserForm.form.valid" type="submit" class="btn btn-primary waves-effect">
-                        {{l("Save")}}
-                    </button>
+
+                <div class="form-group">
+                    <div class="form-line">
+                        <label for="name">{{l("Name")}}</label>
+                        <input id="name" class="form-control" type="text" name="name" [ngModel]="user?.name" (ngModelChange)="user.name=$event" required minlength="2" maxlength="15" #name="ngModel" />
+                    </div>
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+                        <div *ngIf="name.errors.required">
+                            Name is required
+                        </div>
+                        <div *ngIf="name.errors.maxlength">
+                            Name must be at atmost 32 characters long.
+                        </div>
+                    </div>
                 </div>
 
-            </form>
-        </div>
+                <div class="form-group">
+                    <div class="form-line">
+                        <label for="surname">{{l("Surname")}}</label>
+                        <input id="surname" class="form-control" type="text" name="surname" [ngModel]="user?.surname" (ngModelChange)="user.surname=$event" required minlength="2" maxlength="15" #surname="ngModel" />
+                    </div>
+                    <div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="invalid-feedback">
+                        <div *ngIf="surname.errors.required">
+                            Surname is required
+                        </div>
+                        <div *ngIf="surname.errors.maxlength">
+                            Surname must be at atmost 32 characters long.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-line">
+                        <label for="email">{{l("EmailAddress")}}</label>
+                        <input id="email" class="form-control" type="text" name="email" [ngModel]="user?.emailAddress" (ngModelChange)="emailAddress.email=$event" required maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$" #email="ngModel" />
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                        <div *ngIf="email.errors.required">
+                            Email is required
+                        </div>
+                        <div *ngIf="email.errors.maxlength">
+                            Email must be at atmost 256 characters long.
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-save-edits">Save Edits</button>
+                <button type="button" class="btn btn-default" (click)="cancelClick()">Cancel</button>
+            </div>
+        </form>
     </div>
 </div>

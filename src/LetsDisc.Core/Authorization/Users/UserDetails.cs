@@ -21,9 +21,9 @@ namespace LetsDisc.Authorization.Users
         public string WebsiteUrl { get; set; }
         public string Location { get; set; }
         public string AboutMe { get; set; }
-        public string Views { get; set; }
-        public string Upvotes { get; set; }
-        public string Downvotes { get; set; }
+        public int Views { get; set; }
+        public int Upvotes { get; set; }
+        public int Downvotes { get; set; }
         public string ProfileImageUrl { get; set; }
     }
 }

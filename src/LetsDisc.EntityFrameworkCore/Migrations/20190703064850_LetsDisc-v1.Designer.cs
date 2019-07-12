@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LetsDisc.Migrations
 {
     [DbContext(typeof(LetsDiscDbContext))]
-    [Migration("20190702053518_LetsDisc-v1")]
+    [Migration("20190703064850_LetsDisc-v1")]
     partial class LetsDiscv1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1022,7 +1022,7 @@ namespace LetsDisc.Migrations
 
                     b.Property<string>("DisplayName");
 
-                    b.Property<string>("Downvotes");
+                    b.Property<int>("Downvotes");
 
                     b.Property<string>("Location");
 
@@ -1030,11 +1030,11 @@ namespace LetsDisc.Migrations
 
                     b.Property<int>("Reputation");
 
-                    b.Property<string>("Upvotes");
+                    b.Property<int>("Upvotes");
 
                     b.Property<long>("UserId");
 
-                    b.Property<string>("Views");
+                    b.Property<int>("Views");
 
                     b.Property<string>("WebsiteUrl");
 

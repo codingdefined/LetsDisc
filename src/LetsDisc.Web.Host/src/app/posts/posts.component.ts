@@ -10,7 +10,7 @@ import { finalize } from 'rxjs/operators';
     styleUrls: ['./posts.component.css'],
     animations: [appModuleAnimation()]
 })
-export class PostsComponent extends PagedListingComponentBase<PostDto> implements OnInit {
+export class PostsComponent extends PagedListingComponentBase<PostDto>{
 
     @Input() tagValue = '';
     questions: PostDto[] = [];
@@ -34,9 +34,6 @@ export class PostsComponent extends PagedListingComponentBase<PostDto> implement
 
     constructor(injector: Injector, private _postService: PostServiceProxy) {
         super(injector);
-    }
-
-    ngOnInit(): void {
     }
 
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {

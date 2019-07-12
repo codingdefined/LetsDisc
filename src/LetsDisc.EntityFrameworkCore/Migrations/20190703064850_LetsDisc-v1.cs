@@ -138,9 +138,9 @@ namespace LetsDisc.Migrations
                     WebsiteUrl = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true),
                     AboutMe = table.Column<string>(nullable: true),
-                    Views = table.Column<string>(nullable: true),
-                    Upvotes = table.Column<string>(nullable: true),
-                    Downvotes = table.Column<string>(nullable: true),
+                    Views = table.Column<int>(nullable: false),
+                    Upvotes = table.Column<int>(nullable: false),
+                    Downvotes = table.Column<int>(nullable: false),
                     ProfileImageUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

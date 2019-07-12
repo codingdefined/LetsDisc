@@ -2151,57 +2151,6 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @return Success
-     */
-    getCurrentLoggedInUser(): Observable<UserLoginInfoDto> {
-        let url_ = this.baseUrl + "/api/TokenAuth/GetCurrentLoggedInUser";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetCurrentLoggedInUser(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetCurrentLoggedInUser(<any>response_);
-                } catch (e) {
-                    return <Observable<UserLoginInfoDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<UserLoginInfoDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetCurrentLoggedInUser(response: HttpResponseBase): Observable<UserLoginInfoDto> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? UserLoginInfoDto.fromJS(resultData200) : new UserLoginInfoDto();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<UserLoginInfoDto>(<any>null);
-    }
-
-    /**
      * @param p (optional) 
      * @param returnUrl (optional) 
      * @param remoteError (optional) 
@@ -2532,6 +2481,60 @@ export class UserServiceProxy {
             }));
         }
         return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getUser(id: number | null | undefined): Observable<UserInfo> {
+        let url_ = this.baseUrl + "/api/services/app/User/GetUser?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetUser(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetUser(<any>response_);
+                } catch (e) {
+                    return <Observable<UserInfo>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<UserInfo>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetUser(response: HttpResponseBase): Observable<UserInfo> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? UserInfo.fromJS(resultData200) : new UserInfo();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<UserInfo>(<any>null);
     }
 
     /**
@@ -6095,6 +6098,128 @@ export class ChangeUserLanguageDto implements IChangeUserLanguageDto {
 
 export interface IChangeUserLanguageDto {
     languageName: string;
+}
+
+export class UserInfo implements IUserInfo {
+    user: UserDto | undefined;
+    userDetails: UserDetailsDto | undefined;
+    questionsCount: number | undefined;
+    answersCount: number | undefined;
+
+    constructor(data?: IUserInfo) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.user = data["user"] ? UserDto.fromJS(data["user"]) : <any>undefined;
+            this.userDetails = data["userDetails"] ? UserDetailsDto.fromJS(data["userDetails"]) : <any>undefined;
+            this.questionsCount = data["questionsCount"];
+            this.answersCount = data["answersCount"];
+        }
+    }
+
+    static fromJS(data: any): UserInfo {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserInfo();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
+        data["userDetails"] = this.userDetails ? this.userDetails.toJSON() : <any>undefined;
+        data["questionsCount"] = this.questionsCount;
+        data["answersCount"] = this.answersCount;
+        return data; 
+    }
+
+    clone(): UserInfo {
+        const json = this.toJSON();
+        let result = new UserInfo();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IUserInfo {
+    user: UserDto | undefined;
+    userDetails: UserDetailsDto | undefined;
+    questionsCount: number | undefined;
+    answersCount: number | undefined;
+}
+
+export class UserDetailsDto implements IUserDetailsDto {
+    reputation: number | undefined;
+    displayName: string | undefined;
+    websiteUrl: string | undefined;
+    location: string | undefined;
+    aboutMe: string | undefined;
+    views: string | undefined;
+    profileImageUrl: string | undefined;
+
+    constructor(data?: IUserDetailsDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.reputation = data["reputation"];
+            this.displayName = data["displayName"];
+            this.websiteUrl = data["websiteUrl"];
+            this.location = data["location"];
+            this.aboutMe = data["aboutMe"];
+            this.views = data["views"];
+            this.profileImageUrl = data["profileImageUrl"];
+        }
+    }
+
+    static fromJS(data: any): UserDetailsDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserDetailsDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["reputation"] = this.reputation;
+        data["displayName"] = this.displayName;
+        data["websiteUrl"] = this.websiteUrl;
+        data["location"] = this.location;
+        data["aboutMe"] = this.aboutMe;
+        data["views"] = this.views;
+        data["profileImageUrl"] = this.profileImageUrl;
+        return data; 
+    }
+
+    clone(): UserDetailsDto {
+        const json = this.toJSON();
+        let result = new UserDetailsDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IUserDetailsDto {
+    reputation: number | undefined;
+    displayName: string | undefined;
+    websiteUrl: string | undefined;
+    location: string | undefined;
+    aboutMe: string | undefined;
+    views: string | undefined;
+    profileImageUrl: string | undefined;
 }
 
 export class PagedResultDtoOfUserDto implements IPagedResultDtoOfUserDto {

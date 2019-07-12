@@ -186,7 +186,7 @@ a{cursor: pointer;
   margin-left: 5px; }
 
 .navbar-nav .dropdown-menu {
-  margin-top: -40px !important; }
+  margin-top: 0px !important; }
 
 .label-count {
   position: absolute;
@@ -2477,7 +2477,7 @@ a {
   animation: none !important; }
 
 section.content {
-  margin: 100px 15px 0 315px;
+  margin: 100px 15px 0 215px;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   -webkit-transition: 0.5s;
@@ -6811,7 +6811,7 @@ fieldset[disabled] .form-control {
   margin-left: 5px; }
 
 .navbar-nav .dropdown-menu {
-  margin-top: -40px !important; }
+  margin-top: 0px !important; }
 
 .label-count {
   position: absolute;
@@ -7542,7 +7542,7 @@ fieldset[disabled] .form-control {
   transition: all 0.5s;
   font-family: "Roboto", sans-serif;
   background: #fdfdfd;
-  width: 300px;
+  width: 200px;
   overflow: hidden;
   display: inline-block;
   height: calc(100vh - 70px);
@@ -8129,6 +8129,26 @@ html.ie11 .bs-searchbox .form-control {
 
 #question-body.ng-touched.ng-invalid .ck-content {
     border: 1px solid red !important;
+}
+
+.user-loggedin {
+    margin: 0px !important;
+    padding: 10px 20px 10px 10px !important;
+}
+
+.user-image {
+    margin-right:10px;
+    border-radius: 50%;
+}
+
+.dropdown-item i {
+    color: #73818f;
+    margin: 0px 10px 0px 0px;
+    width: 20px;
+}
+
+.login-text {
+    vertical-align: super;
 }
 
 

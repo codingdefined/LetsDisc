@@ -16,6 +16,9 @@ using LetsDisc.Authorization.Roles;
 using LetsDisc.Authorization.Users;
 using LetsDisc.Roles.Dto;
 using LetsDisc.Users.Dto;
+using System;
+using LetsDisc.PostDetails;
+using LetsDisc.Posts;
 
 namespace LetsDisc.Users
 {
@@ -25,19 +28,25 @@ namespace LetsDisc.Users
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly IRepository<UserDetails, long> _userDetailsRepository;
+        private readonly IRepository<Post> _postRepository;
 
         public UserAppService(
             IRepository<User, long> repository,
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
-            IPasswordHasher<User> passwordHasher)
+            IPasswordHasher<User> passwordHasher,
+            IRepository<UserDetails, long> userDetailsRepository,
+            IRepository<Post> postRepository)
             : base(repository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
+            _userDetailsRepository = userDetailsRepository;
+            _postRepository = postRepository;
         }
 
         public override async Task<UserDto> Create(CreateUserDto input)
@@ -137,6 +146,46 @@ namespace LetsDisc.Users
             }
 
             return user;
+        }
+
+        public async Task<UserInfo> GetUser(int id)
+        {
+            var user = await Repository.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (user == null)
+            {
+                throw new EntityNotFoundException(typeof(User), id);
+            }
+
+            var userDetails = await _userDetailsRepository.FirstOrDefaultAsync(x => x.UserId == id);
+
+            if(userDetails == null)
+            {
+                userDetails = await _userDetailsRepository.InsertAsync(new UserDetails
+                                    {
+                                        UserId = user.Id,
+                                        CreationTime = DateTime.Now,
+                                        Views = 0,
+                                        Upvotes = 0,
+                                        Downvotes = 0,
+                                        DisplayName = user.FullName
+                                    });
+            }
+
+            var questionsCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question && p.CreatorUserId == id);
+            var answersCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Answer && p.CreatorUserId == id);
+
+            userDetails.Views++;
+            var userDto = base.MapToEntityDto(user);
+            var userDetailsDto = ObjectMapper.Map<UserDetailsDto>(userDetails);
+
+            return new UserInfo
+            {
+                User = userDto,
+                UserDetails = userDetailsDto,
+                questionsCount = questionsCount,
+                answersCount = answersCount
+            };
         }
 
         protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedResultRequestDto input)

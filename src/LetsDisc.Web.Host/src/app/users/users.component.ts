@@ -2,7 +2,6 @@ import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { UserServiceProxy, UserDto, PagedResultDtoOfUserDto } from '@shared/service-proxies/service-proxies';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
-import { CreateUserComponent } from 'app/users/create-user/create-user.component';
 import { EditUserComponent } from 'app/users/edit-user/edit-user.component';
 import { finalize } from 'rxjs/operators';
 
@@ -12,9 +11,6 @@ import { finalize } from 'rxjs/operators';
     animations: [appModuleAnimation()]
 })
 export class UsersComponent extends PagedListingComponentBase<UserDto> {
-
-    @ViewChild('createUserModal') createUserModal: CreateUserComponent;
-    @ViewChild('editUserModal') editUserModal: EditUserComponent;
 
     active: boolean = false;
     users: UserDto[] = [];
@@ -50,14 +46,5 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
                 }
             }
         );
-    }
-
-    // Show Modals
-    createUser(): void {
-        this.createUserModal.show();
-    }
-
-    editUser(user: UserDto): void {
-        this.editUserModal.show(user.id);
     }
 }

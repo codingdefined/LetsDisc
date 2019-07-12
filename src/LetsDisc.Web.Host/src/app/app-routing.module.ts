@@ -10,6 +10,8 @@ import { QuestionDetailComponent } from '@app/posts/question-detail/question-det
 import { PostsTagComponent } from '@app/posts/posts-tag/posts-tag.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 import { TagsComponent } from '@app/tags/tags.component';
+import { UserDetailComponent } from '@app/users/user-detail/user-detail.component';
+import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
 
 @NgModule({
     imports: [
@@ -23,11 +25,20 @@ import { TagsComponent } from '@app/tags/tags.component';
                         children: [
                             { path: '', component: PostsComponent },
                             { path: 'tagged/:tag', component: PostsTagComponent },
+                            { path: ':id', component: QuestionDetailComponent },
                             { path: ':id/:title', component: QuestionDetailComponent },
                             { path: 'ask', component: CreateQuestionComponent, canActivate: [AppRouteGuard] },
                         ]
                     },
-                    { path: 'users', component: UsersComponent },
+                    {
+                        path: 'users',
+                        children: [
+                            { path: '', component: UsersComponent },
+                            { path: ':id', component: UserDetailComponent },
+                            { path: ':id/edit', component: EditUserComponent },
+                            { path: ':id/:name', component: UserDetailComponent }
+                        ]
+                    },
                     { path: 'about', component: AboutComponent },
                     { path: 'tags', component: TagsComponent },
                     { path: '', redirectTo: '/questions', pathMatch: 'full' },

@@ -1020,7 +1020,7 @@ namespace LetsDisc.Migrations
 
                     b.Property<string>("DisplayName");
 
-                    b.Property<string>("Downvotes");
+                    b.Property<int>("Downvotes");
 
                     b.Property<string>("Location");
 
@@ -1028,11 +1028,11 @@ namespace LetsDisc.Migrations
 
                     b.Property<int>("Reputation");
 
-                    b.Property<string>("Upvotes");
+                    b.Property<int>("Upvotes");
 
                     b.Property<long>("UserId");
 
-                    b.Property<string>("Views");
+                    b.Property<int>("Views");
 
                     b.Property<string>("WebsiteUrl");
 

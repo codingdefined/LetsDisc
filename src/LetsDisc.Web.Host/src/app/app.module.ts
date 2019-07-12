@@ -17,7 +17,6 @@ import { SharedModule } from '@shared/shared.module';
 
 import { AboutComponent } from '@app/about/about.component';
 import { UsersComponent } from '@app/users/users.component';
-import { CreateUserComponent } from '@app/users/create-user/create-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { RolesComponent } from '@app/roles/roles.component';
 import { CreateRoleComponent } from '@app/roles/create-role/create-role.component';
@@ -43,6 +42,7 @@ import { PostsTagComponent } from './posts/posts-tag/posts-tag.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TagsComponent } from './tags/tags.component';
 import { SocialLoginModule } from "angularx-social-login";
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +55,6 @@ import { SocialLoginModule } from "angularx-social-login";
         QuestionsComponent,
         CreateQuestionComponent,
         EditQuestionComponent,
-		CreateUserComponent,
 		EditUserComponent,
       	RolesComponent,        
 		CreateRoleComponent,
@@ -72,6 +71,7 @@ import { SocialLoginModule } from "angularx-social-login";
         PostsTagComponent,
         PageNotFoundComponent,
         TagsComponent,
+        UserDetailComponent,
     ],
     imports: [
         CommonModule,

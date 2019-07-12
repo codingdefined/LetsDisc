@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace LetsDisc.Posts
 {
-    enum VoteTypes
+    public enum VoteTypes
     {
         Accepted = 1,
         Upvote,
@@ -24,6 +24,11 @@ namespace LetsDisc.Posts
         Favorite,
         Spam,
         ModeratorReview
+    }
+    public enum PostTypes
+    {
+        Question = 1,
+        Answer
     }
     public class PostAppService : AsyncCrudAppService<Post, PostDto, int, PagedResultRequestDto, CreatePostDto, PostDto>, IPostAppService
     {
@@ -192,11 +197,11 @@ namespace LetsDisc.Posts
         // Getting all questions on the Home Page
         public async Task<PagedResultDto<PostDto>> GetQuestions(PagedResultRequestDto input)
         {
-            var questionCount = await _postRepository.CountAsync(p => p.PostTypeId == 1);
+            var questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question);
             var questions = await _postRepository
                                 .GetAll()
                                 .Include(a => a.CreatorUser)
-                                .Where(a => a.PostTypeId == 1)
+                                .Where(a => a.PostTypeId == (int)PostTypes.Question)
                                 .OrderByDescending(a => a.CreationTime)
                                 .ToListAsync();
 
@@ -285,7 +290,7 @@ namespace LetsDisc.Posts
                     Body = input.Body,
                     ParentId = input.QuestionId,
                     CreatorUserId = AbpSession.UserId,
-                    PostTypeId = 2
+                    PostTypeId = (int)PostTypes.Answer
                 });
             var question = await _postRepository.FirstOrDefaultAsync(x => x.Id == input.QuestionId);
             question.AnswerCount++;
