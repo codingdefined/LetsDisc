@@ -1,4 +1,4 @@
-import { Component, Injector, Input, OnInit } from '@angular/core';
+import { Component, Injector, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
 import { PostDto, PostServiceProxy, PagedResultDtoOfPostDto } from '@shared/service-proxies/service-proxies';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
@@ -36,8 +36,18 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
         super(injector);
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['tagValue']) {
+            this._postService.getQuestions(0, 10, this.tagValue)
+                .subscribe((result: PagedResultDtoOfPostDto) => {
+                    this.questions = result.items;
+                    this.showPaging(result, 0);
+                });
+        }
+    }
+
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._postService.getQuestions(request.skipCount, request.maxResultCount)
+        this._postService.getQuestions(request.skipCount, request.maxResultCount, this.tagValue)
             .pipe(finalize(() => {
                 finishedCallback()
             }))

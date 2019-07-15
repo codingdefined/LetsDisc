@@ -58,7 +58,7 @@
                 <div class="form-group">
                     <div class="form-line">
                         <label for="email">{{l("EmailAddress")}}</label>
-                        <input id="email" class="form-control" type="text" name="email" [ngModel]="user?.emailAddress" (ngModelChange)="emailAddress.email=$event" required maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$" #email="ngModel" />
+                        <input id="email" class="form-control" type="text" name="email" [ngModel]="user?.emailAddress" (ngModelChange)="user.emailAddress=$event" required maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$" #email="ngModel" />
                     </div>
                     <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
                         <div *ngIf="email.errors.required">
@@ -67,6 +67,27 @@
                         <div *ngIf="email.errors.maxlength">
                             Email must be at atmost 256 characters long.
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-line">
+                        <label for="website">{{l("Website")}}</label>
+                        <input id="website" class="form-control" type="text" name="website" [ngModel]="userDetails?.websiteUrl" (ngModelChange)="userDetails.websiteUrl=$event" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-line">
+                        <label for="location">{{l("Location")}}</label>
+                        <input id="location" class="form-control" type="text" name="location" [ngModel]="userDetails?.location" (ngModelChange)="userDetails.location=$event" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-line">
+                        <label for="about">{{l("About")}}</label>
+                        <textarea id="about" class="form-control" rows="10" name="about" [ngModel]="userDetails?.aboutMe" (ngModelChange)="userDetails.aboutMe=$event" ></textarea>
                     </div>
                 </div>
 

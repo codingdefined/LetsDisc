@@ -195,15 +195,31 @@ namespace LetsDisc.Posts
         }
 
         // Getting all questions on the Home Page
-        public async Task<PagedResultDto<PostDto>> GetQuestions(PagedResultRequestDto input)
+        public async Task<PagedResultDto<PostDto>> GetQuestions(PagedResultRequestDto input, string tag)
         {
-            var questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question);
-            var questions = await _postRepository
-                                .GetAll()
-                                .Include(a => a.CreatorUser)
-                                .Where(a => a.PostTypeId == (int)PostTypes.Question)
-                                .OrderByDescending(a => a.CreationTime)
-                                .ToListAsync();
+            int questionCount;
+            List<Post> questions;
+            if(!(tag == null || tag == ""))
+            {
+                questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question && p.Tags.Contains(tag));
+                questions = await _postRepository
+                                    .GetAll()
+                                    .Include(a => a.CreatorUser)
+                                    .Where(a => a.PostTypeId == (int)PostTypes.Question && a.Tags.Contains(tag))
+                                    .OrderByDescending(a => a.CreationTime)
+                                    .ToListAsync();
+            }
+            else
+            {
+                questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question);
+                questions = await _postRepository
+                                    .GetAll()
+                                    .Include(a => a.CreatorUser)
+                                    .Where(a => a.PostTypeId == (int)PostTypes.Question)
+                                    .OrderByDescending(a => a.CreationTime)
+                                    .ToListAsync();
+            }
+
 
             return new PagedResultDto<PostDto>
             {

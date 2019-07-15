@@ -19,6 +19,7 @@ using LetsDisc.Users.Dto;
 using System;
 using LetsDisc.PostDetails;
 using LetsDisc.Posts;
+using Abp.AutoMapper;
 
 namespace LetsDisc.Users
 {
@@ -148,7 +149,7 @@ namespace LetsDisc.Users
             return user;
         }
 
-        public async Task<UserInfo> GetUser(int id)
+        public async Task<UserInfo> GetUser(long id)
         {
             var user = await Repository.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -185,6 +186,37 @@ namespace LetsDisc.Users
                 UserDetails = userDetailsDto,
                 questionsCount = questionsCount,
                 answersCount = answersCount
+            };
+        }
+
+        public async Task<UserInfo> UpdateUserInfo(UserInfo input)
+        {
+            CheckUpdatePermission();
+
+            var user = await Repository.FirstOrDefaultAsync(x => x.Id == input.User.Id);
+            var userDetails = await _userDetailsRepository.FirstOrDefaultAsync(x => x.UserId == input.User.Id);
+
+            MapToEntity(input.User, user);
+
+            userDetails.AboutMe = input.UserDetails.AboutMe;
+            userDetails.Location = input.UserDetails.Location;
+            userDetails.WebsiteUrl = input.UserDetails.WebsiteUrl;
+
+            CheckErrors(await _userManager.UpdateAsync(user));
+            await _userDetailsRepository.UpdateAsync(userDetails);   
+            
+            return await GetUser(user.Id);
+        }
+
+        public async Task<PagedResultDto<UserDetailsDto>> GetALLUsers(PagedResultRequestDto input)
+        {
+            var userDetailsCount = await _userDetailsRepository.CountAsync();
+            var userDetails = await _userDetailsRepository.GetAll().Include(a => a.User).ToListAsync();
+
+            return new PagedResultDto<UserDetailsDto>
+            {
+                TotalCount = userDetailsCount,
+                Items = userDetails.MapTo<List<UserDetailsDto>>()
             };
         }
 

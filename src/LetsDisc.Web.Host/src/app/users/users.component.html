@@ -10,15 +10,13 @@
                 <div class="user-browse">
                     <div class="grid-layout">
                         <div class="user-info" *ngFor="let user of users | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
-                            <div class="user-gravatar"><img src="../../assets/images/user.png" height="48" width="48" alt="" /></div>
+                            <div class="user-gravatar"><img src="{{user.profileImageUrl}}" height="48" width="48" alt="" /></div>
                             <div class="user-details">
-                                <a routerLink="/users/{{user.id}}/{{user.fullName.trim().replace(' ', '-')}}">
-                                    {{user.fullName}}
+                                <a routerLink="/users/{{user.user.id}}/{{user.user.fullName.trim().replace(' ', '-')}}">
+                                    {{user.user.fullName}}
                                 </a>
-                                
-                                <span class="user-location"></span>
+                                <span class="user-location">{{user.location}}</span>
                             </div>
-                            <div class="user-tags"></div>
                         </div>
                     </div>
                 </div>

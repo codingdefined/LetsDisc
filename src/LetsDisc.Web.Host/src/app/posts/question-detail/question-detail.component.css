@@ -109,7 +109,7 @@
 }
 
 input.ng-touched.ng-invalid {
-    border: 1px solid red !important;
+    border: 1px solid red !important; 
 }
 
 .tag-input.ng-touched.ng-invalid {

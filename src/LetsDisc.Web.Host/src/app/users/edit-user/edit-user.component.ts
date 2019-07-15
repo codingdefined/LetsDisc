@@ -1,6 +1,6 @@
 import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { UserServiceProxy, UserDto, RoleDto } from '@shared/service-proxies/service-proxies';
+import { UserServiceProxy, UserDto, RoleDto, UserInfo, UserDetailsDto } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
 import { finalize } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,8 +13,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class EditUserComponent extends AppComponentBase implements OnInit  {
     
     saving: boolean = false;
-    id: number;
+    id: number; 
     user: UserDto = null; 
+    userDetails: UserDetailsDto = null;
+    userInfo: UserInfo = new UserInfo();
 
     constructor(
         injector: Injector,
@@ -33,19 +35,22 @@ export class EditUserComponent extends AppComponentBase implements OnInit  {
     }
 
     private getNewUser(id: number) {
-        this._userService.get(id)
-            .subscribe((result: UserDto) => {
-                this.user = result;
-
+        this._userService.getUser(id)
+            .subscribe((result: UserInfo) => {
+                this.user = result.user;
+                this.userDetails = result.userDetails;
             });
     }
 
     saveUser(): void {
         this.saving = true;
-        this._userService.update(this.user)
+        this.userInfo.user = this.user;
+        this.userInfo.userDetails = this.userDetails;
+        this._userService.updateUserInfo(this.userInfo)
             .pipe(finalize(() => { this.saving = false; }))
-            .subscribe(() => {
+            .subscribe((result: UserInfo) => {
                 this.notify.info(this.l('SavedSuccessfully'));
+                this._router.navigate(['users', result.user.id, result.user.fullName.replace(' ', '-')]);
             });
     }
 

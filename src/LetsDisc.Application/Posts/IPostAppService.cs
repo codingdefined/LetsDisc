@@ -11,7 +11,7 @@ namespace LetsDisc.Posts
 { 
     public interface IPostAppService : IAsyncCrudAppService<PostDto, int, PagedResultRequestDto, CreatePostDto, PostDto>
     {
-        Task<PagedResultDto<PostDto>> GetQuestions(PagedResultRequestDto input);
+        Task<PagedResultDto<PostDto>> GetQuestions(PagedResultRequestDto input, string tag);
         Task<PostWithAnswers> GetPost(int id);
         Task<VoteChangeOutput> PostVoteUp(int id);
         Task<VoteChangeOutput> PostVoteDown(int id);

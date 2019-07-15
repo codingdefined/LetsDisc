@@ -18,6 +18,7 @@
 .user-details {
     float: left;
     margin-left: 10px;
+    display: grid;
 }
 
 .user-details > a {
@@ -27,4 +28,8 @@
 
 .btn-save-edits {
     margin-right: 10px;
+}
+
+.user-location {
+    display: block;
 }
