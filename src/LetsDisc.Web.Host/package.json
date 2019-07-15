@@ -31,7 +31,7 @@
     "@types/jquery.validation": "^1.16.3",
     "@types/lodash": "^4.14.62",
     "@types/moment": "^2.13.0",
-    "@types/moment-timezone": "^0.2.34",
+    "@types/moment-timezone": "^0.5.12",
     "@types/toastr": "^2.1.33",
     "abp-ng2-module": "^3.2.1",
     "abp-web-resources": "^3.8.2",
