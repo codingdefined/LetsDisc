@@ -28,7 +28,7 @@
     "@types/bootstrap": "^3.3.33",
     "@types/jquery": "^3.2.12",
     "@types/jquery.blockui": "0.0.28",
-    "@types/jquery.validation": "^1.16.3",
+    "@types/jquery.validation": "^1.16.6",
     "@types/lodash": "^4.14.62",
     "@types/moment": "^2.13.0",
     "@types/moment-timezone": "^0.2.34",
