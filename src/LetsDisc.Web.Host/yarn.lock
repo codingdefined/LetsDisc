@@ -178,9 +178,9 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/platform-browser@^6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-6.0.5.tgz#b6b15424a7aa9342284ce7fba6a700f7aad2fd9c"
+"@angular/platform-browser@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-8.1.1.tgz#36526e524ba3d125c0508beef3a3290d85f7d515"
   dependencies:
     tslib "^1.9.0"
 
