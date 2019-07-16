@@ -279,17 +279,13 @@
   dependencies:
     moment "*"
 
-"@types/node@*":
-  version "12.6.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.2.tgz#a5ccec6abb6060d5f20d256fb03ed743e9774999"
+"@types/node@*", "@types/node@^12.6.5":
+  version "12.6.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.5.tgz#716f6b4258d04c0439e19b35b33242d431603368"
 
 "@types/node@^6.0.46":
   version "6.0.113"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.113.tgz#4b41f38ad03e4b41f9dc259b3b58aecb22c9aebc"
-
-"@types/node@^8.0.27":
-  version "8.10.20"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.20.tgz#fe674ea52e13950ab10954433a7824438aabbcac"
 
 "@types/q@^0.0.32":
   version "0.0.32"
@@ -2282,10 +2278,6 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     is-extendable "^1.0.1"
 
 extend@^3.0.0, extend@~3.0.1, extend@~3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
-
-extend@~3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
 
