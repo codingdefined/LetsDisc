@@ -3,12 +3,10 @@ import { Router } from '@angular/router';
 import { AccountServiceProxy, RegisterInput, RegisterOutput } from '@shared/service-proxies/service-proxies'
 import { AppComponentBase } from '@shared/app-component-base';
 import { LoginService } from '../login/login.service';
-import { accountModuleAnimation } from '@shared/animations/routerTransition';
 import { finalize } from 'rxjs/operators';
 
 @Component({
-    templateUrl: './register.component.html',
-    animations: [accountModuleAnimation()]
+    templateUrl: './register.component.html'
 })
 export class RegisterComponent extends AppComponentBase implements AfterViewInit {
 

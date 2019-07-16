@@ -25,9 +25,9 @@ import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
                         children: [
                             { path: '', component: PostsComponent },
                             { path: 'tagged/:tag', component: PostsTagComponent },
-                            { path: ':id', component: QuestionDetailComponent },
-                            { path: ':id/:title', component: QuestionDetailComponent },
                             { path: 'ask', component: CreateQuestionComponent, canActivate: [AppRouteGuard] },
+                            { path: ':id', component: QuestionDetailComponent },
+                            { path: ':id/:title', component: QuestionDetailComponent }
                         ]
                     },
                     {
