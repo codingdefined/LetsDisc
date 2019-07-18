@@ -1,9 +1,11 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+import { Component, Injector, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { UserServiceProxy, UserDto, PagedResultDtoOfUserDto, PagedResultDtoOfUserDetailsDto, UserDetailsDto } from '@shared/service-proxies/service-proxies';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
 import { EditUserComponent } from 'app/users/edit-user/edit-user.component';
 import { finalize } from 'rxjs/operators';
+import { AppConsts } from '@shared/AppConsts';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
     templateUrl: './users.component.html',
@@ -17,7 +19,8 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
 
     constructor(
         injector: Injector,
-        private _userService: UserServiceProxy
+        private _userService: UserServiceProxy,
+        private ref: ChangeDetectorRef
     ) {
         super(injector);
     }
@@ -30,6 +33,9 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
             .subscribe((result: PagedResultDtoOfUserDetailsDto) => {
                 this.users = result.items;
                 this.showPaging(result, pageNumber);
+                this.users.forEach((user) => {
+                    user.profileImageUrl = this.createImgPath(user.profileImageUrl)
+                });
             });
     }
 
@@ -46,5 +52,12 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
                 }
             }
         );
+    }
+
+    createImgPath = (serverPath: string) => {
+        if (serverPath) {
+            return AppConsts.remoteServiceBaseUrl + `/${serverPath}?timeStamp=${Date.now()}`;
+        }
+        return '';
     }
 }

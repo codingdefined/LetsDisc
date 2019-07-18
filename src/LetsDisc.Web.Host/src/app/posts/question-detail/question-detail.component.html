@@ -24,7 +24,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="user-info" [style.display]="editing ? 'none' : 'inherit' ">
+                <div class="user-info mt-3" [style.display]="editing ? 'none' : 'inherit' ">
                     <div class="total-views">viewed {{question?.post.viewCount | i18nPlural: itemPluralMapping['time'] }}</div>
                     <div class="posted-time">asked {{question?.post.creationTime | timeAgo}} by {{question?.post.creatorUserName}}</div>
                 </div>

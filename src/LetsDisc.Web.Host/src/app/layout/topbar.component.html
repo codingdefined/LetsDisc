@@ -18,18 +18,18 @@
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="search-button"><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                <li class="pull-right" *ngIf="appSession.user">
-                    <a aria-haspopup="true" class="nav-link user-loggedin" data-toggle="dropdown" dropdowntoggle="" href="#" role="button" aria-expanded="false">
-                        <img class="user-image" src="assets/images/user.png" width="48" height="48" alt="User" />{{shownLoginName | titlecase}}
+                <li class="m-auto padding-top-8" ><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                <li class="nav-item dropdown" *ngIf="appSession.user">
+                    <a aria-haspopup="true" class="nav-link user-loggedin dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                        <img class="user-image" src="assets/images/user.png" width="36" height="36" alt="User" />{{shownLoginName | titlecase}}
                     </a>
-                    <ul class="dropdown-menu dropdown-item">
-                        <li><a routerLink="/users/{{userId}}/{{shownLoginName.trim().replace(' ', '-')}}"><i class="fa fa-user"></i>Profile</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a (click)="logout()"><i class="fa fa-lock"></i>{{l('Logout')}}</a></li>
-                    </ul>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="/users/{{userId}}/{{shownLoginName.trim().replace(' ', '-')}}"><i class="fa fa-user"></i>Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" (click)="logout()"><i class="fa fa-lock"></i>{{l('Logout')}}</a>
+                    </div>
                 </li>
-                <li class="pull-right" *ngIf="!appSession.user">
+                <li lass="nav-item m-auto" *ngIf="!appSession.user">
                     <a class="nav-link" [routerLink]="['/account/login']"><i class="material-icons">person</i><span class="login-text">Log In</span></a>
                 </li>
             </ul>

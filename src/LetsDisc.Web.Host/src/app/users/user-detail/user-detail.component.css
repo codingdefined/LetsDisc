@@ -14,6 +14,7 @@
 .user-avater > img {
     height: 150px;
     width:150px;
+    border-radius: 50%;
 }
 
 .user-reputation, .user-questions, .user-answers {

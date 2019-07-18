@@ -6815,7 +6815,7 @@ fieldset[disabled] .form-control {
   margin-top: 0px !important; }
 
 .navbar-nav .search-button {
-    margin-top: 8px;
+    margin-top: 20px;
 }
 
 .label-count {
@@ -7637,7 +7637,8 @@ fieldset[disabled] .form-control {
   .sidebar .menu {
     position: relative;
     overflow-y: auto;
-    height: 90vh; }
+    height: auto;
+    }
     .sidebar .menu .list {
       list-style: none;
       padding-left: 0; }
@@ -8139,7 +8140,6 @@ html.ie11 .bs-searchbox .form-control {
 
 .user-loggedin {
     margin: 0px !important;
-    padding: 10px 20px 10px 10px !important;
 }
 
 .user-image {
@@ -8168,6 +8168,14 @@ html.ie11 .bs-searchbox .form-control {
 .input-group-text {
     background-color: white;
     border: none;
+}
+
+.padding-top-8 {
+    padding-top: 8px;
+}
+
+.nav-item .dropdown-menu {
+    width:100%;
 }
 
 

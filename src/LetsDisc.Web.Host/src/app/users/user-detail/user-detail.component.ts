@@ -3,6 +3,7 @@ import { UserDto, UserServiceProxy, UserInfo, UserDetailsDto } from '@shared/ser
 import { ActivatedRoute } from '@angular/router';
 import { AppComponentBase } from '@shared/app-component-base';
 import * as moment from 'moment';
+import { AppConsts } from '@shared/AppConsts';
 
 @Component({
     selector: 'app-user-detail',
@@ -17,6 +18,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     answersCount: number = 0;
     id: number;
     createdTimeAgo: string;
+    url: string;
 
     itemPluralMapping = {
         'answer': {
@@ -59,7 +61,15 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
                 this.questionsCount = result.questionsCount;
                 this.answersCount = result.answersCount;
                 this.createdTimeAgo = moment(this.user.creationTime).fromNow(true);
+                this.url = this.createImgPath(result.userDetails.profileImageUrl);
             });
+    }
+
+    createImgPath = (serverPath: string) => {
+        if (serverPath) {
+            return AppConsts.remoteServiceBaseUrl + `/${serverPath}?timeStamp=${Date.now()}`;
+        }
+        return '';
     }
 
 }

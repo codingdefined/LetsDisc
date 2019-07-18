@@ -20,6 +20,10 @@ using System;
 using LetsDisc.PostDetails;
 using LetsDisc.Posts;
 using Abp.AutoMapper;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Abp.UI;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LetsDisc.Users
 {
@@ -201,6 +205,7 @@ namespace LetsDisc.Users
             userDetails.AboutMe = input.UserDetails.AboutMe;
             userDetails.Location = input.UserDetails.Location;
             userDetails.WebsiteUrl = input.UserDetails.WebsiteUrl;
+            userDetails.ProfileImageUrl = input.UserDetails.ProfileImageUrl;
 
             CheckErrors(await _userManager.UpdateAsync(user));
             await _userDetailsRepository.UpdateAsync(userDetails);   
@@ -220,7 +225,33 @@ namespace LetsDisc.Users
             };
         }
 
-        protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedResultRequestDto input)
+        public async Task<string> UploadProfilePicture([FromForm(Name = "uploadedFile")] IFormFile file, long userId)
+        {
+            if (file == null || file.Length == 0)
+                throw new UserFriendlyException("Please select profile picture");
+
+            var folderName = Path.Combine("Resources", "ProfilePics");
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+
+            //var fileUniqueId = Guid.NewGuid().ToString().ToLower().Replace("-", string.Empty);
+            var uniqueFileName = $"{userId}_profilepic.png";
+
+            var dbPath = Path.Combine(folderName, uniqueFileName);
+
+            using (var fileStream = new FileStream(Path.Combine(filePath, uniqueFileName), FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+
+            return dbPath;
+        }
+
+    protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
         }

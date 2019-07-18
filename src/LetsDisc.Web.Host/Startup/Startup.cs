@@ -19,6 +19,7 @@ using LetsDisc.Identity;
 using Abp.AspNetCore.SignalR.Hubs;
 using Microsoft.AspNetCore.Http;
 using System.Security.Principal;
+using Microsoft.Extensions.FileProviders;
 
 namespace LetsDisc.Web.Host.Startup
 {
@@ -79,6 +80,7 @@ namespace LetsDisc.Web.Host.Startup
                 });
                 // Assign scope requirements to operations based on AuthorizeAttribute
                 options.OperationFilter<SecurityRequirementsOperationFilter>();
+                options.OperationFilter<FileUploadOperation>();
             });
 
             services.ConfigureExternalCookie(o =>
@@ -112,6 +114,11 @@ namespace LetsDisc.Web.Host.Startup
 
             app.Use(async (context, next) => { await next(); if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value)) { context.Request.Path = "/index.html"; await next(); } });
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
 
             app.UseAuthentication();
             app.UseAbpRequestLocalization();
