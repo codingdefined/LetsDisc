@@ -60,7 +60,7 @@
     "ngx-pagination": "^3.0.3",
     "node-waves": "^0.7.5",
     "push.js": "1.0.4",
-    "raphael": "^2.2.7",
+    "raphael": "^2.2.8",
     "rxjs": "^6.0.0",
     "simple-line-icons": "^2.4.1",
     "spin.js": "^2.3.2",
