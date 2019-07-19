@@ -86,7 +86,7 @@
                 </div>
                 <div class="post-menu">
                     <a class="share-post" title="share post">share</a>
-                    <a class="edit-post" title="edit post" (click)="editClicked()">edit</a>
+                    <a class="edit-post" title="edit post" *ngIf="this.appSession.isLoggedIn && this.appSession.userId === this.question.post.creatorUserId" (click)="editClicked()">edit</a>
                 </div>
             </div>
             <div class="answers">

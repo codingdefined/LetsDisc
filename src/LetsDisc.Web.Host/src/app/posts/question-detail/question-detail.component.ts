@@ -4,7 +4,7 @@ import { AppComponentBase } from '@shared/app-component-base';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TagInputModule } from 'ngx-chips';
 import { finalize } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-detail',
@@ -43,7 +43,8 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     constructor(
         injector: Injector,
         private _postService: PostServiceProxy,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) { 
         super(injector);
     }
@@ -67,19 +68,28 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     }
 
     voteUp(postId: number) {
-        this._postService.postVoteUp(postId)
-            .subscribe((result: VoteChangeOutput) => {
-                this.assignScoreData(result);
-                this.notify.info(this.l('Voted'));
-            });
+        if (this.appSession.isLoggedIn) {
+            this._postService.postVoteUp(postId)
+                .subscribe((result: VoteChangeOutput) => {
+                    this.assignScoreData(result);
+                    this.notify.info(this.l('Voted'));
+                });
+        } else {
+            this.notify.info(this.l('Please login'));
+        }
+        
     }
 
     voteDown(postId: number) {
-        this._postService.postVoteDown(postId)
-            .subscribe((result: VoteChangeOutput) => {
-                this.assignScoreData(result);
-                this.notify.info(this.l('Voted'));
-            });
+        if (this.appSession.isLoggedIn) {
+            this._postService.postVoteDown(postId)
+                .subscribe((result: VoteChangeOutput) => {
+                    this.assignScoreData(result);
+                    this.notify.info(this.l('Voted'));
+                });
+        } else {
+            this.notify.info(this.l('Please login'));
+        }
     }
 
     assignScoreData(result: VoteChangeOutput) {
@@ -99,11 +109,15 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     }
 
     saveAnswer(): void {
-        this._postService.submitAnswer(this.answer)
-            .subscribe((result: PostWithVoteInfo) => {
-                this.answers.unshift(result);
-                this.notify.info(this.l('Answered'));
-            });
+        if (this.appSession.isLoggedIn) {
+            this._postService.submitAnswer(this.answer)
+                .subscribe((result: PostWithVoteInfo) => {
+                    this.answers.unshift(result);
+                    this.notify.info(this.l('Answered'));
+                });
+        } else {
+            this.notify.info(this.l('Please login'));
+        }
     }
 
     editClicked(): void {

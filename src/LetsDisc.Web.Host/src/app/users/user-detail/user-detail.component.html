@@ -17,7 +17,7 @@
                     <div class="user-website"><a href="{{userDetails?.websiteUrl}}" target="_blank">{{userDetails?.websiteUrl}}</a></div>
                     <div class="user-about">{{userDetails?.aboutMe}}</div>
                 </div>
-                <a class="edit-post" title="edit post" routerLink="/users/{{user?.id}}/edit">edit</a>
+                <a class="edit-post" title="edit post" routerLink="/users/{{user?.id}}/edit" *ngIf="this.appSession.isLoggedIn && this.appSession.userId === this.user.id">edit</a>
             </div>
 
         </div>

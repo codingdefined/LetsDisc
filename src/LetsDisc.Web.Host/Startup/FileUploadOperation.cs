@@ -7,7 +7,7 @@ namespace LetsDisc.Web.Host.Startup
     {
         public void Apply(Operation operation, OperationFilterContext context)
         {
-            if (operation.OperationId.ToLower() == "apiservicesappuseruploadprofilepicturepost")
+            if (operation.OperationId.ToLower().Contains("upload"))
             {
                 operation.Parameters.Clear();
                 operation.Parameters.Add(new NonBodyParameter
