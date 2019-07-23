@@ -64,7 +64,7 @@
     "rxjs": "^6.0.0",
     "simple-line-icons": "^2.4.1",
     "spin.js": "^2.3.2",
-    "sweetalert": "^2.0.8",
+    "sweetalert": "^2.1.2",
     "toastr": "^2.1.2",
     "ts-helpers": "^1.1.2",
     "web-animations-js": "^2.3.1",
