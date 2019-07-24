@@ -431,13 +431,16 @@ export class PostServiceProxy {
     }
 
     /**
+     * @param sorting (optional) 
      * @param skipCount (optional) 
      * @param maxResultCount (optional) 
      * @param tag (optional) 
      * @return Success
      */
-    getQuestions(skipCount: number | null | undefined, maxResultCount: number | null | undefined, tag: string | null | undefined): Observable<PagedResultDtoOfPostDto> {
+    getQuestions(sorting: string | null | undefined, skipCount: number | null | undefined, maxResultCount: number | null | undefined, tag: string | null | undefined): Observable<PagedResultDtoOfPostDto> {
         let url_ = this.baseUrl + "/api/services/app/Post/GetQuestions?";
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)
@@ -709,12 +712,15 @@ export class PostServiceProxy {
     }
 
     /**
+     * @param sorting (optional) 
      * @param skipCount (optional) 
      * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfPostDto> {
+    getAll(sorting: string | null | undefined, skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfPostDto> {
         let url_ = this.baseUrl + "/api/services/app/Post/GetAll?";
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)

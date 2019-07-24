@@ -30,7 +30,7 @@ namespace LetsDisc.Posts
         Question = 1,
         Answer
     }
-    public class PostAppService : AsyncCrudAppService<Post, PostDto, int, PagedResultRequestDto, CreatePostDto, PostDto>, IPostAppService
+    public class PostAppService : AsyncCrudAppService<Post, PostDto, int, PagedAndSortedResultRequestDto, CreatePostDto, PostDto>, IPostAppService
     {
         private readonly IRepository<Post> _postRepository;
         private readonly IRepository<Vote> _voteRepository;
@@ -148,7 +148,7 @@ namespace LetsDisc.Posts
             return postDto;
         }
 
-        protected override IQueryable<Post> CreateFilteredQuery(PagedResultRequestDto input)
+        protected override IQueryable<Post> CreateFilteredQuery(PagedAndSortedResultRequestDto input)
         {
             return base.CreateFilteredQuery(input);
         }
@@ -195,36 +195,54 @@ namespace LetsDisc.Posts
         }
 
         // Getting all questions on the Home Page
-        public async Task<PagedResultDto<PostDto>> GetQuestions(PagedResultRequestDto input, string tag)
+        public async Task<PagedResultDto<PostDto>> GetQuestions(PagedAndSortedResultRequestDto input, string tag)
         {
             int questionCount;
-            List<Post> questions;
-            if(!(tag == null || tag == ""))
+            IQueryable<Post> questions;
+
+            if (!(tag == null || tag == ""))
             {
                 questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question && p.Tags.Contains(tag));
-                questions = await _postRepository
+                questions = _postRepository
                                     .GetAll()
                                     .Include(a => a.CreatorUser)
                                     .Where(a => a.PostTypeId == (int)PostTypes.Question && a.Tags.Contains(tag))
-                                    .OrderByDescending(a => a.CreationTime)
-                                    .ToListAsync();
+                                    .Skip(input.SkipCount)
+                                    .Take(input.MaxResultCount);
             }
             else
             {
                 questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question);
-                questions = await _postRepository
+                questions = _postRepository
                                     .GetAll()
                                     .Include(a => a.CreatorUser)
                                     .Where(a => a.PostTypeId == (int)PostTypes.Question)
-                                    .OrderByDescending(a => a.CreationTime)
-                                    .ToListAsync();
+                                    .Skip(input.SkipCount)
+                                    .Take(input.MaxResultCount);
             }
 
+            switch (input.Sorting)
+            {
+                case "votes":
+                    questions = questions.OrderByDescending(q => q.Score);
+                    break;
+                case "newest":
+                    questions = questions.OrderByDescending(q => q.CreationTime);
+                    break;
+                case "viewed":
+                    questions = questions.OrderByDescending(q => q.ViewCount);
+                    break;
+                default:
+                    questions = questions.OrderByDescending(q => q.CreationTime);
+                    break;
+            }
+
+            var questionList = await questions.ToListAsync();
 
             return new PagedResultDto<PostDto>
             {
                 TotalCount = questionCount,
-                Items = questions.MapTo<List<PostDto>>()
+                Items = questionList.MapTo<List<PostDto>>()
             };
         }
 
@@ -316,6 +334,11 @@ namespace LetsDisc.Posts
                 Upvote = false,
                 Downvote = false
             };
+        }
+
+        protected override IQueryable<Post> ApplySorting(IQueryable<Post> query, PagedAndSortedResultRequestDto input)
+        {
+            return base.ApplySorting(query, input);
         }
     }
 }

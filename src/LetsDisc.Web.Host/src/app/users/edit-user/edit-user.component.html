@@ -16,7 +16,7 @@
                                 <span class="background"></span>
                             </label>
                             <br />
-                            <input #fileInput id="fileInput" type='file' (click)="fileInput.value = null" value="" (change)="onSelectFile($event.target.files)">
+                            <input #fileInput id="fileInput" type='file' (click)="fileInput.value = null" value="" (change)="onSelectFile($event.target.files)" accept="image/*">
                             <button class="btn btn-default" *ngIf="url" (click)="delete()">delete</button>
                         </div>
                         <div class="col-md-4">

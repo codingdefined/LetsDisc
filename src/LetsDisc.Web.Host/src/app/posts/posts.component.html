@@ -2,16 +2,26 @@
     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <div class="card main-content">
             <div class="header">
-                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right negative-margin-top-10" routerLink="/questions/ask">
-                    <i class="material-icons">add</i>
-                </button>
-                <h2>
+                <div class="pull-right col-md-5">
+                    <span class="m-r-20">
+                        <label>Sort By: </label>
+                        <select class="custom-select sort-by" (change)="sortBy($event.target.value)">
+                            <option value="newest">Most Recent</option>
+                            <option value="votes">Votes</option>
+                            <option value="viewed">Views</option>
+                        </select>
+                    </span>
+                    <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float" routerLink="/questions/ask">
+                        <i class="material-icons">add</i>
+                    </button>
+                </div>
+                <h2 class="col-md-4">
                     {{tagValue === '' ? l('AllQuestions') : 'Questions tagged [' + tagValue + ']'}}
                 </h2>
             </div>
             <div class="table-responsive">
                 <div class="questions">
-                    <div class="question" *ngFor="let question of questions">
+                    <div class="question" *ngFor="let question of questions | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
                         <div class="question-summary" id="{{question.id}}">
                             <div class="status-container">
                                 <div class="stats">
@@ -26,7 +36,7 @@
                                 <div class="views">{{question.viewCount | i18nPlural: itemPluralMapping['view']}}</div>
                             </div>
                             <div class="summary">
-                                <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.replace(' ', '-')}}">{{question.title}}</a>
+                                <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.toLowerCase().trim().split(' ').join('-')}}">{{question.title}}</a>
                                 <div class="question-body" [innerHTML]="question.body"></div>
                                 <div class="post-tags">
                                     <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" *ngFor="let tag of question.tags|commaSeparted">
@@ -36,10 +46,13 @@
                                         <div class="posted-time">asked {{question.creationTime | timeAgo}} by {{question.creatorUserName}}</div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination-controls (pageChange)="getDataPage($event)" id="server"></pagination-controls>
                 </div>
             </div>
         </div> 

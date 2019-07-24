@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace LetsDisc.Posts
 { 
-    public interface IPostAppService : IAsyncCrudAppService<PostDto, int, PagedResultRequestDto, CreatePostDto, PostDto>
+    public interface IPostAppService : IAsyncCrudAppService<PostDto, int, PagedAndSortedResultRequestDto, CreatePostDto, PostDto>
     {
-        Task<PagedResultDto<PostDto>> GetQuestions(PagedResultRequestDto input, string tag);
+        Task<PagedResultDto<PostDto>> GetQuestions(PagedAndSortedResultRequestDto input, string tag);
         Task<PostWithAnswers> GetPost(int id);
         Task<VoteChangeOutput> PostVoteUp(int id);
         Task<VoteChangeOutput> PostVoteDown(int id);

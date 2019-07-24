@@ -38,7 +38,7 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes['tagValue']) {
-            this._postService.getQuestions(0, 10, this.tagValue)
+            this._postService.getQuestions("newest", 0, 10, this.tagValue)
                 .subscribe((result: PagedResultDtoOfPostDto) => {
                     this.questions = result.items;
                     this.showPaging(result, 0);
@@ -47,7 +47,7 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
     }
 
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._postService.getQuestions(request.skipCount, request.maxResultCount, this.tagValue)
+        this._postService.getQuestions(request.sorting, request.skipCount, request.maxResultCount, this.tagValue)
             .pipe(finalize(() => {
                 finishedCallback()
             }))
@@ -70,6 +70,14 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
                 }
             }
         );
+    }
+
+    public sortBy(value: string) {
+        this._postService.getQuestions(value, 0, 10, this.tagValue)
+            .subscribe((result: PagedResultDtoOfPostDto) => {
+                this.questions = result.items;
+                this.showPaging(result, 0);
+            });
     }
 
 }

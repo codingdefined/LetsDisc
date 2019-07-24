@@ -251,7 +251,7 @@ namespace LetsDisc.Users
             return dbPath;
         }
 
-    protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedResultRequestDto input)
+        protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
         }

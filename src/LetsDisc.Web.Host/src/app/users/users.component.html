@@ -12,7 +12,7 @@
                         <div class="user-info" *ngFor="let user of users | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
                             <div class="user-gravatar"><img src="{{user.profileImageUrl}}" height="48" width="48" alt="" /></div>
                             <div class="user-details">
-                                <a routerLink="/users/{{user.user.id}}/{{user.user.fullName.trim().replace(' ', '-')}}">
+                                <a routerLink="/users/{{user.user.id}}/{{user.user.fullName.toLowerCase().trim().split(' ').join('-')}}">
                                     {{user.user.fullName}}
                                 </a>
                                 <span class="user-location">{{user.location}}</span>
