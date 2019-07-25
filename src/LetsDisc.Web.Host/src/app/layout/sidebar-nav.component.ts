@@ -13,6 +13,8 @@ export class SideBarNavComponent extends AppComponentBase {
         new MenuItem(this.l("Tags"), "", "local_offer", "/tags"),
         new MenuItem(this.l("Users"), "", "people", "/users"),
         new MenuItem(this.l("About"), "", "info", "/about"),
+        new MenuItem(this.l("Contact"), "", "contact_mail", "/contact"),
+        new MenuItem(this.l("Privacy"), "", "security", "/privacy")
     ];
 
     constructor(

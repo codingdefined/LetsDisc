@@ -24,6 +24,8 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Abp.UI;
 using Microsoft.AspNetCore.Mvc;
+using LetsDisc.Posts.Dto;
+using LetsDisc.Tags;
 
 namespace LetsDisc.Users
 {
@@ -35,6 +37,7 @@ namespace LetsDisc.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IRepository<UserDetails, long> _userDetailsRepository;
         private readonly IRepository<Post> _postRepository;
+        private readonly IRepository<PostTag> _tagRepository;
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -43,7 +46,8 @@ namespace LetsDisc.Users
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IRepository<UserDetails, long> userDetailsRepository,
-            IRepository<Post> postRepository)
+            IRepository<Post> postRepository,
+            IRepository<PostTag> tagRepository)
             : base(repository)
         {
             _userManager = userManager;
@@ -52,6 +56,7 @@ namespace LetsDisc.Users
             _passwordHasher = passwordHasher;
             _userDetailsRepository = userDetailsRepository;
             _postRepository = postRepository;
+            _tagRepository = tagRepository;
         }
 
         public override async Task<UserDto> Create(CreateUserDto input)
@@ -177,19 +182,19 @@ namespace LetsDisc.Users
                                     });
             }
 
-            var questionsCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question && p.CreatorUserId == id);
-            var answersCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Answer && p.CreatorUserId == id);
-
             userDetails.Views++;
             var userDto = base.MapToEntityDto(user);
             var userDetailsDto = ObjectMapper.Map<UserDetailsDto>(userDetails);
+
+            var questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question && p.CreatorUserId == id);
+            var answerCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Answer && p.CreatorUserId == id);
 
             return new UserInfo
             {
                 User = userDto,
                 UserDetails = userDetailsDto,
-                questionsCount = questionsCount,
-                answersCount = answersCount
+                questionsCount = questionCount,
+                answersCount = answerCount
             };
         }
 
@@ -259,6 +264,49 @@ namespace LetsDisc.Users
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
+        }
+
+        public async Task<PagedResultDto<PostDto>> GetUserQuestions(PagedResultRequestDto input, long userId)
+        {
+            var questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question && p.CreatorUserId == userId);
+            var questions = await _postRepository.GetAll()
+                                    .Where(p => p.PostTypeId == (int)PostTypes.Question && p.CreatorUserId == userId)
+                                    .Skip(input.SkipCount)
+                                    .Take(input.MaxResultCount)
+                                    .ToListAsync();
+
+            return new PagedResultDto<PostDto>
+            {
+                TotalCount = questionCount,
+                Items = questions.MapTo<List<PostDto>>()
+            };
+        }
+
+        public async Task<PagedResultDto<AnswerWithQuestion>> GetUserAnswers(PagedResultRequestDto input, long userId)
+        {
+            var answerCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Answer && p.CreatorUserId == userId);
+            var answers = await _postRepository.GetAll()
+                                    .Where(p => p.PostTypeId == (int)PostTypes.Answer && p.CreatorUserId == userId)
+                                    .Skip(input.SkipCount)
+                                    .Take(input.MaxResultCount)
+                                    .ToListAsync();
+            List<AnswerWithQuestion> answerWithQuestionList = new List<AnswerWithQuestion>();
+            foreach (var answer in answers)
+            {
+                var question = await _postRepository.FirstOrDefaultAsync(p => p.PostTypeId == (int)PostTypes.Question && p.Id == answer.ParentId);
+                var answerWithQuestion = new AnswerWithQuestion
+                {
+                    Question = question.MapTo<PostDto>(),
+                    Answer = answer.MapTo<PostDto>()
+                };
+                answerWithQuestionList.Add(answerWithQuestion);
+            }
+
+            return new PagedResultDto<AnswerWithQuestion>
+            {
+                TotalCount = answerCount,
+                Items = answerWithQuestionList
+            };
         }
     }
 }

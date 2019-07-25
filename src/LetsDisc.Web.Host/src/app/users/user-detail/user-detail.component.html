@@ -17,9 +17,71 @@
                     <div class="user-website"><a href="{{userDetails?.websiteUrl}}" target="_blank">{{userDetails?.websiteUrl}}</a></div>
                     <div class="user-about">{{userDetails?.aboutMe}}</div>
                 </div>
-                <a class="edit-post" title="edit post" routerLink="/users/{{user?.id}}/edit" *ngIf="this.appSession.isLoggedIn && this.appSession.userId === this.user.id">edit</a>
+                <a class="edit-post" title="edit post" routerLink="/users/{{user?.id}}/edit" *ngIf="this.appSession.isLoggedIn && this.appSession.userId === this.user?.id">edit</a>
             </div>
+            <nav class="m-t-20">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-question-tab" data-toggle="tab" href="#nav-question" role="tab" aria-controls="nav-question" aria-selected="true">Questions ({{questionsCount || 0}})</a>
+                    <a class="nav-item nav-link" id="nav-answer-tab" data-toggle="tab" href="#nav-answer" role="tab" aria-controls="nav-answer" aria-selected="false">Answers ({{answersCount || 0}})</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-question" role="tabpanel" aria-labelledby="nav-question-tab">
+                    <div class="question" *ngFor="let question of questions | paginate: { id: 'question', itemsPerPage: pageSize, currentPage: questionPageNumber, totalItems: questionTotalItems }">
+                        <div class="question-summary" id="{{question?.id}}">
+                            <div class="status-container">
+                                <div class="stats">
+                                    <div class="votes">
+                                        <strong>{{question?.score}}</strong><div class="vote-display">{{question?.score | i18nPlural: itemPluralMapping['vote']}}</div>
+                                    </div>
 
+                                    <div class="answers">
+                                        <strong>{{question?.answerCount}}</strong><div class="vote-display">{{question?.answerCount | i18nPlural: itemPluralMapping['answer']}}</div>
+                                    </div>
+                                </div>
+                                <div class="views">{{question?.viewCount | i18nPlural: itemPluralMapping['view']}}</div>
+                            </div>
+                            <div class="summary">
+                                <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.toLowerCase().trim().split(' ').join('-')}}">{{question?.title}}</a>
+                                <div class="question-body" [innerHTML]="question.body"></div>
+                                <div class="post-tags">
+                                    <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" *ngFor="let tag of question.tags|commaSeparted">
+                                        {{tag}}
+                                    </a>
+                                    <div class="user-info">
+                                        <div class="posted-time">asked {{question?.creationTime | timeAgo}}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-align: center;" *ngIf="questionTotalItems > pageSize">
+                        <pagination-controls (pageChange)="getQuestionDataPage($event)" id="question"></pagination-controls>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-answer" role="tabpanel" aria-labelledby="nav-answer-tab">
+                    <div *ngIf="answers && answers.length > 0">
+                        <div class="question" *ngFor="let answer of answers | paginate: { id: 'answer', itemsPerPage: pageSize, currentPage: answerPageNumber, totalItems: answerTotalItmes }">
+                            <div class="question-summary" id="{{answer?.answer.id}}">
+                                <div class="status-container">
+                                    <div class="stats">
+                                        <div class="votes">
+                                            <strong>{{answer?.answer.score}}</strong><div class="vote-display">{{answer?.answer.score | i18nPlural: itemPluralMapping['vote']}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="summary">
+                                    <a class="summary-title" fragment="answer-{{answer?.answer.id}}" routerLink="/questions/{{answer?.question.id}}/{{answer?.question.title.toLowerCase().trim().split(' ').join('-')}}">{{answer?.question.title}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-align: center;" *ngIf="answerTotalItems > pageSize">
+                        <pagination-controls (pageChange)="getAnswerDataPage($event)" id="answer"></pagination-controls>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

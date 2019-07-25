@@ -21,7 +21,7 @@ namespace LetsDisc.Tags
             _tagRepository = tagRepository;
         }
 
-        // Getting all questions on the Home Page
+        // Getting all tags on the Home Page
         public async Task<PagedResultDto<TagDto>> GetTags(PagedResultRequestDto input)
         {
             var tagCount = await _tagRepository.CountAsync();

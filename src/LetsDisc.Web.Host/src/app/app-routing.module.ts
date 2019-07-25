@@ -12,6 +12,8 @@ import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.compon
 import { TagsComponent } from '@app/tags/tags.component';
 import { UserDetailComponent } from '@app/users/user-detail/user-detail.component';
 import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
+import { ContactComponent } from '@app/contact/contact.component';
+import { PrivacyComponent } from '@app/privacy/privacy.component';
 
 @NgModule({
     imports: [
@@ -40,6 +42,8 @@ import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
                         ]
                     },
                     { path: 'about', component: AboutComponent },
+                    { path: 'contact', component: ContactComponent },
+                    { path: 'privacy', component: PrivacyComponent },
                     { path: 'tags', component: TagsComponent },
                     { path: '', redirectTo: '/questions', pathMatch: 'full' },
                     { path: '**', component: PageNotFoundComponent }

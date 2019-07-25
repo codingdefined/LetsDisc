@@ -2723,6 +2723,126 @@ export class UserServiceProxy {
     }
 
     /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @param userId (optional) 
+     * @return Success
+     */
+    getUserQuestions(skipCount: number | null | undefined, maxResultCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfPostDto> {
+        let url_ = this.baseUrl + "/api/services/app/User/GetUserQuestions?";
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (userId !== undefined)
+            url_ += "userId=" + encodeURIComponent("" + userId) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetUserQuestions(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetUserQuestions(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfPostDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfPostDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetUserQuestions(response: HttpResponseBase): Observable<PagedResultDtoOfPostDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfPostDto.fromJS(resultData200) : new PagedResultDtoOfPostDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfPostDto>(<any>null);
+    }
+
+    /**
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @param userId (optional) 
+     * @return Success
+     */
+    getUserAnswers(skipCount: number | null | undefined, maxResultCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfAnswerWithQuestion> {
+        let url_ = this.baseUrl + "/api/services/app/User/GetUserAnswers?";
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (userId !== undefined)
+            url_ += "userId=" + encodeURIComponent("" + userId) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetUserAnswers(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetUserAnswers(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfAnswerWithQuestion>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfAnswerWithQuestion>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetUserAnswers(response: HttpResponseBase): Observable<PagedResultDtoOfAnswerWithQuestion> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfAnswerWithQuestion.fromJS(resultData200) : new PagedResultDtoOfAnswerWithQuestion();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfAnswerWithQuestion>(<any>null);
+    }
+
+    /**
      * @param id (optional) 
      * @return Success
      */
@@ -6480,6 +6600,108 @@ export class PagedResultDtoOfUserDetailsDto implements IPagedResultDtoOfUserDeta
 export interface IPagedResultDtoOfUserDetailsDto {
     totalCount: number | undefined;
     items: UserDetailsDto[] | undefined;
+}
+
+export class PagedResultDtoOfAnswerWithQuestion implements IPagedResultDtoOfAnswerWithQuestion {
+    totalCount: number | undefined;
+    items: AnswerWithQuestion[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfAnswerWithQuestion) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(AnswerWithQuestion.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfAnswerWithQuestion {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfAnswerWithQuestion();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+
+    clone(): PagedResultDtoOfAnswerWithQuestion {
+        const json = this.toJSON();
+        let result = new PagedResultDtoOfAnswerWithQuestion();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IPagedResultDtoOfAnswerWithQuestion {
+    totalCount: number | undefined;
+    items: AnswerWithQuestion[] | undefined;
+}
+
+export class AnswerWithQuestion implements IAnswerWithQuestion {
+    question: PostDto | undefined;
+    answer: PostDto | undefined;
+
+    constructor(data?: IAnswerWithQuestion) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.question = data["question"] ? PostDto.fromJS(data["question"]) : <any>undefined;
+            this.answer = data["answer"] ? PostDto.fromJS(data["answer"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): AnswerWithQuestion {
+        data = typeof data === 'object' ? data : {};
+        let result = new AnswerWithQuestion();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["question"] = this.question ? this.question.toJSON() : <any>undefined;
+        data["answer"] = this.answer ? this.answer.toJSON() : <any>undefined;
+        return data; 
+    }
+
+    clone(): AnswerWithQuestion {
+        const json = this.toJSON();
+        let result = new AnswerWithQuestion();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IAnswerWithQuestion {
+    question: PostDto | undefined;
+    answer: PostDto | undefined;
 }
 
 export class PagedResultDtoOfUserDto implements IPagedResultDtoOfUserDto {

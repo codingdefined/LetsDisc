@@ -43,6 +43,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TagsComponent } from './tags/tags.component';
 import { SocialLoginModule } from "angularx-social-login";
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
     declarations: [
@@ -72,6 +74,8 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
         PageNotFoundComponent,
         TagsComponent,
         UserDetailComponent,
+        PrivacyComponent,
+        ContactComponent,
     ],
     imports: [
         CommonModule,

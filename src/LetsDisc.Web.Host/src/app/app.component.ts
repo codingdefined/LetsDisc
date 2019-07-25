@@ -17,7 +17,7 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
     }
 
     ngOnInit(): void {
-
+ 
         SignalRAspNetCoreHelper.initSignalR();
 
         abp.event.on('abp.notifications.received', userNotification => {
