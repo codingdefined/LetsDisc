@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { AppConsts } from '@shared/AppConsts';
 import { PagedRequestDto, PagedResultDto } from '@shared/paged-listing-component-base';
 import { finalize } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-user-detail',
@@ -59,7 +60,8 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     constructor(
         injector: Injector,
         private _userService: UserServiceProxy,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private titleService: Title
     ) {
         super(injector);
     }
@@ -80,6 +82,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
                 this.answersCount = result.answersCount;
                 this.createdTimeAgo = moment(this.user.creationTime).fromNow(true);
                 this.url = this.createImgPath(result.userDetails.profileImageUrl);
+                this.titleService.setTitle("User " + result.user.fullName + " - LetsDisc");
             });
         this.getQuestionList(1, id);
         this.getAnswersList(1, id);
@@ -93,7 +96,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     }
 
     protected questionList(userId: number, request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._userService.getUserQuestions(request.skipCount, request.maxResultCount, userId)
+        this._userService.getUserQuestions(request.maxResultCount, request.skipCount, userId)
             .pipe(finalize(() => {
                 finishedCallback()
             }))
@@ -104,7 +107,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     }
 
     protected answerList(userId: number, request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._userService.getUserAnswers(request.skipCount, request.maxResultCount, userId)
+        this._userService.getUserAnswers(request.maxResultCount, request.skipCount, userId)
             .pipe(finalize(() => {
                 finishedCallback()
             }))

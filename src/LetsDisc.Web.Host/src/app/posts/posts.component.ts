@@ -3,6 +3,8 @@ import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listin
 import { PostDto, PostServiceProxy, PagedResultDtoOfPostDto } from '@shared/service-proxies/service-proxies';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { finalize } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-posts',
@@ -31,9 +33,11 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
             'other': 'votes'
         }
     };
+    searchString: string;
 
-    constructor(injector: Injector, private _postService: PostServiceProxy) {
+    constructor(injector: Injector, private _postService: PostServiceProxy, private titleService: Title, private route: ActivatedRoute) {
         super(injector);
+        this.titleService.setTitle("LetsDisc - List of all questions");
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -43,10 +47,12 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
                     this.questions = result.items;
                     this.showPaging(result, 0);
                 });
+            this.titleService.setTitle("List of '" + this.tagValue + "' questions - LetsDisc");
         }
     }
 
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
+        this.route.queryParamMap.subscribe(urlParams => this.searchString = urlParams.get('q'));
         this._postService.getQuestions(request.sorting, request.skipCount, request.maxResultCount, this.tagValue)
             .pipe(finalize(() => {
                 finishedCallback()

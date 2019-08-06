@@ -5,6 +5,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TagInputModule } from 'ngx-chips';
 import { finalize } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-question-detail',
@@ -44,7 +45,9 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
         injector: Injector,
         private _postService: PostServiceProxy,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private titleService: Title,
+        private meta: Meta
     ) { 
         super(injector);
     }
@@ -62,7 +65,9 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
                 this.question = result.post;
                 this.answers = result.answers;
                 this.items = result.post.post.tags.split(',');
-
+                this.titleService.setTitle(this.items[0] + ' - ' + result.post.post.title);
+                this.meta.updateTag({ name: 'description', content: result.post.post.body.replace(/<[^>]*>/g, '').substring(0, 160) }); 
+                this.answer.title = result.post.post.title;
             });
         this.answer.questionId = id;
     }

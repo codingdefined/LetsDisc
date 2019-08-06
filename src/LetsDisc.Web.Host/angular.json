@@ -18,6 +18,7 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
+              "src/web.config",
               "src/favicon.ico",
               {
                 "glob": "abp.signalr.js",

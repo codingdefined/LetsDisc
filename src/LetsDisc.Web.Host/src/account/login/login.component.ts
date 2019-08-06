@@ -6,6 +6,7 @@ import { accountModuleAnimation } from '@shared/animations/routerTransition';
 import { AbpSessionService } from '@abp/session/abp-session.service';
 import { TokenAuthServiceProxy, ExternalAuthenticateModel, ExternalAuthenticateResultModel } from '@shared/service-proxies/service-proxies';
 import { DOCUMENT } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
     templateUrl: './login.component.html',
@@ -28,8 +29,12 @@ export class LoginComponent extends AppComponentBase implements OnInit {
         private _sessionService: AbpSessionService,
         private _tokenAuthService: TokenAuthServiceProxy,
         @Inject(DOCUMENT) private document: Document,
+        private titleService: Title,
+        private meta: Meta
     ) {
         super(injector);
+        this.titleService.setTitle("Log In - LetsDisc");
+        this.meta.updateTag({ name: 'description', content: "Login to LetsDiscuss to share your knowledge" }); 
     }
 
     ngOnInit() {

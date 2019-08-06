@@ -5,6 +5,7 @@ import { AppComponentBase } from '@shared/app-component-base';
 import { finalize } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppConsts } from '@shared/AppConsts';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'edit-user-modal',
@@ -26,7 +27,8 @@ export class EditUserComponent extends AppComponentBase implements OnInit  {
         injector: Injector,
         private _userService: UserServiceProxy,
         private _router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private titleService: Title
     ) {
         super(injector);
     }
@@ -46,6 +48,7 @@ export class EditUserComponent extends AppComponentBase implements OnInit  {
                 if (this.userDetails.profileImageUrl !== '') {
                     this.url = this.createImgPath(this.userDetails.profileImageUrl);
                 }
+                this.titleService.setTitle("Edit User " + result.user.fullName + " - LetsDisc");
             });
     }
 

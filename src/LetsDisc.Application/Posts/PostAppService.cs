@@ -246,6 +246,47 @@ namespace LetsDisc.Posts
             };
         }
 
+        // Getting all questions on the Home Page
+        public async Task<PagedResultDto<PostDto>> GetSearchPosts(PagedAndSortedResultRequestDto input, string searchString)
+        {
+            var searchArray = searchString.Split(" ");
+            IQueryable<Post> posts = _postRepository
+                                    .GetAll()
+                                    .Include(a => a.CreatorUser);
+
+            foreach (var term in searchArray)
+            {
+                posts = posts.Where(a => a.Body.Contains(term) || a.Title.Contains(term));
+            }
+
+            switch (input.Sorting)
+            {
+                case "votes":
+                    posts = posts.OrderByDescending(q => q.Score);
+                    break;
+                case "newest":
+                    posts = posts.OrderByDescending(q => q.CreationTime);
+                    break;
+                case "viewed":
+                    posts = posts.OrderByDescending(q => q.ViewCount);
+                    break;
+                default:
+                    posts = posts.OrderByDescending(q => q.CreationTime);
+                    break;
+            }
+
+            var postCount = await posts.CountAsync();
+            var postList = await posts.Skip(input.SkipCount)
+                                    .Take(input.MaxResultCount)
+                                    .ToListAsync();
+
+            return new PagedResultDto<PostDto>
+            {
+                TotalCount = postCount,
+                Items = postList.MapTo<List<PostDto>>()
+            };
+        }
+
         //Voting Up the Post both Question and Answer, where there will be two things either Upvoting or Downvoting
         public async Task<VoteChangeOutput> PostVoteUp(int id)
         {
@@ -321,6 +362,7 @@ namespace LetsDisc.Posts
             var answer = await _postRepository.InsertAsync(
                 new Post()
                 {
+                    Title = input.Title,
                     Body = input.Body,
                     ParentId = input.QuestionId,
                     CreatorUserId = AbpSession.UserId,

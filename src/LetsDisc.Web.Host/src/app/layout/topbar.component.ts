@@ -2,6 +2,7 @@
 import { AppComponentBase } from '@shared/app-component-base';
 import { AppAuthService } from '@shared/auth/app-auth.service';
 import { UserDto } from '@shared/service-proxies/service-proxies';
+import { Router } from '@angular/router';
 
 @Component({
     templateUrl: './topbar.component.html',
@@ -14,7 +15,8 @@ export class TopBarComponent extends AppComponentBase implements OnInit {
 
     constructor(
         injector: Injector,
-        private _authService: AppAuthService
+        private _authService: AppAuthService,
+        private router: Router
     ) {
         super(injector);
     }
@@ -26,5 +28,9 @@ export class TopBarComponent extends AppComponentBase implements OnInit {
 
     logout(): void {
         this._authService.logout();
+    }
+
+    search(searchString: string) {
+        this.router.navigate(['/search'], { queryParams: { q: searchString } });
     }
 }

@@ -6,6 +6,7 @@ import { EditUserComponent } from 'app/users/edit-user/edit-user.component';
 import { finalize } from 'rxjs/operators';
 import { AppConsts } from '@shared/AppConsts';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     templateUrl: './users.component.html',
@@ -20,13 +21,15 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
     constructor(
         injector: Injector,
         private _userService: UserServiceProxy,
-        private ref: ChangeDetectorRef
+        private ref: ChangeDetectorRef,
+        private titleService: Title
     ) {
         super(injector);
+        this.titleService.setTitle("List of all users - LetsDisc");
     }
 
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._userService.getALLUsers(request.skipCount, request.maxResultCount)
+        this._userService.getALLUsers(request.maxResultCount, request.skipCount)
             .pipe(finalize(() => {
                  finishedCallback()
             }))

@@ -4,6 +4,7 @@ import { AppComponentBase } from '@shared/app-component-base';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-question',
@@ -24,10 +25,12 @@ export class CreateQuestionComponent extends AppComponentBase implements OnInit 
     constructor(
         injector: Injector,
         private _postService: PostServiceProxy,
-        private router: Router
+        private router: Router,
+        private titleService: Title
     ) { 
         super(injector);
         this.question.postTypeId = 1;
+        this.titleService.setTitle("Ask a question - LetsDisc");
     }
 
     ngOnInit() {

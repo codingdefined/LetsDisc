@@ -29,9 +29,7 @@ import { SideBarUserAreaComponent } from '@app/layout/sidebar-user-area.componen
 import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
 import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
-import { QuestionsComponent } from '@app/questions/questions.component';
 import { CreateQuestionComponent } from '@app/posts/create-question/create-question.component';
-import { EditQuestionComponent } from '@app/questions/edit-question/edit-question.component';
 import { PostsComponent } from './posts/posts.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TagInputModule } from 'ngx-chips';
@@ -45,6 +43,7 @@ import { SocialLoginModule } from "angularx-social-login";
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ContactComponent } from './contact/contact.component';
+import { SearchPostsComponent } from './search-posts/search-posts.component';
 
 @NgModule({
     declarations: [
@@ -54,9 +53,7 @@ import { ContactComponent } from './contact/contact.component';
 		CreateTenantComponent,
 		EditTenantComponent,
         UsersComponent,
-        QuestionsComponent,
         CreateQuestionComponent,
-        EditQuestionComponent,
 		EditUserComponent,
       	RolesComponent,        
 		CreateRoleComponent,
@@ -76,6 +73,7 @@ import { ContactComponent } from './contact/contact.component';
         UserDetailComponent,
         PrivacyComponent,
         ContactComponent,
+        SearchPostsComponent,
     ],
     imports: [
         CommonModule,

@@ -14,6 +14,7 @@ import { UserDetailComponent } from '@app/users/user-detail/user-detail.componen
 import { EditUserComponent } from '@app/users/edit-user/edit-user.component';
 import { ContactComponent } from '@app/contact/contact.component';
 import { PrivacyComponent } from '@app/privacy/privacy.component';
+import { SearchPostsComponent } from '@app/search-posts/search-posts.component';
 
 @NgModule({
     imports: [
@@ -41,6 +42,7 @@ import { PrivacyComponent } from '@app/privacy/privacy.component';
                             { path: ':id/:name', component: UserDetailComponent }
                         ]
                     },
+                    { path: 'search', component: SearchPostsComponent },
                     { path: 'about', component: AboutComponent },
                     { path: 'contact', component: ContactComponent },
                     { path: 'privacy', component: PrivacyComponent },

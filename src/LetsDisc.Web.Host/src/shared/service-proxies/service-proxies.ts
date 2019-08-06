@@ -494,6 +494,69 @@ export class PostServiceProxy {
     }
 
     /**
+     * @param sorting (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @param searchString (optional) 
+     * @return Success
+     */
+    getSearchPosts(sorting: string | null | undefined, skipCount: number | null | undefined, maxResultCount: number | null | undefined, searchString: string | null | undefined): Observable<PagedResultDtoOfPostDto> {
+        let url_ = this.baseUrl + "/api/services/app/Post/GetSearchPosts?";
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (searchString !== undefined)
+            url_ += "searchString=" + encodeURIComponent("" + searchString) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSearchPosts(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSearchPosts(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfPostDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfPostDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSearchPosts(response: HttpResponseBase): Observable<PagedResultDtoOfPostDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfPostDto.fromJS(resultData200) : new PagedResultDtoOfPostDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfPostDto>(<any>null);
+    }
+
+    /**
      * @param id (optional) 
      * @return Success
      */
@@ -1454,16 +1517,16 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param skipCount (optional) 
      * @param maxResultCount (optional) 
+     * @param skipCount (optional) 
      * @return Success
      */
-    getAll(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfRoleDto> {
+    getAll(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfRoleDto> {
         let url_ = this.baseUrl + "/api/services/app/Role/GetAll?";
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1589,16 +1652,16 @@ export class TagServiceProxy {
     }
 
     /**
-     * @param skipCount (optional) 
      * @param maxResultCount (optional) 
+     * @param skipCount (optional) 
      * @return Success
      */
-    getTags(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfTagDto> {
+    getTags(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfTagDto> {
         let url_ = this.baseUrl + "/api/services/app/Tag/GetTags?";
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1818,16 +1881,16 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @param skipCount (optional) 
      * @param maxResultCount (optional) 
+     * @param skipCount (optional) 
      * @return Success
      */
-    getAll(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfTenantDto> {
+    getAll(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfTenantDto> {
         let url_ = this.baseUrl + "/api/services/app/Tenant/GetAll?";
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -2603,16 +2666,16 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param skipCount (optional) 
      * @param maxResultCount (optional) 
+     * @param skipCount (optional) 
      * @return Success
      */
-    getALLUsers(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfUserDetailsDto> {
+    getALLUsers(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfUserDetailsDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetALLUsers?";
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -2723,17 +2786,17 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param skipCount (optional) 
      * @param maxResultCount (optional) 
+     * @param skipCount (optional) 
      * @param userId (optional) 
      * @return Success
      */
-    getUserQuestions(skipCount: number | null | undefined, maxResultCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfPostDto> {
+    getUserQuestions(maxResultCount: number | null | undefined, skipCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfPostDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetUserQuestions?";
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (userId !== undefined)
             url_ += "userId=" + encodeURIComponent("" + userId) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -2783,17 +2846,17 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param skipCount (optional) 
      * @param maxResultCount (optional) 
+     * @param skipCount (optional) 
      * @param userId (optional) 
      * @return Success
      */
-    getUserAnswers(skipCount: number | null | undefined, maxResultCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfAnswerWithQuestion> {
+    getUserAnswers(maxResultCount: number | null | undefined, skipCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfAnswerWithQuestion> {
         let url_ = this.baseUrl + "/api/services/app/User/GetUserAnswers?";
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (userId !== undefined)
             url_ += "userId=" + encodeURIComponent("" + userId) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -2897,16 +2960,16 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param skipCount (optional) 
      * @param maxResultCount (optional) 
+     * @param skipCount (optional) 
      * @return Success
      */
-    getAll(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfUserDto> {
+    getAll(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfUserDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetAll?";
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount !== undefined)
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -3598,6 +3661,7 @@ export interface IVoteChangeOutput {
 export class SubmitAnswerInput implements ISubmitAnswerInput {
     questionId: number | undefined;
     body: string;
+    title: string;
 
     constructor(data?: ISubmitAnswerInput) {
         if (data) {
@@ -3612,6 +3676,7 @@ export class SubmitAnswerInput implements ISubmitAnswerInput {
         if (data) {
             this.questionId = data["questionId"];
             this.body = data["body"];
+            this.title = data["title"];
         }
     }
 
@@ -3626,6 +3691,7 @@ export class SubmitAnswerInput implements ISubmitAnswerInput {
         data = typeof data === 'object' ? data : {};
         data["questionId"] = this.questionId;
         data["body"] = this.body;
+        data["title"] = this.title;
         return data; 
     }
 
@@ -3640,6 +3706,7 @@ export class SubmitAnswerInput implements ISubmitAnswerInput {
 export interface ISubmitAnswerInput {
     questionId: number | undefined;
     body: string;
+    title: string;
 }
 
 export class PagedResultDtoOfQuestionDto implements IPagedResultDtoOfQuestionDto {
