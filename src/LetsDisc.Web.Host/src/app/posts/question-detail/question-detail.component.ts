@@ -1,5 +1,5 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { PostDto, PostServiceProxy, VoteChangeOutput, PostWithVoteInfo, SubmitAnswerInput, PostWithAnswers } from '@shared/service-proxies/service-proxies';
+import { PostDto, PostServiceProxy, VoteChangeOutput, PostWithVoteInfo, SubmitAnswerInput, PostWithAnswers, IPostWithVoteInfo } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TagInputModule } from 'ngx-chips';
@@ -21,6 +21,8 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     id: number;
     items = [];
     editing: boolean = false;
+    answerEditing: boolean = false;
+    currentAnswerEditing: PostWithVoteInfo;
     saving: boolean = false;
     browerRefresh: boolean = false;
     public Editor = ClassicEditor;
@@ -130,9 +132,31 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
         this.editing = true;
     }
 
+    editAnswerClicked(answer: PostWithVoteInfo): void {
+        this.answerEditing = true;
+        this.currentAnswerEditing = JSON.parse(JSON.stringify(answer));
+    }
+
     cancelClick(): void {
         this.editing = false;
         this.question = this.notEditedQuestion;
+    }
+
+    answerCancelClick(): void {
+        this.answerEditing = false;
+        this.currentAnswerEditing = null;
+    }
+
+    updateAnswer(): void {
+        const index = this.answers.findIndex((item) => item.post.id == this.currentAnswerEditing.post.id);
+        this._postService.updateAnswer(this.currentAnswerEditing.post)
+            .subscribe((result: PostWithVoteInfo) => {
+                this.answers[index] = result;
+                this.answers = JSON.parse(JSON.stringify(this.answers));
+                this.notify.info('Answer Updated');
+                this.answerEditing = false;
+                this.currentAnswerEditing = null;
+            });
     }
 
     saveQuestion(): void {

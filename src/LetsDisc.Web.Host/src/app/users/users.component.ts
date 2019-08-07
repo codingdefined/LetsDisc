@@ -29,7 +29,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
     }
 
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._userService.getALLUsers(request.maxResultCount, request.skipCount)
+        this._userService.getALLUsers(request.skipCount, request.maxResultCount)
             .pipe(finalize(() => {
                  finishedCallback()
             }))

@@ -721,6 +721,62 @@ export class PostServiceProxy {
     }
 
     /**
+     * @param input (optional) 
+     * @return Success
+     */
+    updateAnswer(input: PostDto | null | undefined): Observable<PostWithVoteInfo> {
+        let url_ = this.baseUrl + "/api/services/app/Post/UpdateAnswer";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateAnswer(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateAnswer(<any>response_);
+                } catch (e) {
+                    return <Observable<PostWithVoteInfo>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PostWithVoteInfo>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateAnswer(response: HttpResponseBase): Observable<PostWithVoteInfo> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PostWithVoteInfo.fromJS(resultData200) : new PostWithVoteInfo();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PostWithVoteInfo>(<any>null);
+    }
+
+    /**
      * @param id (optional) 
      * @return Success
      */
@@ -1517,16 +1573,16 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param maxResultCount (optional) 
      * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfRoleDto> {
+    getAll(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfRoleDto> {
         let url_ = this.baseUrl + "/api/services/app/Role/GetAll?";
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1652,16 +1708,16 @@ export class TagServiceProxy {
     }
 
     /**
-     * @param maxResultCount (optional) 
      * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getTags(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfTagDto> {
+    getTags(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfTagDto> {
         let url_ = this.baseUrl + "/api/services/app/Tag/GetTags?";
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1881,16 +1937,16 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @param maxResultCount (optional) 
      * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfTenantDto> {
+    getAll(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfTenantDto> {
         let url_ = this.baseUrl + "/api/services/app/Tenant/GetAll?";
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -2666,16 +2722,16 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param maxResultCount (optional) 
      * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getALLUsers(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfUserDetailsDto> {
+    getALLUsers(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfUserDetailsDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetALLUsers?";
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -2786,17 +2842,17 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param maxResultCount (optional) 
      * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @param userId (optional) 
      * @return Success
      */
-    getUserQuestions(maxResultCount: number | null | undefined, skipCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfPostDto> {
+    getUserQuestions(skipCount: number | null | undefined, maxResultCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfPostDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetUserQuestions?";
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (userId !== undefined)
             url_ += "userId=" + encodeURIComponent("" + userId) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -2846,17 +2902,17 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param maxResultCount (optional) 
      * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @param userId (optional) 
      * @return Success
      */
-    getUserAnswers(maxResultCount: number | null | undefined, skipCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfAnswerWithQuestion> {
+    getUserAnswers(skipCount: number | null | undefined, maxResultCount: number | null | undefined, userId: number | null | undefined): Observable<PagedResultDtoOfAnswerWithQuestion> {
         let url_ = this.baseUrl + "/api/services/app/User/GetUserAnswers?";
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (userId !== undefined)
             url_ += "userId=" + encodeURIComponent("" + userId) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -2960,16 +3016,16 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param maxResultCount (optional) 
      * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfUserDto> {
+    getAll(skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfUserDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetAll?";
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {

@@ -40,10 +40,15 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
             '=1': ' answer',
             'other': ' answers'
         },
-        'view': {
+        'profileview': {
             '=0': '0 profile views',
             '=1': '1 profile view',
             'other': '# profile views'
+        },
+        'view': {
+            '=0': '0 views',
+            '=1': '1 view',
+            'other': '# views'
         },
         'question': {
             '=0': ' questions',
@@ -96,7 +101,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     }
 
     protected questionList(userId: number, request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._userService.getUserQuestions(request.maxResultCount, request.skipCount, userId)
+        this._userService.getUserQuestions(request.skipCount, request.maxResultCount, userId)
             .pipe(finalize(() => {
                 finishedCallback()
             }))
@@ -107,7 +112,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     }
 
     protected answerList(userId: number, request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._userService.getUserAnswers(request.maxResultCount, request.skipCount, userId)
+        this._userService.getUserAnswers(request.skipCount, request.maxResultCount, userId)
             .pipe(finalize(() => {
                 finishedCallback()
             }))

@@ -206,9 +206,7 @@ namespace LetsDisc.Posts
                 questions = _postRepository
                                     .GetAll()
                                     .Include(a => a.CreatorUser)
-                                    .Where(a => a.PostTypeId == (int)PostTypes.Question && a.Tags.Contains(tag))
-                                    .Skip(input.SkipCount)
-                                    .Take(input.MaxResultCount);
+                                    .Where(a => a.PostTypeId == (int)PostTypes.Question && a.Tags.Contains(tag));
             }
             else
             {
@@ -216,9 +214,8 @@ namespace LetsDisc.Posts
                 questions = _postRepository
                                     .GetAll()
                                     .Include(a => a.CreatorUser)
-                                    .Where(a => a.PostTypeId == (int)PostTypes.Question)
-                                    .Skip(input.SkipCount)
-                                    .Take(input.MaxResultCount);
+                                    .Where(a => a.PostTypeId == (int)PostTypes.Question);
+                                    
             }
 
             switch (input.Sorting)
@@ -237,7 +234,10 @@ namespace LetsDisc.Posts
                     break;
             }
 
-            var questionList = await questions.ToListAsync();
+            var questionList = await questions
+                                    .Skip(input.SkipCount)
+                                    .Take(input.MaxResultCount)
+                                    .ToListAsync();
 
             return new PagedResultDto<PostDto>
             {
@@ -373,6 +373,24 @@ namespace LetsDisc.Posts
             return new PostWithVoteInfo
             {
                 Post = answer.MapTo<PostDto>(),
+                Upvote = false,
+                Downvote = false
+            };
+        }
+
+        public async Task<PostWithVoteInfo> UpdateAnswer(PostDto input)
+        {
+            CheckUpdatePermission();
+
+            var post = await _postRepository.GetAsync(input.Id);
+            post.Body = input.Body;
+            post.LastModificationTime = DateTime.Now;
+
+            await _postRepository.UpdateAsync(post);
+
+            return new PostWithVoteInfo
+            {
+                Post = post.MapTo<PostDto>(),
                 Upvote = false,
                 Downvote = false
             };

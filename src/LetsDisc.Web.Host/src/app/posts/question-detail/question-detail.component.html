@@ -92,7 +92,7 @@
             <div class="all-answers">
                 <div class="answer-length"><h4 *ngIf="answers && answers.length > 0">{{answers.length | i18nPlural: itemPluralMapping['answer'] }}</h4></div>
                 <div class="answer" *ngFor="let answer of answers">
-                    <div class="answer-summary" id="answer-{{answer?.post.id}}">
+                    <div class="answer-summary" id="answer-{{answer?.post.id}}" [style.display]="currentAnswerEditing?.post.id !== answer?.post.id ? 'inherit' : 'none' ">
                         <div class="vote-layout">
                             <a class="vote-up" (click)="voteUp(answer?.post.id)">
                                 <i [class.voted]="answer?.upvote" class="material-icons md-48">arrow_drop_up</i>
@@ -102,8 +102,20 @@
                                 <i [class.voted]="answer?.downvote" class="material-icons md-48">arrow_drop_down</i>
                             </a>
                         </div>
+                        <div class="post-menu float-right">
+                            <a class="edit-post" title="edit answer" *ngIf="this.appSession.isLoggedIn && answer && this.appSession.userId === answer.post.creatorUserId" (click)="editAnswerClicked(answer)">edit</a>
+                        </div>
                         <div class="answer-body" [innerHTML]="answer?.post.body"></div>
                         <div class="posted-time">answered {{answer?.post.creationTime | timeAgo}} by {{answer?.post.creatorUserName}}</div>
+                    </div>
+                    <div class="edit-answer" [style.display]="answerEditing && currentAnswerEditing?.post.id === answer?.post.id ? 'inherit' : 'none'">
+                        <form #myform="ngForm" class="form answer-form" method="post">
+                            <div class="your-answer">
+                                <ckeditor id="answer-body" [(ngModel)]="currentAnswerEditing?.post.body" [editor]="Editor" [config]="config" name="Body" class="answer-body"></ckeditor>
+                                <button type="submit" class="btn btn-primary btn-save-edits" (click)="updateAnswer()">Save Edits</button>
+                                <button type="button" class="btn btn-default" (click)="answerCancelClick()">Cancel</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

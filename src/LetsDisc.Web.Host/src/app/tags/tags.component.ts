@@ -22,7 +22,7 @@ export class TagsComponent extends PagedListingComponentBase<TagDto> {
   }
 
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._tagService.getTags(request.maxResultCount, request.skipCount)
+        this._tagService.getTags(request.skipCount, request.maxResultCount)
         .pipe(finalize(() => {
             finishedCallback()
         }))

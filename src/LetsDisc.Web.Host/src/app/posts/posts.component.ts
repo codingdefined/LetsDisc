@@ -34,6 +34,8 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
         }
     };
     searchString: string;
+    sortByValue: string;
+    defaultSortBy: string = 'newest';
 
     constructor(injector: Injector, private _postService: PostServiceProxy, private titleService: Title, private route: ActivatedRoute) {
         super(injector);
@@ -42,7 +44,8 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes['tagValue']) {
-            this._postService.getQuestions("newest", 0, 10, this.tagValue)
+            this.sortByValue = this.defaultSortBy;
+            this._postService.getQuestions(this.sortByValue, 0, 10, this.tagValue)
                 .subscribe((result: PagedResultDtoOfPostDto) => {
                     this.questions = result.items;
                     this.showPaging(result, 0);
@@ -53,7 +56,7 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
 
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
         this.route.queryParamMap.subscribe(urlParams => this.searchString = urlParams.get('q'));
-        this._postService.getQuestions(request.sorting, request.skipCount, request.maxResultCount, this.tagValue)
+        this._postService.getQuestions(this.sortByValue, request.skipCount, request.maxResultCount, this.tagValue)
             .pipe(finalize(() => {
                 finishedCallback()
             }))
@@ -79,6 +82,7 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
     }
 
     public sortBy(value: string) {
+        this.sortByValue = value;
         this._postService.getQuestions(value, 0, 10, this.tagValue)
             .subscribe((result: PagedResultDtoOfPostDto) => {
                 this.questions = result.items;

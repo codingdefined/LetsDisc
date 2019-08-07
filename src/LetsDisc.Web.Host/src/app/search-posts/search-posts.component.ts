@@ -26,6 +26,7 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
         }
     };
     searchString: string;
+    sortByValue: string;
     defaultSortBy: string = 'newest';
 
     constructor(injector: Injector, private _postService: PostServiceProxy, private titleService: Title, private route: ActivatedRoute, private router: Router) {
@@ -35,7 +36,7 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
         this.route.queryParamMap.subscribe(urlParams => this.searchString = urlParams.get('q'));
         if (this.searchString !== '') {
-            this._postService.getSearchPosts(request.sorting, request.skipCount, request.maxResultCount, this.searchString)
+            this._postService.getSearchPosts(this.sortByValue, request.skipCount, request.maxResultCount, this.searchString)
                 .pipe(finalize(() => {
                     finishedCallback()
                 }))
@@ -55,6 +56,7 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
     }
 
     public sortBy(value: string): void {
+        this.sortByValue = value;
         if (this.searchString !== '') {
             this._postService.getSearchPosts(value, 0, 10, this.searchString)
                 .subscribe((result: PagedResultDtoOfPostDto) => {
@@ -76,7 +78,7 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
                     queryParams: { q: this.searchString },
                     queryParamsHandling: 'merge'
                 });
-            this._postService.getSearchPosts(this.defaultSortBy, 0, 10, this.searchString)
+            this._postService.getSearchPosts(this.sortByValue, 0, 10, this.searchString)
                 .subscribe((result: PagedResultDtoOfPostDto) => {
                     this.posts = result.items;
                     this.showPaging(result, 0);
