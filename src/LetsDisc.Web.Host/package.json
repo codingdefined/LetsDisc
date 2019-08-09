@@ -63,7 +63,7 @@
     "push.js": "1.0.4",
     "quill": "^1.3.6",
     "raphael": "^2.2.7",
-    "rxjs": "^6.0.0",
+    "rxjs": "^6.5.2",
     "simple-line-icons": "^2.4.1",
     "spin.js": "^2.3.2",
     "sweetalert": "^2.0.8",
