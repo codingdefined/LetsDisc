@@ -57,7 +57,7 @@
     "morris.js": "^0.5.0",
     "ngx-bootstrap": "^3.0.0",
     "ngx-chips": "^2.0.0-beta.0",
-    "ngx-pagination": "^3.0.3",
+    "ngx-pagination": "^4.1.0",
     "ngx-quill": "^7.1.2",
     "node-waves": "^0.7.5",
     "push.js": "1.0.4",
