@@ -27,13 +27,46 @@
             <div class="form-group">
                 <div class="form-line">
                     <label for="question-body">{{l('Body')}}</label>
-                    <ckeditor id="question-body" [(ngModel)]="question.body" [editor]="Editor" [config]="config" name="Body" data="<p></p>" class="body" #body="ngModel" required></ckeditor>
+                    <!--<ckeditor id="question-body" [(ngModel)]="question.body" [editor]="Editor" [config]="config" name="Body" data="<p></p>" class="body" #body="ngModel" required></ckeditor>-->
+                    <quill-editor id="question-body" [(ngModel)]="question.body" name="Body" class="body" #body="ngModel" [required]="true" [styles]="{height: '250px'}" placeholder="Type the content here!">
+                        <div quill-editor-toolbar>
+                            <span class="ql-formats">
+                                <button class="ql-bold" [title]="'Bold'"></button>
+                                <button class="ql-italic" [title]="'Italic'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-blockquote" [title]="'Block Quote'"></button>
+                                <button class="ql-code-block" [title]="'Code Block'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-list" value="ordered" [title]="'Ordered List'"></button>
+                                <button class="ql-list" value="bullet" [title]="'Ordered List'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <select class="ql-size" [title]="'Size'">
+                                    <option selected></option>
+                                    <option value="small"></option>
+                                    <option value="large"></option>
+                                    <option value="huge"></option>
+                                </select>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-link" [title]="'Insert Link'"></button>
+                                <button class="ql-image" [title]="'Image'"></button>
+                            </span>
+                        </div>
+                    </quill-editor>
                 </div>
                 <div *ngIf="body.invalid && (body.dirty || body.touched)" class="invalid-feedback">
                     <div *ngIf="body.errors.required">
                         Body is required
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label for="question-body">Preview</label>
+                <quill-view [content]="question.body" theme="snow"></quill-view>
             </div>
 
             <div class="form-group">
@@ -56,7 +89,7 @@
                 </div>
             </div>
 
-                <button type="submit" [disabled]="!myform.form.valid || saving" class="btn btn-primary">Post Your Question</button>
+            <button type="submit" [disabled]="!myform.form.valid || saving" class="btn btn-primary">Post Your Question</button>
         </form>
     </div>
 </div>

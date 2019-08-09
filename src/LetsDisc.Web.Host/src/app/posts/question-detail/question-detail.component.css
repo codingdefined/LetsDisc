@@ -23,9 +23,8 @@
 }
 
 .question-body {
-    margin-top: 10px;
-    margin-left: 8%;
-    min-height: 120px;
+    margin-top:0px;
+    min-height: 140px;
 }
 
 .vote-layout {

@@ -8246,4 +8246,15 @@ html.ie11 .bs-searchbox .form-control {
     width: 60%;
 }
 
+.ng-touched.ng-invalid .ql-container.ql-snow {
+    border: 1px solid red !important;
+}
 
+.ng-touched.ng-valid .ql-container.ql-snow {
+    border: 1px solid #bbc0c4 !important;
+}
+
+.ql-snow .ql-editor pre.ql-syntax {
+    background-color: #eff0f1;
+    color: #000;
+}

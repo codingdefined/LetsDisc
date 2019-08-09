@@ -44,6 +44,7 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ContactComponent } from './contact/contact.component';
 import { SearchPostsComponent } from './search-posts/search-posts.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
     declarations: [
@@ -88,7 +89,8 @@ import { SearchPostsComponent } from './search-posts/search-posts.component';
         NgxPaginationModule,
         CKEditorModule,
         TagInputModule,
-        SocialLoginModule
+        SocialLoginModule,
+        QuillModule.forRoot()
     ],
     providers: [
     ]

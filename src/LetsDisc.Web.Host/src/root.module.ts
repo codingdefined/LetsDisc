@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, Injector, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
@@ -98,6 +98,7 @@ export function getCurrentLanguage(): string {
             multi: true
         },
         AuthService,
+        Title,
         {
             provide: AuthServiceConfig,
             useFactory: provideConfig

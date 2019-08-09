@@ -23,6 +23,7 @@
 }
 
 .invalid-feedback {
+    display:block;
     color: red;
     padding: 5px;
     font-size: 12px;
@@ -34,4 +35,8 @@ input.ng-touched.ng-invalid {
 
 .tag-input.ng-touched.ng-invalid {
     border: 1px solid red !important;
+}
+
+.quill-body {
+    height: 200px;
 }

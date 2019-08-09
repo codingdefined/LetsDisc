@@ -15,11 +15,11 @@
                     <a class="vote-down" (click)="voteDown(question?.post.id)">
                         <i [class.voted]="question?.downvote" class="material-icons md-48">arrow_drop_down</i>
                     </a>
-                </div> 
-                <div class="question-body" [innerHTML]="question?.post.body" [style.display]="editing ? 'none' : 'inherit' "></div>
+                </div>
+                <quill-view  class="question-body" [content]="question?.post.body" theme="snow" [style.display]="editing ? 'none' : 'inherit'"></quill-view>
                 <div class="post-tags" [style.display]="editing ? 'none' : 'inherit' ">
                     <div *ngIf="question && question.post.tags && question.post.tags.length > 0">
-                        <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" rel="tag" *ngFor="let tag of question.post.tags | commaSeparted">
+                        <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" *ngFor="let tag of question.post.tags | commaSeparted">
                             {{tag}}
                         </a>
                     </div>
@@ -51,7 +51,34 @@
                         <div class="form-group">
                             <div class="form-line">
                                 <label for="question-body">{{l('Body')}}</label>
-                                <ckeditor id="question-body" [(ngModel)]="question?.post.body" [editor]="Editor" [config]="config" name="Body" data="<p></p>" class="body" #body="ngModel" required></ckeditor>
+                                <quill-editor id="question-body" [(ngModel)]="question?.post.body" name="Body" class="body" #body="ngModel" [required]="true" [styles]="{height: '250px'}" placeholder="Type the content here!">
+                                    <div quill-editor-toolbar>
+                                        <span class="ql-formats">
+                                            <button class="ql-bold" [title]="'Bold'"></button>
+                                            <button class="ql-italic" [title]="'Italic'"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-blockquote" [title]="'Block Quote'"></button>
+                                            <button class="ql-code-block" [title]="'Code Block'"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-list" value="ordered" [title]="'Ordered List'"></button>
+                                            <button class="ql-list" value="bullet" [title]="'Ordered List'"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <select class="ql-size" [title]="'Size'">
+                                                <option selected></option>
+                                                <option value="small"></option>
+                                                <option value="large"></option>
+                                                <option value="huge"></option>
+                                            </select>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-link" [title]="'Insert Link'"></button>
+                                            <button class="ql-image" [title]="'Image'"></button>
+                                        </span>
+                                    </div>
+                                </quill-editor>
                             </div>
                             <div *ngIf="body.invalid && (body.dirty || body.touched)" class="invalid-feedback">
                                 <div *ngIf="body.errors.required">
@@ -87,10 +114,11 @@
                 <div class="post-menu">
                     <a class="share-post" title="share post">share</a>
                     <a class="edit-post" title="edit post" *ngIf="this.appSession.isLoggedIn && this.question && this.appSession.userId === this.question.post.creatorUserId" (click)="editClicked()">edit</a>
+                    <a class="delete-post" title="delete post" *ngIf="this.appSession.isLoggedIn && this.question && this.appSession.userId === this.question.post.creatorUserId" (click)="deleteClicked()">delete</a>
                 </div>
             </div>
             <div class="all-answers">
-                <div class="answer-length"><h4 *ngIf="answers && answers.length > 0">{{answers.length | i18nPlural: itemPluralMapping['answer'] }}</h4></div>
+                <div *ngIf="answers && answers.length > 0" class="answer-length"><h4>{{answers.length | i18nPlural: itemPluralMapping['answer'] }}</h4></div>
                 <div class="answer" *ngFor="let answer of answers">
                     <div class="answer-summary" id="answer-{{answer?.post.id}}" [style.display]="currentAnswerEditing?.post.id !== answer?.post.id ? 'inherit' : 'none' ">
                         <div class="vote-layout">
@@ -105,7 +133,7 @@
                         <div class="post-menu float-right">
                             <a class="edit-post" title="edit answer" *ngIf="this.appSession.isLoggedIn && answer && this.appSession.userId === answer.post.creatorUserId" (click)="editAnswerClicked(answer)">edit</a>
                         </div>
-                        <div class="answer-body" [innerHTML]="answer?.post.body"></div>
+                        <quill-view [content]="answer?.post.body" theme="snow"></quill-view>
                         <div class="posted-time">answered {{answer?.post.creationTime | timeAgo}} by {{answer?.post.creatorUserName}}</div>
                     </div>
                     <div class="edit-answer" [style.display]="answerEditing && currentAnswerEditing?.post.id === answer?.post.id ? 'inherit' : 'none'">
@@ -122,8 +150,35 @@
             <form #myform="ngForm" class="form answer-form" method="post" (ngSubmit)="saveAnswer()">
                 <div class="your-answer">
                     <h4>Your Answer</h4>
-                    <ckeditor id="answer-body" [(ngModel)]="answer.body" [editor]="Editor" [config]="config" name="Body" data="<p></p>" class="answer-body"></ckeditor>
-                    <button type="submit" class="btn btn-primary btn-answer">Post Your Answer</button>
+                    <quill-editor id="answer-body" [(ngModel)]="answer.body" name="Body" class="answer-body" #body="ngModel" [required]="true" [styles]="{height: '250px'}" placeholder="Type the content here!">
+                        <div quill-editor-toolbar>
+                            <span class="ql-formats">
+                                <button class="ql-bold" [title]="'Bold'"></button>
+                                <button class="ql-italic" [title]="'Italic'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-blockquote" [title]="'Block Quote'"></button>
+                                <button class="ql-code-block" [title]="'Code Block'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-list" value="ordered" [title]="'Ordered List'"></button>
+                                <button class="ql-list" value="bullet" [title]="'Ordered List'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <select class="ql-size" [title]="'Size'">
+                                    <option selected></option>
+                                    <option value="small"></option>
+                                    <option value="large"></option>
+                                    <option value="huge"></option>
+                                </select>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-link" [title]="'Insert Link'"></button>
+                                <button class="ql-image" [title]="'Image'"></button>
+                            </span>
+                        </div>
+                    </quill-editor>
+                    <button type="submit" [disabled]="!myform.form.valid" class="btn btn-primary btn-answer">Post Your Answer</button>
                 </div>
             </form>
         </div>

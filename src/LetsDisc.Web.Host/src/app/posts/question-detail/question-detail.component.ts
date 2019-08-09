@@ -132,6 +132,21 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
         this.editing = true;
     }
 
+    deleteClicked(): void {
+        abp.message.confirm(
+            "Delete question '" + this.question.post.title + "'?",
+            (result: boolean) => {
+                if (result) {
+                    this._postService.delete(this.question.post.id)
+                        .subscribe(() => {
+                            abp.notify.info("Deleted Question: " + this.question.post.title);
+                            this.router.navigate['/questions'];
+                        });
+                }
+            }
+        );
+    }
+
     editAnswerClicked(answer: PostWithVoteInfo): void {
         this.answerEditing = true;
         this.currentAnswerEditing = JSON.parse(JSON.stringify(answer));
