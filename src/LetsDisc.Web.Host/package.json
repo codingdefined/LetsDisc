@@ -55,7 +55,7 @@
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
     "morris.js": "^0.5.0",
-    "ngx-bootstrap": "^3.0.0",
+    "ngx-bootstrap": "^3.3.0",
     "ngx-chips": "^2.0.0-beta.0",
     "ngx-pagination": "^3.0.3",
     "ngx-quill": "^7.1.2",
