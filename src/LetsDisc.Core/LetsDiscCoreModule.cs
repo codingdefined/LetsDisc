@@ -1,4 +1,5 @@
-﻿using Abp.Modules;
+﻿using Abp.MailKit;
+using Abp.Modules;
 using Abp.MultiTenancy;
 using Abp.Reflection.Extensions;
 using Abp.Timing;
@@ -13,7 +14,7 @@ using LetsDisc.Timing;
 
 namespace LetsDisc
 {
-    [DependsOn(typeof(AbpZeroCoreModule))]
+    [DependsOn(typeof(AbpZeroCoreModule), typeof(AbpMailKitModule))]
     public class LetsDiscCoreModule : AbpModule
     {
         public override void PreInitialize()

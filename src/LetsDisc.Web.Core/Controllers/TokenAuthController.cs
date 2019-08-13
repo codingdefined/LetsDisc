@@ -28,6 +28,7 @@ using System.Security.Principal;
 using LetsDisc.Sessions.Dto;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading;
+using Abp.Net.Mail;
 
 namespace LetsDisc.Controllers
 {
@@ -45,6 +46,7 @@ namespace LetsDisc.Controllers
         private readonly UserManager _userManager;
         private readonly IAbpSession _session;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IEmailSender _emailSender;
 
         public TokenAuthController(
             LogInManager logInManager,
@@ -57,7 +59,8 @@ namespace LetsDisc.Controllers
             SignInManager signInManager,
             UserManager userManager,
             IAbpSession session,
-            IHttpContextAccessor httpContextAccessor)
+            IHttpContextAccessor httpContextAccessor,
+            IEmailSender emailSender)
         {
             _logInManager = logInManager;
             _tenantCache = tenantCache;
@@ -70,6 +73,7 @@ namespace LetsDisc.Controllers
             _userManager = userManager;
             _session = session;
             _httpContextAccessor = httpContextAccessor;
+            _emailSender = emailSender;
         }
 
         [HttpPost]
@@ -82,6 +86,13 @@ namespace LetsDisc.Controllers
             );
 
             var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
+
+            /*await _emailSender.SendAsync(
+                        to: "gopesh9@gmail.com",
+                        subject: "You have a new task!",
+                        body: $"A new task is assigned for you: ",
+                        isBodyHtml: true
+                    );*/
 
             return new AuthenticateResultModel
             {

@@ -28,7 +28,9 @@
                 <div class="form-line">
                     <label for="question-body">{{l('Body')}}</label>
                     <!--<ckeditor id="question-body" [(ngModel)]="question.body" [editor]="Editor" [config]="config" name="Body" data="<p></p>" class="body" #body="ngModel" required></ckeditor>-->
-                    <quill-editor id="question-body" [(ngModel)]="question.body" name="Body" class="body" #body="ngModel" [required]="true" [styles]="{height: '250px'}" placeholder="Type the content here!">
+                    <quill-editor id="question-body" [(ngModel)]="question.body" 
+                                  name="Body" class="body" #body="ngModel" [required]="true" [styles]="{height: '250px'}" 
+                                  placeholder="Type the content here!" (onEditorCreated)="getEditorInstance($event)">
                         <div quill-editor-toolbar>
                             <span class="ql-formats">
                                 <button class="ql-bold" [title]="'Bold'"></button>

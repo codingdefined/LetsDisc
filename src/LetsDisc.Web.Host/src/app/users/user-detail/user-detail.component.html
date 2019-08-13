@@ -42,7 +42,7 @@
                                 <div class="views">{{question?.viewCount | i18nPlural: itemPluralMapping['view']}}</div>
                             </div>
                             <div class="summary">
-                                <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.toLowerCase().trim().split(' ').join('-')}}">{{question?.title}}</a>
+                                <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.toLowerCase().trim().split(' ').join('-').substring(0, 50)}}">{{question?.title}}</a>
                                 <div class="question-body" [innerHTML]="question.body"></div>
                                 <div class="post-tags">
                                     <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" *ngFor="let tag of question.tags|commaSeparted">
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="summary">
-                                    <a class="summary-title" fragment="answer-{{answer?.answer.id}}" routerLink="/questions/{{answer?.question.id}}/{{answer?.question.title.toLowerCase().trim().split(' ').join('-')}}">{{answer?.question.title}}</a>
+                                    <a class="summary-title" fragment="answer-{{answer?.answer.id}}" routerLink="/questions/{{answer?.question.id}}/{{answer?.question.title.toLowerCase().trim().split(' ').join('-').substring(0, 50)}}">{{answer?.question.title}}</a>
                                 </div>
                             </div>
                         </div>

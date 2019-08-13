@@ -8187,9 +8187,8 @@ html.ie11 .bs-searchbox .form-control {
 }
 
 .status-container {
-    width: 70px;
     float: left;
-    margin-right: 20px;
+    margin: 0px 20px;
 }
 
 .summary {
@@ -8230,7 +8229,7 @@ html.ie11 .bs-searchbox .form-control {
 
 .question-body {
     min-height: 36px;
-    margin-top: 10px;
+    margin: 10px 0px;
 }
 
 .user-info {

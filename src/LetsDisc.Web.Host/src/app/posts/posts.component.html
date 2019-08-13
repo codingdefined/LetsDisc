@@ -36,8 +36,8 @@
                                 <div class="views">{{question.viewCount | i18nPlural: itemPluralMapping['view']}}</div>
                             </div>
                             <div class="summary">
-                                <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.toLowerCase().trim().split(' ').join('-')}}">{{question.title}}</a>
-                                <div class="question-body" [innerHTML]="question.body"></div>
+                                <a class="summary-title" routerLink="/questions/{{question.id}}/{{question.title.toLowerCase().trim().split(' ').join('-').substring(0, 50)}}">{{question.title}}</a>
+                                <div class="question-body">{{question.body | removeHtmlTag | truncateText:[200, '...']}}</div>
                                 <div class="post-tags">
                                     <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" *ngFor="let tag of question.tags|commaSeparted">
                                         {{tag}}

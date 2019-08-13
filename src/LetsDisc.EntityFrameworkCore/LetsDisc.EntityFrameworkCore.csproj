@@ -14,14 +14,16 @@
     <Compile Remove="Migrations\20190611065309_LetsDisc-v1.cs" />
     <Compile Remove="Migrations\20190611092948_LetsDisc-v1.cs" />
     <Compile Remove="Migrations\20190611100324_letsdisc-v1.cs" />
+    <Compile Remove="Migrations\20190703064850_LetsDisc-v1.cs" />
+    <Compile Remove="Migrations\20190813044330_LetsDisc-v1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.3">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LetsDisc.Core\LetsDisc.Core.csproj" />

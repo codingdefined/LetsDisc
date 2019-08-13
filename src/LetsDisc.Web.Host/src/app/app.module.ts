@@ -36,6 +36,8 @@ import { TagInputModule } from 'ngx-chips';
 import { QuestionDetailComponent } from './posts/question-detail/question-detail.component';
 import { CommaSepartedPipe } from './pipes/comma-separted.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
+import { RemoveHtmlTagPipe } from './pipes/remove-html-tag.pipe';
+import { TruncateTextPipe } from './pipes/truncate-text.pipe';
 import { PostsTagComponent } from './posts/posts-tag/posts-tag.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TagsComponent } from './tags/tags.component';
@@ -75,6 +77,8 @@ import { QuillModule } from 'ngx-quill';
         PrivacyComponent,
         ContactComponent,
         SearchPostsComponent,
+        RemoveHtmlTagPipe,
+        TruncateTextPipe
     ],
     imports: [
         CommonModule,
