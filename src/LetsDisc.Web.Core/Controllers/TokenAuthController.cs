@@ -17,6 +17,18 @@ using LetsDisc.Authorization;
 using LetsDisc.Authorization.Users;
 using LetsDisc.Models.TokenAuth;
 using LetsDisc.MultiTenancy;
+using LetsDisc.Identity;
+using Microsoft.AspNetCore.Cors;
+using Abp.Domain.Uow;
+using Microsoft.AspNetCore.Authentication;
+using Abp.Runtime.Session;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using System.Security.Principal;
+using LetsDisc.Sessions.Dto;
+using Microsoft.AspNetCore.Authorization;
+using System.Threading;
+using Abp.Net.Mail;
 
 namespace LetsDisc.Controllers
 {
@@ -30,6 +42,11 @@ namespace LetsDisc.Controllers
         private readonly IExternalAuthConfiguration _externalAuthConfiguration;
         private readonly IExternalAuthManager _externalAuthManager;
         private readonly UserRegistrationManager _userRegistrationManager;
+        private readonly SignInManager _signInManager;
+        private readonly UserManager _userManager;
+        private readonly IAbpSession _session;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IEmailSender _emailSender;
 
         public TokenAuthController(
             LogInManager logInManager,
@@ -38,7 +55,12 @@ namespace LetsDisc.Controllers
             TokenAuthConfiguration configuration,
             IExternalAuthConfiguration externalAuthConfiguration,
             IExternalAuthManager externalAuthManager,
-            UserRegistrationManager userRegistrationManager)
+            UserRegistrationManager userRegistrationManager,
+            SignInManager signInManager,
+            UserManager userManager,
+            IAbpSession session,
+            IHttpContextAccessor httpContextAccessor,
+            IEmailSender emailSender)
         {
             _logInManager = logInManager;
             _tenantCache = tenantCache;
@@ -47,6 +69,11 @@ namespace LetsDisc.Controllers
             _externalAuthConfiguration = externalAuthConfiguration;
             _externalAuthManager = externalAuthManager;
             _userRegistrationManager = userRegistrationManager;
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _session = session;
+            _httpContextAccessor = httpContextAccessor;
+            _emailSender = emailSender;
         }
 
         [HttpPost]
@@ -59,6 +86,13 @@ namespace LetsDisc.Controllers
             );
 
             var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
+
+            /*await _emailSender.SendAsync(
+                        to: "gopesh9@gmail.com",
+                        subject: "You have a new task!",
+                        body: $"A new task is assigned for you: ",
+                        isBodyHtml: true
+                    );*/
 
             return new AuthenticateResultModel
             {
@@ -78,10 +112,9 @@ namespace LetsDisc.Controllers
         [HttpPost]
         public async Task<ExternalAuthenticateResultModel> ExternalAuthenticate([FromBody] ExternalAuthenticateModel model)
         {
-            var externalUser = await GetExternalUserInfo(model);
-
             var loginResult = await _logInManager.LoginAsync(new UserLoginInfo(model.AuthProvider, model.ProviderKey, model.AuthProvider), GetTenancyNameOrNull());
-
+            await _signInManager.SignInAsync(loginResult.Identity, true);
+            await UnitOfWorkManager.Current.SaveChangesAsync();
             switch (loginResult.Result)
             {
                 case AbpLoginResultType.Success:
@@ -96,6 +129,14 @@ namespace LetsDisc.Controllers
                     }
                 case AbpLoginResultType.UnknownExternalLogin:
                     {
+                        var externalUser = new ExternalAuthUserInfo()
+                        {
+                            EmailAddress = model.EmailAddress,
+                            Name = model.Name,
+                            Provider = model.AuthProvider,
+                            ProviderKey = model.ProviderKey,
+                            Surname = model.Surname
+                        };
                         var newUser = await RegisterExternalUserAsync(externalUser);
                         if (!newUser.IsActive)
                         {
@@ -229,5 +270,94 @@ namespace LetsDisc.Controllers
         {
             return SimpleStringCipher.Instance.Encrypt(accessToken, AppConsts.DefaultPassPhrase);
         }
+
+        [HttpGet]
+        public IActionResult SignInWithExternalProvider(string provider)
+        {
+            
+            var authenticationProperties = _signInManager.ConfigureExternalAuthenticationProperties(provider, Url.Action(nameof(ExternalLoginCallback), new { p = provider }));
+            //await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            return Challenge(authenticationProperties, provider);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ExternalLoginCallback(string p, string returnUrl = null, string remoteError = null)
+        {
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            var result = await _signInManager.ExternalLoginSignInAsync(info?.LoginProvider, info?.ProviderKey, isPersistent: false);
+
+            if (!result.Succeeded)
+            {
+                var externalUser = info.Principal;
+                if (externalUser == null)
+                {
+                    throw new Exception("External authentication error");
+                }
+
+                var claims = externalUser.Claims.ToList();
+                var userIdClaim = claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    throw new Exception("Unknown userid");
+                }
+
+                var userIdEmail = claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+
+                if (userIdEmail == null)
+                {
+                    throw new Exception("Invalid Email");
+                }
+                var userInDB = await _userManager.FindByEmailAsync(userIdEmail.Value);
+                if (userInDB == null)
+                {
+                    userInDB = await RegisterForExternalLogin(claims);
+
+                }
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var authProperties = new AuthenticationProperties
+                {
+                    AllowRefresh = true,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7),
+                    IsPersistent = true
+                };
+                await _signInManager.SignInAsync(userInDB, isPersistent: false);
+                await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            }
+            return returnToHomeURL();
+        }
+
+        private ActionResult returnToHomeURL()
+        {
+            return Redirect("http://localhost:4200");
+        }
+
+        private async Task<User> RegisterForExternalLogin(List<Claim> claims)
+        {
+            var name = claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
+            var email = claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+
+            var user = await _userRegistrationManager.RegisterAsync(name.Value, String.Empty, email.Value, email.Value, Authorization.Users.User.CreateRandomPassword(), true);
+
+            user.Logins = new List<UserLogin>{
+                        new UserLogin
+                        {
+                            LoginProvider = name.Issuer,
+                            ProviderKey = name.Issuer,
+                            TenantId = user.TenantId
+                        }
+                    };
+
+            await CurrentUnitOfWork.SaveChangesAsync();
+            var newUserClaims = claims.Append(new Claim(AbpClaimTypes.UserId, user.Id.ToString()));
+            
+            await _userManager.AddClaimsAsync(user, newUserClaims);
+            //await _signInManager.SignInAsync(user, isPersistent: false);
+            return user;
+        }
+
+
     }
 }

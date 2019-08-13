@@ -13,11 +13,6 @@ namespace LetsDisc.Questions
         void CreateQuestion(CreateQuestionInput input);
         GetQuestionOutput EditQuestion(QuestionDto input);
         GetQuestionOutput GetQuestion(GetQuestionInput input);
-        VoteChangeOutput QuestionVoteUp(EntityDto input);
-        VoteChangeOutput QuestionVoteDown(EntityDto input);
-        VoteChangeOutput AnswerVoteUp(EntityDto input);
-        VoteChangeOutput AnswerVoteDown(EntityDto input);
-        SubmitAnswerOutput SubmitAnswer(SubmitAnswerInput input);
         void AcceptAnswer(EntityDto input);
     }
 }

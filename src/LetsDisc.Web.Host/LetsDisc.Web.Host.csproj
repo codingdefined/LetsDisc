@@ -1,15 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>LetsDisc.Web.Host</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>LetsDisc.Web.Host</PackageId>
     <UserSecretsId>AbpCompanyName-LetsDisc-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DefineConstants>FEATURE_SIGNALR_ASPNETCORE</DefineConstants>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="wwwroot\swagger\ui\index.html" />
@@ -31,23 +29,27 @@
     <ProjectReference Include="..\LetsDisc.Web.Core\LetsDisc.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4">
+    <PackageReference Include="Abp.MailKit" Version="4.8.1" />
+    <PackageReference Include="Abp.Zero.Common" Version="4.8.1" />
+    <PackageReference Include="AspNet.Security.OAuth.GitHub" Version="2.1.0" />
+    <PackageReference Include="JUST.NETCore" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="2.2.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Castle.LoggingFacility.MsLogging" Version="3.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.4" />
-    <PackageReference Include="Abp.Castle.Log4Net" Version="3.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Abp.Castle.Log4Net" Version="4.8.1" />
+    <PackageReference Include="System.Text.Json" Version="4.6.0-preview6.19303.8" />
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
@@ -55,4 +57,52 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="dist\**" />
+    <Compile Remove="external_libs\**" />
+    <Compile Remove="node_modules\**" />
+    <Compile Remove="src\app\NewFolder\**" />
+    <Compile Remove="src\app\posts\NewFolder\**" />
+    <Compile Remove="src\app\tenants\**" />
+    <Content Remove="src\app\NewFolder\**" />
+    <Content Remove="src\app\posts\NewFolder\**" />
+    <Content Remove="src\app\tenants\**" />
+    <EmbeddedResource Remove="dist\**" />
+    <EmbeddedResource Remove="external_libs\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <EmbeddedResource Remove="src\app\NewFolder\**" />
+    <EmbeddedResource Remove="src\app\posts\NewFolder\**" />
+    <EmbeddedResource Remove="src\app\tenants\**" />
+    <None Remove="dist\**" />
+    <None Remove="external_libs\**" />
+    <None Remove="node_modules\**" />
+    <None Remove="src\app\NewFolder\**" />
+    <None Remove="src\app\posts\NewFolder\**" />
+    <None Remove="src\app\tenants\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\comma-separted.pipe.spec.ts" />
+    <None Remove="src\app\comma-separted.pipe.ts" />
+    <None Remove="src\app\comma-seperated.pipe.ts" />
+    <None Remove="src\app\pipes\remove-html-tag.pipe.ts" />
+    <None Remove="src\app\pipes\truncate-text.pipe.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\pipes\remove-html-tag.pipe.ts" />
+    <TypeScriptCompile Include="src\app\pipes\truncate-text.pipe.ts" />
+  </ItemGroup>
+  <Target Name="PrepublishScript" BeforeTargets="ComputeFilesToPublish">
+    <Exec Command="ng build --prod" />
+    <Exec Command="robocopy $(MSBuildProjectDirectory)\wwwroot\dist\ $(MSBuildProjectDirectory)\wwwroot\ /S /E /MOVE" IgnoreExitCode="True" />
+    <ItemGroup>
+      <DistFiles Include="wwwroot\**\*" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
 </Project>

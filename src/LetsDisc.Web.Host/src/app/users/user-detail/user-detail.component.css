@@ -1,0 +1,45 @@
+.user {
+    display: flex;
+}
+
+.user-card {
+    flex: 30%;
+    text-align: center;
+}
+
+.user-info {
+    flex:70%;
+}
+
+.user-avater > img {
+    height: 150px;
+    width:150px;
+    border-radius: 50%;
+}
+
+.user-reputation, .user-questions, .user-answers {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.user-reputation {
+    margin-top: 10px;
+}
+
+.user-answers {
+    margin-bottom: 10px;
+}
+
+.user-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-about {
+    margin-top: 15px;
+}
+
+.user-views, .user-member-for {
+    font-size: 12px;
+}

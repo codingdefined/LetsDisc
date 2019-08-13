@@ -9,7 +9,7 @@ namespace LetsDisc.Sessions
     public class SessionAppService : LetsDiscAppServiceBase, ISessionAppService
     {
         [DisableAuditing]
-        public async Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations()
+        public async Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations(string userEmail)
         {
             var output = new GetCurrentLoginInformationsOutput
             {
@@ -34,7 +34,11 @@ namespace LetsDisc.Sessions
             {
                 output.User = ObjectMapper.Map<UserLoginInfoDto>(await GetCurrentUserAsync());
             }
-
+            else if(userEmail != null)
+            {
+                output.User = ObjectMapper.Map<UserLoginInfoDto>(await GetUserByEmailAsync(userEmail)); 
+            }
+             
             return output;
         }
     }

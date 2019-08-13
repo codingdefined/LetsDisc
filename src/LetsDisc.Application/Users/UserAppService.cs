@@ -16,29 +16,47 @@ using LetsDisc.Authorization.Roles;
 using LetsDisc.Authorization.Users;
 using LetsDisc.Roles.Dto;
 using LetsDisc.Users.Dto;
+using System;
+using LetsDisc.PostDetails;
+using LetsDisc.Posts;
+using Abp.AutoMapper;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Abp.UI;
+using Microsoft.AspNetCore.Mvc;
+using LetsDisc.Posts.Dto;
+using LetsDisc.Tags;
 
 namespace LetsDisc.Users
 {
-    [AbpAuthorize(PermissionNames.Pages_Users)]
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly IRepository<UserDetails, long> _userDetailsRepository;
+        private readonly IRepository<Post> _postRepository;
+        private readonly IRepository<PostTag> _tagRepository;
 
         public UserAppService(
             IRepository<User, long> repository,
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
-            IPasswordHasher<User> passwordHasher)
+            IPasswordHasher<User> passwordHasher,
+            IRepository<UserDetails, long> userDetailsRepository,
+            IRepository<Post> postRepository,
+            IRepository<PostTag> tagRepository)
             : base(repository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
+            _userDetailsRepository = userDetailsRepository;
+            _postRepository = postRepository;
+            _tagRepository = tagRepository;
         }
 
         public override async Task<UserDto> Create(CreateUserDto input)
@@ -140,6 +158,104 @@ namespace LetsDisc.Users
             return user;
         }
 
+        public async Task<UserInfo> GetUser(long id)
+        {
+            var user = await Repository.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (user == null)
+            {
+                throw new EntityNotFoundException(typeof(User), id);
+            }
+
+            var userDetails = await _userDetailsRepository.FirstOrDefaultAsync(x => x.UserId == id);
+
+            if(userDetails == null)
+            {
+                userDetails = await _userDetailsRepository.InsertAsync(new UserDetails
+                                    {
+                                        UserId = user.Id,
+                                        CreationTime = DateTime.Now,
+                                        Views = 0,
+                                        Upvotes = 0,
+                                        Downvotes = 0,
+                                        DisplayName = user.FullName
+                                    });
+            }
+
+            userDetails.Views++;
+            var userDto = base.MapToEntityDto(user);
+            var userDetailsDto = ObjectMapper.Map<UserDetailsDto>(userDetails);
+
+            var questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question && p.CreatorUserId == id);
+            var answerCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Answer && p.CreatorUserId == id);
+
+            return new UserInfo
+            {
+                User = userDto,
+                UserDetails = userDetailsDto,
+                questionsCount = questionCount,
+                answersCount = answerCount
+            };
+        }
+
+        public async Task<UserInfo> UpdateUserInfo(UserInfo input)
+        {
+            CheckUpdatePermission();
+
+            var user = await Repository.FirstOrDefaultAsync(x => x.Id == input.User.Id);
+            var userDetails = await _userDetailsRepository.FirstOrDefaultAsync(x => x.UserId == input.User.Id);
+
+            MapToEntity(input.User, user);
+
+            userDetails.AboutMe = input.UserDetails.AboutMe;
+            userDetails.Location = input.UserDetails.Location;
+            userDetails.WebsiteUrl = input.UserDetails.WebsiteUrl;
+            userDetails.ProfileImageUrl = input.UserDetails.ProfileImageUrl;
+
+            CheckErrors(await _userManager.UpdateAsync(user));
+            await _userDetailsRepository.UpdateAsync(userDetails);   
+            
+            return await GetUser(user.Id);
+        }
+
+        public async Task<PagedResultDto<UserDetailsDto>> GetALLUsers(PagedResultRequestDto input)
+        {
+            var userDetailsCount = await _userDetailsRepository.CountAsync();
+            var userDetails = await _userDetailsRepository.GetAll().Include(a => a.User).ToListAsync();
+
+            return new PagedResultDto<UserDetailsDto>
+            {
+                TotalCount = userDetailsCount,
+                Items = userDetails.MapTo<List<UserDetailsDto>>()
+            };
+        }
+
+        public async Task<string> UploadProfilePicture([FromForm(Name = "uploadedFile")] IFormFile file, long userId)
+        {
+            if (file == null || file.Length == 0)
+                throw new UserFriendlyException("Please select profile picture");
+
+            var folderName = Path.Combine("Resources", "ProfilePics");
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+
+            //var fileUniqueId = Guid.NewGuid().ToString().ToLower().Replace("-", string.Empty);
+            var uniqueFileName = $"{userId}_profilepic.png";
+
+            var dbPath = Path.Combine(folderName, uniqueFileName);
+
+            using (var fileStream = new FileStream(Path.Combine(filePath, uniqueFileName), FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+
+            return dbPath;
+        }
+
         protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
@@ -148,6 +264,49 @@ namespace LetsDisc.Users
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
+        }
+
+        public async Task<PagedResultDto<PostDto>> GetUserQuestions(PagedResultRequestDto input, long userId)
+        {
+            var questionCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Question && p.CreatorUserId == userId);
+            var questions = await _postRepository.GetAll()
+                                    .Where(p => p.PostTypeId == (int)PostTypes.Question && p.CreatorUserId == userId)
+                                    .Skip(input.SkipCount)
+                                    .Take(input.MaxResultCount)
+                                    .ToListAsync();
+
+            return new PagedResultDto<PostDto>
+            {
+                TotalCount = questionCount,
+                Items = questions.MapTo<List<PostDto>>()
+            };
+        }
+
+        public async Task<PagedResultDto<AnswerWithQuestion>> GetUserAnswers(PagedResultRequestDto input, long userId)
+        {
+            var answerCount = await _postRepository.CountAsync(p => p.PostTypeId == (int)PostTypes.Answer && p.CreatorUserId == userId);
+            var answers = await _postRepository.GetAll()
+                                    .Where(p => p.PostTypeId == (int)PostTypes.Answer && p.CreatorUserId == userId)
+                                    .Skip(input.SkipCount)
+                                    .Take(input.MaxResultCount)
+                                    .ToListAsync();
+            List<AnswerWithQuestion> answerWithQuestionList = new List<AnswerWithQuestion>();
+            foreach (var answer in answers)
+            {
+                var question = await _postRepository.FirstOrDefaultAsync(p => p.PostTypeId == (int)PostTypes.Question && p.Id == answer.ParentId);
+                var answerWithQuestion = new AnswerWithQuestion
+                {
+                    Question = question.MapTo<PostDto>(),
+                    Answer = answer.MapTo<PostDto>()
+                };
+                answerWithQuestionList.Add(answerWithQuestion);
+            }
+
+            return new PagedResultDto<AnswerWithQuestion>
+            {
+                TotalCount = answerCount,
+                Items = answerWithQuestionList
+            };
         }
     }
 }

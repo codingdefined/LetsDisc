@@ -1,0 +1,187 @@
+<div class="container col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <div class="card">
+        <div class="header" [style.display]="editing ? 'none' : 'inherit'">
+            <h3>
+                {{question?.post.title}}
+            </h3>
+        </div>
+        <div class="body table-responsive">
+            <div class="question">
+                <div class="vote-layout">
+                    <a class="vote-up" (click)="voteUp(question?.post.id)">
+                        <i [class.voted]="question?.upvote" class="material-icons md-48">arrow_drop_up</i>
+                    </a>
+                    <div class="upvote-count"><strong>{{question?.post.score}}</strong></div>
+                    <a class="vote-down" (click)="voteDown(question?.post.id)">
+                        <i [class.voted]="question?.downvote" class="material-icons md-48">arrow_drop_down</i>
+                    </a>
+                </div>
+                <quill-view  class="question-body" [content]="question?.post.body" theme="snow" [style.display]="editing ? 'none' : 'inherit'"></quill-view>
+                <div class="post-tags" [style.display]="editing ? 'none' : 'inherit' ">
+                    <div *ngIf="question && question.post.tags && question.post.tags.length > 0">
+                        <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" *ngFor="let tag of question.post.tags | commaSeparted">
+                            {{tag}}
+                        </a>
+                    </div>
+                </div>
+                <div class="user-info-detail mt-3" [style.display]="editing ? 'none' : 'inherit' ">
+                    <div class="total-views">viewed {{question?.post.viewCount | i18nPlural: itemPluralMapping['time'] }}</div>
+                    <div class="posted-time">asked {{question?.post.creationTime | timeAgo}} by {{question?.post.creatorUserName}}</div>
+                </div>
+                <div class="edit-question" [style.display]="!editing ? 'none' : 'inherit' ">
+                    <form #myform="ngForm" class="form question-form" method="post" (ngSubmit)="saveQuestion()">
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label for="question-title">{{l('Title')}}</label>
+                                <input id="question-title" class="form-control" type="text" [(ngModel)]="question?.post.title" name="Title" required minlength="15" maxlength="200" placeholder="What's you question?, be specific" #title="ngModel" />
+                            </div>
+                            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid-feedback">
+                                <div *ngIf="title.errors.required">
+                                    Title is required.
+                                </div>
+                                <div *ngIf="title.errors.minlength">
+                                    Title must be at least 15 characters long.
+                                </div>
+                                <div *ngIf="title.errors.maxlength">
+                                    Title must be at atmost 200 characters long.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <label for="question-body">{{l('Body')}}</label>
+                                <quill-editor id="question-body" [(ngModel)]="question?.post.body" name="Body" class="body" #body="ngModel" [required]="true" [styles]="{height: '250px'}" placeholder="Type the content here!">
+                                    <div quill-editor-toolbar>
+                                        <span class="ql-formats">
+                                            <button class="ql-bold" [title]="'Bold'"></button>
+                                            <button class="ql-italic" [title]="'Italic'"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-blockquote" [title]="'Block Quote'"></button>
+                                            <button class="ql-code-block" [title]="'Code Block'"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-list" value="ordered" [title]="'Ordered List'"></button>
+                                            <button class="ql-list" value="bullet" [title]="'Ordered List'"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <select class="ql-size" [title]="'Size'">
+                                                <option selected></option>
+                                                <option value="small"></option>
+                                                <option value="large"></option>
+                                                <option value="huge"></option>
+                                            </select>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-link" [title]="'Insert Link'"></button>
+                                            <button class="ql-image" [title]="'Image'"></button>
+                                        </span>
+                                    </div>
+                                </quill-editor>
+                            </div>
+                            <div *ngIf="body.invalid && (body.dirty || body.touched)" class="invalid-feedback">
+                                <div *ngIf="body.errors.required">
+                                    Body is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="question-tags">{{l('Tags')}}</label>
+                            <tag-input [(ngModel)]="items"
+                                       id="question-tags"
+                                       [placeholder]="'e.g. (react, angular, java)'"
+                                       [secondaryPlaceholder]="'e.g. (react, angular, java)'"
+                                       name="Tags"
+                                       [maxItems]="5"
+                                       [animationDuration]="{enter: '0ms', leave: '0ms'}"
+                                       class="tag-input"
+                                       [theme]="'foundation-theme'"
+                                       required
+                                       #tag="ngModel"></tag-input>
+                            <div *ngIf="tag.invalid && (tag.dirty || tag.touched)" class="invalid-feedback">
+                                <div *ngIf="tag.errors.required">
+                                    Atleast one tag is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-save-edits">Save Edits</button>
+                        <button type="button" class="btn btn-default" (click)="cancelClick()">Cancel</button>
+                    </form>
+                </div>
+                <div class="post-menu">
+                    <a class="share-post" title="share post">share</a>
+                    <a class="edit-post" title="edit post" *ngIf="this.appSession.isLoggedIn && this.question && this.appSession.userId === this.question.post.creatorUserId" (click)="editClicked()">edit</a>
+                    <a class="delete-post" title="delete post" *ngIf="this.appSession.isLoggedIn && this.question && this.appSession.userId === this.question.post.creatorUserId" (click)="deleteClicked()">delete</a>
+                </div>
+            </div>
+            <div class="all-answers">
+                <div *ngIf="answers && answers.length > 0" class="answer-length"><h4>{{answers.length | i18nPlural: itemPluralMapping['answer'] }}</h4></div>
+                <div class="answer" *ngFor="let answer of answers">
+                    <div class="answer-summary" id="answer-{{answer?.post.id}}" [style.display]="currentAnswerEditing?.post.id !== answer?.post.id ? 'inherit' : 'none' ">
+                        <div class="vote-layout">
+                            <a class="vote-up" (click)="voteUp(answer?.post.id)">
+                                <i [class.voted]="answer?.upvote" class="material-icons md-48">arrow_drop_up</i>
+                            </a>
+                            <div class="upvote-count"><strong>{{answer?.post.score}}</strong></div>
+                            <a class="vote-down" (click)="voteDown(answer?.post.id)">
+                                <i [class.voted]="answer?.downvote" class="material-icons md-48">arrow_drop_down</i>
+                            </a>
+                        </div>
+                        <div class="post-menu float-right">
+                            <a class="edit-post" title="edit answer" *ngIf="this.appSession.isLoggedIn && answer && this.appSession.userId === answer.post.creatorUserId" (click)="editAnswerClicked(answer)">edit</a>
+                        </div>
+                        <quill-view [content]="answer?.post.body" theme="snow"></quill-view>
+                        <div class="posted-time">answered {{answer?.post.creationTime | timeAgo}} by {{answer?.post.creatorUserName}}</div>
+                    </div>
+                    <div class="edit-answer" [style.display]="answerEditing && currentAnswerEditing?.post.id === answer?.post.id ? 'inherit' : 'none'">
+                        <form #myform="ngForm" class="form answer-form" method="post">
+                            <div class="your-answer">
+                                <ckeditor id="answer-body" [(ngModel)]="currentAnswerEditing?.post.body" [editor]="Editor" [config]="config" name="Body" class="answer-body"></ckeditor>
+                                <button type="submit" class="btn btn-primary btn-save-edits" (click)="updateAnswer()">Save Edits</button>
+                                <button type="button" class="btn btn-default" (click)="answerCancelClick()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <form #myform="ngForm" class="form answer-form" method="post" (ngSubmit)="saveAnswer()">
+                <div class="your-answer">
+                    <h4>Your Answer</h4>
+                    <quill-editor id="answer-body" [(ngModel)]="answer.body" name="Body" class="answer-body" #body="ngModel" [required]="true" [styles]="{height: '250px'}" placeholder="Type the content here!">
+                        <div quill-editor-toolbar>
+                            <span class="ql-formats">
+                                <button class="ql-bold" [title]="'Bold'"></button>
+                                <button class="ql-italic" [title]="'Italic'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-blockquote" [title]="'Block Quote'"></button>
+                                <button class="ql-code-block" [title]="'Code Block'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-list" value="ordered" [title]="'Ordered List'"></button>
+                                <button class="ql-list" value="bullet" [title]="'Ordered List'"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <select class="ql-size" [title]="'Size'">
+                                    <option selected></option>
+                                    <option value="small"></option>
+                                    <option value="large"></option>
+                                    <option value="huge"></option>
+                                </select>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-link" [title]="'Insert Link'"></button>
+                                <button class="ql-image" [title]="'Image'"></button>
+                            </span>
+                        </div>
+                    </quill-editor>
+                    <button type="submit" [disabled]="!myform.form.valid" class="btn btn-primary btn-answer">Post Your Answer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+

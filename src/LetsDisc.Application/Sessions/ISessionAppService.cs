@@ -6,6 +6,6 @@ namespace LetsDisc.Sessions
 {
     public interface ISessionAppService : IApplicationService
     {
-        Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations();
+        Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations(string userEmail);
     }
 }

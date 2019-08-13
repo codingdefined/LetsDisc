@@ -1,0 +1,29 @@
+﻿<div class="card">
+    <div #cardBody class="body">
+        <form #registerForm="ngForm" method="post" novalidate (ngSubmit)="save()">
+            <h4 class="text-center">{{l("Register")}}</h4>
+
+            <div class="form-row mb-4">
+                <div class="col">
+                    <input type="text"class="form-control" placeholder="First name" [(ngModel)]="model.name" name="Name" required maxlength="32">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name" [(ngModel)]="model.surname" name="Surname" required maxlength="32">
+                </div>
+            </div>
+            <input type="email" class="form-control mb-4" placeholder="E-mail" [(ngModel)]="model.emailAddress" name="EmailAddress" required maxlength="255" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$">
+
+            <input type="text" class="form-control mb-4" autocomplete="off" [(ngModel)]="model.userName" placeholder="User Name" name="UserName"  required maxlength="32" />
+
+            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="model.password" name="password" required maxlength="32" minlegth="8" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+            <small class="form-text text-muted mb-4">
+                At least 8 characters and 1 digit
+            </small>
+
+            <button class="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
+
+            <hr>
+            <p>By clicking Sign up you agree to our <a href="" target="_blank">terms of service</a>
+        </form>
+    </div>
+</div>

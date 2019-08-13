@@ -1,0 +1,117 @@
+.create-question-container {
+    float: left;
+    width: 70%;
+}
+
+.create-question .form-control {
+    border-radius: 3px;
+    border: 1px solid #bbc0c4;
+    padding: 10px;
+}
+
+.create-question .tag-input {
+    border-radius: 3px;
+    border: 1px solid #bbc0c4;
+}
+
+:host ::ng-deep .ck-editor__editable {
+    min-height: 250px;
+}
+
+.tag-input {
+    background: white;
+}
+
+.question-body {
+    margin-top:0px;
+    min-height: 140px;
+}
+
+.vote-layout {
+    float: left;
+}
+
+.card .body{
+    padding:10px;
+}
+
+.upvote-count {
+    text-align: center;
+}
+
+.posted-time {
+    float: right;
+    display: inline;
+}
+
+.total-views {
+    display: inline;
+}
+
+.voted {
+    color: #db3700
+}
+
+.question {
+    padding-bottom: 3%;
+}
+
+.your-answer {
+    margin-top: 20px;
+}
+
+.btn-answer {
+    margin-top: 15px;
+}
+
+.answer-summary {
+    min-height: 120px;
+}
+
+.answer {
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+}
+
+.answer-body {
+    margin-left: 8%;
+    min-height: 80px;
+}
+
+.answer-length {
+    padding: 10px;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+}
+
+.post-menu {
+    margin-top: 20px;
+    color: #007bff 
+}
+
+.share-post, .edit-post {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.edit-question {
+    margin-left: 8%;
+}
+
+.btn-save-edits {
+    margin-right: 10px;
+}
+
+.invalid-feedback {
+    color: red;
+    padding: 5px;
+    font-size: 12px;
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red !important; 
+}
+
+.tag-input.ng-touched.ng-invalid {
+    border: 1px solid red !important;
+}

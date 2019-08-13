@@ -6,6 +6,8 @@ using Abp.IdentityFramework;
 using Abp.Runtime.Session;
 using LetsDisc.Authorization.Users;
 using LetsDisc.MultiTenancy;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace LetsDisc
 {
@@ -23,9 +25,20 @@ namespace LetsDisc
             LocalizationSourceName = LetsDiscConsts.LocalizationSourceName;
         }
 
-        protected virtual Task<User> GetCurrentUserAsync()
+        protected async virtual Task<User> GetCurrentUserAsync()
         {
-            var user = UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
+            var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
+            if (user == null)
+            {
+                throw new Exception("There is no current user!");
+            }
+
+            return user;
+        }
+
+        protected async virtual Task<User> GetUserByEmailAsync(string email)
+        {
+            var user = await UserManager.FindByEmailAsync(email);
             if (user == null)
             {
                 throw new Exception("There is no current user!");

@@ -1,0 +1,11 @@
+.tags {
+    display: grid;
+    grid-gap: 10px;
+    grid-row-gap: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.tag {
+    padding: 8px 4px 12px 4px;
+    border-bottom: 1px dotted #e4e6e8;
+}

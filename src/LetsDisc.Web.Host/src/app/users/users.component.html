@@ -1,0 +1,29 @@
+﻿<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Users')}}
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <div class="user-browse">
+                    <div class="grid-layout">
+                        <div class="user-info" *ngFor="let user of users | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <div class="user-gravatar"><img src="{{user.profileImageUrl}}" height="48" width="48" alt="" /></div>
+                            <div class="user-details">
+                                <a routerLink="/users/{{user.user.id}}/{{user.user.fullName.toLowerCase().trim().split(' ').join('-')}}">
+                                    {{user.user.fullName}}
+                                </a>
+                                <span class="user-location">{{user.location}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination-controls (pageChange)="getDataPage($event)" id="server"></pagination-controls>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>

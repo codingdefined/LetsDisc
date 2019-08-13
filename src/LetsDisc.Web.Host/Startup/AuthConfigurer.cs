@@ -1,12 +1,14 @@
-﻿using System;
+﻿
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Abp.Runtime.Security;
+using System;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace LetsDisc.Web.Host.Startup
 {
@@ -50,6 +52,14 @@ namespace LetsDisc.Web.Host.Startup
                     };
                 });
             }
+            services.AddAuthentication()
+                .AddGoogle("GOOGLE", googleOptions =>
+                {
+                    googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+                    googleOptions.CallbackPath = new PathString("/signin-google");
+                    googleOptions.SaveTokens = true;
+                });
         }
 
         /* This method is needed to authorize SignalR javascript client.
@@ -64,7 +74,7 @@ namespace LetsDisc.Web.Host.Startup
             }
 
             var qsAuthToken = context.HttpContext.Request.Query["enc_auth_token"].FirstOrDefault();
-            if (qsAuthToken == null)
+            if (qsAuthToken == null || qsAuthToken == "null")
             {
                 // Cookie value does not matches to querystring value
                 return Task.CompletedTask;

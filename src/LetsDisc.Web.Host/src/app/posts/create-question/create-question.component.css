@@ -1,0 +1,42 @@
+.create-question-container {
+    float:left;
+    width:70%;
+}
+
+.create-question .form-control{
+    border-radius: 3px;
+    border: 1px solid #bbc0c4;
+    padding: 10px;
+}
+
+.create-question .tag-input {
+    border-radius: 3px;
+    border: 1px solid #bbc0c4;
+}
+
+:host ::ng-deep .ck-editor__editable {
+    min-height: 250px;
+}
+
+.tag-input {
+    background:white;
+}
+
+.invalid-feedback {
+    display:block;
+    color: red;
+    padding: 5px;
+    font-size: 12px;
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red !important;
+}
+
+.tag-input.ng-touched.ng-invalid {
+    border: 1px solid red !important;
+}
+
+.quill-body {
+    height: 200px;
+}

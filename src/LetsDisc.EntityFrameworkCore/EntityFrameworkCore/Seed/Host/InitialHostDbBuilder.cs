@@ -15,7 +15,8 @@
             new DefaultLanguagesCreator(_context).Create();
             new HostRoleAndUserCreator(_context).Create();
             new DefaultSettingsCreator(_context).Create();
-
+            new DefaultPostTypesCreator(_context).Create();
+            new DefaultVoteTypesCreator(_context).Create();
             _context.SaveChanges();
         }
     }
