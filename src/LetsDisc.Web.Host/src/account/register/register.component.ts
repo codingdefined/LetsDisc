@@ -35,7 +35,7 @@ export class RegisterComponent extends AppComponentBase implements AfterViewInit
     }
 
     back(): void {
-        this._router.navigate(['/login']);
+        this._router.navigate(['/account/login']);
     }
 
     save(): void {
@@ -44,8 +44,8 @@ export class RegisterComponent extends AppComponentBase implements AfterViewInit
             .pipe(finalize(() => { this.saving = false; }))
             .subscribe((result:RegisterOutput) => {
                 if (!result.canLogin) {
-                    this.notify.success(this.l('SuccessfullyRegistered'));
-                    this._router.navigate(['/login']);
+                    this.notify.success(this.l('Account Created, please Confirm Email before login'));
+                    this._router.navigate(['/account/login']);
                     return;
                 }
 

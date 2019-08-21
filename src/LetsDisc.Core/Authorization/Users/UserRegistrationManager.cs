@@ -11,6 +11,11 @@ using Abp.Runtime.Session;
 using Abp.UI;
 using LetsDisc.Authorization.Roles;
 using LetsDisc.MultiTenancy;
+using Abp.Net.Mail;
+using LetsDisc;
+using System.Text.Encodings.Web;
+using System.Text;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace LetsDisc.Authorization.Users
 {
@@ -22,17 +27,21 @@ namespace LetsDisc.Authorization.Users
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly IEmailSender _emailSender;
+
 
         public UserRegistrationManager(
             TenantManager tenantManager,
             UserManager userManager,
             RoleManager roleManager,
-            IPasswordHasher<User> passwordHasher)
+            IPasswordHasher<User> passwordHasher,
+            IEmailSender emailSender)
         {
             _tenantManager = tenantManager;
             _userManager = userManager;
             _roleManager = roleManager;
             _passwordHasher = passwordHasher;
+            _emailSender = emailSender;
 
             AbpSession = NullAbpSession.Instance;
         }
@@ -65,6 +74,19 @@ namespace LetsDisc.Authorization.Users
             }
 
             CheckErrors(await _userManager.CreateAsync(user));
+            var emailConfirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            user.EmailConfirmationCode = emailConfirmationToken;
+
+            // The angular app is converting '+' to space, and thus it was giving Invalid Token Problem.
+            // Encoding it to Base 64 and then decoding while checking the token
+            byte[] tokenGeneratedBytes = Encoding.UTF8.GetBytes(emailConfirmationToken);
+            var codeEncoded = WebEncoders.Base64UrlEncode(tokenGeneratedBytes);
+
+            var url = String.Format("{0}/account/confirmemail?userId={1}&code={2}", LetsDiscConsts.BaseUrl, user.Id, codeEncoded); 
+
+            await _emailSender.SendAsync(emailAddress, "Confirm your email",
+                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(url)}'>clicking here</a>.");
+
             await CurrentUnitOfWork.SaveChangesAsync();
 
             return user;

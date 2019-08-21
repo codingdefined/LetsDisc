@@ -29,6 +29,10 @@ using LetsDisc.Sessions.Dto;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading;
 using Abp.Net.Mail;
+using Abp.Domain.Entities;
+using System.Web;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Text;
 
 namespace LetsDisc.Controllers
 {
@@ -86,13 +90,6 @@ namespace LetsDisc.Controllers
             );
 
             var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
-
-            /*await _emailSender.SendAsync(
-                        to: "gopesh9@gmail.com",
-                        subject: "You have a new task!",
-                        body: $"A new task is assigned for you: ",
-                        isBodyHtml: true
-                    );*/
 
             return new AuthenticateResultModel
             {
@@ -356,6 +353,32 @@ namespace LetsDisc.Controllers
             await _userManager.AddClaimsAsync(user, newUserClaims);
             //await _signInManager.SignInAsync(user, isPersistent: false);
             return user;
+        }
+
+        [HttpPost]
+        public async Task<long> ConfirmEmail(long id, string code)
+        {
+            var user = await _userManager.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                throw new EntityNotFoundException(typeof(User), id);
+            }
+
+            // The angular app is converting '+' to space, and thus it was giving Invalid Token Problem.
+            // Encoding it to Base 64 and then decoding here
+
+            var codeDecodedBytes = WebEncoders.Base64UrlDecode(code);
+            var decodedCode = Encoding.UTF8.GetString(codeDecodedBytes);
+
+            var result = await _userManager.ConfirmEmailAsync(user, decodedCode);
+            if (result.Succeeded)
+            {
+                return user.Id;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
 
