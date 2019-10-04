@@ -14,6 +14,8 @@ namespace LetsDisc.Web.Host.Startup
         {
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseSetting("detailedErrors", "true")
+                .CaptureStartupErrors(true)
                 .Build();
         }
     }

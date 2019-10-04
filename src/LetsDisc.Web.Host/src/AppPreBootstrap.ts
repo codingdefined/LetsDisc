@@ -17,6 +17,7 @@ export class AppPreBootstrap {
     }
 
     private static getApplicationConfig(appRootUrl: string, callback: () => void) {
+        appRootUrl += appRootUrl.endsWith('/') ? '' : '/';
         return abp.ajax({
             url: appRootUrl + 'assets/' + environment.appConfig,
             method: 'GET',

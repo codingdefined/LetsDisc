@@ -42,7 +42,9 @@
               "src/bsb-theme/css/materialize.css",
               "src/bsb-theme/css/style.css",
               "src/bsb-theme/css/themes/all-themes.css",
-              "src/shared/core.less"
+              "src/shared/core.less",
+              "node_modules/firebaseui/dist/firebaseui.css",
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -184,7 +186,9 @@
               "src/bsb-theme/css/materialize.css",
               "src/bsb-theme/css/style.css",
               "src/bsb-theme/css/themes/all-themes.css",
-              "src/shared/core.less"
+              "src/shared/core.less",
+              "node_modules/firebaseui/dist/firebaseui.css",
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
             ],
             "assets": [
               "src/assets",

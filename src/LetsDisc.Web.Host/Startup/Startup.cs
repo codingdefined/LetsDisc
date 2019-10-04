@@ -20,6 +20,8 @@ using Abp.AspNetCore.SignalR.Hubs;
 using Microsoft.AspNetCore.Http;
 using System.Security.Principal;
 using Microsoft.Extensions.FileProviders;
+using LetsDisc.EntityFrameworkCore;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace LetsDisc.Web.Host.Startup
 {
@@ -28,10 +30,12 @@ namespace LetsDisc.Web.Host.Startup
         private const string _defaultCorsPolicyName = "localhost";
 
         private readonly IConfigurationRoot _appConfiguration;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
         public Startup(IHostingEnvironment env)
         {
             _appConfiguration = env.GetAppConfiguration();
+            _hostingEnvironment = env;
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -101,7 +105,7 @@ namespace LetsDisc.Web.Host.Startup
             return services.AddAbp<LetsDiscWebHostModule>(
                 // Configure Log4Net logging
                 options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
+                    f => f.UseAbpLog4Net().WithConfig(Path.Combine(_hostingEnvironment.ContentRootPath, "log4net.config"))
                 )
             );
         }
@@ -113,16 +117,19 @@ namespace LetsDisc.Web.Host.Startup
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
             app.Use(async (context, next) => { await next(); if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value)) { context.Request.Path = "/index.html"; await next(); } });
+
+
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
+
+            //app.UseStaticFiles();
+            /*app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                FileProvider = new PhysicalFileProvider(Path.Combine(_hostingEnvironment.ContentRootPath, "Resources")),
                 RequestPath = new PathString("/Resources")
-            });
+            });*/
 
             app.UseAuthentication();
             app.UseAbpRequestLocalization();
-
 
             app.UseSignalR(routes =>
             {

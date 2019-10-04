@@ -21,11 +21,14 @@ import { ModalModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppAuthService } from '@shared/auth/app-auth.service';
 import { AuthServiceConfig, GoogleLoginProvider, AuthService } from 'angularx-social-login';
+import {firebaseKey} from './firebase.config';
+
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 let config = new AuthServiceConfig([
     {
         id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("1043073093790-mu9ekprmrbft39d2n4p6d5r2njhj7dqi.apps.googleusercontent.com")
+        provider: new GoogleLoginProvider("")
     }
 ]);
 
@@ -74,6 +77,10 @@ export function getCurrentLanguage(): string {
     return abp.localization.currentLanguage.name;
 }
 
+export function firebaseAppNameFactory() {
+    return 'LetsDisc';
+}
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -83,7 +90,14 @@ export function getCurrentLanguage(): string {
         AbpModule,
         ServiceProxyModule,
         RootRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        NgxAuthFirebaseUIModule.forRoot(firebaseKey, firebaseAppNameFactory,
+        {
+            enableFirestoreSync: true, 
+            toastMessageOnAuthSuccess: true,
+            toastMessageOnAuthError: true,
+            authGuardFallbackURL: '/loggedout'
+        })
     ],
     declarations: [
         RootComponent
