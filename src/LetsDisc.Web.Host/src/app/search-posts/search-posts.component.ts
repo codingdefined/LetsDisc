@@ -69,7 +69,7 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
         
     }
 
-    protected searchPosts(): void {
+    public searchPosts(): void {
         if (this.searchString !== '') {
             this.router.navigate(
                 [],

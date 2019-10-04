@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Abp.Configuration;
 using Abp.Net.Mail;
+using Abp.Zero.Configuration;
 using LetsDisc.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +29,8 @@ namespace LetsDisc.Configuration
                 new SettingDefinition(EmailSettingNames.Smtp.EnableSsl, "true"),
                 new SettingDefinition(EmailSettingNames.Smtp.UseDefaultCredentials, "false"),
                 new SettingDefinition(EmailSettingNames.Smtp.UserName, _appConfiguration["Authentication:Mailjet:UserName"]),
-                new SettingDefinition(EmailSettingNames.Smtp.Password, _appConfiguration["Authentication:Mailjet:Password"])
+                new SettingDefinition(EmailSettingNames.Smtp.Password, _appConfiguration["Authentication:Mailjet:Password"]),
+                new SettingDefinition(AbpZeroSettingNames.UserManagement.IsEmailConfirmationRequiredForLogin, "true")
             };
         }
     }

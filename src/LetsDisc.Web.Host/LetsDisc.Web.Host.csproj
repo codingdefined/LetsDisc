@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>LetsDisc.Web.Host</AssemblyName>
@@ -81,6 +82,7 @@
     <None Remove="src\app\tenants\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="src\app\account\login.service.ts" />
     <None Remove="src\app\comma-separted.pipe.spec.ts" />
     <None Remove="src\app\comma-separted.pipe.ts" />
     <None Remove="src\app\comma-seperated.pipe.ts" />
@@ -88,12 +90,18 @@
     <None Remove="src\app\pipes\truncate-text.pipe.ts" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\account\login.service.ts" />
     <TypeScriptCompile Include="src\app\pipes\remove-html-tag.pipe.ts" />
     <TypeScriptCompile Include="src\app\pipes\truncate-text.pipe.ts" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Target Name="PrepublishScript" BeforeTargets="ComputeFilesToPublish">
     <Exec Command="ng build --prod" />
-    <Exec Command="robocopy $(MSBuildProjectDirectory)\wwwroot\dist\ $(MSBuildProjectDirectory)\wwwroot\ /S /E /MOVE" IgnoreExitCode="True" />
+    <Exec Command="robocopy &quot;$(MSBuildProjectDirectory)\wwwroot\dist\ &quot; &quot;$(MSBuildProjectDirectory)\wwwroot\ &quot; /S /E /MOVE" IgnoreExitCode="True" />
     <ItemGroup>
       <DistFiles Include="wwwroot\**\*" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
@@ -104,5 +112,8 @@
   </Target>
   <PropertyGroup>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Gensler Work\Personal Work\LetsDisc\src\LetsDisc.Web.Host\LetsDisc.Web.Host.xml</DocumentationFile>
   </PropertyGroup>
 </Project>

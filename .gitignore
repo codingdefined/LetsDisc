@@ -254,3 +254,5 @@ paket-files/
 /src/LetsDisc.EntityFrameworkCore/Migrations/20180628102141_LetsDisc-v1.cs
 /src/LetsDisc.EntityFrameworkCore/Migrations/20180628102141_LetsDisc-v1.Designer.cs
 **/appsettings.json
+**/yarn.lock
+**/package-lock.json

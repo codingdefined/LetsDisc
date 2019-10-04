@@ -2333,6 +2333,63 @@ export class TokenAuthServiceProxy {
         }
         return _observableOf<void>(<any>null);
     }
+
+    /**
+     * @param id (optional) 
+     * @param code (optional) 
+     * @return Success
+     */
+    confirmEmail(id: number | null | undefined, code: string | null | undefined): Observable<number> {
+        let url_ = this.baseUrl + "/api/TokenAuth/ConfirmEmail?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        if (code !== undefined)
+            url_ += "code=" + encodeURIComponent("" + code) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processConfirmEmail(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processConfirmEmail(<any>response_);
+                } catch (e) {
+                    return <Observable<number>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<number>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processConfirmEmail(response: HttpResponseBase): Observable<number> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<number>(<any>null);
+    }
 }
 
 @Injectable()
@@ -4464,7 +4521,6 @@ export class User implements IUser {
     settings: Setting[] | undefined;
     isEmailConfirmed: boolean | undefined;
     isActive: boolean | undefined;
-    lastLoginTime: moment.Moment | undefined;
     isDeleted: boolean | undefined;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
@@ -4540,7 +4596,6 @@ export class User implements IUser {
             }
             this.isEmailConfirmed = data["isEmailConfirmed"];
             this.isActive = data["isActive"];
-            this.lastLoginTime = data["lastLoginTime"] ? moment(data["lastLoginTime"].toString()) : <any>undefined;
             this.isDeleted = data["isDeleted"];
             this.deleterUserId = data["deleterUserId"];
             this.deletionTime = data["deletionTime"] ? moment(data["deletionTime"].toString()) : <any>undefined;
@@ -4616,7 +4671,6 @@ export class User implements IUser {
         }
         data["isEmailConfirmed"] = this.isEmailConfirmed;
         data["isActive"] = this.isActive;
-        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime.toISOString() : <any>undefined;
         data["isDeleted"] = this.isDeleted;
         data["deleterUserId"] = this.deleterUserId;
         data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
@@ -4668,7 +4722,6 @@ export interface IUser {
     settings: Setting[] | undefined;
     isEmailConfirmed: boolean | undefined;
     isActive: boolean | undefined;
-    lastLoginTime: moment.Moment | undefined;
     isDeleted: boolean | undefined;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;

@@ -18,11 +18,6 @@ import { SharedModule } from '@shared/shared.module';
 import { AboutComponent } from '@app/about/about.component';
 import { UsersComponent } from '@app/users/users.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
-import { RolesComponent } from '@app/roles/roles.component';
-import { CreateRoleComponent } from '@app/roles/create-role/create-role.component';
-import { TenantsComponent } from '@app/tenants/tenants.component';
-import { CreateTenantComponent } from './tenants/create-tenant/create-tenant.component';
-import { EditTenantComponent } from './tenants/edit-tenant/edit-tenant.component';
 import { TopBarComponent } from '@app/layout/topbar.component';
 import { TopBarLanguageSwitchComponent } from '@app/layout/topbar-languageswitch.component';
 import { SideBarUserAreaComponent } from '@app/layout/sidebar-user-area.component';
@@ -47,19 +42,16 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { ContactComponent } from './contact/contact.component';
 import { SearchPostsComponent } from './search-posts/search-posts.component';
 import { QuillModule } from 'ngx-quill';
+import { AccountComponent } from './account/account.component';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 @NgModule({
     declarations: [
         AppComponent,
         AboutComponent,
-        TenantsComponent,
-		CreateTenantComponent,
-		EditTenantComponent,
         UsersComponent,
         CreateQuestionComponent,
 		EditUserComponent,
-      	RolesComponent,        
-		CreateRoleComponent,
         TopBarComponent,
         TopBarLanguageSwitchComponent,
         SideBarUserAreaComponent,
@@ -78,7 +70,8 @@ import { QuillModule } from 'ngx-quill';
         ContactComponent,
         SearchPostsComponent,
         RemoveHtmlTagPipe,
-        TruncateTextPipe
+        TruncateTextPipe,
+        AccountComponent
     ],
     imports: [
         CommonModule,
@@ -94,7 +87,8 @@ import { QuillModule } from 'ngx-quill';
         CKEditorModule,
         TagInputModule,
         SocialLoginModule,
-        QuillModule.forRoot()
+        QuillModule.forRoot(),
+        NgxAuthFirebaseUIModule
     ],
     providers: [
     ]

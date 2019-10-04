@@ -1,3 +1,4 @@
+﻿
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenAuthServiceProxy, AuthenticateModel, AuthenticateResultModel, ExternalLoginProviderInfoModel, ExternalAuthenticateModel, ExternalAuthenticateResultModel } from '@shared/service-proxies/service-proxies';
@@ -64,7 +65,7 @@ export class LoginService {
                         this._router.navigate(['account/login']);
                     }
                 })
-        });  
+        });
     }
 
     private processAuthenticateResult(authenticateResult: AuthenticateResultModel) {
