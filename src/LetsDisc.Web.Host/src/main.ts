@@ -8,6 +8,7 @@ import * as moment from 'moment';
 
 import 'moment/min/locales.min';
 import 'moment-timezone';
+import './icons';
 
 if (environment.production) {
     enableProdMode();

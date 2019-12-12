@@ -110,7 +110,10 @@ namespace LetsDisc.Controllers
         public async Task<ExternalAuthenticateResultModel> ExternalAuthenticate([FromBody] ExternalAuthenticateModel model)
         {
             var loginResult = await _logInManager.LoginAsync(new UserLoginInfo(model.AuthProvider, model.ProviderKey, model.AuthProvider), GetTenancyNameOrNull());
-            await _signInManager.SignInAsync(loginResult.Identity, true);
+            if(loginResult.Identity != null)
+            {
+                await _signInManager.SignInAsync(loginResult.Identity, true);
+            }
             await UnitOfWorkManager.Current.SaveChangesAsync();
             switch (loginResult.Result)
             {

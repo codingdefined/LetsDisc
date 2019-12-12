@@ -17,6 +17,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
 
     active: boolean = false;
     users: UserDetailsDto[] = [];
+    letter: string = '';
 
     constructor(
         injector: Injector,
@@ -37,7 +38,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
                 this.users = result.items;
                 this.showPaging(result, pageNumber);
                 this.users.forEach((user) => {
-                    user.profileImageUrl = this.createImgPath(user.profileImageUrl)
+                    user.profileImageUrl = this.createImgPath(user.profileImageUrl);
                 });
             });
     }
@@ -62,5 +63,15 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
             return AppConsts.remoteServiceBaseUrl + `/${serverPath}?timeStamp=${Date.now()}`;
         }
         return '';
+    }
+
+    protected getLetter(fullName: string): string {
+        const nameInitials = fullName.match(/\b(\w)/g);
+        if (nameInitials) {
+            const nameLetters = nameInitials.slice(0, 3).join('');
+            return nameLetters.toUpperCase();
+        } else {
+            return fullName[0];
+        }
     }
 }

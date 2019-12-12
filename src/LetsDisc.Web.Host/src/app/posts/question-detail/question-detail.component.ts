@@ -6,6 +6,7 @@ import { TagInputModule } from 'ngx-chips';
 import { finalize } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
+import { ShareService } from '@ngx-share/core';
 
 @Component({
   selector: 'app-question-detail',
@@ -49,7 +50,8 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
         private route: ActivatedRoute,
         private router: Router,
         private titleService: Title,
-        private meta: Meta
+        private meta: Meta,
+        public share: ShareService
     ) { 
         super(injector);
     }

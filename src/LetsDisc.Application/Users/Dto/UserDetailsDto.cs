@@ -19,7 +19,7 @@ namespace LetsDisc.Users.Dto
         public int Downvotes { get; set; }
         public string Views { get; set; }
         public string ProfileImageUrl { get; set; }
-        public User User { get; set; }
+        //public User User { get; set; }
         public long UserId { get; set; }
         public DateTime CreationTime { get; set; }
     }

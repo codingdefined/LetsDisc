@@ -22,6 +22,8 @@ export class EditUserComponent extends AppComponentBase implements OnInit  {
     fileToUpload: File = null;
     files: Array<any> = new Array<any>();
     url: string = '';
+    displayImage: boolean = false;
+    letter: string = '';
 
     constructor(
         injector: Injector,
@@ -49,6 +51,7 @@ export class EditUserComponent extends AppComponentBase implements OnInit  {
                     this.url = this.createImgPath(this.userDetails.profileImageUrl);
                 }
                 this.titleService.setTitle("Edit User " + result.user.fullName + " - LetsDisc");
+                this.getLetter(result.user.fullName);
             });
     }
 
@@ -94,8 +97,19 @@ export class EditUserComponent extends AppComponentBase implements OnInit  {
 
     createImgPath = (serverPath: string) => {
         if (serverPath) {
+            this.displayImage = true;
             return AppConsts.remoteServiceBaseUrl + `/${serverPath}?timeStamp=${Date.now()}`;
         }
         return '';
+    }
+
+    getLetter(fullName: string): void {
+        const nameInitials = fullName.match(/\b(\w)/g);
+        if (nameInitials) {
+            const nameLetters = nameInitials.slice(0, 3).join('');
+            this.letter = nameLetters.toUpperCase();
+        } else {
+            this.letter = fullName[0];
+        }
     }
 }

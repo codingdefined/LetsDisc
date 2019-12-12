@@ -88,11 +88,13 @@
     <None Remove="src\app\comma-seperated.pipe.ts" />
     <None Remove="src\app\pipes\remove-html-tag.pipe.ts" />
     <None Remove="src\app\pipes\truncate-text.pipe.ts" />
+    <None Remove="src\icons.ts" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app\account\login.service.ts" />
     <TypeScriptCompile Include="src\app\pipes\remove-html-tag.pipe.ts" />
     <TypeScriptCompile Include="src\app\pipes\truncate-text.pipe.ts" />
+    <TypeScriptCompile Include="src\icons.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="appsettings.json">

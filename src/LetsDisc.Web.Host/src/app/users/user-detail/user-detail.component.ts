@@ -24,6 +24,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     url: string;
     questions: PostDto[] = null;
     answers: AnswerWithQuestion[] = null;
+    displayImage: boolean = false;
     public pageSize: number = 10;
     public questionPageNumber: number = 1;
     public questionTotalPages: number = 1;
@@ -33,6 +34,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     public answerTotalPages: number = 1;
     public answerTotalItems: number;
     public answerIsTableLoading = false;
+    letter: string = '';
 
     itemPluralMapping = {
         'answer': {
@@ -88,6 +90,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
                 this.createdTimeAgo = moment(this.user.creationTime).fromNow(true);
                 this.url = this.createImgPath(result.userDetails.profileImageUrl);
                 this.titleService.setTitle("User " + result.user.fullName + " - LetsDisc");
+                this.getLetter(this.user.fullName);
             });
         this.getQuestionList(1, id);
         this.getAnswersList(1, id);
@@ -95,6 +98,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
 
     createImgPath = (serverPath: string) => {
         if (serverPath) {
+            this.displayImage = true;
             return AppConsts.remoteServiceBaseUrl + `/${serverPath}?timeStamp=${Date.now()}`;
         }
         return '';
@@ -166,6 +170,16 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
 
         this.answerTotalItems = result.totalCount;
         this.answerPageNumber = pageNumber;
+    }
+
+    getLetter(fullName: string): void {
+        const nameInitials = fullName.match(/\b(\w)/g);
+        if (nameInitials) {
+            const nameLetters = nameInitials.slice(0, 3).join('');
+            this.letter = nameLetters.toUpperCase();
+        } else {
+            this.letter = fullName[0];
+        }
     }
 
 }

@@ -44,6 +44,8 @@ import { SearchPostsComponent } from './search-posts/search-posts.component';
 import { QuillModule } from 'ngx-quill';
 import { AccountComponent } from './account/account.component';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { ShareModule } from '@ngx-share/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [
@@ -88,7 +90,10 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
         TagInputModule,
         SocialLoginModule,
         QuillModule.forRoot(),
-        NgxAuthFirebaseUIModule
+        NgxAuthFirebaseUIModule,
+        HttpClientModule,
+        ShareModule,
+        FontAwesomeModule
     ],
     providers: [
     ]

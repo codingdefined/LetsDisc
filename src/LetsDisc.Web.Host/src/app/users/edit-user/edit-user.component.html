@@ -11,7 +11,8 @@
                     <div class="form-row">
                         <div class="col-md-3 profile-image-edit">
                             <label class="hoverable" for="fileInput">
-                                <img [src]="url ? url : ''">
+                                <img *ngIf="displayImage" [src]="url ? url : ''">
+                                <span class="display-initial-large" *ngIf="!displayImage">{{letter}}</span>
                                 <span class="hover-text">Choose file</span>
                                 <span class="background"></span>
                             </label>
