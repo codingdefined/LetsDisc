@@ -57,7 +57,6 @@ namespace LetsDisc.Posts
             CheckCreatePermission();
 
             var post = ObjectMapper.Map<Post>(input);
-
             var newPostId = await _postRepository.InsertAndGetIdAsync(post);
 
             await insertTagData(input.Tags, newPostId);
@@ -218,8 +217,7 @@ namespace LetsDisc.Posts
                 questions = _postRepository
                                     .GetAll()
                                     .Include(a => a.CreatorUser)
-                                    .Where(a => a.PostTypeId == (int)PostTypes.Question);
-                                    
+                                    .Where(a => a.PostTypeId == (int)PostTypes.Question);                              
             }
 
             switch (input.Sorting)
@@ -380,7 +378,6 @@ namespace LetsDisc.Posts
 
         public async Task<PostWithVoteInfo> SubmitAnswer(SubmitAnswerInput input)
         {
-
             var answer = await _postRepository.InsertAsync(
                 new Post()
                 {

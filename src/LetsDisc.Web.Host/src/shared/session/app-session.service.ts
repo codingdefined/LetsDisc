@@ -1,7 +1,14 @@
 ﻿import { Injectable } from '@angular/core';
-import { SessionServiceProxy, UserLoginInfoDto, TenantLoginInfoDto, ApplicationInfoDto, GetCurrentLoginInformationsOutput, TokenAuthServiceProxy, User } from '@shared/service-proxies/service-proxies';
+import {
+    SessionServiceProxy,
+    UserLoginInfoDto,
+    TenantLoginInfoDto,
+    ApplicationInfoDto,
+    GetCurrentLoginInformationsOutput,
+    TokenAuthServiceProxy
+} from '@shared/service-proxies/service-proxies';
 import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.service';
-import { AuthService, SocialUser } from "angularx-social-login";
+import { AuthService, SocialUser } from 'angularx-social-login';
 import { AppConsts } from '@shared/AppConsts';
 import { UtilsService } from 'abp-ng2-module/dist/src/utils/utils.service';
 
@@ -9,11 +16,10 @@ import { UtilsService } from 'abp-ng2-module/dist/src/utils/utils.service';
 export class AppSessionService {
 
     private _user: UserLoginInfoDto;
-    private _socialUser: SocialUser; 
+    private _socialUser: SocialUser;
     private _tenant: TenantLoginInfoDto;
     private _application: ApplicationInfoDto;
-    private loggedIn: boolean = false;
-    private userEmail: string = "";
+    private userEmail: string;
 
     constructor(
         private _sessionService: SessionServiceProxy,
@@ -47,40 +53,39 @@ export class AppSessionService {
     }
 
     getShownLoginName(): string {
-        let userName = this._user ? this._user.userName : 'Guest';
+        const userName = this._user ? this._user.userName : 'Guest';
         if (!this._abpMultiTenancyService.isEnabled) {
             return userName;
         }
 
-        return (this._tenant ? this._tenant.tenancyName : ".") + "\\" + userName;
+        return (this._tenant ? this._tenant.tenancyName : '.') + '\\' + userName;
     }
 
     getUserName(): string {
-        return (this._user ? this._user.name + " " + this._user.surname : 'Guest');
+        return (this._user ? this._user.name + ' ' + this._user.surname : 'Guest');
     }
 
     init(): Promise<boolean> {
-        
+
         return new Promise<boolean>((resolve, reject) => {
             this.authService.authState.subscribe((user) => {
-                var encryptedAuthToken = new UtilsService().getCookieValue(AppConsts.authorization.encrptedAuthTokenName);
-                this._socialUser = encryptedAuthToken !== null ? user : null; 
-                
+                const encryptedAuthToken = new UtilsService().getCookieValue(AppConsts.authorization.encrptedAuthTokenName);
+                this._socialUser = encryptedAuthToken !== null ? user : null;
+
                 this.loggedIn = (this._socialUser != null);
-                this.userEmail = this._socialUser != null ? this._socialUser.email : "";
-                this._sessionService.getCurrentLoginInformations(this.userEmail).toPromise().then((result: GetCurrentLoginInformationsOutput) => {
-                    this._application = result.application;
-                    this._user = result.user;
-                    this._tenant = result.tenant;
+                this.userEmail = this._socialUser != null ? this._socialUser.email : '';
+                this._sessionService.getCurrentLoginInformations(this.userEmail).toPromise()
+                    .then((result: GetCurrentLoginInformationsOutput) => {
+                        this._application = result.application;
+                        this._user = result.user;
+                        this._tenant = result.tenant;
                 
-                    resolve(true);
+                        resolve(true);
                 }, (err) => {
                     reject(err);
                 });
             });
-            
         });
-
     }
 
     changeTenantIfNeeded(tenantId?: number): boolean {

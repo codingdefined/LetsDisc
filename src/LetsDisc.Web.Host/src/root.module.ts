@@ -24,11 +24,12 @@ import { AuthServiceConfig, GoogleLoginProvider, AuthService } from 'angularx-so
 import {firebaseKey} from './firebase.config';
 
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { LoginService } from '@app/account/login.service';
 
-let config = new AuthServiceConfig([
+const config = new AuthServiceConfig([
     {
         id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("")
+        provider: new GoogleLoginProvider('')
     }
 ]);
 
@@ -43,11 +44,11 @@ export function appInitializerFactory(injector: Injector,
         abp.ui.setBusy();
         return new Promise<boolean>((resolve, reject) => {
             AppConsts.appBaseHref = getBaseHref(platformLocation);
-            let appBaseUrl = getDocumentOrigin() + AppConsts.appBaseHref;
+            const appBaseUrl = getDocumentOrigin() + AppConsts.appBaseHref;
 
             AppPreBootstrap.run(appBaseUrl, () => {
                 abp.event.trigger('abp.dynamicScriptsInitialized');
-                var appSessionService: AppSessionService = injector.get(AppSessionService);
+                const appSessionService: AppSessionService = injector.get(AppSessionService);
                 appSessionService.init().then(
                     (result) => {
                         abp.ui.clearBusy();
@@ -62,12 +63,6 @@ export function appInitializerFactory(injector: Injector,
         });
     }
 }
-
-/*export function checkIfUserAuthenticated(_appAuthService: AppAuthService) {
-    return () => {
-        _appAuthService.checkIfUserAuthenticated().toPromise();
-    }
-}*/
 
 export function getRemoteServiceBaseUrl(): string {
     return AppConsts.remoteServiceBaseUrl;
@@ -93,7 +88,7 @@ export function firebaseAppNameFactory() {
         HttpClientModule,
         NgxAuthFirebaseUIModule.forRoot(firebaseKey, firebaseAppNameFactory,
         {
-            enableFirestoreSync: true, 
+            enableFirestoreSync: true,
             toastMessageOnAuthSuccess: true,
             toastMessageOnAuthError: true,
             authGuardFallbackURL: '/loggedout'
@@ -120,7 +115,8 @@ export function firebaseAppNameFactory() {
         {
             provide: LOCALE_ID,
             useFactory: getCurrentLanguage
-        }
+        },
+        LoginService
     ],
     bootstrap: [RootComponent]
 })
@@ -130,17 +126,17 @@ export class RootModule {
 }
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
-    var baseUrl = platformLocation.getBaseHrefFromDOM();
+    let baseUrl = platformLocation.getBaseHrefFromDOM();
     if (baseUrl) {
         return baseUrl;
     }
-
     return '/';
 }
 
 function getDocumentOrigin() {
     if (!document.location.origin) {
-        return document.location.protocol + "//" + document.location.hostname + (document.location.port ? ':' + document.location.port : '');
+        return document.location.protocol + '//' + document.location.hostname +
+            (document.location.port ? ':' + document.location.port : '');
     }
 
     return document.location.origin;

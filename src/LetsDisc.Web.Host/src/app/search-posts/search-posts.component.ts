@@ -10,7 +10,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './search-posts.component.html',
   styleUrls: ['./search-posts.component.css']
 })
-export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
+export class SearchPostsComponent extends PagedListingComponentBase<PostDto> {
 
     posts: PostDto[] = [];
     itemPluralMapping = {
@@ -27,9 +27,13 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
     };
     searchString: string;
     sortByValue: string;
-    defaultSortBy: string = 'newest';
+    defaultSortBy = 'newest';
 
-    constructor(injector: Injector, private _postService: PostServiceProxy, private titleService: Title, private route: ActivatedRoute, private router: Router) {
+    constructor(injector: Injector,
+        private _postService: PostServiceProxy,
+        private titleService: Title,
+        private route: ActivatedRoute,
+        private router: Router) {
         super(injector);
     }
 
@@ -44,10 +48,10 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
                     this.posts = result.items;
                     this.showPaging(result, pageNumber);
                 });
-            this.titleService.setTitle("LetsDisc - Posts containing '" + this.searchString + "'");
+            this.titleService.setTitle('LetsDisc - Posts containing "' + this.searchString + '"');
         } else {
             this.router.navigate(['/questions']);
-            abp.notify.info("Search String is Required");
+            abp.notify.info('Search String is Required');
         }
 
     }
@@ -64,9 +68,8 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
                     this.showPaging(result, 0);
                 });
         } else {
-            abp.notify.info("Search String is Required");
+            abp.notify.info('Search String is Required');
         }
-        
     }
 
     public searchPosts(): void {
@@ -84,7 +87,7 @@ export class SearchPostsComponent extends PagedListingComponentBase<PostDto>{
                     this.showPaging(result, 0);
                 });
         } else {
-            abp.notify.info("Search String is Required");
+            abp.notify.info('Search String is Required');
         }
     }
 

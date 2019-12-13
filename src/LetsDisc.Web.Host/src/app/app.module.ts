@@ -36,7 +36,7 @@ import { TruncateTextPipe } from './pipes/truncate-text.pipe';
 import { PostsTagComponent } from './posts/posts-tag/posts-tag.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TagsComponent } from './tags/tags.component';
-import { SocialLoginModule } from "angularx-social-login";
+import { SocialLoginModule } from 'angularx-social-login';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ContactComponent } from './contact/contact.component';
@@ -53,7 +53,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         AboutComponent,
         UsersComponent,
         CreateQuestionComponent,
-		EditUserComponent,
+        EditUserComponent,
         TopBarComponent,
         TopBarLanguageSwitchComponent,
         SideBarUserAreaComponent,

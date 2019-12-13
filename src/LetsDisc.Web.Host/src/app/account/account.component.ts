@@ -36,5 +36,5 @@ export class AccountComponent extends AppComponentBase {
 
     printError(errorData) {
         console.log(errorData);
-    }  
+    }
 }

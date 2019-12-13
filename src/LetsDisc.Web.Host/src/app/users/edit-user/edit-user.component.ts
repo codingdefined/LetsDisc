@@ -13,17 +13,17 @@ import { Title } from '@angular/platform-browser';
     styleUrls: ['../users.component.css']
 })
 export class EditUserComponent extends AppComponentBase implements OnInit  {
-    
-    saving: boolean = false;
-    id: number; 
-    user: UserDto = null; 
+
+    saving = false;
+    id: number;
+    user: UserDto = null;
     userDetails: UserDetailsDto = null;
     userInfo: UserInfo = new UserInfo();
     fileToUpload: File = null;
     files: Array<any> = new Array<any>();
-    url: string = '';
-    displayImage: boolean = false;
-    letter: string = '';
+    url = '';
+    displayImage = false;
+    letter = '';
 
     constructor(
         injector: Injector,
@@ -50,7 +50,7 @@ export class EditUserComponent extends AppComponentBase implements OnInit  {
                 if (this.userDetails.profileImageUrl !== '') {
                     this.url = this.createImgPath(this.userDetails.profileImageUrl);
                 }
-                this.titleService.setTitle("Edit User " + result.user.fullName + " - LetsDisc");
+                this.titleService.setTitle('Edit User ' + result.user.fullName + ' - LetsDisc');
                 this.getLetter(result.user.fullName);
             });
     }
@@ -72,8 +72,9 @@ export class EditUserComponent extends AppComponentBase implements OnInit  {
     }
 
     onSelectFile(files: FileList) {
-        if (files.length === 0)
+        if (files.length === 0) {
             return;
+        }
         this.fileToUpload = files.item(0);
 
         const fileReader: FileReader = new FileReader();

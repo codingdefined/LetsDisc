@@ -24,6 +24,6 @@ namespace LetsDisc.MultiTenancy.Dto
         [StringLength(AbpTenantBase.MaxConnectionStringLength)]
         public string ConnectionString { get; set; }
 
-        public bool IsActive {get; set;}
+        public bool IsActive { get; set; }
     }
 }

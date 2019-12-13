@@ -8,11 +8,11 @@
         <div class="body table-responsive">
             <div class="question">
                 <div class="vote-layout">
-                    <a class="vote-up" (click)="voteUp(question?.post.id)">
+                    <a class="vote-up" (click)="voteUp(question?.post)">
                         <i [class.voted]="question?.upvote" class="material-icons md-48">arrow_drop_up</i>
                     </a>
                     <div class="upvote-count"><strong>{{question?.post.score}}</strong></div>
-                    <a class="vote-down" (click)="voteDown(question?.post.id)">
+                    <a class="vote-down" (click)="voteDown(question?.post)">
                         <i [class.voted]="question?.downvote" class="material-icons md-48">arrow_drop_down</i>
                     </a>
                 </div>
@@ -133,11 +133,11 @@
                 <div class="answer" *ngFor="let answer of answers">
                     <div class="answer-summary" id="answer-{{answer?.post.id}}" [style.display]="currentAnswerEditing?.post.id !== answer?.post.id ? 'inherit' : 'none' ">
                         <div class="vote-layout">
-                            <a class="vote-up" (click)="voteUp(answer?.post.id)">
+                            <a class="vote-up" (click)="voteUp(answer?.post)">
                                 <i [class.voted]="answer?.upvote" class="material-icons md-48">arrow_drop_up</i>
                             </a>
                             <div class="upvote-count"><strong>{{answer?.post.score}}</strong></div>
-                            <a class="vote-down" (click)="voteDown(answer?.post.id)">
+                            <a class="vote-down" (click)="voteDown(answer?.post)">
                                 <i [class.voted]="answer?.downvote" class="material-icons md-48">arrow_drop_down</i>
                             </a>
                         </div>

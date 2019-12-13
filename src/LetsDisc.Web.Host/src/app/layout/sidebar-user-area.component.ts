@@ -8,7 +8,7 @@ import { AppAuthService } from '@shared/auth/app-auth.service';
 })
 export class SideBarUserAreaComponent extends AppComponentBase implements OnInit {
 
-    shownLoginName: string = "";
+    shownLoginName: string;
 
     constructor(
         injector: Injector,

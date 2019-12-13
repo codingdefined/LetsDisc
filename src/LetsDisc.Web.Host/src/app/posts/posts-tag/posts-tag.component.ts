@@ -14,8 +14,8 @@ export class PostsTagComponent implements OnInit {
 
     ngOnInit() {
         this.route.paramMap.subscribe((params) => {
-            this.tag = params.get('tag'); 
+            this.tag = params.get('tag');
         });
     }
-
 }
+

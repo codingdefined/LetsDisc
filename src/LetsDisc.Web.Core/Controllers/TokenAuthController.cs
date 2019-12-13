@@ -274,7 +274,6 @@ namespace LetsDisc.Controllers
         [HttpGet]
         public IActionResult SignInWithExternalProvider(string provider)
         {
-            
             var authenticationProperties = _signInManager.ConfigureExternalAuthenticationProperties(provider, Url.Action(nameof(ExternalLoginCallback), new { p = provider }));
             //await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             return Challenge(authenticationProperties, provider);
@@ -312,7 +311,6 @@ namespace LetsDisc.Controllers
                 if (userInDB == null)
                 {
                     userInDB = await RegisterForExternalLogin(claims);
-
                 }
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -383,7 +381,5 @@ namespace LetsDisc.Controllers
                 return 0;
             }
         }
-
-
     }
 }

@@ -4,7 +4,7 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        loadChildren: 'app/app.module#AppModule', //Lazy load account module
+        loadChildren: 'app/app.module#AppModule', // Lazy load account module
         data: { preload: true }
     }
 ];

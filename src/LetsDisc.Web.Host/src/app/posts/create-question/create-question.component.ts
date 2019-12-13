@@ -16,7 +16,7 @@ export class CreateQuestionComponent extends AppComponentBase implements OnInit 
 
     question: CreatePostDto = new CreatePostDto();
     items = [];
-    saving: boolean = false;
+    saving = false;
     quill: any = null;
     public Editor = ClassicEditor;
     public config = {
@@ -30,17 +30,17 @@ export class CreateQuestionComponent extends AppComponentBase implements OnInit 
         private router: Router,
         private titleService: Title,
         private _userService: UserServiceProxy,
-    ) { 
+    ) {
         super(injector);
         this.question.postTypeId = 1;
-        this.titleService.setTitle("Ask a question - LetsDisc");
+        this.titleService.setTitle('Ask a question - LetsDisc');
     }
 
     ngOnInit() {
     }
 
     save(): void {
-        let localItems = [];
+        const localItems = [];
         this.items.forEach(function(item) {
           localItems.push(item.value);
         });
@@ -54,18 +54,18 @@ export class CreateQuestionComponent extends AppComponentBase implements OnInit 
             });
     }
 
-    getEditorInstance(quill : any) {
-        var toolbar = quill.getModule('toolbar');
+    getEditorInstance(quill: any) {
+        const toolbar = quill.getModule('toolbar');
         toolbar.addHandler('image', this.imageHandler.bind(this));
         this.quill = quill;
     }
 
     private imageHandler() {
-        let self = this;
+        const self = this;
         if (this.quill != null) {
             const range = this.quill.getSelection();
             if (range != null) {
-                let input = document.createElement('input');
+                const input = document.createElement('input');
                 input.setAttribute('type', 'file');
                 input.setAttribute('accept', 'image/*');
                 input.addEventListener('change', () => {
@@ -73,19 +73,19 @@ export class CreateQuestionComponent extends AppComponentBase implements OnInit 
                         const fileReader: FileReader = new FileReader();
                         fileReader.readAsDataURL(input.files[0]);
                         fileReader.onloadend = function () {
-                            if (fileReader.readyState == 2) {
+                            if (fileReader.readyState === 2) {
                                 self._userService.uploadProfilePicture({ data: input.files[0], fileName: input.files[0].name }, 1)
                                     .subscribe((result: string) => {
                                         self.quill.insertEmbed(range.index, 'image', self.createImgPath(result));
                                     });
                             }
                         }
-                    };       
+                    };
                 });
                 input.click();
             }
         }
-    } 
+    }
 
     createImgPath = (serverPath: string) => {
         if (serverPath) {
