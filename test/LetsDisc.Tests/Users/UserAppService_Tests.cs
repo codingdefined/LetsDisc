@@ -72,7 +72,6 @@ namespace LetsDisc.Tests.Users
                 var userRole = await context.Roles.FirstOrDefaultAsync(u => u.Name == "User");
                 userRole.ShouldNotBeNull();
             });
-
         }
     }
 }

@@ -110,7 +110,10 @@ namespace LetsDisc.Controllers
         public async Task<ExternalAuthenticateResultModel> ExternalAuthenticate([FromBody] ExternalAuthenticateModel model)
         {
             var loginResult = await _logInManager.LoginAsync(new UserLoginInfo(model.AuthProvider, model.ProviderKey, model.AuthProvider), GetTenancyNameOrNull());
-            await _signInManager.SignInAsync(loginResult.Identity, true);
+            if(loginResult.Identity != null)
+            {
+                await _signInManager.SignInAsync(loginResult.Identity, true);
+            }
             await UnitOfWorkManager.Current.SaveChangesAsync();
             switch (loginResult.Result)
             {
@@ -271,7 +274,6 @@ namespace LetsDisc.Controllers
         [HttpGet]
         public IActionResult SignInWithExternalProvider(string provider)
         {
-            
             var authenticationProperties = _signInManager.ConfigureExternalAuthenticationProperties(provider, Url.Action(nameof(ExternalLoginCallback), new { p = provider }));
             //await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             return Challenge(authenticationProperties, provider);
@@ -309,7 +311,6 @@ namespace LetsDisc.Controllers
                 if (userInDB == null)
                 {
                     userInDB = await RegisterForExternalLogin(claims);
-
                 }
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -380,7 +381,5 @@ namespace LetsDisc.Controllers
                 return 0;
             }
         }
-
-
     }
 }

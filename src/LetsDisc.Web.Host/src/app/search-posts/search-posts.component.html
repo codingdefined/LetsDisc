@@ -41,7 +41,7 @@
                             </div>
                             <div class="summary">
                                 <a *ngIf="post.postTypeId == 1" class="summary-title" routerLink="/questions/{{post.id}}/{{post.title.toLowerCase().trim().split(' ').join('-')}}">Q : {{post.title}}</a>
-                                <a *ngIf="post.postTypeId == 2" class="summary-title" routerLink="/questions/{{post.parentId}}/{{post.title?.toLowerCase().trim().split(' ').join('-')}}">A : {{post.title}}</a>
+                                <a *ngIf="post.postTypeId == 2" class="summary-title" routerLink="/questions/{{post.parentId}}/{{post.title?.toLowerCase().trim().split(' ').join('-')}}" fragment="answer-{{post.id}}">A : {{post.title}}</a>
                                 <div class="question-body" [innerHTML]="post.body"></div>
                                 <div class="post-tags" *ngIf="post.postTypeId == 1">
                                     <a routerLink="/questions/tagged/{{tag}}" class="post-tag" title="" *ngFor="let tag of post.tags|commaSeparted">

@@ -5,7 +5,7 @@ import { AppSessionService } from '../session/app-session.service';
 @Injectable()
 export class AppUrlService {
 
-    static tenancyNamePlaceHolder: string = '{TENANCY_NAME}';
+    static tenancyNamePlaceHolder = '{TENANCY_NAME}';
 
     constructor(
         private readonly _appSessionService: AppSessionService
@@ -32,7 +32,7 @@ export class AppUrlService {
         }
 
         if (baseUrl.indexOf(AppUrlService.tenancyNamePlaceHolder + '.') >= 0) {
-            baseUrl = baseUrl.replace(AppUrlService.tenancyNamePlaceHolder + ".", AppUrlService.tenancyNamePlaceHolder);
+            baseUrl = baseUrl.replace(AppUrlService.tenancyNamePlaceHolder + '.', AppUrlService.tenancyNamePlaceHolder);
             if (tenancyName) {
                 tenancyName = tenancyName + '.';
             }

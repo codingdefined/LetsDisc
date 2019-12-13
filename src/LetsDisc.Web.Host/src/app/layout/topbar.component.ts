@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TopBarComponent extends AppComponentBase implements OnInit {
 
-    shownLoginName: string = "";
+    shownLoginName: string;
     userId: number;
 
     constructor(

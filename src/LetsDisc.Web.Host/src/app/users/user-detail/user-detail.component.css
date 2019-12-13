@@ -11,9 +11,9 @@
     flex:70%;
 }
 
-.user-avater > img {
+.user-avater > img, .user-avater > span {
     height: 150px;
-    width:150px;
+    width: 150px;
     border-radius: 50%;
 }
 
@@ -42,4 +42,12 @@
 
 .user-views, .user-member-for {
     font-size: 12px;
+}
+
+.user-avater > span {
+    display: inline-flex;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: bisque;
 }

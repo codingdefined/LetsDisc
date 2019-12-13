@@ -10,10 +10,13 @@
                 <div class="user-browse">
                     <div class="grid-layout">
                         <div class="user-info" *ngFor="let user of users | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
-                            <div class="user-gravatar"><img src="{{user.profileImageUrl}}" height="48" width="48" alt="" /></div>
+                            <div class="user-gravatar">
+                                <img *ngIf="user.profileImageUrl !== ''" src="{{user.profileImageUrl}}" height="48" width="48" alt="" />
+                                <span class="display-initial-small" *ngIf="user.profileImageUrl === ''">{{ getLetter(user.displayName) }}</span>
+                            </div>
                             <div class="user-details">
-                                <a routerLink="/users/{{user.user.id}}/{{user.user.fullName.toLowerCase().trim().split(' ').join('-')}}">
-                                    {{user.user.fullName}}
+                                <a routerLink="/users/{{user.userId}}/{{user.displayName.toLowerCase().trim().split(' ').join('-')}}">
+                                    {{user.displayName}}
                                 </a>
                                 <span class="user-location">{{user.location}}</span>
                             </div>

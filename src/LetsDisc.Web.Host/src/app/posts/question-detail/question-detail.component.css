@@ -23,8 +23,9 @@
 }
 
 .question-body {
-    margin-top:0px;
+    margin-top: 0px;
     min-height: 140px;
+    margin: 10px 5%;
 }
 
 .vote-layout {
@@ -114,4 +115,10 @@ input.ng-touched.ng-invalid {
 
 .tag-input.ng-touched.ng-invalid {
     border: 1px solid red !important;
+}
+
+.answer-quill {
+    position: inherit;
+    margin-left: 5%;
+    display:block;
 }

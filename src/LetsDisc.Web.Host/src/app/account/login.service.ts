@@ -1,7 +1,13 @@
 ﻿
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { TokenAuthServiceProxy, AuthenticateModel, AuthenticateResultModel, ExternalLoginProviderInfoModel, ExternalAuthenticateModel, ExternalAuthenticateResultModel } from '@shared/service-proxies/service-proxies';
+import {
+    TokenAuthServiceProxy,
+    AuthenticateModel,
+    AuthenticateResultModel,
+    ExternalAuthenticateModel,
+    ExternalAuthenticateResultModel
+} from '@shared/service-proxies/service-proxies';
 import { UrlHelper } from '@shared/helpers/UrlHelper';
 import { AppConsts } from '@shared/AppConsts';
 
@@ -11,7 +17,6 @@ import { TokenService } from '@abp/auth/token.service';
 import { UtilsService } from '@abp/utils/utils.service';
 import { finalize } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 
 @Injectable()
 export class LoginService {
@@ -29,8 +34,7 @@ export class LoginService {
         private _utilsService: UtilsService,
         private _messageService: MessageService,
         private _tokenService: TokenService,
-        private _logService: LogService,
-        private authService: AuthService
+        private _logService: LogService
     ) {
         this.clear();
     }
@@ -46,33 +50,34 @@ export class LoginService {
             });
     }
 
-    externalAuthenticate(): void {
-        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(user => {
-            const model = new ExternalAuthenticateModel({
-                authProvider: GoogleLoginProvider.PROVIDER_ID,
-                providerKey: user.id,
-                providerAccessCode: user.id,
-                emailAddress: user.email,
-                name: user.firstName,
-                surname: user.lastName
+    externalAuthenticate(data: any): void {
+        const model = new ExternalAuthenticateModel({
+                authProvider: data.o,
+                providerKey: data.uid,
+                providerAccessCode: data.uid,
+                emailAddress: data.email,
+                name: data.displayName.split(" ")[0],
+                surname: data.displayName.split(" ")[1]
             });
-            this._tokenAuthService.externalAuthenticate(model)
-                .subscribe((result: ExternalAuthenticateResultModel) => {
-                    if (result.accessToken) {
-                        this.login(result.accessToken, result.encryptedAccessToken, result.expireInSeconds, false);
-                    } else {
-                        this._logService.warn('Unexpected authenticateResult!');
-                        this._router.navigate(['account/login']);
-                    }
-                })
-        });
+        this._tokenAuthService.externalAuthenticate(model)
+            .subscribe((result: ExternalAuthenticateResultModel) => {
+                if (result.accessToken) {
+                    this.login(result.accessToken, result.encryptedAccessToken, result.expireInSeconds, false);
+                } else {
+                    this._logService.warn('Unexpected authenticateResult!');
+                    this._router.navigate(['account/login']);
+                }
+            });
     }
 
     private processAuthenticateResult(authenticateResult: AuthenticateResultModel) {
         this.authenticateResult = authenticateResult;
 
         if (authenticateResult.accessToken) {
-            this.login(authenticateResult.accessToken, authenticateResult.encryptedAccessToken, authenticateResult.expireInSeconds, this.rememberMe);
+            this.login(authenticateResult.accessToken,
+                authenticateResult.encryptedAccessToken,
+                authenticateResult.expireInSeconds,
+                this.rememberMe);
 
         } else {
             this._logService.warn('Unexpected authenticateResult!');
@@ -82,7 +87,7 @@ export class LoginService {
 
     private login(accessToken: string, encryptedAccessToken: string, expireInSeconds: number, rememberMe?: boolean): void {
 
-        var tokenExpireDate = rememberMe ? (new Date(new Date().getTime() + 1000 * expireInSeconds)) : undefined;
+        const tokenExpireDate = rememberMe ? (new Date(new Date().getTime() + 1000 * expireInSeconds)) : undefined;
 
         this._tokenService.setToken(
             accessToken,
@@ -96,7 +101,7 @@ export class LoginService {
             abp.appPath
         );
 
-        var initialUrl = UrlHelper.initialUrl;
+        let initialUrl = UrlHelper.initialUrl;
         if (initialUrl.indexOf('/login') > 0) {
             initialUrl = AppConsts.appBaseUrl;
         }

@@ -6,7 +6,7 @@ $foundation-primary-dark: #cee0ed;
 
 $foundation-theme: ( container-border-bottom: 1px solid $foundation-primary );
 
-$foundation-tag-theme: ( background: $foundation-primary, background-focused: $foundation-primary-dark, background-active: $foundation-primary-dark, background-hover: $foundation-primary-dark, color: #2c5777, color-hover: #2c5777, border-radius: 3px, padding: 0px 10px, margin: 3px 0px 0px 5px);
+$foundation-tag-theme: ( background: $foundation-primary, background-focused: $foundation-primary-dark, background-active: $foundation-primary-dark, background-hover: $foundation-primary-dark, color: #2c5777, color-hover: #2c5777, border-radius: 3px, padding: 0 10px, margin: 3px 0 0 5px);
 
 $foundation-icon-theme: ( fill: #2c5777, fill-focus: #eee, transition: all 0.35s );
 

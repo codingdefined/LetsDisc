@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./posts.component.css'],
     animations: [appModuleAnimation()]
 })
-export class PostsComponent extends PagedListingComponentBase<PostDto>{
+export class PostsComponent extends PagedListingComponentBase<PostDto> {
 
     @Input() tagValue = '';
     questions: PostDto[] = [];
@@ -35,11 +35,11 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
     };
     searchString: string;
     sortByValue: string;
-    defaultSortBy: string = 'newest';
+    defaultSortBy = 'newest';
 
     constructor(injector: Injector, private _postService: PostServiceProxy, private titleService: Title, private route: ActivatedRoute) {
         super(injector);
-        this.titleService.setTitle("LetsDisc - List of all questions");
+        this.titleService.setTitle('LetsDisc - List of all questions');
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -50,7 +50,7 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
                     this.questions = result.items;
                     this.showPaging(result, 0);
                 });
-            this.titleService.setTitle("List of '" + this.tagValue + "' questions - LetsDisc");
+            this.titleService.setTitle('List of "' + this.tagValue + '" questions - LetsDisc');
         }
     }
 
@@ -68,12 +68,12 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
 
     protected delete(question: PostDto): void {
         abp.message.confirm(
-            "Delete question '" + question.title + "'?",
+            'Delete question "' + question.title + '"?',
             (result: boolean) => {
                 if (result) {
                     this._postService.delete(question.id)
                         .subscribe(() => {
-                            abp.notify.info("Deleted Question: " + question.title);
+                            abp.notify.info('Deleted Question: ' + question.title);
                             this.refresh();
                         });
                 }
@@ -91,3 +91,4 @@ export class PostsComponent extends PagedListingComponentBase<PostDto>{
     }
 
 }
+

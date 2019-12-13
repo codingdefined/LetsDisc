@@ -1,7 +1,6 @@
 import { Component, ViewContainerRef, OnInit, ViewEncapsulation, Injector, OnDestroy } from '@angular/core';
-//import { LoginService } from './login/login.service';
+import { LoginService } from './login.service';
 import { AppComponentBase } from '@shared/app-component-base';
-import { FirebaseUISignInSuccessWithAuthResult, FirebaseUISignInFailure } from 'firebaseui-angular';
 
 @Component({
     templateUrl: './account.component.html',
@@ -17,8 +16,8 @@ export class AccountComponent extends AppComponentBase {
     currentYear: number;
 
     public constructor(
-        injector: Injector//,
-        //private _loginService: LoginService
+        injector: Injector,
+        private _loginService: LoginService
     ) {
         super(injector);
 
@@ -31,10 +30,11 @@ export class AccountComponent extends AppComponentBase {
     }
 
     printUser(signInSuccessData) {
+        this._loginService.externalAuthenticate(signInSuccessData);
         console.log(signInSuccessData);
     }
 
     printError(errorData) {
         console.log(errorData);
-    }  
+    }
 }

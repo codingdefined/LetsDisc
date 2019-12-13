@@ -16,9 +16,9 @@ export class TagsComponent extends PagedListingComponentBase<TagDto> {
     tags: TagDto[] = [];
 
 
-  constructor(injector: Injector, private _tagService: TagServiceProxy, private titleService : Title) {
+  constructor(injector: Injector, private _tagService: TagServiceProxy, private titleService: Title) {
       super(injector);
-      this.titleService.setTitle("List of all tags - LetsDisc");
+      this.titleService.setTitle('List of all tags - LetsDisc');
   }
 
     protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {

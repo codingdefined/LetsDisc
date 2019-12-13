@@ -1,11 +1,17 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { PostDto, PostServiceProxy, VoteChangeOutput, PostWithVoteInfo, SubmitAnswerInput, PostWithAnswers, IPostWithVoteInfo } from '@shared/service-proxies/service-proxies';
+import {
+    PostDto,
+    PostServiceProxy,
+    VoteChangeOutput,
+    PostWithVoteInfo,
+    SubmitAnswerInput,
+    PostWithAnswers
+} from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { TagInputModule } from 'ngx-chips';
-import { finalize } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
+import { ShareService } from '@ngx-share/core';
 
 @Component({
   selector: 'app-question-detail',
@@ -20,11 +26,11 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     answers: PostWithVoteInfo[] = [];
     id: number;
     items = [];
-    editing: boolean = false;
-    answerEditing: boolean = false;
+    editing = false;
+    answerEditing = false;
     currentAnswerEditing: PostWithVoteInfo;
-    saving: boolean = false;
-    browerRefresh: boolean = false;
+    saving = false;
+    browerRefresh = false;
     public Editor = ClassicEditor;
     public config = {
         placeholder: 'Type the content here!'
@@ -49,8 +55,9 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
         private route: ActivatedRoute,
         private router: Router,
         private titleService: Title,
-        private meta: Meta
-    ) { 
+        private meta: Meta,
+        public share: ShareService
+    ) {
         super(injector);
     }
 
@@ -68,42 +75,49 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
                 this.answers = result.answers;
                 this.items = result.post.post.tags.split(',');
                 this.titleService.setTitle(this.items[0] + ' - ' + result.post.post.title);
-                this.meta.updateTag({ name: 'description', content: result.post.post.body.replace(/<[^>]*>/g, '').substring(0, 160) }); 
+                this.meta.updateTag({ name: 'description', content: result.post.post.body.replace(/<[^>]*>/g, '').substring(0, 160) });
                 this.answer.title = result.post.post.title;
             });
         this.answer.questionId = id;
     }
 
-    voteUp(postId: number) {
-        if (this.appSession.isLoggedIn) {
-            this._postService.postVoteUp(postId)
-                .subscribe((result: VoteChangeOutput) => {
-                    this.assignScoreData(result);
-                    this.notify.info(this.l('Voted'));
-                });
-        } else {
+    canVote(post: PostDto): boolean {
+        if (!this.appSession.isLoggedIn) {
             this.notify.info(this.l('Please login'));
+            return false;
+        } else if (this.appSession.userId === post.creatorUserId) {
+            this.notify.info(this.l('You cannot vote on your own post'));
+            return false;
+        } else {
+            return true;
         }
-        
     }
 
-    voteDown(postId: number) {
-        if (this.appSession.isLoggedIn) {
-            this._postService.postVoteDown(postId)
+    voteUp(post: PostDto) {
+        if (this.canVote(post)) {
+            this._postService.postVoteUp(post.id)
                 .subscribe((result: VoteChangeOutput) => {
                     this.assignScoreData(result);
                     this.notify.info(this.l('Voted'));
                 });
-        } else {
-            this.notify.info(this.l('Please login'));
+        }
+    }
+
+    voteDown(post: PostDto) {
+        if (this.canVote(post)) {
+            this._postService.postVoteDown(post.id)
+                .subscribe((result: VoteChangeOutput) => {
+                    this.assignScoreData(result);
+                    this.notify.info(this.l('Voted'));
+                });
         }
     }
 
     assignScoreData(result: VoteChangeOutput) {
-        if (result.postTypeId == 1 && result.postId == this.question.post.id) {
+        if (result.postTypeId === 1 && result.postId === this.question.post.id) {
             this.scoreAndVote(this.question, result);
         } else {
-            let curAnswer = this.answers.filter(a => a.post.id === result.postId)[0];
+            const curAnswer = this.answers.filter(a => a.post.id === result.postId)[0];
             this.scoreAndVote(curAnswer, result);
         }
         
@@ -134,12 +148,12 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
 
     deleteClicked(): void {
         abp.message.confirm(
-            "Delete question '" + this.question.post.title + "'?",
+            'Delete question ' + this.question.post.title + "'?",
             (result: boolean) => {
                 if (result) {
                     this._postService.delete(this.question.post.id)
                         .subscribe(() => {
-                            abp.notify.info("Deleted Question: " + this.question.post.title);
+                            abp.notify.info('Deleted Question: ' + this.question.post.title);
                             this.router.navigate['/questions'];
                         });
                 }
@@ -163,7 +177,7 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     }
 
     updateAnswer(): void {
-        const index = this.answers.findIndex((item) => item.post.id == this.currentAnswerEditing.post.id);
+        const index = this.answers.findIndex((item) => item.post.id === this.currentAnswerEditing.post.id);
         this._postService.updateAnswer(this.currentAnswerEditing.post)
             .subscribe((result: PostWithVoteInfo) => {
                 this.answers[index] = result;

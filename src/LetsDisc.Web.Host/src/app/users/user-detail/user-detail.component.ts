@@ -1,5 +1,14 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { UserDto, UserServiceProxy, UserInfo, UserDetailsDto, PostDto, PagedResultDtoOfPostDto, PagedResultDtoOfAnswerWithQuestion, AnswerWithQuestion } from '@shared/service-proxies/service-proxies';
+import {
+    UserDto,
+    UserServiceProxy,
+    UserInfo,
+    UserDetailsDto,
+    PostDto,
+    PagedResultDtoOfPostDto,
+    PagedResultDtoOfAnswerWithQuestion,
+    AnswerWithQuestion
+} from '@shared/service-proxies/service-proxies';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponentBase } from '@shared/app-component-base';
 import * as moment from 'moment';
@@ -17,22 +26,24 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
 
     user: UserDto = null;
     userDetails: UserDetailsDto = null;
-    questionsCount: number = 0;
-    answersCount: number = 0;
+    questionsCount = 0;
+    answersCount = 0;
     id: number;
     createdTimeAgo: string;
     url: string;
     questions: PostDto[] = null;
     answers: AnswerWithQuestion[] = null;
-    public pageSize: number = 10;
-    public questionPageNumber: number = 1;
-    public questionTotalPages: number = 1;
+    displayImage: boolean = false;
+    public pageSize = 10;
+    public questionPageNumber = 1;
+    public questionTotalPages = 1;
     public questionTotalItems: number;
     public questionIsTableLoading = false;
-    public answerPageNumber: number = 1;
-    public answerTotalPages: number = 1;
+    public answerPageNumber = 1;
+    public answerTotalPages = 1;
     public answerTotalItems: number;
     public answerIsTableLoading = false;
+    letter: string = '';
 
     itemPluralMapping = {
         'answer': {
@@ -87,7 +98,8 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
                 this.answersCount = result.answersCount;
                 this.createdTimeAgo = moment(this.user.creationTime).fromNow(true);
                 this.url = this.createImgPath(result.userDetails.profileImageUrl);
-                this.titleService.setTitle("User " + result.user.fullName + " - LetsDisc");
+                this.titleService.setTitle('User ' + result.user.fullName + ' - LetsDisc');
+                this.getLetter(this.user.fullName);
             });
         this.getQuestionList(1, id);
         this.getAnswersList(1, id);
@@ -95,6 +107,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
 
     createImgPath = (serverPath: string) => {
         if (serverPath) {
+            this.displayImage = true;
             return AppConsts.remoteServiceBaseUrl + `/${serverPath}?timeStamp=${Date.now()}`;
         }
         return '';
@@ -123,7 +136,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     }
 
     private getPagedRequest(page: number) {
-        var req = new PagedRequestDto();
+        let req = new PagedRequestDto();
         req.maxResultCount = this.pageSize;
         req.skipCount = (page - 1) * this.pageSize;
         return req;
@@ -134,7 +147,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     }
 
     private getQuestionList(page: number, id: number) {
-        var req = this.getPagedRequest(page);
+        const req = this.getPagedRequest(page);
         this.questionIsTableLoading = true;
         this.questionList(id, req, page, () => {
             this.questionIsTableLoading = false;
@@ -146,7 +159,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     }
 
     private getAnswersList(page: number, id: number) {
-        var req = this.getPagedRequest(page);
+        const req = this.getPagedRequest(page);
 
         this.answerIsTableLoading = true;
         this.answerList(id, req, page, () => {
@@ -166,6 +179,16 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
 
         this.answerTotalItems = result.totalCount;
         this.answerPageNumber = pageNumber;
+    }
+
+    getLetter(fullName: string): void {
+        const nameInitials = fullName.match(/\b(\w)/g);
+        if (nameInitials) {
+            const nameLetters = nameInitials.slice(0, 3).join('');
+            this.letter = nameLetters.toUpperCase();
+        } else {
+            this.letter = fullName[0];
+        }
     }
 
 }

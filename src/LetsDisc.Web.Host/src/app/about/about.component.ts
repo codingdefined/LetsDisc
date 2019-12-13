@@ -14,6 +14,6 @@ export class AboutComponent extends AppComponentBase {
         private titleService: Title
     ) {
         super(injector);
-        this.titleService.setTitle("About - LetsDisc");
+        this.titleService.setTitle('About - LetsDisc');
     }
 }
