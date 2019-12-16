@@ -126,7 +126,7 @@ export class RootModule {
 }
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
-    let baseUrl = platformLocation.getBaseHrefFromDOM();
+    const baseUrl = platformLocation.getBaseHrefFromDOM();
     if (baseUrl) {
         return baseUrl;
     }

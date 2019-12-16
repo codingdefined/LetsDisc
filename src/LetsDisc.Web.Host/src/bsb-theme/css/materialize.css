@@ -59,9 +59,10 @@
 }
 
 [type="radio"]:not(:checked) + label:after {
-  z-index: -1;
-  -webkit-transform: scale(0);
-          transform: scale(0);
+    z-index: -1;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
 }
 
 /* Checked styles */
@@ -82,14 +83,16 @@
 }
 
 [type="radio"]:checked + label:after {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 /* Radio With gap */
 [type="radio"].with-gap:checked + label:after {
-  -webkit-transform: scale(0.5);
-          transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
 }
 
 /* Focused styles */
@@ -183,7 +186,8 @@ form p:last-child {
 [type="checkbox"]:not(.filled-in) + label:after {
   border: 0;
   -webkit-transform: scale(0);
-          transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
 }
 
 [type="checkbox"]:not(:checked):disabled + label:before {
@@ -192,29 +196,36 @@ form p:last-child {
 }
 
 [type="checkbox"].tabbed:focus + label:after {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  border: 0;
-  border-radius: 50%;
-  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: rgba(0, 0, 0, 0.1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 [type="checkbox"]:checked + label:before {
-  top: -4px;
-  left: -5px;
-  width: 12px;
-  height: 22px;
-  border-top: 2px solid transparent;
-  border-left: 2px solid transparent;
-  border-right: 2px solid #26a69a;
-  border-bottom: 2px solid #26a69a;
-  -webkit-transform: rotate(40deg);
-          transform: rotate(40deg);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-origin: 100% 100%;
-          transform-origin: 100% 100%;
+    top: -4px;
+    left: -5px;
+    width: 12px;
+    height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #26a69a;
+    border-bottom: 2px solid #26a69a;
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
 }
 
 [type="checkbox"]:checked:disabled + label:before {
@@ -236,12 +247,14 @@ form p:last-child {
     -ms-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
+    transform: rotate(90deg);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-transform-origin: 100% 100%;
     -ms-transform-origin: 100% 100%;
     -moz-transform-origin: 100% 100%;
     -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
 }
 
 [type="checkbox"]:indeterminate:disabled + label:before {
@@ -273,10 +286,12 @@ form p:last-child {
     -ms-transform: rotateZ(37deg);
     -moz-transform: rotateZ(37deg);
     -o-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
     -webkit-transform-origin: 100% 100%;
     -ms-transform-origin: 100% 100%;
     -moz-transform-origin: 100% 100%;
     -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
 }
 
 [type="checkbox"].filled-in:not(:checked) + label:after {
@@ -301,10 +316,12 @@ form p:last-child {
     -ms-transform: rotateZ(37deg);
     -moz-transform: rotateZ(37deg);
     -o-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
     -webkit-transform-origin: 100% 100%;
     -ms-transform-origin: 100% 100%;
     -moz-transform-origin: 100% 100%;
     -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
 }
 
 [type="checkbox"].filled-in:checked + label:after {

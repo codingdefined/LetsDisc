@@ -375,7 +375,6 @@ namespace LetsDisc.Posts
             return ReturnVoteChangeOutput(post, false, false);
         }
 
-
         public async Task<PostWithVoteInfo> SubmitAnswer(SubmitAnswerInput input)
         {
             var answer = await _postRepository.InsertAsync(

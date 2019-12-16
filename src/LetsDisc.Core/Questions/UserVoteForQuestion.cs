@@ -24,7 +24,6 @@ namespace LetsDisc.Questions
 
         public UserVoteForQuestion()
         {
-
         }
 
         public UserVoteForQuestion(int questionid, long userid, bool isUpvoted, bool isDownvoted)

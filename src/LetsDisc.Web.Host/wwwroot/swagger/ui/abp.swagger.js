@@ -59,7 +59,7 @@ var abp = abp || {};
         xhr.setRequestHeader('Abp.TenantId', tenantId);
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.send("{" + "usernameOrEmailAddress:'" + usernameOrEmailAddress + "'," + "password:'" + password + "'}");
-    };
+    }
 
     abp.swagger.login = function (callback) {
         //Get TenantId first

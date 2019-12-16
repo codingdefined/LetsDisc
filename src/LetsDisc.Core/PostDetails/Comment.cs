@@ -20,6 +20,5 @@ namespace LetsDisc.PostDetails
 
         public virtual long? CreatorUserId { get; set; }
         public string UserDisplayName { get; set; }
-
     }
 }

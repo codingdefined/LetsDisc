@@ -2450,12 +2450,6 @@ h5,
 h6 {
   font-weight: bold; }
 
-button,
-input,
-select,
-a:focus {
-  outline: none !important; }
-
 .no-animate {
   -o-transition-property: none !important;
   -moz-transition-property: none !important;
@@ -2505,10 +2499,6 @@ section.content {
   position: relative;
   top: 6px; }
 
-/* Buttons ===================================== */
-.btn:focus {
-  outline: none !important; }
-
 .btn-circle {
   border: none;
   overflow: hidden;
@@ -2518,9 +2508,6 @@ section.content {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%; 
-}
-.btn-circle:focus {
-    outline: none !important;
 }
 .btn-circle i {
     font-size: 18px;
@@ -2554,9 +2541,6 @@ section.content {
   -ms-border-radius: 50% !important;
   border-radius: 50% !important; 
 }
-.btn-circle-lg:focus {
-    outline: none !important;
-}
 .btn-circle-lg i {
     font-size: 26px !important;
     position: relative !important;
@@ -2572,8 +2556,6 @@ section.content {
   border-radius: 2px;
   border: none;
   font-size: 13px;}
-  .btn:not(.btn-link):not(.btn-circle):focus {
-    outline: none; }
   .btn:not(.btn-link):not(.btn-circle) i {
     font-size: 20px;
     position: relative;
@@ -2699,8 +2681,12 @@ section.content {
   cursor: inherit !important; }*/
 
 .noUi-base {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
 
 .noUi-horizontal {
   height: 18px; }
@@ -4104,9 +4090,6 @@ section.content {
   -moz-border-radius: 0;
   -ms-border-radius: 0;
   border-radius: 0; }
-  .bootstrap-select .dropdown-toggle:focus {
-    outline: none !important; 
-  }
   .bootstrap-select .bs-searchbox,
   .bootstrap-select .bs-actionsbox,
   .bootstrap-select .bs-donebutton {
@@ -6006,10 +5989,6 @@ fieldset[disabled] .form-control {
   display: block;
   width: 100%;
   overflow: hidden; }
-
-.wizard a,.tabcontrol a:focus {
-  outline: 0; 
-}
 
 .wizard ul,
 .tabcontrol ul {
@@ -8054,10 +8033,7 @@ fieldset[disabled] .form-control {
       font-size: 13px;
     }
     .dataTables_wrapper .dt-buttons a.dt-button:active {
-    opacity: 0.8; 
-    }
-    .dataTables_wrapper .dt-buttons a.dt-button:focus {
-        outline: none;
+        opacity: 0.8; 
     }
 
 .dt-button-info {
