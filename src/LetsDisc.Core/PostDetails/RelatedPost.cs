@@ -22,6 +22,5 @@ namespace LetsDisc.PostDetails
         public virtual int? SimilarPostId { get; set; }
 
         public int LinkTypeId { get; set; }
-
     }
 }

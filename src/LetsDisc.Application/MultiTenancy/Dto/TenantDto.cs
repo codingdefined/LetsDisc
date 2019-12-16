@@ -17,6 +17,6 @@ namespace LetsDisc.MultiTenancy.Dto
         [StringLength(AbpTenantBase.MaxNameLength)]
         public string Name { get; set; }        
         
-        public bool IsActive {get; set;}
+        public bool IsActive { get; set; }
     }
 }

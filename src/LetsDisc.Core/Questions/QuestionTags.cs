@@ -20,7 +20,6 @@ namespace LetsDisc.Questions
 
         public QuestionTags()
         {
-
         }
 
         public QuestionTags(int questionid, int tagid)

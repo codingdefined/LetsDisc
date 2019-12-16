@@ -120,7 +120,6 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
             const curAnswer = this.answers.filter(a => a.post.id === result.postId)[0];
             this.scoreAndVote(curAnswer, result);
         }
-        
     }
 
     private scoreAndVote(post: PostWithVoteInfo, result: VoteChangeOutput, ) {
@@ -189,7 +188,7 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
     }
 
     saveQuestion(): void {
-        let localItems = [];
+        const localItems = [];
         this.items.forEach(function (item) {
             if (item && item.value) {
                 localItems.push(item.value);

@@ -62,9 +62,9 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
         }
     }
     private getSecondsUntilUpdate(seconds: number) {
-        let min = 60;
-        let hr = min * 60;
-        let day = hr * 24;
+        const min = 60;
+        const hr = min * 60;
+        const day = hr * 24;
         if (seconds < min) { // less than 1 min, update every 2 secs
             return 2;
         } else if (seconds < hr) { // less than an hour, update every 30 secs

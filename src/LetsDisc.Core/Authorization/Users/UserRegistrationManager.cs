@@ -29,7 +29,6 @@ namespace LetsDisc.Authorization.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IEmailSender _emailSender;
 
-
         public UserRegistrationManager(
             TenantManager tenantManager,
             UserManager userManager,

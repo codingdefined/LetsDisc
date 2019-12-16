@@ -108,8 +108,8 @@
             Waves.attach('.menu .list a', ['waves-block']);
             Waves.init();
         },
-        setMenuHeight: function (isFirstTime) {
-            if (typeof $.fn.slimScroll != 'undefined') {
+        setMenuHeight: function () {
+            if (typeof $.fn.slimScroll !== 'undefined') {
                 var configs = $.AdminBSB.options.leftSideBar;
                 var height = ($(window).height() - ($('.legal').outerHeight() + $('.user-info').outerHeight() + $('.navbar').innerHeight()));
                 var $el = $('.list');
@@ -423,7 +423,7 @@
                 return chrome;
             } else if (/firefox/i.test(userAgent)) {
                 return firefox;
-            } else if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
+            } else if (navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
                 return safari;
             }
 
