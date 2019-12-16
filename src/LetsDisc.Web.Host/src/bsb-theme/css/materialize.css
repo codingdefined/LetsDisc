@@ -147,10 +147,6 @@ form p:last-child {
   opacity: 0;
 }
 
-[type="checkbox"] {
-  /* checkbox aspect */
-}
-
 [type="checkbox"] + label {
   position: relative;
   padding-left: 35px;
@@ -228,20 +224,24 @@ form p:last-child {
 
 /* Indeterminate checkbox */
 [type="checkbox"]:indeterminate + label:before {
-  top: -11px;
-  left: -12px;
-  width: 10px;
-  height: 22px;
-  border-top: none;
-  border-left: none;
-  border-right: 2px solid #26a69a;
-  border-bottom: none;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-origin: 100% 100%;
-          transform-origin: 100% 100%;
+    top: -11px;
+    left: -12px;
+    width: 10px;
+    height: 22px;
+    border-top: none;
+    border-left: none;
+    border-right: 2px solid #26a69a;
+    border-bottom: none;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
 }
 
 [type="checkbox"]:indeterminate:disabled + label:before {
@@ -264,15 +264,19 @@ form p:last-child {
 }
 
 [type="checkbox"].filled-in:not(:checked) + label:before {
-  width: 0;
-  height: 0;
-  border: 3px solid transparent;
-  left: 6px;
-  top: 10px;
-  -webkit-transform: rotateZ(37deg);
-  transform: rotateZ(37deg);
-  -webkit-transform-origin: 20% 40%;
-  transform-origin: 100% 100%;
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+    left: 6px;
+    top: 10px;
+    -webkit-transform: rotateZ(37deg);
+    -ms-transform: rotateZ(37deg);
+    -moz-transform: rotateZ(37deg);
+    -o-transform: rotateZ(37deg);
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
 }
 
 [type="checkbox"].filled-in:not(:checked) + label:after {
@@ -280,23 +284,27 @@ form p:last-child {
   width: 20px;
   background-color: transparent;
   border: 2px solid #5a5a5a;
-  top: 0px;
+  top: 0;
   z-index: 0;
 }
 
 [type="checkbox"].filled-in:checked + label:before {
-  top: 0;
-  left: 1px;
-  width: 8px;
-  height: 13px;
-  border-top: 2px solid transparent;
-  border-left: 2px solid transparent;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  -webkit-transform: rotateZ(37deg);
-  transform: rotateZ(37deg);
-  -webkit-transform-origin: 100% 100%;
-  transform-origin: 100% 100%;
+    top: 0;
+    left: 1px;
+    width: 8px;
+    height: 13px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotateZ(37deg);
+    -ms-transform: rotateZ(37deg);
+    -moz-transform: rotateZ(37deg);
+    -o-transform: rotateZ(37deg);
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
 }
 
 [type="checkbox"].filled-in:checked + label:after {
@@ -342,7 +350,7 @@ form p:last-child {
 /* Switch
    ========================================================================== */
 .switch,
-.switch * {
+.switch label, .switch input, .switch span {
   -webkit-user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;

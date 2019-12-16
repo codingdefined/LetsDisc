@@ -33,7 +33,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     url: string;
     questions: PostDto[] = null;
     answers: AnswerWithQuestion[] = null;
-    displayImage: boolean = false;
+    displayImage = false;
     public pageSize = 10;
     public questionPageNumber = 1;
     public questionTotalPages = 1;
@@ -43,7 +43,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     public answerTotalPages = 1;
     public answerTotalItems: number;
     public answerIsTableLoading = false;
-    letter: string = '';
+    letter: string;
 
     itemPluralMapping = {
         'answer': {
@@ -136,7 +136,7 @@ export class UserDetailComponent extends AppComponentBase implements OnInit {
     }
 
     private getPagedRequest(page: number) {
-        let req = new PagedRequestDto();
+        const req = new PagedRequestDto();
         req.maxResultCount = this.pageSize;
         req.skipCount = (page - 1) * this.pageSize;
         return req;
