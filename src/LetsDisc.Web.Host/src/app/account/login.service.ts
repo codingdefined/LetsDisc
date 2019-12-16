@@ -56,8 +56,8 @@ export class LoginService {
                 providerKey: data.uid,
                 providerAccessCode: data.uid,
                 emailAddress: data.email,
-                name: data.displayName.split(" ")[0],
-                surname: data.displayName.split(" ")[1]
+                name: data.displayName.split(' ')[0],
+                surname: data.displayName.split(' ')[1]
             });
         this._tokenAuthService.externalAuthenticate(model)
             .subscribe((result: ExternalAuthenticateResultModel) => {

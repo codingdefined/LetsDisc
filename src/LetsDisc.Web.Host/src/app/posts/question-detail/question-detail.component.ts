@@ -148,7 +148,7 @@ export class QuestionDetailComponent extends AppComponentBase implements OnInit 
 
     deleteClicked(): void {
         abp.message.confirm(
-            'Delete question ' + this.question.post.title + "'?",
+            'Delete question "' + this.question.post.title + '"?',
             (result: boolean) => {
                 if (result) {
                     this._postService.delete(this.question.post.id)

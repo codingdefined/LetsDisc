@@ -1,5 +1,4 @@
-﻿/* Show Fieldset and Legend ==================== */
-.show-fieldset {
+﻿.show-fieldset {
     margin: 10px;
     padding: 10px;
     border: 1px solid silver !important;
@@ -9,7 +8,7 @@
     padding: 5px !important;
     width: initial !important;
     margin: initial !important;
-    border: 0px transparent !important;
+    border: 0 transparent !important;
 }
 
 /* Ngx Pagination ============================== */
@@ -185,7 +184,7 @@ a{cursor: pointer;
   margin-left: 5px; }
 
 .navbar-nav .dropdown-menu {
-  margin-top: 0px !important; }
+  margin-top: 0 !important; }
 
 .label-count {
   position: absolute;
@@ -1115,16 +1114,16 @@ a{cursor: pointer;
   margin-bottom: -5px; }
 
 .m-l-0 {
-  margin-left: 0px; }
+  margin-left: 0; }
 
 .m-t-0 {
-  margin-top: 0px; }
+  margin-top: 0; }
 
 .m-r-0 {
-  margin-right: 0px; }
+  margin-right: 0; }
 
 .m-b-0 {
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
 
 .m-l-5 {
   margin-left: 5px; }
@@ -1430,16 +1429,16 @@ a{cursor: pointer;
   margin: 0; }
 
 .p-l-0 {
-  padding-left: 0px; }
+  padding-left: 0; }
 
 .p-t-0 {
-  padding-top: 0px; }
+  padding-top: 0; }
 
 .p-r-0 {
-  padding-right: 0px; }
+  padding-right: 0; }
 
 .p-b-0 {
-  padding-bottom: 0px; }
+  padding-bottom: 0; }
 
 .p-l-5 {
   padding-left: 5px; }
@@ -2454,7 +2453,7 @@ h6 {
 button,
 input,
 select,
-a {
+a:focus {
   outline: none !important; }
 
 .no-animate {
@@ -2512,15 +2511,18 @@ section.content {
 
 .btn-circle {
   border: none;
-  outline: none !important;
   overflow: hidden;
   width: 40px;
   height: 40px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
-  border-radius: 50%; }
-  .btn-circle i {
+  border-radius: 50%; 
+}
+.btn-circle:focus {
+    outline: none !important;
+}
+.btn-circle i {
     font-size: 18px;
     position: relative;
     left: -1px;
@@ -2544,19 +2546,23 @@ section.content {
 
 .btn-circle-lg {
   border: none;
-  outline: none !important;
   overflow: hidden;
   width: 50px;
   height: 50px;
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   -ms-border-radius: 50% !important;
-  border-radius: 50% !important; }
-  .btn-circle-lg i {
+  border-radius: 50% !important; 
+}
+.btn-circle-lg:focus {
+    outline: none !important;
+}
+.btn-circle-lg i {
     font-size: 26px !important;
     position: relative !important;
-    left: 0px !important;
-    top: 6px !important; }
+    left: 0 !important;
+    top: 6px !important;
+}
 
 .btn:not(.btn-link):not(.btn-circle) {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
@@ -2565,9 +2571,8 @@ section.content {
   -ms-border-radius: 2px;
   border-radius: 2px;
   border: none;
-  font-size: 13px;
-  outline: none; }
-  .btn:not(.btn-link):not(.btn-circle):hover {
+  font-size: 13px;}
+  .btn:not(.btn-link):not(.btn-circle):focus {
     outline: none; }
   .btn:not(.btn-link):not(.btn-circle) i {
     font-size: 20px;
@@ -2652,7 +2657,7 @@ section.content {
   box-sizing: border-box;
   position: relative;
   direction: ltr; }
-  .noUi-target * {
+  /*.noUi-target * {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -ms-touch-action: none;
@@ -2661,7 +2666,7 @@ section.content {
     -moz-user-select: none;
     user-select: none;
     -moz-box-sizing: border-box;
-    box-sizing: border-box; }
+    box-sizing: border-box; }*/
 
 .noUi-base {
   width: 100%;
@@ -2684,11 +2689,14 @@ section.content {
   z-index: 10; }
 
 .noUi-state-tap .noUi-origin {
-  -webkit-transition: left 0.25s, top 0.25s;
-  transition: left 0.25s, top 0.25s; }
+    -webkit-transition: left 0.25s, top 0.25s;
+    -moz-transition: left 0.25s, top 0.25s;
+    -o-transition: left 0.25s, top 0.25s;
+    transition: left 0.25s, top 0.25s;
+}
 
-.noUi-state-drag * {
-  cursor: inherit !important; }
+/*.noUi-state-drag * {
+  cursor: inherit !important; }*/
 
 .noUi-base {
   -webkit-transform: translate3d(0, 0, 0);
@@ -2763,7 +2771,6 @@ section.content {
   height: 14px;
   width: 1px;
   background: #E8E7E6;
-  left: 14px;
   top: 6px;
   left: 17px; }
 
@@ -4097,8 +4104,9 @@ section.content {
   -moz-border-radius: 0;
   -ms-border-radius: 0;
   border-radius: 0; }
-  .bootstrap-select .dropdown-toggle:focus, .bootstrap-select .dropdown-toggle:active {
-    outline: none !important; }
+  .bootstrap-select .dropdown-toggle:focus {
+    outline: none !important; 
+  }
   .bootstrap-select .bs-searchbox,
   .bootstrap-select .bs-actionsbox,
   .bootstrap-select .bs-donebutton {
@@ -5999,9 +6007,9 @@ fieldset[disabled] .form-control {
   width: 100%;
   overflow: hidden; }
 
-.wizard a,
-.tabcontrol a {
-  outline: 0; }
+.wizard a,.tabcontrol a:focus {
+  outline: 0; 
+}
 
 .wizard ul,
 .tabcontrol ul {
@@ -6811,7 +6819,7 @@ fieldset[disabled] .form-control {
   margin-left: 5px; }
 
 .navbar-nav .dropdown-menu {
-  margin-top: 0px !important; }
+  margin-top: 0 !important; }
 
 .navbar-nav .search-button {
     margin-top: 20px;
@@ -7731,7 +7739,7 @@ fieldset[disabled] .form-control {
             font-size: 21px;
             height: 20px;
             top: -5px;
-            right: 0px; }
+            right: 0; }
         .sidebar .menu .list .ml-menu li .ml-menu li a {
           padding-left: 80px; }
         .sidebar .menu .list .ml-menu li .ml-menu .ml-menu li a {
@@ -8044,9 +8052,13 @@ fieldset[disabled] .form-control {
       border-radius: 2px;
       border: none;
       font-size: 13px;
-      outline: none; }
-      .dataTables_wrapper .dt-buttons a.dt-button:active {
-        opacity: 0.8; }
+    }
+    .dataTables_wrapper .dt-buttons a.dt-button:active {
+    opacity: 0.8; 
+    }
+    .dataTables_wrapper .dt-buttons a.dt-button:focus {
+        outline: none;
+    }
 
 .dt-button-info {
   position: fixed;
@@ -8120,7 +8132,7 @@ html.ie11 .bs-searchbox .form-control {
     padding: 5px 10px;
     background: #E1ECF4;
     cursor: pointer;
-    margin: 3px 5px 0px 0px;
+    margin: 3px 5px 0 0;
     text-decoration: none !important;
 }
 
@@ -8139,7 +8151,7 @@ html.ie11 .bs-searchbox .form-control {
 }
 
 .user-loggedin {
-    margin: 0px !important;
+    margin: 0 !important;
 }
 
 .user-image {
@@ -8149,7 +8161,7 @@ html.ie11 .bs-searchbox .form-control {
 
 .dropdown-item i {
     color: #73818f;
-    margin: 0px 10px 0px 0px;
+    margin: 0 10px 0 0;
     width: 20px;
 }
 
@@ -8158,7 +8170,7 @@ html.ie11 .bs-searchbox .form-control {
 }
 
 .navbar .navbar-toggler {
-    padding: 0px;
+    padding: 0;
 }
 
 .container {
@@ -8188,14 +8200,14 @@ html.ie11 .bs-searchbox .form-control {
 
 .status-container {
     float: left;
-    margin: 0px 20px;
+    margin: 0 20px;
 }
 
 .summary {
     flex: 1 auto;
     float: none;
     width: auto;
-    margin: 0px;
+    margin: 0;
 }
 
 .vote {

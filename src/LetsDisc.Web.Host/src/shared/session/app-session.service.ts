@@ -72,7 +72,6 @@ export class AppSessionService {
                 const encryptedAuthToken = new UtilsService().getCookieValue(AppConsts.authorization.encrptedAuthTokenName);
                 this._socialUser = encryptedAuthToken !== null ? user : null;
 
-                this.loggedIn = (this._socialUser != null);
                 this.userEmail = this._socialUser != null ? this._socialUser.email : '';
                 this._sessionService.getCurrentLoginInformations(this.userEmail).toPromise()
                     .then((result: GetCurrentLoginInformationsOutput) => {
