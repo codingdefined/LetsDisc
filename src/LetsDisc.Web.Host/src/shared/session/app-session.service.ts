@@ -8,24 +8,18 @@ import {
     TokenAuthServiceProxy
 } from '@shared/service-proxies/service-proxies';
 import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.service';
-import { AuthService, SocialUser } from 'angularx-social-login';
-import { AppConsts } from '@shared/AppConsts';
-import { UtilsService } from 'abp-ng2-module/dist/src/utils/utils.service';
 
 @Injectable()
 export class AppSessionService {
 
     private _user: UserLoginInfoDto;
-    private _socialUser: SocialUser;
     private _tenant: TenantLoginInfoDto;
     private _application: ApplicationInfoDto;
     private userEmail: string;
 
     constructor(
         private _sessionService: SessionServiceProxy,
-        private _abpMultiTenancyService: AbpMultiTenancyService,
-        private _tokenAuthService: TokenAuthServiceProxy,
-        private authService: AuthService) {
+        private _abpMultiTenancyService: AbpMultiTenancyService) {
     }
 
     get application(): ApplicationInfoDto {
@@ -68,22 +62,13 @@ export class AppSessionService {
     init(): Promise<boolean> {
 
         return new Promise<boolean>((resolve, reject) => {
-            this.authService.authState.subscribe((user) => {
-                const encryptedAuthToken = new UtilsService().getCookieValue(AppConsts.authorization.encrptedAuthTokenName);
-                this._socialUser = encryptedAuthToken !== null ? user : null;
-
-                this.userEmail = this._socialUser != null ? this._socialUser.email : '';
-                this._sessionService.getCurrentLoginInformations(this.userEmail).toPromise()
-                    .then((result: GetCurrentLoginInformationsOutput) => {
-                        this._application = result.application;
-                        this._user = result.user;
-                        this._tenant = result.tenant;
-
-                        resolve(true);
-                }, (err) => {
-                    reject(err);
+            this._sessionService.getCurrentLoginInformations(this.userEmail).toPromise()
+                .then((result: GetCurrentLoginInformationsOutput) => {
+                    this._application = result.application;
+                    this._user = result.user;
+                    this._tenant = result.tenant;
+                    resolve(true);
                 });
-            });
         });
     }
 

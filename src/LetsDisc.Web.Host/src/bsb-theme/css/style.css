@@ -8177,6 +8177,7 @@ html.ie11 .bs-searchbox .form-control {
 .status-container {
     float: left;
     margin: 0 20px;
+    min-width: 5%;
 }
 
 .summary {

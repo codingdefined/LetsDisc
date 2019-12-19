@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.UI;
 using LetsDisc.Authorization.Users;
 using LetsDisc.PostDetails;
 using LetsDisc.Posts.Dto;
@@ -316,7 +317,14 @@ namespace LetsDisc.Posts
         {
             var post = await _postRepository.GetAsync(id);
             var isUserVoted = _voteRepository.FirstOrDefault(userVote => userVote.CreatorUserId == AbpSession.UserId && userVote.PostId == id);
+            var daysVote = _voteRepository.Count(userVote => userVote.CreatorUserId == AbpSession.UserId && userVote.CreationTime.ToShortDateString() == DateTime.Now.ToShortDateString());
             var user = _userDetailsRepository.FirstOrDefault(u => u.UserId == post.CreatorUserId);
+
+            if(daysVote > 40)
+            {
+                throw new UserFriendlyException("You cannot vote more than 40 times in a day");
+            }
+
             if (isUserVoted != null)
             {
                 if(isUserVoted.VoteTypeId == (int)VoteTypes.Upvote)
@@ -348,7 +356,14 @@ namespace LetsDisc.Posts
         {
             var post = await _postRepository.GetAsync(id);
             var isUserVoted = _voteRepository.FirstOrDefault(userVote => userVote.CreatorUserId == AbpSession.UserId && userVote.PostId == id);
+            var daysVote = _voteRepository.Count(userVote => userVote.CreatorUserId == AbpSession.UserId && userVote.CreationTime.ToShortDateString() == DateTime.Now.ToShortDateString());
             var user = _userDetailsRepository.FirstOrDefault(u => u.UserId == post.CreatorUserId);
+
+            if (daysVote > 40)
+            {
+                throw new UserFriendlyException("You cannot vote more than 40 times in a day");
+            }
+
             if (isUserVoted != null)
             {
                 if (isUserVoted.VoteTypeId == (int)VoteTypes.Downvote)

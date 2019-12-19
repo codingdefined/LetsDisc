@@ -8,7 +8,7 @@
             </div>
             <div class="body">
                 <ngx-auth-firebaseui [guestEnabled]="false" appearance="standard" (onSuccess)="printUser($event)"
-                                     (onError)="printError($event)"></ngx-auth-firebaseui>
+                                     (onError)="printError($event)" [providers]="[providers.Google, providers.Github]"></ngx-auth-firebaseui>
             </div>
         </div>
     </div>

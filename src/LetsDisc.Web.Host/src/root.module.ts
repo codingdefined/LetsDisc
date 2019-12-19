@@ -20,22 +20,10 @@ import { AppPreBootstrap } from './AppPreBootstrap';
 import { ModalModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppAuthService } from '@shared/auth/app-auth.service';
-import { AuthServiceConfig, GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import {firebaseKey} from './firebase.config';
 
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { LoginService } from '@app/account/login.service';
-
-const config = new AuthServiceConfig([
-    {
-        id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider('')
-    }
-]);
-
-export function provideConfig() {
-    return config;
-}
 
 export function appInitializerFactory(injector: Injector,
     platformLocation: PlatformLocation) {
@@ -106,12 +94,7 @@ export function firebaseAppNameFactory() {
             deps: [Injector, PlatformLocation],
             multi: true
         },
-        AuthService,
         Title,
-        {
-            provide: AuthServiceConfig,
-            useFactory: provideConfig
-        },
         {
             provide: LOCALE_ID,
             useFactory: getCurrentLanguage

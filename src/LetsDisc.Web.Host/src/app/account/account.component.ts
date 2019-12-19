@@ -1,6 +1,7 @@
 import { Component, ViewContainerRef, OnInit, ViewEncapsulation, Injector, OnDestroy } from '@angular/core';
 import { LoginService } from './login.service';
 import { AppComponentBase } from '@shared/app-component-base';
+import { AuthProvider } from 'ngx-auth-firebaseui';
 
 @Component({
     templateUrl: './account.component.html',
@@ -14,6 +15,7 @@ export class AccountComponent extends AppComponentBase {
 
     versionText: string;
     currentYear: number;
+    providers = AuthProvider;
 
     public constructor(
         injector: Injector,
